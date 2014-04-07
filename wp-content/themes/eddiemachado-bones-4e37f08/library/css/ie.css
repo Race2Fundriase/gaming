@@ -1,0 +1,1667 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: IE Stylesheet
+
+So instead of using the respond.js file to add media query support
+to IE, we're going to use SASS to create an easily readable css file.
+Here, we import all the styles the standard stylesheet gets, only
+without the media queries. No need to worry about editing anything!
+
+******************************************************************/
+/*
+Remember, all the BASE styles are called already since IE can
+read those. Below, we need to import only the stuff IE can't 
+understand (what's inside the media queries). We also need to
+import the mixins file so SASS can understand the variables.
+*/
+/* import mixins */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Mixins & Constants Stylesheet
+
+This is where you can take advantage of Sass' great features:
+Mixins & Constants. I won't go in-depth on how they work exactly,
+there are a few articles below that will help do that. What I will
+tell you is that this will help speed up simple changes like
+changing a color or adding CSS3 techniques gradients.
+
+A WORD OF WARNING: It's very easy to overdo it here. Be careful and
+remember less is more.
+
+******************************************************************/
+/*********************
+CLEARFIXIN'
+*********************/
+/* line 23, ../scss/_mixins.scss */
+.clearfix {
+  zoom: 1;
+}
+/* line 25, ../scss/_mixins.scss */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+/* line 26, ../scss/_mixins.scss */
+.clearfix:after {
+  clear: both;
+}
+
+/*********************
+TOOLS
+*********************/
+/* line 34, ../scss/_mixins.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 41, ../scss/_mixins.scss */
+.image-replacement {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*********************
+COLORS
+Need help w/ choosing your colors? Try this site out:
+http://0to255.com/
+*********************/
+/*
+Here's a great tutorial on how to
+use color variables properly:
+http://sachagreif.com/sass-color-variables/
+*/
+/*********************
+TYPOGRAPHY
+*********************/
+/* 	To embed your own fonts, use this syntax
+	and place your fonts inside the
+	library/fonts folder. For more information
+	on embedding fonts, go to:
+	http://www.fontsquirrel.com/
+	Be sure to remove the comment brackets.
+*/
+@font-face {
+  font-family: 'Headline One';
+  src: url("../fonts/headoh__-webfont.eot");
+  src: url("../fonts/headoh__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/headoh__-webfont.woff") format("woff"), url("../fonts/HEADOH.ttf") format("truetype"), url("../fonts/headoh__-webfont.svg#font-name") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Headline Two';
+  src: url("../fonts/headth__-webfont.eot");
+  src: url("../fonts/headth__-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/headth__-webfont.woff") format("woff"), url("../fonts/HEADTH.ttf") format("truetype"), url("../fonts/headth__-webfont.svg#font-name") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*
+use the best ampersand
+http://simplebits.com/notebook/2008/08/14/ampersands-2/
+*/
+/* line 121, ../scss/_mixins.scss */
+span.amp {
+  font-family: Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif !important;
+  font-style: italic;
+}
+
+/* line 127, ../scss/_mixins.scss */
+.text-left {
+  text-align: left;
+}
+
+/* line 128, ../scss/_mixins.scss */
+.text-center {
+  text-align: center;
+}
+
+/* line 129, ../scss/_mixins.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 131, ../scss/_mixins.scss */
+.right {
+  float: right;
+}
+
+/* line 135, ../scss/_mixins.scss */
+.alert-help, .alert-info, .alert-error, .alert-success {
+  margin: 10px;
+  padding: 5px 18px;
+  border: 1px solid;
+}
+
+/* line 141, ../scss/_mixins.scss */
+.alert-help {
+  border-color: #e8dc59;
+  background: #ebe16f;
+}
+
+/* line 147, ../scss/_mixins.scss */
+.alert-info {
+  border-color: #bfe4f4;
+  background: #d5edf8;
+}
+
+/* line 153, ../scss/_mixins.scss */
+.alert-error {
+  border-color: #f8cdce;
+  background: #fbe3e4;
+}
+
+/* line 159, ../scss/_mixins.scss */
+.alert-success {
+  border-color: #deeaae;
+  background: #e6efc2;
+}
+
+/*********************
+TRANSITION
+*********************/
+/*
+I totally rewrote this to be cleaner and easier to use.
+You'll need to be using Sass 3.2+ for these to work.
+Thanks to @anthonyshort for the inspiration on these.
+USAGE: @include transition(all 0.2s ease-in-out);
+*/
+/*********************
+CSS3 GRADIENTS
+Be careful with these since they can
+really slow down your CSS. Don't overdo it.
+*********************/
+/* @include css-gradient(#dfdfdf,#f8f8f8); */
+/*********************
+BOX SIZING
+*********************/
+/* @include box-sizing(border-box); */
+/* NOTE: value of "padding-box" is only supported in Gecko. So
+probably best not to use it. I mean, were you going to anyway? */
+/*********************
+R2F BUTTONS
+*********************/
+/* line 220, ../scss/_mixins.scss */
+.btn {
+  font-family: 'Headline One';
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  background: #de5f02;
+  padding: 5px 20px 4px 20px;
+  border-radius: 15px;
+}
+/* line 229, ../scss/_mixins.scss */
+.btn:hover {
+  color: white;
+}
+
+/* line 234, ../scss/_mixins.scss */
+.large {
+  font-size: 36px;
+  font-size: 2.25rem;
+}
+
+/* line 239, ../scss/_mixins.scss */
+.medium {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+
+/* line 244, ../scss/_mixins.scss */
+.small {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+/* line 249, ../scss/_mixins.scss */
+.btn-blue {
+  background: #3a8ed4;
+}
+
+/*********************
+TAB CONTROL
+*********************/
+/* line 256, ../scss/_mixins.scss */
+.tab_control {
+  display: table;
+  margin: 0 auto;
+}
+/* line 259, ../scss/_mixins.scss */
+.tab_control li:first-of-type a {
+  border-radius: 15px 0px 0px 15px;
+}
+/* line 263, ../scss/_mixins.scss */
+.tab_control li:last-of-type a {
+  border-radius: 0px 15px 15px 0px;
+}
+/* line 267, ../scss/_mixins.scss */
+.tab_control li {
+  float: left;
+}
+/* line 269, ../scss/_mixins.scss */
+.tab_control li a {
+  border-radius: 0px;
+}
+
+/* line 275, ../scss/_mixins.scss */
+.tab_control.left {
+  float: left;
+}
+
+/* line 279, ../scss/_mixins.scss */
+.button, .button:visited {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 1px solid #dedede;
+  border-top-color: #ededed;
+  border-left-color: #ededed;
+  padding: 4px 12px;
+  color: white;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  margin-bottom: 20px;
+  line-height: 21px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, white, #f2f2f2);
+  background-image: -moz-linear-gradient(top, white, #f2f2f2);
+  background-image: -o-linear-gradient(top, white, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+/* line 298, ../scss/_mixins.scss */
+.button:hover, .button:focus, .button:visited:hover, .button:visited:focus {
+  color: white;
+  border: 1px solid #dedede;
+  border-top-color: #cccccc;
+  border-left-color: #cccccc;
+  background-color: #e6e6e6;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: -o-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+}
+/* line 306, ../scss/_mixins.scss */
+.button:active, .button:visited:active {
+  background-color: white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(white));
+  background-image: -webkit-linear-gradient(top, #f2f2f2, white);
+  background-image: -moz-linear-gradient(top, #f2f2f2, white);
+  background-image: -o-linear-gradient(top, #f2f2f2, white);
+  background-image: linear-gradient(to bottom, #f2f2f2, #ffffff);
+}
+
+/* line 311, ../scss/_mixins.scss */
+.blue-button, .blue-button:visited {
+  border-color: #1472ad;
+  text-shadow: 0 1px 1px #1472ad;
+  background-color: #1681c4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1990db), to(#1681c4));
+  background-image: -webkit-linear-gradient(top, #1990db, #1681c4);
+  background-image: -moz-linear-gradient(top, #1990db, #1681c4);
+  background-image: -o-linear-gradient(top, #1990db, #1681c4);
+  background-image: linear-gradient(to bottom, #1990db, #1681c4);
+  box-shadow: inset 0 0 3px #59b3ec;
+}
+/* line 317, ../scss/_mixins.scss */
+.blue-button:hover, .blue-button:focus, .blue-button:visited:hover, .blue-button:visited:focus {
+  border-color: #116396;
+  background-color: #1472ad;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1784c9), to(#1472ad));
+  background-image: -webkit-linear-gradient(top, #1784c9, #1472ad);
+  background-image: -moz-linear-gradient(top, #1784c9, #1472ad);
+  background-image: -o-linear-gradient(top, #1784c9, #1472ad);
+  background-image: linear-gradient(to bottom, #1784c9, #1472ad);
+}
+/* line 321, ../scss/_mixins.scss */
+.blue-button:active, .blue-button:visited:active {
+  background-color: #1990db;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1681c4), to(#1990db));
+  background-image: -webkit-linear-gradient(top, #1681c4, #1990db);
+  background-image: -moz-linear-gradient(top, #1681c4, #1990db);
+  background-image: -o-linear-gradient(top, #1681c4, #1990db);
+  background-image: linear-gradient(to bottom, #1681c4, #1990db);
+}
+
+/* line 326, ../scss/_mixins.scss */
+.circle-image {
+  display: block;
+  width: 218px;
+  margin: 0 auto;
+  height: 218px;
+  border-radius: 107px;
+  box-shadow: 0px 0px 5px 5px #bf9f6b;
+}
+
+/* line 335, ../scss/_mixins.scss */
+.shadow {
+  display: inline-block;
+  box-shadow: 0px 0px 5px 5px #bf9f6b;
+}
+/* line 339, ../scss/_mixins.scss */
+.shadow img {
+  display: block;
+}
+
+/* line 344, ../scss/_mixins.scss */
+.start-a-race {
+  background: url("../images/start-a-race-293x220.jpg") center center no-repeat;
+}
+
+/* line 348, ../scss/_mixins.scss */
+.our-members {
+  background: url("../images/our-members.jpg") center center no-repeat;
+}
+
+/* line 352, ../scss/_mixins.scss */
+.enter-a-race {
+  background: url("../images/enter-a-race.jpg") center center no-repeat;
+}
+
+/* line 357, ../scss/_mixins.scss */
+.highlight {
+  background: white;
+  color: #de5f02;
+}
+
+/* line 362, ../scss/_mixins.scss */
+h1.highlight, h2.highlight, h3.highlight {
+  font-family: 'Headline One';
+  font-size: 40px;
+  font-size: 2.5rem;
+  line-height: 1;
+  padding: 2px 20px 0px 20px;
+  margin-top: 0.8rem;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* line 373, ../scss/_mixins.scss */
+h3.highlight {
+  font-size: 22px;
+  font-size: 1.375rem;
+}
+
+/* line 379, ../scss/_mixins.scss */
+p.highlight, li.highlight {
+  display: inline;
+}
+
+/* line 384, ../scss/_mixins.scss */
+ol.highlight li, ul.highlight li {
+  background: white;
+  color: #de5f02;
+}
+
+/* line 390, ../scss/_mixins.scss */
+.tweet-container {
+  display: block;
+  margin-bottom: 30px;
+  padding-top: 30px;
+}
+
+/* line 396, ../scss/_mixins.scss */
+.twitter-user {
+  display: inline-block;
+  vertical-align: top;
+  width: 15%;
+  max-width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+/* line 405, ../scss/_mixins.scss */
+.twitter-tweet {
+  display: inline-block;
+  margin-left: 5%;
+  width: 80%;
+}
+/* line 410, ../scss/_mixins.scss */
+.twitter-tweet p {
+  display: inline;
+}
+/* line 413, ../scss/_mixins.scss */
+.twitter-tweet p a {
+  color: #de5f02;
+  text-decoration: underline;
+}
+
+/* line 420, ../scss/_mixins.scss */
+.video-container {
+  position: relative;
+  bottom: 0;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+/* line 429, ../scss/_mixins.scss */
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  bottom: 10px;
+  left: 12.5%;
+  width: 75%;
+  height: 75%;
+}
+
+/* line 437, ../scss/_mixins.scss */
+.featured-game {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-height: 197px;
+  max-width: 197px;
+  margin: 30px auto;
+  background-color: #000;
+  box-shadow: 0px 0px 10px 5px #bf9f6b;
+}
+/* line 448, ../scss/_mixins.scss */
+.featured-game img {
+  display: block;
+}
+/* line 452, ../scss/_mixins.scss */
+.featured-game .title {
+  display: block;
+  position: absolute;
+  bottom: 50px;
+}
+/* line 458, ../scss/_mixins.scss */
+.featured-game .charity {
+  display: block;
+  position: absolute;
+  bottom: 10px;
+}
+
+/* line 466, ../scss/_mixins.scss */
+.orange-type {
+  color: #de5f02;
+}
+/* line 470, ../scss/_mixins.scss */
+.orange-type a {
+  color: #de5f02;
+}
+/* line 473, ../scss/_mixins.scss */
+.orange-type a:hover {
+  color: #de5f02 !important;
+  text-decoration: underline;
+}
+
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Grid Stylesheet
+
+I've seperated the grid so you can swap it out easily. It's
+called at the top the style.scss stylesheet.
+
+There are a ton of grid solutions out there. You should definitely
+experiment with your own. Here are some recommendations:
+
+http://gridsetapp.com - Love this site. Responsive Grids made easy.
+http://susy.oddbird.net/ - Grids using Compass. Very elegant.
+http://gridpak.com/ - Create your own responsive grid.
+
+The grid below is a combination of the 1140 grid and Twitter Boostrap. 
+I liked 1140 but Boostrap's grid was way more detailed so I merged them 
+together, let's see how this works out. If you want to use 1140, the original 
+values are commented out on each line.
+
+******************************************************************/
+/* line 24, ../scss/_grid.scss */
+.onecol {
+  width: 5.801104972%;
+}
+
+/* 4.85%;  } /* grid_1  */
+/* line 25, ../scss/_grid.scss */
+.twocol {
+  width: 14.364640883%;
+}
+
+/* 13.45%; } /* grid_2  */
+/* line 26, ../scss/_grid.scss */
+.threecol {
+  width: 22.928176794%;
+}
+
+/* 22.05%; } /* grid_3  */
+/* line 27, ../scss/_grid.scss */
+.fourcol {
+  width: 31.491712705%;
+}
+
+/* 30.75%; } /* grid_4  */
+/* line 28, ../scss/_grid.scss */
+.fivecol {
+  width: 40.055248616%;
+}
+
+/* 39.45%; } /* grid_5  */
+/* line 29, ../scss/_grid.scss */
+.sixcol {
+  width: 48.618784527%;
+}
+
+/* 48%;    } /* grid_6  */
+/* line 30, ../scss/_grid.scss */
+.sevencol {
+  width: 57.182320438000005%;
+}
+
+/* 56.75%; } /* grid_7  */
+/* line 31, ../scss/_grid.scss */
+.eightcol {
+  width: 65.74585634900001%;
+}
+
+/* 65.4%;  } /* grid_8  */
+/* line 32, ../scss/_grid.scss */
+.ninecol {
+  width: 74.30939226%;
+}
+
+/* 74.05%; } /* grid_9  */
+/* line 33, ../scss/_grid.scss */
+.tencol {
+  width: 82.87292817100001%;
+}
+
+/* 82.7%;  } /* grid_10 */
+/* line 34, ../scss/_grid.scss */
+.elevencol {
+  width: 91.436464082%;
+}
+
+/* 91.35%; } /* grid_11 */
+/* line 35, ../scss/_grid.scss */
+.twelvecol {
+  width: 99.999999993%;
+}
+
+/* 100%;   } /* grid_12 */
+/* line 38, ../scss/_grid.scss */
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol {
+  position: relative;
+  float: left;
+  margin-left: 2.762430939%;
+}
+
+/* line 44, ../scss/_grid.scss */
+.first {
+  margin-left: 0;
+}
+
+/* line 48, ../scss/_grid.scss */
+.last {
+  float: right;
+}
+
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: 481px and Up Stylesheet
+
+This stylesheet is loaded for larger devices. It's set to 
+481px because at 480px it would load on a landscaped iPhone.
+This isn't ideal because then you would be loading all those
+extra styles on that same mobile connection. 
+
+A word of warning. This size COULD be a larger mobile device,
+so you still want to keep it pretty light and simply expand
+upon your base.scss styles.
+
+******************************************************************/
+/*********************
+NAVIGATION STYLES
+*********************/
+/* .menu is clearfixed inside mixins.scss */
+/* line 28, ../scss/_481up.scss */
+.menu {
+  /* end .menu ul */
+}
+/* line 29, ../scss/_481up.scss */
+.menu ul {
+  /* end .menu ul li */
+  /* highlight current page */
+  /* end current highlighters */
+}
+/* line 30, ../scss/_481up.scss */
+.menu ul li {
+  /*
+  plan your menus and drop-downs wisely.
+  */
+}
+/* line 31, ../scss/_481up.scss */
+.menu ul li a {
+  /*
+  you can use hover styles here even though this size
+  has the possibility of being a mobile device.
+  */
+}
+
+/* end .menu */
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+/* entry content */
+/* line 75, ../scss/_481up.scss */
+.entry-content {
+  /* at this larger size, we can start to align images */
+}
+/* line 79, ../scss/_481up.scss */
+.entry-content .alignleft, .entry-content img.alignleft {
+  margin-right: 1.5em;
+  display: inline;
+  float: left;
+}
+/* line 84, ../scss/_481up.scss */
+.entry-content .alignright, .entry-content img.alignright {
+  margin-left: 1.5em;
+  display: inline;
+  float: right;
+}
+/* line 89, ../scss/_481up.scss */
+.entry-content .aligncenter, .entry-content img.aligncenter {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  clear: both;
+}
+
+/* end .entry-content */
+/*********************
+FOOTER STYLES
+*********************/
+/*
+check your menus here. do they look good?
+do they need tweaking?
+*/
+/* end .footer-links */
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+/*********************
+GENERAL STYLES
+*********************/
+/* line 24, ../scss/_768up.scss */
+.thumb {
+  margin-top: 0px;
+}
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+/* line 33, ../scss/_768up.scss */
+.wrap {
+  max-width: 1140px;
+}
+
+/* line 37, ../scss/_768up.scss */
+.container {
+  border-bottom: none;
+}
+
+/* line 42, ../scss/_768up.scss */
+.pad-top {
+  padding-top: 70px;
+}
+
+/* line 46, ../scss/_768up.scss */
+.top-bg {
+  padding-top: 70px;
+}
+/* line 49, ../scss/_768up.scss */
+.top-bg:before {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  content: "";
+  z-index: -2;
+  background: url("../images/container-top-1800x94.jpg") center center repeat-x;
+  height: 92px;
+}
+
+/* line 61, ../scss/_768up.scss */
+.top-bg-alt {
+  padding-top: 70px;
+}
+/* line 64, ../scss/_768up.scss */
+.top-bg-alt:before {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  content: "";
+  z-index: -2;
+  background: url("../images/sand-bumps-top.gif") center center repeat-x;
+  height: 92px;
+}
+
+/* line 75, ../scss/_768up.scss */
+.bot-bg {
+  padding-bottom: 70px;
+}
+/* line 77, ../scss/_768up.scss */
+.bot-bg:after {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  z-index: -1;
+  background: url("../images/container-bottom-1920x170.gif") center;
+  height: 170px;
+}
+
+/* line 90, ../scss/_768up.scss */
+.bot-bg-alt {
+  padding-bottom: 70px;
+}
+/* line 92, ../scss/_768up.scss */
+.bot-bg-alt:after {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  z-index: -1;
+  background: url("../images/slider-foreground.gif") center bottom repeat-x;
+  height: 170px;
+}
+
+/* line 104, ../scss/_768up.scss */
+.bot-bg-grass {
+  padding-bottom: 70px;
+}
+/* line 106, ../scss/_768up.scss */
+.bot-bg-grass:after {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  z-index: -1;
+  background: url("../images/footer-bg.jpg") center bottom repeat-x;
+  height: 170px;
+}
+
+/* line 118, ../scss/_768up.scss */
+.bot-dash {
+  border-bottom: 2px dashed #b39c7d;
+}
+
+/* line 123, ../scss/_768up.scss */
+#scrolling-slides.bot-bg:after {
+  z-index: 4;
+}
+
+/* line 128, ../scss/_768up.scss */
+#scrolling-slides.top-bg {
+  padding-top: 70px;
+}
+/* line 130, ../scss/_768up.scss */
+#scrolling-slides.top-bg:before {
+  background: url("../images/why-r2f/slides-top-bg-1590x54.gif") center center repeat-x;
+  top: 51px;
+  z-index: 5;
+}
+
+/* line 137, ../scss/_768up.scss */
+#scrolling-slides {
+  position: relative;
+  z-index: 3;
+  background: url("../images/sand-bg.gif");
+}
+
+/* line 143, ../scss/_768up.scss */
+.slide-container {
+  font-size: 70%;
+  text-shadow: 3px 3px 3px #444;
+}
+/* line 148, ../scss/_768up.scss */
+.slide-container h1 {
+  font-size: 65px;
+  font-size: 4.0625em;
+}
+/* line 153, ../scss/_768up.scss */
+.slide-container p {
+  font-size: 23px;
+  font-size: 1.4375em;
+}
+
+/* line 160, ../scss/_768up.scss */
+#slide1 .inner-container {
+  height: 100%;
+}
+/* line 163, ../scss/_768up.scss */
+#slide1 .title {
+  position: relative;
+  right: 0;
+  width: 100%;
+  height: 354px;
+  background: url("../images/why-r2f/slidesangles/Slide-One-Title-1206x354.gif") no-repeat;
+  background-size: contain;
+}
+/* line 171, ../scss/_768up.scss */
+#slide1 .title h1 {
+  text-align: right;
+  letter-spacing: 1px;
+  padding-top: 105px;
+  -moz-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+/* line 183, ../scss/_768up.scss */
+#slide1 .angle {
+  position: absolute;
+  bottom: 100%;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: 991px;
+  height: 196px;
+  background: url("../images/why-r2f/slidesangles/slide-one-angle-991x196.gif") right 100% no-repeat;
+  background-size: contain;
+}
+/* line 194, ../scss/_768up.scss */
+#slide1 .angle p {
+  float: right;
+  width: 80%;
+  -moz-transform: rotate(-8deg);
+  -webkit-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+
+/* line 207, ../scss/_768up.scss */
+#slide2 .inner-container {
+  height: 100%;
+}
+/* line 210, ../scss/_768up.scss */
+#slide2 .angle {
+  position: absolute;
+  width: 100%;
+  max-width: 562px;
+  height: 456px;
+  top: 40px;
+  right: 0;
+  background: url("../images/why-r2f/slidesangles/slide2-angle-562x456.gif") right 100% no-repeat;
+}
+/* line 219, ../scss/_768up.scss */
+#slide2 .angle p {
+  width: 562px;
+}
+
+/* line 226, ../scss/_768up.scss */
+#slide3 .inner-container {
+  height: 100%;
+}
+/* line 229, ../scss/_768up.scss */
+#slide3 .angle {
+  position: absolute;
+  width: 100%;
+  max-width: 725px;
+  height: 347px;
+  top: 40px;
+  right: 0;
+  background: url("../images/why-r2f/slidesangles/slide3-angle-725x347.gif") right 100% no-repeat;
+}
+/* line 238, ../scss/_768up.scss */
+#slide3 .angle p {
+  margin-top: 120px;
+  width: 512px;
+  float: right;
+}
+
+/* line 247, ../scss/_768up.scss */
+#slide4 .inner-container {
+  height: 100%;
+}
+/* line 250, ../scss/_768up.scss */
+#slide4 .angle {
+  position: absolute;
+  width: 100%;
+  max-width: 488px;
+  height: 387px;
+  top: 40px;
+  right: 0;
+  background: url("../images/why-r2f/slidesangles/slide4-angle-488x387.gif") right 100% no-repeat;
+}
+/* line 259, ../scss/_768up.scss */
+#slide4 .angle p {
+  margin-top: 80px;
+  width: 468px;
+  float: right;
+}
+
+/* line 268, ../scss/_768up.scss */
+#slide5 .inner-container {
+  height: 100%;
+}
+/* line 271, ../scss/_768up.scss */
+#slide5 .angle {
+  position: absolute;
+  width: 100%;
+  max-width: 791px;
+  height: 387px;
+  bottom: 40px;
+  right: 0;
+  background: url("../images/why-r2f/slidesangles/slide5-angle-791x262.gif") right 100% no-repeat;
+}
+/* line 280, ../scss/_768up.scss */
+#slide5 .angle p {
+  margin-top: 230px;
+  width: 488px;
+  float: right;
+}
+
+/* line 289, ../scss/_768up.scss */
+#slide6 .inner-container {
+  height: 100%;
+}
+/* line 292, ../scss/_768up.scss */
+#slide6 .angle {
+  position: absolute;
+  width: 100%;
+  max-width: 562px;
+  height: 287px;
+  top: -20px;
+  right: 0;
+  background: url("../images/why-r2f/slidesangles/slide6-angle-562x230.gif") right 100% no-repeat;
+}
+/* line 301, ../scss/_768up.scss */
+#slide6 .angle p {
+  margin-top: 90px;
+  width: 538px;
+  float: right;
+}
+
+/* line 310, ../scss/_768up.scss */
+#logo.secondary {
+  margin: 0 0 0 40px;
+}
+
+/*********************
+HEADER STYLES
+*********************/
+/* line 319, ../scss/_768up.scss */
+.header {
+  position: fixed;
+}
+
+/* line 328, ../scss/_768up.scss */
+#logo {
+  width: 40%;
+}
+
+/***************************************
+ *Search used in header and other pages
+ ***************************************/
+/* line 336, ../scss/_768up.scss */
+#nobtn-search, #other-search {
+  position: absolute;
+  bottom: -70px;
+  right: 0;
+}
+/* line 341, ../scss/_768up.scss */
+#nobtn-search input, #other-search input {
+  width: 150px;
+}
+/* line 345, ../scss/_768up.scss */
+#nobtn-search input:focus, #other-search input:focus {
+  width: 250px;
+}
+
+/* line 352, ../scss/_768up.scss */
+#other-search {
+  position: relative;
+  top: 4px;
+  display: inline-block;
+  float: left;
+}
+/* line 357, ../scss/_768up.scss */
+#other-search input {
+  width: 200px;
+}
+/* line 360, ../scss/_768up.scss */
+#other-search input:focus {
+  width: 300px;
+}
+
+/* line 366, ../scss/_768up.scss */
+.enter-race {
+  bottom: 112px;
+}
+/* line 368, ../scss/_768up.scss */
+.enter-race .btn {
+  font-size: 36px;
+}
+
+/* line 373, ../scss/_768up.scss */
+.fences {
+  position: relative;
+  height: 0px;
+}
+/* line 376, ../scss/_768up.scss */
+.fences:before, .fences:after {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 374px;
+  height: 151px;
+  z-index: 2000;
+}
+/* line 386, ../scss/_768up.scss */
+.fences:before {
+  bottom: 0;
+  left: -187px;
+  background: url("../images/left-fence.gif");
+}
+/* line 392, ../scss/_768up.scss */
+.fences:after {
+  bottom: 0;
+  right: -187px;
+  background: url("../images/right-fence.gif");
+}
+
+/* line 399, ../scss/_768up.scss */
+.wide-fence {
+  position: relative;
+  bottom: 0;
+  height: 0;
+}
+/* line 403, ../scss/_768up.scss */
+.wide-fence:after {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 692px;
+  height: 151px;
+  background: url("../images/wide-fence-692x151.gif") center no-repeat;
+  z-index: 2001;
+  right: 0;
+  top: -190px;
+}
+
+/* line 416, ../scss/_768up.scss */
+.wide-fence.why {
+  bottom: -70px;
+}
+
+/*********************
+Slider STYLES
+*********************/
+/* line 423, ../scss/_768up.scss */
+.slider {
+  margin-top: 63px;
+  background: #4dd2fd;
+  position: relative;
+  max-height: 600px;
+}
+/* line 429, ../scss/_768up.scss */
+.slider:before {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: url("../images/slider-foreground.gif") center;
+  z-index: 3;
+}
+
+/* line 444, ../scss/_768up.scss */
+.centered-btns_tabs,
+.transparent-btns_tabs,
+.large-btns_tabs {
+  display: block;
+  bottom: 0;
+  width: 100%;
+  z-index: 3;
+  margin-top: 10px;
+  padding-top: 13px;
+  padding-left: 6px;
+  margin-bottom: 2px;
+  text-align: center;
+  height: 85px;
+  background: url("../images/pager-holder-104x85.gif") center bottom no-repeat;
+}
+
+/*********************
+NAVIGATION STYLES
+*********************/
+/* line 463, ../scss/_768up.scss */
+#scrolling-nav.scrolling {
+  top: 500px;
+}
+
+/* line 467, ../scss/_768up.scss */
+#scrolling-nav.stopped {
+  top: 3420px;
+}
+
+/* line 471, ../scss/_768up.scss */
+.scrolling-nav-inner {
+  display: block;
+  height: 243px;
+  background: url("../images/vid-wooden-board-468x333.gif") no-repeat;
+  background-size: contain;
+  z-index: 100;
+  font-size: 70%;
+}
+/* line 479, ../scss/_768up.scss */
+.scrolling-nav-inner ul {
+  font-family: 'Headline One';
+  display: block;
+  padding: 27px 0px;
+  width: 320px;
+  height: 333px;
+}
+/* line 486, ../scss/_768up.scss */
+.scrolling-nav-inner ul li {
+  font-size: 26px;
+  font-size: 1.625em;
+  position: relative;
+  margin: 2px auto 2px 64px;
+  padding-left: 15px;
+  display: block;
+}
+/* line 494, ../scss/_768up.scss */
+.scrolling-nav-inner ul li .bullet {
+  margin-top: 0;
+  text-align: center;
+  font-size: 36px;
+  font-size: 2.25rem;
+  color: #de5f02;
+  display: block;
+  position: absolute;
+  left: -44px;
+  top: -8px;
+  background: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+  text-shadow: none;
+  display: none;
+}
+/* line 512, ../scss/_768up.scss */
+.scrolling-nav-inner ul li a {
+  color: white;
+  text-shadow: 3px 3px 3px #444;
+  text-decoration: none;
+}
+/* line 521, ../scss/_768up.scss */
+.scrolling-nav-inner ul li.highlight .bullet {
+  display: block;
+}
+/* line 524, ../scss/_768up.scss */
+.scrolling-nav-inner ul li.highlight a {
+  text-shadow: none;
+  color: #de5f02;
+}
+
+/* line 532, ../scss/_768up.scss */
+footer .nav {
+  display: block;
+  margin: 0;
+  height: 157px;
+  text-shadow: 1px 2px 5px #444;
+}
+
+/* line 538, ../scss/_768up.scss */
+.nav {
+  font-size: 25px;
+  font-size: 1.5625rem;
+  border-bottom: 0;
+  position: relative;
+  display: table;
+  margin: 0 auto;
+  border: 0;
+  /* end .menu ul li */
+  /* highlight current page */
+  /* end current highlighters */
+}
+/* line 550, ../scss/_768up.scss */
+.nav li:first-of-type {
+  margin-left: 0px;
+}
+/* line 557, ../scss/_768up.scss */
+.nav li:last-of-type {
+  margin-right: 0px;
+}
+/* line 561, ../scss/_768up.scss */
+.nav li {
+  float: left;
+  position: relative;
+  text-align: center;
+  margin: 0 7px;
+  /*
+  plan your menus and drop-downs wisely.
+  */
+  /* showing sub-menus */
+}
+/* line 567, ../scss/_768up.scss */
+.nav li a {
+  padding: 12px 0px 6px 0px;
+  margin: 0;
+  color: white;
+  border-bottom: 0;
+  /*
+  you can use hover styles here even though this size
+  has the possibility of being a mobile device.
+  */
+}
+/* line 577, ../scss/_768up.scss */
+.nav li a:hover, .nav li a:focus {
+  color: white;
+  text-decoration: underline;
+}
+/* line 591, ../scss/_768up.scss */
+.nav li ul.sub-menu,
+.nav li ul.children {
+  margin-top: 0;
+  border: 1px solid #ccc;
+  border-top: 0;
+  position: absolute;
+  display: none;
+  z-index: 8999;
+  /* highlight sub-menu current page */
+}
+/* line 599, ../scss/_768up.scss */
+.nav li ul.sub-menu li,
+.nav li ul.children li {
+  /*
+  if you need to go deeper, go nuts
+  just remember deeper menus suck
+  for usability. k, bai.
+  */
+}
+/* line 601, ../scss/_768up.scss */
+.nav li ul.sub-menu li a,
+.nav li ul.children li a {
+  padding-left: 10px;
+  border-right: 0;
+  display: block;
+  width: 180px;
+  border-bottom: 1px solid #ccc;
+}
+/* line 618, ../scss/_768up.scss */
+.nav li ul.sub-menu li:last-child a,
+.nav li ul.children li:last-child a {
+  border-bottom: 0;
+}
+/* line 640, ../scss/_768up.scss */
+.nav li:hover ul {
+  top: auto;
+  display: block;
+}
+
+/* end .nav */
+/* line 657, ../scss/_768up.scss */
+.log-in-out a {
+  /*padding: 3px 15px!important;
+  margin-top: 8px !important;
+  border-radius:1em;
+  border:1px solid $white !important;*/
+}
+
+/* line 665, ../scss/_768up.scss */
+.logged-in .sign-up {
+  left: 2px;
+}
+
+/* line 669, ../scss/_768up.scss */
+.sign-up {
+  font-size: 30px;
+  font-size: 1.875rem;
+  left: -3px;
+}
+/* line 676, ../scss/_768up.scss */
+.sign-up a {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  background-color: white;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  text-align: center;
+  color: #de5f02 !important;
+  text-decoration: none;
+}
+/* line 690, ../scss/_768up.scss */
+.sign-up a:after {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 16px;
+  left: 0;
+  bottom: -16px;
+  z-index: 3000;
+  content: "";
+  background: url("../images/nav-bar-decor-white.png") center right 1px repeat-x;
+}
+/* line 703, ../scss/_768up.scss */
+.sign-up a:hover {
+  color: #de5f02;
+  text-decoration: underline;
+}
+
+/* line 715, ../scss/_768up.scss */
+html > body .sign-up a:after, x:-moz-any-link a:after, x:default a:after {
+  background-position: center right 9px;
+}
+
+/* line 721, ../scss/_768up.scss */
+.wooden {
+  background: url("../images/wooden-sign-529x433.gif") center center no-repeat;
+  min-height: 433px;
+  background-size: contain;
+}
+
+/* line 727, ../scss/_768up.scss */
+.vid-wooden {
+  background: url("../images/vid-wooden-board-468x333.gif") center no-repeat;
+  background-size: contain;
+}
+
+/* line 732, ../scss/_768up.scss */
+.vid-wooden .video-container {
+  bottom: 30px;
+}
+
+/* line 736, ../scss/_768up.scss */
+.pic-wooden {
+  background: url("../images/pic-wooden-339x294.gif") center no-repeat;
+  background-size: contain;
+}
+/* line 740, ../scss/_768up.scss */
+.pic-wooden img {
+  padding: 10%;
+}
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+/* line 751, ../scss/_768up.scss */
+.sidebar {
+  margin-top: 2.2em;
+}
+
+/* line 755, ../scss/_768up.scss */
+.widgettitle {
+  border-bottom: 2px solid #444;
+  margin-bottom: 0.75em;
+}
+
+/* line 760, ../scss/_768up.scss */
+.widget {
+  padding: 0 10px;
+  margin: 2.2em 0;
+}
+/* line 765, ../scss/_768up.scss */
+.widget ul li {
+  margin-bottom: 0.75em;
+  /* deep nesting */
+}
+/* line 773, ../scss/_768up.scss */
+.widget ul li ul {
+  margin-top: 0.75em;
+  padding-left: 1em;
+}
+
+/* links widget */
+/* meta widget */
+/* pages widget */
+/* recent-posts widget */
+/* archives widget */
+/* tag-cloud widget */
+/* calendar widget */
+/* category widget */
+/* recent-comments widget */
+/* search widget */
+/* text widget */
+/*********************
+FOOTER STYLES
+*********************/
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+/* line 879, ../scss/_768up.scss */
+.footer {
+  background: url("../images/footer-bg.jpg") center repeat-x;
+}
+
+/* line 884, ../scss/_768up.scss */
+.footer-links ul li {
+  /*
+  be careful with the depth of your menus.
+  it's very rare to have multi-depth menus in
+  the footer.
+  */
+}
+
+/* end .footer-links */
+/**********************
+ *Active Race Profile
+ **********************/
+/* line 902, ../scss/_768up.scss */
+.active-race {
+  text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+/* line 907, ../scss/_768up.scss */
+.active-race .btn {
+  bottom: 30px;
+}
+
+/* line 912, ../scss/_768up.scss */
+.active-race.last-on-page {
+  padding-bottom: 80px;
+}
+/* line 915, ../scss/_768up.scss */
+.active-race.last-on-page .btn {
+  bottom: 110px;
+}
+
+/*************************
+ *Active Race Page
+ *************************/
+/* line 924, ../scss/_768up.scss */
+#active-race-header, #complete-race-header {
+  max-width: 1027px;
+  padding: 0;
+  margin: 0 auto;
+}
+/* line 929, ../scss/_768up.scss */
+#active-race-header:after, #complete-race-header:after {
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: url("../images/active-race-image-frame.png") center no-repeat;
+  background-size: contain;
+}
+/* line 946, ../scss/_768up.scss */
+#active-race-header .btn, #complete-race-header .btn {
+  font-size: 36px;
+  font-size: 2.25rem;
+  left: 100px;
+  bottom: -50px;
+}
+/* line 953, ../scss/_768up.scss */
+#active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
+  width: 200px;
+  height: 24px;
+  font-size: 100%;
+  margin-left: 0;
+  left: 280px;
+}
+
+/* line 963, ../scss/_768up.scss */
+#complete-race-header .headings, #complete-race-header .dates {
+  left: 100px;
+}
+
+/* line 968, ../scss/_768up.scss */
+#race-data .leaderboard {
+  margin-bottom: 100px;
+}
+
+/* line 972, ../scss/_768up.scss */
+#profile-excerpt {
+  position: relative;
+  font-size: 80%;
+  padding: 2% 5%;
+  min-height: 453px;
+  background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
+  background-size: contain;
+}
+/* line 980, ../scss/_768up.scss */
+#profile-excerpt .profile-view {
+  text-align: center;
+}
+
+/* line 987, ../scss/_768up.scss */
+.winner {
+  top: -80px;
+}
+
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop. 
+
+******************************************************************/
+/* line 12, ../scss/_1030up.scss */
+.scrolling-nav-inner {
+  font-size: 100%;
+  height: 333px;
+}
+/* line 15, ../scss/_1030up.scss */
+.scrolling-nav-inner ul {
+  width: 468px;
+  height: 333px;
+  padding: 27px;
+}
+
+/* line 22, ../scss/_1030up.scss */
+.nav {
+  font-size: 28px;
+  font-size: 1.75rem;
+}
+/* line 26, ../scss/_1030up.scss */
+.nav li {
+  margin: 0 18px;
+}
+/* line 29, ../scss/_1030up.scss */
+.nav li a {
+  padding: 22px 0 11px 0;
+}
+
+/* line 36, ../scss/_1030up.scss */
+.log-in-out a {
+  margin-top: 18px !important;
+}
+
+/* line 41, ../scss/_1030up.scss */
+.sign-up {
+  font-size: 30px;
+  font-size: 1.875rem;
+}
+/* line 46, ../scss/_1030up.scss */
+.sign-up a {
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+}
+/* line 50, ../scss/_1030up.scss */
+.sign-up a:after {
+  background: url("../images/nav-bar-decor-white.png") center right -2px repeat-x;
+}
+
+/* line 59, ../scss/_1030up.scss */
+.slide-container {
+  font-size: 100%;
+}
+
+/*********************
+Slider STYLES
+*********************/
+/* line 66, ../scss/_1030up.scss */
+.slider {
+  margin-top: 78px;
+}
+
+/*************************
+ *Active Race Page
+ *************************/
+/* line 74, ../scss/_1030up.scss */
+#profile-excerpt {
+  font-size: 100%;
+}
+
+/* 
+you can call the larger styles if you want, but there's really no need 
+*/
+/******************************************************************
+ADDITIONAL IE FIXES
+These fixes are now ONLY seen by IE, so you don't have to worry
+about using prefixes, although it's best practice. For more info
+on using Modernizr classes, check out this link:
+http://www.modernizr.com/docs/
+******************************************************************/
+/*
+For example, you can use something like:
+
+.no-textshadow .class { ... }
+
+You can also target specific versions by using the classes applied to
+the html element. These can sometimes change, so take a look inside the
+header.php file to see what they are:
+
+
+.lt-ie8 .class { ... }
+
+*/

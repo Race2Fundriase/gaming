@@ -1,0 +1,140 @@
+.boxShadow {
+	box-shadow: 5px 5px 5px #888888;
+	
+}
+
+#tokenOptions {
+	position: relative;
+	width: 800px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tokenDataGrid {
+	position: relative;
+	width: 800px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#result {
+	width: 800px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+label { display: block; line-spacing: normal; line-height: normal; color: black;}
+
+.myfields label, .myfields input {
+	display: inline-block; padding: 0;
+}
+
+.myfields input {
+	width: 30%;
+}
+
+.myfields label {
+	width: 200px;
+}
+.error { color: red };
+
+#viewOptions {
+	position: relative;
+	width: 350px;
+}
+
+#mapOptions {
+	position: relative;
+	width: 350px;
+	margin-top: 30px;
+}
+
+#cellOptions {
+	position: relative;
+	width: 350px;
+	margin-top: 30px;
+}
+
+#cellTokenOptions {
+	position: relative;
+	width: 350px;
+	margin-top: 30px;
+}
+
+#paperParent {
+	position: absolute;
+	left: 400px;
+	top: 250px;
+	width: 800px;
+	height: 800px;
+	overflow:scroll;
+}
+
+#paperParentAR {
+	position: absolute;
+	left: 500px;
+	top: 1650px;
+	width: 700px;
+	height: 600px;
+	overflow:scroll;
+	z-index:1000;
+}
+
+#mapDataGrid {
+	position: relative;
+	width: 800px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#tokenOffsetResults {
+	text-align: center;
+}
+
+.nav li.logged-in-nav {
+	display: none;
+} 
+ 
+body.logged-in .nav li.logged-in-nav {
+	display: list-item;
+}
+
+#paperParent1 {
+	position: absolute;
+	left: 400px;
+	top: 220px;
+	width: 800px;
+	height: 800px;
+	overflow:scroll;
+}
+
+#chooseCharacter {
+	position: relative;
+	width: 350px;
+	margin-top: 30px;
+}
+
+#chooseRoute {
+	position: relative;
+	width: 350px;
+	margin-top: 30px;
+}
+
+#racesDataGrid table, td, th {
+	border: 1px solid black;
+	border-collapse:collapse;
+}
+
+#racesDataGrid th {
+	background-color:green;
+	color: white;
+}
+
+#racesDataGrid {
+	width: 1000px;
+	margin: auto;
+}

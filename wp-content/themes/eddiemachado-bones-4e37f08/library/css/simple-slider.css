@@ -1,0 +1,66 @@
+.slider-control {
+  top:6px;
+  width: 300px;
+}
+
+.slider-control > .dragger {
+  background: #de5f02;
+  background: -webkit-linear-gradient(top, #de5f02, #de5f02);
+  background: -moz-linear-gradient(top, #de5f02, #de5f02);
+  background: linear-gradient(top, #de5f02, #de5f02);
+
+  -webkit-box-shadow: inset 0 2px 2px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 0 2px 2px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 2px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.2);
+
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  border-radius: 16px;
+
+  border: 1px solid #496805;
+  width: 32px;
+  height: 32px;
+}
+
+.slider-control > .dragger:hover {
+  background: -webkit-linear-gradient(top, #de5f02, #de5f02);
+}
+
+
+.slider-control > .track, .slider-control > .highlight-track {
+  background: #fff;
+
+  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  -moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+
+  border: 1px solid #aaa;
+  height: 4px;
+}
+
+.slider-control > .highlight-track {
+	background-color: #de5f02;
+	
+	border-color: #de5f02;
+}
+
+.status {
+  display:block;
+  height:20px;
+  position:relative;
+  width:330px;
+}
+.left-status {
+  display:block;
+  float:left;
+}
+
+.right-status {
+  display:block;
+   float:right;
+}
+

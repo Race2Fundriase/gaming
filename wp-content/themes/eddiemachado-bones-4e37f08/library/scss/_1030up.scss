@@ -1,0 +1,76 @@
+/******************************************************************
+Site Name: 
+Author: 
+
+Stylesheet: Desktop Stylsheet
+
+This is the desktop size. It's larger than an iPad so it will only
+be seen on the Desktop. 
+
+******************************************************************/
+
+.scrolling-nav-inner {
+    font-size: 100%;
+    height:333px;
+    ul {
+        width:468px;
+        height:333px;
+        padding: 27px;
+    }
+}
+
+.nav {
+    font-size: 28px;
+    font-size: 1.75rem;
+    
+    li {
+            margin: 0 18px;
+            
+        a {
+            padding: 22px 0 11px 0;
+        }
+    }
+}
+
+.log-in-out {
+	a {
+		margin-top: 18px !important;
+	}
+}
+
+.sign-up {
+    
+    font-size: 30px;
+    font-size: 1.875rem;
+    
+    a {
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        
+        &:after {
+            
+            background: url('../images/nav-bar-decor-white.png') center right -2px repeat-x;
+            
+        }
+    }
+}
+
+
+.slide-container {
+    font-size: 100%;
+}
+
+/*********************
+Slider STYLES
+*********************/
+.slider {
+	margin-top:78px;
+}
+
+/*************************
+ *Active Race Page
+ *************************/
+
+#profile-excerpt {
+    font-size: 100%;
+}

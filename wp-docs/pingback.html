@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+  <TITLE>
+</TITLE>
+<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Linux)">
+<META NAME="AUTHOR" CONTENT="chris">
+<META NAME="CREATED" CONTENT="20090129;12543700">
+<META NAME="CHANGEDBY" CONTENT="chris">
+<META NAME="CHANGED" CONTENT="20091102;11103300">
+<META NAME="CHANGEDBY" CONTENT="chris">
+<STYLE TYPE="text/css">
+!--
+@page { size: 21.01cm 29.69cm; margin: 2.01cm }
+H1 { margin-bottom: 0.2cm }
+H1.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt }
+H1.cjk { font-family: "DejaVu Sans"; font-size: 16pt }
+H1.ctl { font-family: "DejaVu Sans"; font-size: 16pt }
+P { margin-bottom: 0.2cm }
+H2 { margin-bottom: 0.2cm }
+H2.western { font-family: "Liberation Sans", sans-serif; font-size: 14pt; font-style: italic }
+H2.cjk { font-size: 14pt; font-style: italic }
+H2.ctl { font-size: 14pt; font-style: italic }
+H3 { margin-bottom: 0.2cm }
+H3.western { font-family: "Liberation Sans", sans-serif }
+-->
+</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+  <H1 CLASS="western">Pingback – Howto
+</H1>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+  <H2 CLASS="western">What pingback does – an example.
+</H2>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+<P STYLE="margin-bottom: 0cm">
+Suppose you read a post on someone
+else's blog, Blog-A say, and you think there is relevant content
+  (posts and comments) on your site, Blog-B.
+</P>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+<P STYLE="margin-bottom: 0cm">
+It would be helpful if readers of
+Blog-A could see the post and comments on your site Blog-B. That may
+or may not be possible. There are two ways of doing this – pingback
+and trackback. This article deals with pingback – see
+  trackback.html in the same directory for 'Howto Trackback'.
+</P>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+<P STYLE="margin-bottom: 0cm">
+The difference between pingback and
+trackback is what is shown on the remote site. With pingback the remote site,
+Blog-A, shows a link to your site, Blog-B. 
+<br />
+With trackback your post on
+Blog-B is reproduced as a comment on Blog-A, and since it is possible
+to spoof the source address, readers of Blog-A may be misled as to
+who really posted the comment.
+</p>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+  <H2 CLASS="western">Is pingback possible?
+</H2>
+<P STYLE="margin-bottom: 0cm">
+It will be possible if 
+</P>
+<UL>
+  <LI>
+<P STYLE="margin-bottom: 0cm">
+The administrator of site Blog-A
+  has enabled pingback for the site, and
+</P>
+  <LI>
+<P STYLE="margin-bottom: 0cm">
+The administrator of site Blog-A
+  has enabled pingback for the post.
+</P>
+</UL>
+  <H2 CLASS="western">Here is how it is done:
+</H2>
+!--
+  <P STYLE="margin-bottom: 0cm">
+<br />
+-->
+</P>
+<UL>
+  <LI>
+  <h4>Administrator pre-actions
+</h4>
+  <table>
+<tr>
+    <td align='center'>Dashboard -&gt; Settings -&gt; Privacy 
+</td>
+  <td align='center'>Select the button&nbsp;
+</td>
+  <td>
+<i>
+&quot;I would like my blog to be visible to
+everyone, including search engines (like Google, Sphere, Technorati) and
+  archivers.&quot;</i>
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>
+  <strong>Save changes
+  </strong>
+</td>
+  <td>&nbsp;
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  </tr>
+<tr>
+  <td align='center'>Dashboard -&gt; Settings -&gt; Writing 
+</td>
+  <td align='center'>Check the boxes&nbsp;
+</td>
+  <td>
+<i>
+&quot;Enable the Atom Publishing
+  Protocol.</i>&quot;
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  <td>
+<i>
+&quot;Enable the WordPress, Movable Type, MetaWeblog and
+  Blogger XML-RPC publishing protocols.&quot;</i>
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>
+  <strong>Save changes
+  </strong>
+</td>
+  <td>&nbsp;
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  </tr>
+<tr>
+  <td align='center'>Dashboard -&gt; Settings -&gt; Discussion 
+</td>
+  <td align='center'>Check the boxes&nbsp;
+</td>
+  <td>
+<i>
+&quot;Attempt to notify any blogs linked to from the article (slows down posting.) 
+  </i>&quot;
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  <td>
+<i>
+&quot;Allow link notifications from other blogs (pingbacks and trackbacks.) 
+  &quot;</i>
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>&nbsp;
+</td>
+  <td>
+<i>
+&quot;Allow people to post comments on new articles 
+  &quot;</i>
+</td>
+  </tr>
+<tr>
+  <td>&nbsp;
+</td>
+  <td>
+  <strong>Save changes
+  </strong>
+</td>
+  <td>&nbsp;
+</td>
+  </tr>
+</table>
+</LI>
+  <LI>
+  <P STYLE="margin-bottom: 0cm">
+  <strong>Visit Blog-A</strong>, read the relevant post, and find the permalink. 
+Copy the link to your clipboard. The link may be something like :-
+</P>
+<P STYLE="margin-bottom: 0cm">
+<ul>
+  <li>'http://www.someone_elses_domain.co.uk/blog/?p=123' - this form is the default for Wordpress (single user)
+</li>
+<li>
+or 'http://blog-b3.someone_elses_domain.co.uk/BLOGMU/2009/11/02/hello-world/' - 
+this form is the default on Wordpressmu (multi user) blogs where each blog has a separate subdomain name
+(blog-b3 in this case).  The 'blog add' process creates the subdomain; 
+there is no need to register it with your hosting service.
+</li>
+</ul>
+</P>
+<P STYLE="margin-bottom: 0cm">
+  <table>
+<tr>
+  <td>Tip:</td>
+  <td>&nbsp;</td>
+  </tr>
+<tr>
+  <td>&nbsp;</td>
+  <td>You will find the pingback URL in the address bar of the browser when you are looking at the post on Blog-A.</td>
+  </tr>
+</table>
+</LI>
+  <LI>
+  <P STYLE="margin-bottom: 0cm">
+  <strong>Visit your own site, Blog-B,</strong> and edit the post you wish to have accessible from Blog-A.
+<br />
+<P STYLE="margin-bottom: 0cm">
+  <table bgcolor="#ff6666"> 
+<tr>
+  <td>
+  <strong>Important.  </strong>
+</td>
+<td>
+When editing your post choose the <strong>HTML </strong> tab at the top of the edit box, <strong>else</strong>
+ the link will be modified into
+  'text' and will <strong>not</strong> work as a link.
+</P>
+  </td>
+  </tr>
+</table>
+</p>
+You should
+have the link from the previous step (Blog-A's permalink) in the
+  actual text of your blog, e.g.
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm">
+Click &lt;a
+href=”http://www.someone_elses_domain.co.uk/blog/?p=123”&gt;here&lt;/a&gt;
+  to link to Blog-A.
+</P>
+    <p STYLE="margin-bottom: 0cm"><Strong>Note </strong>the difference between 
+    trackbacks and pingbacks:-<br>
+    Trackback urls go in the 'Send trackbacks to' box;<br>
+    Pingback permalinks are included in the text of the post inside <a href ...> </a>
+    tags (use the HTML tab when editing).<br>
+    The trackback url and the pingback permalink are usually different for the same post.<br>
+    If you put the trackback url in the post text or the pingback permalink in the
+    'Send trackbacks to' box nothing will happen.
+    </p>
+</LI>
+  <LI>
+  <P STYLE="margin-bottom: 0cm">
+  <strong>Update the post.
+  </strong>
+</P>
+</UL>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+<P STYLE="margin-bottom: 0cm">
+It may happen almost immediately or
+there may be a delay before the link to the post on your blog
+(Blog-B) appears on the other blog (Blog-A). Many site administrators
+require contributions to their blog to be moderated before
+  publishing.
+</P>
+  <P STYLE="margin-bottom: 0cm">
+<br />
+</P>
+  <H2 CLASS="western">What can go wrong
+</H2>
+  <H3 CLASS="western">
+  <FONT SIZE=3>No output on remote site
+  </FONT>
+</H3>
+<UL>
+  <LI>
+  <P>
+<FONT SIZE=3>
+The remote administrator has not configured his
+site correctly – the correct permissions and correct use of
+  caching are important.</FONT>
+</P>
+  <LI>
+  <P>
+<FONT SIZE=3>
+You have not used the correct permalink for the
+  pingback. 
+<br />
+(Note this is usually different from the URI used for
+  trackbacks,<br />e.g. trackback URI is
+<br />
+  “http://www.someone_elses_domain.co.uk/blog/wp-trackback.php?p=123”
+<br />
+  while pingback permalink is
+<br />
+  “http://www.someone_elses_domain.co.uk/blog/?p=123”).</FONT>
+</P>
+  <LI>
+  <P>
+<FONT SIZE=3>
+The remote administrator has not enabled
+  pingbacks on that post.</FONT>
+</P>
+  <LI>
+  <P>
+  <FONT SIZE=3>The data is waiting for moderation.
+  </FONT>
+</P>
+  <LI>
+  <P>
+  <FONT SIZE=3>A spam catcher has discarded it. 
+</FONT>
+</P>
+</UL>
+<UL>
+  <LI>
+<P STYLE="margin-bottom: 0cm">
+The remote site may be using a
+different blog publishing protocol from Wordpress. You may have to
+  go to Dashboard -&gt; Settings -&gt; Writing and tick the box 
+<I>
+Enable
+the WordPress, Movable Type, MetaWeblog and Blogger XML-RPC
+  publishing protocols. (W</I>
+<SPAN STYLE="font-style: normal">
+ordpress
+  is already set by default) and/or tick the box </SPAN>
+<I>
+Enable the
+  Atom Publishing Protocol</I>
+</P>
+</UL>
+  <H2 CLASS="western">
+  <FONT SIZE=3>Bootnote
+  </FONT>
+</H2>
+  <P>
+<FONT SIZE=3>
+If you get a spam problem (with or without
+  ping/trackback) try using </FONT>
+  <A HREF="http://www.akismet.com/">akismet
+</A>
+.
+The akismet module is already installed. You just need to enable and
+  configure it.
+</P>
+  <P>
+  <FONT SIZE=3>For further help on trackback see 
+<A HREF="http://www.optiniche.com/blog/117/wordpress-trackback-tutorial/">
+WordPress
+  Trackback Tutorial - by Teli Adlam</A>
+  </FONT>
+</P>
+  <P>
+  <br />
+<br />
+</P>
+</BODY>
+</HTML>

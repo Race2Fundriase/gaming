@@ -1,0 +1,857 @@
+/******************************************************************
+Site Name:
+Author:
+
+Stylesheet: Tablet & Small Desktop Stylesheet
+
+Here's where you can start getting into the good stuff.
+This size will work on iPads, other tablets, and desktops.
+So you can start working with more styles, background images,
+and other resources. You'll also notice the grid starts to
+come into play. Have fun!
+
+******************************************************************/
+
+
+/*********************
+GENERAL STYLES
+*********************/
+
+body {
+}
+
+
+.thumb {
+	margin-top:0px;
+}
+
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+.wrap {
+	max-width: 1140px;
+}
+
+.container {
+	border-bottom: none;
+	
+}
+
+.pad-top {
+	padding-top: 70px;
+}
+
+.top-bg {
+	padding-top:70px;
+	
+	&:before {
+		display:block;
+		width:100%;
+		position:absolute;
+		top:0;
+		content:"";
+		z-index:-2;
+		background:url('../images/container-top-1800x94.jpg') center center repeat-x;
+		height:92px;
+	}
+}
+
+.bot-bg {
+	padding-bottom: 70px;
+	&:after {
+		display:block;
+		width:100%;
+		position:absolute;
+		bottom:0;
+		content:"";
+		z-index:-1;
+		background:url('../images/container-bottom-1920x170.gif') center;
+		height:170px;
+		
+	}
+}
+
+.bot-bg-alt {
+	padding-bottom: 70px;
+	&:after {
+		display:block;
+		width:100%;
+		position:absolute;
+		bottom:0;
+		content:"";
+		z-index:-1;
+		background:url('../images/slider-foreground.gif') center bottom repeat-x;
+		height:170px;
+	}
+}
+
+.bot-bg-grass {
+	padding-bottom: 70px;
+	&:after {
+		display:block;
+		width:100%;
+		position:absolute;
+		bottom:0;
+		content:"";
+		z-index:-1;
+		background: url('../images/footer-bg.jpg') center bottom repeat-x;
+		height:170px;
+	}
+}
+
+.bot-dash {
+	border-bottom:2px dashed #b39c7d;
+}
+
+#scrolling-slides.bot-bg {
+	&:after {
+	z-index: 4;
+	}
+}
+
+#scrolling-slides.top-bg {
+	padding-top:70px;
+	&:before {
+		background: url('../images/why-r2f/slides-top-bg-1590x54.gif') center center repeat-x;
+		top:51px;
+		z-index: 5;
+	}
+}
+
+#scrolling-slides {
+	position: relative;
+	z-index: 3;
+	background: url('../images/sand-bg.gif');
+}
+
+.slide-container  {
+	font-size: 70%;
+	text-shadow: 3px 3px 3px #444;
+	
+	
+	h1 {
+		font-size: 65px;
+		font-size: 4.0625em;
+	}
+	
+	p {
+		font-size: 23px;
+		font-size: 1.4375em;
+	}
+}
+
+#slide1 {
+	.inner-container {
+		height:100%;
+	}
+	.title {
+		position: relative;
+		right:0;
+		width:100%;
+		height:354px;
+		background: url('../images/why-r2f/slidesangles/Slide-One-Title-1206x354.gif') no-repeat;
+		background-size: contain;
+		
+		h1 {
+			text-align: right;
+			letter-spacing: 1px;
+			padding-top:105px;
+			-moz-transform: rotate(-10deg);
+			-webkit-transform:rotate(-10deg);
+			-o-transform:rotate(-10deg);
+			-ms-transform:rotate(-10deg);
+			transform: rotate(-10deg);
+		}
+	}
+	
+	.angle {
+		position: absolute;
+		bottom: 100%;
+		bottom:0;
+		right:0;
+		width:100%;
+		max-width:991px;
+		height:196px;
+		background: url('../images/why-r2f/slidesangles/slide-one-angle-991x196.gif') right 100% no-repeat;
+		background-size: contain;
+		
+		p {
+			float: right;
+			width:80%;
+			-moz-transform: rotate(-8deg);
+			-webkit-transform:rotate(-8deg);
+			-o-transform:rotate(-8deg);
+			-ms-transform:rotate(-8deg);
+			transform: rotate(-8deg);
+		}
+	}
+}
+
+#slide2 {
+	.inner-container {
+		height:100%;
+	}
+	.angle {
+		position:absolute;
+		width:100%;
+		max-width:562px;
+		height:456px;
+		top:40px;
+		right:0;
+		background: url('../images/why-r2f/slidesangles/slide2-angle-562x456.gif') right 100% no-repeat;
+		
+		p {
+			width:562px;
+		}
+	}
+}
+
+#slide3 {
+	.inner-container {
+		height:100%;
+	}
+	.angle {
+		position:absolute;
+		width:100%;
+		max-width:725px;
+		height:347px;
+		top:40px;
+		right:0;
+		background: url('../images/why-r2f/slidesangles/slide3-angle-725x347.gif') right 100% no-repeat;
+		
+		p {
+			margin-top:120px;
+			width:512px;
+			float: right;
+		}
+	}
+}
+
+#slide4 {
+	.inner-container {
+		height:100%;
+	}
+	.angle {
+		position:absolute;
+		width:100%;
+		max-width:488px;
+		height:387px;
+		top:40px;
+		right:0;
+		background: url('../images/why-r2f/slidesangles/slide4-angle-488x387.gif') right 100% no-repeat;
+		
+		p {
+			margin-top:80px;
+			width:468px;
+			float: right;
+		}
+	}
+}
+
+#slide5 {
+	.inner-container {
+		height:100%;
+	}
+	.angle {
+		position:absolute;
+		width:100%;
+		max-width:791px;
+		height:387px;
+		bottom:40px;
+		right:0;
+		background: url('../images/why-r2f/slidesangles/slide5-angle-791x262.gif') right 100% no-repeat;
+		
+		p {
+			margin-top:230px;
+			width:488px;
+			float: right;
+		}
+	}
+}
+
+#slide6 {
+	.inner-container {
+		height:100%;
+	}
+	.angle {
+		position:absolute;
+		width:100%;
+		max-width:562px;
+		height:287px;
+		top:-20px;
+		right:0;
+		background: url('../images/why-r2f/slidesangles/slide6-angle-562x230.gif') right 100% no-repeat;
+		
+		p {
+			margin-top:90px;
+			width:538px;
+			float: right;
+		}
+	}
+}
+
+
+#logo.secondary {
+	margin:0 0 0 40px;
+}
+
+
+/*********************
+HEADER STYLES
+*********************/
+
+.header {
+	position: fixed;
+}
+
+.inner-header {
+
+}
+
+	
+	#logo {
+	  width:40%;
+	}
+
+#nobtn-search {
+	position:absolute;
+	bottom:-70px;
+	right:0;
+	
+	input {
+		width:150px;
+		//transition: width ease-in-out 0.5s;
+		
+		&:focus {
+			width:250px;
+		//	transition: width 0.5s;
+		}
+	}
+}
+
+.enter-race {
+	bottom:112px;
+	.btn {
+		font-size:36px;
+	}
+}
+
+.fences {
+	position:relative;
+	height:0px;
+	&:before, &:after {
+		display:block;
+		content:"";
+		position:absolute;
+		width:374px;
+		height:151px;
+		
+		z-index:2000;
+		
+	}
+	
+	&:before {
+		bottom:0;
+		left:-187px;
+		background:url('../images/left-fence.gif');
+	}
+	
+	&:after {
+		bottom:0;
+		right:-187px;
+		background:url('../images/right-fence.gif');
+	}
+}
+
+.wide-fence {
+	position:relative;
+	bottom: 0;
+	height:0;
+	&:after {
+		position: absolute;
+		display: block;
+		content:"";
+		width:692px;
+		height:151px;
+		background: url('../images/wide-fence-692x151.gif') center no-repeat;
+		z-index:2001;
+		right:0;
+		top:-190px;
+	}
+}
+
+.wide-fence.why {
+	bottom:-70px;
+}
+
+/*********************
+Slider STYLES
+*********************/
+.slider {
+	margin-top:63px;
+	background: #4dd2fd;
+	position:relative;
+	max-height:600px;
+	
+	&:before {
+		display:block;
+		content:"";
+		position:absolute;
+		bottom:0;
+		width:100%;
+		height:75px;
+		background:url('../images/slider-foreground.gif') center;
+		z-index:3;
+	}
+}
+
+// Traffic light pager
+.centered-btns_tabs,
+.transparent-btns_tabs,
+.large-btns_tabs {
+  display:block;
+  bottom:0;
+  width:100%;
+  z-index:3;
+  margin-top: 10px;
+  padding-top:13px;
+  padding-left:6px;
+  margin-bottom:2px;
+  text-align: center;
+  height:85px;
+  background:url('../images/pager-holder-104x85.gif') center bottom  no-repeat;
+  }
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+//Scrolling navigation (Why Page)
+#scrolling-nav.scrolling {
+	top:500px;
+}
+
+#scrolling-nav.stopped {
+	top:3420px;
+}
+
+.scrolling-nav-inner {
+	display: block;
+	height:243px;
+	background: url('../images/vid-wooden-board-468x333.gif') no-repeat;
+	background-size:contain; 
+	z-index: 100;
+	
+	font-size:70%;
+	ul {
+		font-family: 'Headline One';
+		display: block;
+		padding: 27px 0px;
+		width:320px;
+		height:333px;
+		
+		li {
+			font-size: 26px;
+			font-size:1.625em;
+			position:relative;
+			margin:2px auto 2px 64px;
+			padding-left: 15px;
+			display:block;
+			
+			.bullet {
+				margin-top:0;
+				text-align: center;
+				font-size: 36px;
+				font-size:2.25rem;
+				color: $orange;
+				display: block;
+				position: absolute;
+				left:-44px;
+				top:-8px;
+				background: $white;
+				width:54px;
+				height:54px;
+				border-radius:27px;
+				text-shadow: none;
+				display:none;
+			}
+			
+			a {
+				color:$white;
+				text-shadow: 3px 3px 3px #444;
+				text-decoration: none;
+			}
+		}
+		
+		li.highlight {
+			
+			.bullet {
+				display:block;
+			}
+			a { 
+			text-shadow:none;
+			color:$orange;
+			}
+		}
+	}
+}
+
+footer .nav {
+	display:block;
+	margin:0;
+	height:157px;
+	text-shadow: 1px 2px 5px #444;
+}
+.nav {
+
+	font-size: 25px;
+	font-size: 1.5625rem;
+	
+	border-bottom: 0;
+	
+	position: relative;
+	display:table;
+	margin: 0 auto;
+	border: 0;
+	
+	li:first-of-type  {
+		margin-left: 0px;
+	}
+	
+	li:last-of-type {
+		
+	}
+	li:last-of-type  {
+		margin-right: 0px;
+	}
+	
+	li {
+		float: left;
+		position: relative;
+		text-align: center;
+		margin: 0 7px;
+
+		a {
+			padding: 12px 0px 6px 0px ;
+			margin: 0;
+			color:$white;
+			border-bottom: 0;
+
+			/*
+			you can use hover styles here even though this size
+			has the possibility of being a mobile device.
+			*/
+			&:hover, &:focus {
+				color:$white;
+				text-decoration: underline;
+
+			}
+		}
+
+		&:first-child {}
+		&:last-child {}
+
+		/*
+		plan your menus and drop-downs wisely.
+		*/
+		ul.sub-menu,
+		ul.children {
+			margin-top: 0;
+			border: 1px solid #ccc;
+			border-top: 0;
+			position: absolute;
+			display: none;
+			z-index: 8999;
+
+			li {
+
+				a {
+					padding-left: 10px;
+					border-right: 0;
+					display: block;
+					width: 180px;
+					border-bottom: 1px solid #ccc;
+
+					&:hover,
+					&:focus {}
+
+					&:link {}
+				}
+
+				&:first-child {}
+
+				&:last-child {
+
+					a {
+						border-bottom: 0;
+					}
+				}
+
+				/*
+				if you need to go deeper, go nuts
+				just remember deeper menus suck
+				for usability. k, bai.
+				*/
+				ul {}
+			}
+
+			/* highlight sub-menu current page */
+			li.current-menu-item,
+			li.current_page_item,
+			li.current-page-ancestor {
+				a {}
+			}
+		}
+
+		/* showing sub-menus */
+		&:hover ul {
+			top: auto;
+			display: block;
+		}
+
+	} /* end .menu ul li */
+
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		a {}
+	}  /* end current highlighters */
+
+} /* end .nav */
+
+.log-in-out {
+	a {
+		/*padding: 3px 15px!important;
+		margin-top: 8px !important;
+		border-radius:1em;
+		border:1px solid $white !important;*/
+	}
+}
+
+.logged-in .sign-up {
+	left:2px;
+}
+
+.sign-up {	
+	font-size: 30px;
+	font-size: 1.875rem;
+	left:-3px;
+	
+	
+	
+	a {
+		box-sizing: border-box;
+		display: block;
+		position: relative;
+		background-color: $white;
+		//width:90%;
+		padding-left: 20px !important;
+		padding-right:20px !important;
+		//margin:0 auto !important;
+		//padding: 22px 10px 14px 8px;
+		text-align: center;
+		color:$orange !important;
+		text-decoration: none;
+		
+		&:after {
+			position: absolute;
+			display: block;
+			width:100%;
+			height:16px;
+			left: 0;
+			bottom: -16px;
+			z-index: 3000;
+			content:"";
+			background: url('../images/nav-bar-decor-white.png') center right 1px repeat-x;
+			
+		}
+
+		&:hover {
+			color:$orange;
+			text-decoration: underline;
+		}
+		
+		
+	}
+}
+
+//Firefox hack to position the white triangles on the signup button correctly!
+html>/**/body .sign-up, x:-moz-any-link, x:default {
+  a {
+    &:after {
+        background-position:center right 9px;
+    }
+  }
+}
+
+.wooden {
+  background: url('../images/wooden-sign-529x433.gif') center center no-repeat;
+  min-height:433px;
+  background-size:contain;
+}
+
+.vid-wooden {
+	background: url('../images/vid-wooden-board-468x333.gif') center no-repeat;
+	background-size: contain;
+}
+
+.vid-wooden .video-container {
+	bottom:30px;
+}
+
+
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+	margin-top: 2.2em;
+}
+
+	.widgettitle {
+		border-bottom: 2px solid #444;
+		margin-bottom: 0.75em;
+	}
+
+	.widget {
+		padding: 0 10px;
+		margin: 2.2em 0;
+
+		ul {
+			li {
+				margin-bottom: 0.75em;
+
+				&:first-child {}
+				&:last-child {}
+				a {}
+				/* deep nesting */
+
+				ul {
+					margin-top: 0.75em;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+
+
+	/* links widget */
+	.widget_links {}
+	.widget_links ul {}
+	.widget_links ul li {}
+	.widget_links ul li a {}
+
+	/* meta widget */
+	.widget_meta {}
+	.widget_meta ul {}
+	.widget_meta ul li {}
+	.widget_meta ul li a {}
+
+	/* pages widget */
+	.widget_pages {}
+	.widget_pages ul {}
+	.widget_pages ul li {}
+	.widget_pages ul li a {}
+
+	/* recent-posts widget */
+	.widget_recent_entries {}
+	.widget_recent_entries ul {}
+	.widget_recent_entries ul li {}
+	.widget_recent_entries ul li a {}
+
+	/* archives widget */
+	.widget_archive {}
+	.widget_archive ul {}
+	.widget_archive ul li {}
+	.widget_archive ul li a {}
+	.widget_archive select {}
+	.widget_archive option {}
+
+	/* tag-cloud widget */
+	.widget_links {}
+	.widget_links li:after {}
+	.widget_links li:before {}
+	.widget_tag_cloud {}
+	.widget_tag_cloud a {}
+	.widget_tag_cloud a:after {}
+	.widget_tag_cloud a:before {}
+
+	/* calendar widget */
+	.widget_calendar {}
+	#calendar_wrap {}
+	#calendar_wrap th {}
+	#calendar_wrap td {}
+	#wp-calendar tr td {}
+	#wp-calendar caption {}
+	#wp-calendar a {}
+	#wp-calendar #today {}
+	#wp-calendar #prev {}
+	#wp-calendar #next {}
+	#wp-calendar #next a {}
+	#wp-calendar #prev a {}
+
+	/* category widget */
+	.widget_categories {}
+	.widget_categories ul {}
+	.widget_categories ul li {}
+	.widget_categories ul ul.children {}
+	.widget_categories a {}
+	.widget_categories select{}
+	.widget_categories select#cat {}
+	.widget_categories select.postform {}
+	.widget_categories option {}
+	.widget_categories .level-0 {}
+	.widget_categories .level-1 {}
+	.widget_categories .level-2 {}
+	.widget_categories .level-3 {}
+
+	/* recent-comments widget */
+	.recentcomments {}
+	#recentcomments {}
+	#recentcomments li {}
+	#recentcomments li a {}
+	.widget_recent_comments {}
+
+	/* search widget */
+	#searchform {}
+	.widget_search {}
+	.screen-reader-text {}
+
+	/* text widget */
+	.textwidget {}
+	.widget_text {}
+	.textwidget p {}
+
+
+/*********************
+FOOTER STYLES
+*********************/
+
+/*
+you'll probably need to do quite a bit
+of overriding here if you styled them for
+mobile. Make sure to double check these!
+*/
+.footer {
+	background: url('../images/footer-bg.jpg') center repeat-x;
+}
+.footer-links {
+	ul {
+		li {
+			a {
+				&:hover {}
+			}
+			/*
+			be careful with the depth of your menus.
+			it's very rare to have multi-depth menus in
+			the footer.
+			*/
+			ul {}
+		}
+	}
+} /* end .footer-links */
+

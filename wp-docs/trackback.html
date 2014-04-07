@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.4  (Linux)">
+	<META NAME="AUTHOR" CONTENT="chris4">
+	<META NAME="CREATED" CONTENT="20090129;12543700">
+	<META NAME="CHANGEDBY" CONTENT="chris4">
+	<META NAME="CHANGED" CONTENT="20090204;11503200">
+	<META NAME="CHANGEDBY" CONTENT="chris4">
+	<META NAME="CHANGEDBY" CONTENT="chris4">
+	<META NAME="CHANGEDBY" CONTENT="chris4">
+	<META NAME="CHANGEDBY" CONTENT="chris4">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21.01cm 29.69cm; margin: 2.01cm }
+		H1 { margin-bottom: 0.2cm }
+		H1.western { font-family: "Liberation Sans", sans-serif; font-size: 16pt }
+		H1.cjk { font-family: "DejaVu Sans"; font-size: 16pt }
+		H1.ctl { font-family: "DejaVu Sans"; font-size: 16pt }
+		P { margin-bottom: 0.2cm }
+		H2 { margin-bottom: 0.2cm }
+		H2.western { font-family: "Liberation Sans", sans-serif; font-size: 14pt; font-style: italic }
+		H2.cjk { font-size: 14pt; font-style: italic }
+		H2.ctl { font-size: 14pt; font-style: italic }
+		H3 { margin-bottom: 0.2cm }
+		H3.western { font-family: "Liberation Sans", sans-serif }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1 CLASS="western">Trackback – Howto</H1>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H2 CLASS="western">What trackback does – an example.</H2>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">Suppose you read a post on someone
+else's blog, Blog-A say, and you think there is relevant content
+(posts and comments) on your site, Blog-B.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">It would be helpful if readers of
+Blog-A could see the post and comments on your site Blog-B. That may
+or may not be possible. There are two ways of doing this – pingback
+and trackback. This article deals with trackback – see
+pingback.html in the same directory for 'Howto Pingback'.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">The difference between pingback and
+trackback is that what is shown on the remote site. With pingback readers of
+Blog-A, see a link to your site, Blog-B. With trackback your post on
+Blog-B is reproduced as a comment on Blog-A, and since it is possible
+to spoof the source address, readers of Blog-A may be misled as to
+who really posted the comment. With pingback spoofing the source just
+links to a different site (possibly non-existent).</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H2 CLASS="western">Is it possible?</H2>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">It will be possible if 
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">The administrator of site Blog-A
+	has enabled trackback for the site, and</P>
+	<LI><P STYLE="margin-bottom: 0cm">The administrator of site Blog-A
+	has enabled trackback for the post, and</P>
+	<LI><P STYLE="margin-bottom: 0cm">You are using a theme on Blog-B
+	that has code to display trackback options to the screen.</P>
+</UL>
+<H2 CLASS="western">Here is how it is done:</H2>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<UL>
+	<li><h4>Administrator's pre-actions</h4>
+			<table><tr>
+					<td>a. Settings-Privacy </td>
+						<td align='right'>Check the box&nbsp;</td>
+					<td><i>&quot;I would like my blog to be visible to
+				everyone, including search engines (like Google, Sphere, Technorati) and
+				archivers.&quot;</i></td>
+				</tr><tr>
+				<td>&nbsp;</td>
+				<td>Save changes.</td>
+				<td>&nbsp;</td>
+				</tr><tr>
+						<td>b. Settings-Writing </td>
+						<td align='right'>Check the boxes&nbsp;</td>
+			<td><i>&quot;Enable the Atom Publishing
+					Protocol.</i>&quot;</td>
+				</tr><tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td><i>&quot;Enable the WordPress, Movable Type, MetaWeblog and
+					Blogger XML-RPC publishing protocols.&quot;</i></td>
+				</tr><tr>
+				<td>&nbsp;</td>
+				<td>Save changes.</td>
+				<td>&nbsp;</td>
+			</tr></table>
+       </LI>
+	<LI><P STYLE="margin-bottom: 0cm">Visit Blog-A, read the relevant
+	post, and find the trackback URL. This may be difficult for there is
+	no standard way of presenting it. Different themes put it in
+	different places on the screen and call it by different names. Copy
+	the link to your clipboard. Typically the link will be something
+	like 
+	</P>
+	<P ALIGN=CENTER STYLE="margin-bottom:
+	0cm">'http://www.someone_elses_domain.co.uk/blog/wp-trackback.php?p=123'</P>
+	<P STYLE="margin-bottom: 0cm">
+	<table><tr>
+			<td valign='top'>Tip: </td>
+			<td>
+	If the remote site is a wordpress powered site, 
+	the simplest way to get the trackback URL is to copy it from the browser address 
+	bar when viewing the post and then add "wp-trackback.php" between "/blog/" 
+	and "?p=".</td>
+	</tr></table>
+	</LI>
+	<LI><P STYLE="margin-bottom: 0cm">Visit your own site, Blog-B, and
+	edit the post you wish to have accessible from Blog-A. You should
+	paste the trackback URL from the previous step (Blog-A's trackback
+	URL) into the 'Send trackbacks to' field.</P>
+    <p STYLE="margin-bottom: 0cm"><Strong>Note </strong>the difference between 
+    trackbacks and pingbacks:-<br>
+    Trackback urls go in the 'Send trackbacks to' box;<br>
+    Pingback permalinks are included in the text of the post inside <a href ...> </a>
+    tags (use the HTML tab when editing).<br>
+    The trackback url and the pingback permalink are usually different for the same post.<br>
+    If you put the trackback url in the post text or the pingback permalink in the
+    'Send trackbacks to' box nothing will happen.
+    </p>
+	<LI><P STYLE="margin-bottom: 0cm">Fill in the 'Excerpt' field with a
+	taster of what is in your post. This is what will be shown on the
+	remote blog (Blog-A).</P>
+	<LI><P STYLE="margin-bottom: 0cm">Update the post.</P>
+</UL>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-bottom: 0cm">It may happen almost immediately or
+there may be a delay before the taster and a link to the post on your
+blog (Blog-B) appears on the other blog (Blog-A). Most site
+administrators require contributions to their blog to be moderated
+before publishing, particularly in the case of trackbacks which could
+contain offensive material or links to undesirable sites.</P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H2 CLASS="western">What can go wrong</H2>
+<H3 CLASS="western"><FONT SIZE=3>No output on remote site</FONT></H3>
+<UL>
+	<LI><P><FONT SIZE=3>The remote administrator has not configured his
+	site correctly – the correct permissions and correct use of
+	caching are important.</FONT></P>
+	<LI><P><FONT SIZE=3>You have not used the correct trackback URI.
+	(Note this is usually different from the permalink used for
+	pingbacks,<br>e.g. trackback URI  is<br>
+	“http://www.someone_elses_domain.co.uk/blog/wp-trackback.php?p=123”<br>
+	while pingback permalink is<br>
+	“http://www.someone_elses_domain.co.uk/blog/?p=123”).</FONT></P>
+	<LI><P><FONT SIZE=3>The data is waiting for moderation.</FONT></P>
+	<LI><P><FONT SIZE=3>A spam catcher has discarded it.</FONT></P>
+	<LI><P><FONT SIZE=3>You have not configured you own site correctly
+	to send the trackback data.</FONT></P>
+</UL>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">The remote site may be using a
+	different blog publishing protocol from Wordpress. You may have to
+	go to Dashboard -&gt; Settings -&gt; Writing and tick the box <I>Enable
+	the WordPress, Movable Type, MetaWeblog and Blogger XML-RPC
+	publishing protocols. (W</I><SPAN STYLE="font-style: normal">ordpress
+	is already set by default) and/or tick the box </SPAN><I>Enable the
+	Atom Publishing Protocol</I></P>
+</UL>
+<H2 CLASS="western"><FONT SIZE=3>Bootnote</FONT></H2>
+<P><FONT SIZE=3>Many Blog sites do not enable trackback because of
+the problem with 'Comment Spam'. If you get a spam problem (with or
+without trackback) try using </FONT><A HREF="http://www.akismet.com/">akismet</A>.
+The askimet module is already installed. You just need to enable and
+configure it.</P>
+<P><FONT SIZE=3>For further help on trackback see <A HREF="http://www.optiniche.com/blog/117/wordpress-trackback-tutorial/">WordPress
+Trackback Tutorial - by Teli Adlam</A></FONT></P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>
