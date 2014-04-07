@@ -38,6 +38,7 @@
 		<?php // end analytics ?>
 		
 		<script>site_url='<?=site_url()?>';</script>
+		<script>current_user_id = <?=get_current_user_id();?>;</script>
 
 	</head>
 

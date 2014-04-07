@@ -58,6 +58,17 @@ Template Name: Enter Race
 		</fieldset>
 		</form>
 	</div>
+	
+	<div id="signUp" class="boxShadow">
+		<form id="signUpDataForm">
+       
+		<h2 class="highlight">Sign Up</h2>
+		<fieldset class="myfields">
+		<div><label style="color: black" for="playerName" id="playerNameLabel">Player Name:</label><input type="text" id="playerName" value=""/></div>
+		</fieldset>
+       
+		</form>
+	</div>
 	<div id="chooseCharacter" class="boxShadow">
 		<form id="raceTokensDataForm">
        

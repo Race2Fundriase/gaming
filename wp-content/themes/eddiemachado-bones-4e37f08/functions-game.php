@@ -812,6 +812,7 @@ function r2f_action_upsert_race()
 	$locationDescription = $_POST["locationDescription"];
 	$terrainDescription = $_POST["terrainDescription"];
 	$weatherDescription = $_POST["weatherDescription"];
+	$curDay = $_POST["curDay"];
 		
 	// Init results
 	$result["message"] = "";
@@ -835,13 +836,13 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, 
 					finishDate, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s )
+					locationDescription, terrainDescription, weatherDescription, curDay)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
 				$createdBy, 0, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay
 				) 
 		) );
 		
@@ -863,13 +864,13 @@ function r2f_action_upsert_race()
 				SET maxNoOfPlayers = %d, raceName = %s, raceDescription = %s, mapId = %d, 
 				startDate = %s, finishDate = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
-				locationDescription = %s, terrainDescription = %s, weatherDescription = %s
+				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription,
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay,
 				$id
 				) 
 		) );
@@ -1165,7 +1166,7 @@ function r2f_action_get_race()
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
-				locationDescription, terrainDescription, weatherDescription from `r2f_races` 
+				locationDescription, terrainDescription, weatherDescription, curDay from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
 		", 
@@ -1265,6 +1266,7 @@ function r2f_action_upsert_racecharacters()
 	$route = $_POST["route"];
 	$drivingStyleWeight = $_POST["drivingStyleWeight"];
 	$noOfPitStops = $_POST["noOfPitStops"];
+	$playerName = $_POST["playerName"];
 		
 	// Init results
 	$result["message"] = "";
@@ -1286,12 +1288,12 @@ function r2f_action_upsert_racecharacters()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_racecharacters
-				( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops
+				( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName
 					 )
-				VALUES ( %d, %d, %d, %d, %s, %s, %f, %d )
+				VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s )
 			", 
 				array(
-				$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops
+				$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
 				) 
 		) );
 		
@@ -1311,11 +1313,11 @@ function r2f_action_upsert_racecharacters()
 			"
 				UPDATE r2f_racecharacters
 				SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
-				route = %s, drivingStyleWeight = %f, noOfPitStops = %d
+				route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
 				WHERE id = %d
 			", 
 				array(
-				$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops,
+				$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
 				$id
 				) 
 		) );
@@ -1779,6 +1781,11 @@ function r2f_action_get_leaderboard()
 	$result["error"] = "";
 	$result["id"] = $raceId;
 	
+	if ($day == "") {
+		$race = get_race($raceId);
+		$day = $race["rows"][0]->curDay;
+	}
+	
 	// Validate params
 	if ($raceId == "" || $day == "") $result["error"] .= "You must supply a race id and a day.";
 		
@@ -1792,7 +1799,7 @@ function r2f_action_get_leaderboard()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT r2f_racecharacterscores.id, playerId, 
+			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
 				gridX, gridY, tokenImageUrl, tokenName
 			FROM r2f_racecharacterscores
@@ -1815,7 +1822,10 @@ function r2f_action_get_leaderboard()
 		$result["message"] = "race characters found.";
 		
 		for ($i=0;$i<count($rows);$i++) {
-			$rows[$i]->name = get_user_meta($rows[$i]->playerId, 'main_contact_name', true);
+			if ($rows[$i]->playerName == "")
+				$rows[$i]->name = get_user_meta($rows[$i]->playerId, 'main_contact_name', true);
+			else
+				$rows[$i]->name = $rows[$i]->playerName;
 		}
 		
 		$result["rows"] = $rows;
@@ -1953,6 +1963,12 @@ function appthemes_check_user_role( $role, $user_id = null ) {
 	return false;
  
     return in_array( $role, (array) $user->roles );
+}
+
+function user_can_edit_race() {
+
+	return appthemes_check_user_role("contributor");
+	
 }
 
 $fundraiser = appthemes_check_user_role("subscriber");

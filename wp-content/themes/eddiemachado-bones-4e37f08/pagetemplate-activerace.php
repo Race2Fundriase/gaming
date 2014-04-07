@@ -43,7 +43,7 @@ Template Name: Active Race
                             </form>
                         </div>
                         <div class="info">
-                            <?php if($fundraiser) { ?>
+                            <?php if(!user_can_edit_race()) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/enter-race/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
 							<?php } else { ?>
 							<a class="btn large blue" href="<?=site_url()?>/create-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
@@ -106,6 +106,13 @@ Template Name: Active Race
             </div>
 			<div id="paperParentAR" class="boxShadow">
 			</div>
+			<div id="scaleSlider">
+				<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
+				<div class="status">
+					<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
+				 </div>
+			</div>
+			
         </section>
 		<div id="templateDiv" style="display: none">
 			<div class="fourcol first">

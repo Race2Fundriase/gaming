@@ -145,7 +145,7 @@ function bones_scripts_and_styles() {
 		
 		// Race Options
 		wp_register_script('create-race-options', get_stylesheet_directory_uri() . '/library/js/simple-slider.min.js', array('jquery'), '', true);
-		wp_register_script('options', get_stylesheet_uri() . '/library/js/options.js', array('jquery', 'create-race-options'), '', true);
+		wp_register_script('options', get_stylesheet_directory_uri() . '/library/js/options.js', array('jquery', 'create-race-options'), '', true);
 		
 		// register main stylesheet
 		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
@@ -191,6 +191,11 @@ function bones_scripts_and_styles() {
 		}
 		
 		if (is_page_template('pagetemplate-enterrace.php')) {
+			wp_enqueue_script('options');
+			wp_enqueue_style('options-css');
+		}
+		
+		if (is_page_template('pagetemplate-activerace.php')) {
 			wp_enqueue_script('options');
 			wp_enqueue_style('options-css');
 		}

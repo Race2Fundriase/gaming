@@ -293,9 +293,10 @@ window.onload = function () {
 			
 			// if we get here we are good to go - calculate the route, save the entry and re-direct to the race view
 			tokenId = jQuery("#tokenId").val();
-			playerId = <?php echo get_current_user_id();?>;
+			playerId = current_user_id;
 			joinDate = d.yyyymmdd();
 			route = "";
+			playerName = jQuery("#playerName").val();
 			for(i=0;i<selectedCells.length;i++) {
 				route += selectedCells[i].x + ',' + selectedCells[i].y + '|';
 			}
@@ -315,7 +316,8 @@ window.onload = function () {
 					joinDate: joinDate,
 					route: route,
 					drivingStyleWeight: drivingStyleWeight,
-					noOfPitstops: noOfPitstops
+					noOfPitstops: noOfPitstops,
+					playerName: playerName
 				},
 				dataType: "JSON",
 				success: function (data) {

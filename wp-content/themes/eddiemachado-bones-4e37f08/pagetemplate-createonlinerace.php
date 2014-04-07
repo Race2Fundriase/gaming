@@ -127,6 +127,12 @@ Template Name: Create Online Race
 					    </div>
 					</div>
 					<div>
+					    <label for="curDay"><span>Current Day</span></label>
+					    <div>
+					    <input id="curDay" name="curDay" type="text" tabindex="13"/>
+					    </div>
+					</div>
+					<div>
 					    <label for="raceTokens"><span>Select Tokens</span></label>
 					    <div>
 							<select multiple id="raceTokens" name="raceTokens">

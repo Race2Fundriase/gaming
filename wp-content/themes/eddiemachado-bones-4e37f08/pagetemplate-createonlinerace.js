@@ -43,6 +43,7 @@ jQuery(document).ready
 							jQuery("#finishGridY").val(data.rows[0].finishGridY);
 							jQuery("#startGridX").val(data.rows[0].startGridX);
 							jQuery("#startGridY").val(data.rows[0].startGridY);
+							jQuery("#curDay").val(data.rows[0].curDay);
 						}
 					});
 				}
@@ -102,13 +103,14 @@ jQuery(document).ready
 					finishGridX: jQuery("#finishGridX").val(),
 					finishGridY: jQuery("#finishGridY").val(),
 					startGridX: jQuery("#startGridX").val(),
-					startGridY: jQuery("#startGridY").val()
+					startGridY: jQuery("#startGridY").val(),
+					curDay: jQuery("#curDay").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					options(data.id);
+					//options(data.id);
 				}
 			});
 			return false;

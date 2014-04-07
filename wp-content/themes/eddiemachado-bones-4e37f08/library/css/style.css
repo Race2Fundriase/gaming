@@ -1531,7 +1531,7 @@ and more scalable.
 }
 /* line 464, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px !important;
+  padding: 3px 15px!important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -3930,6 +3930,17 @@ label {
 }
 
 /* line 76, ../scss/_game.scss */
+#paperParentAR {
+  position: absolute;
+  left: 500px;
+  top: 1650px;
+  width: 700px;
+  height: 600px;
+  overflow: scroll;
+  z-index: 1000;
+}
+
+/* line 86, ../scss/_game.scss */
 #mapDataGrid {
   position: relative;
   width: 800px;
@@ -3938,22 +3949,22 @@ label {
   margin-right: auto;
 }
 
-/* line 84, ../scss/_game.scss */
+/* line 94, ../scss/_game.scss */
 #tokenOffsetResults {
   text-align: center;
 }
 
-/* line 88, ../scss/_game.scss */
+/* line 98, ../scss/_game.scss */
 .nav li.logged-in-nav {
   display: none;
 }
 
-/* line 92, ../scss/_game.scss */
+/* line 102, ../scss/_game.scss */
 body.logged-in .nav li.logged-in-nav {
   display: list-item;
 }
 
-/* line 96, ../scss/_game.scss */
+/* line 106, ../scss/_game.scss */
 #paperParent1 {
   position: absolute;
   left: 400px;
@@ -3963,16 +3974,84 @@ body.logged-in .nav li.logged-in-nav {
   overflow: scroll;
 }
 
-/* line 105, ../scss/_game.scss */
+/* line 115, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 111, ../scss/_game.scss */
+/* line 121, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
+}
+
+/* line 127, ../scss/_game.scss */
+#racesDataGrid table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* line 132, ../scss/_game.scss */
+#racesDataGrid th {
+  background-color: green;
+  color: white;
+}
+
+/* line 137, ../scss/_game.scss */
+#racesDataGrid {
+  width: 1000px;
+  margin: auto;
+}
+
+/* line 142, ../scss/_game.scss */
+#signUp {
+  position: relative;
+  width: 350px;
+  margin-top: 30px;
+}
+
+/* jqModal base Styling courtesy of;
+	Brice Burgess <bhb@iceburg.net> */
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+	the Window's z-index value will be set to 3000 by default (via jqModal.js). */
+/* line 7, ../scss/_jqModal.scss */
+.jqmWindow {
+  display: none;
+  position: fixed;
+  top: 17%;
+  left: 50%;
+  margin-left: -300px;
+  width: 600px;
+  background-color: #EEE;
+  color: #333;
+  border: 1px solid black;
+  padding: 12px;
+}
+
+/* line 23, ../scss/_jqModal.scss */
+.jqmOverlay {
+  background-color: #000;
+}
+
+/* Background iframe styling for IE6. Prevents ActiveX bleed-through (<select> form elements, etc.) */
+/* line 26, ../scss/_jqModal.scss */
+* iframe.jqm {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: expression(this.parentNode.offsetWidth+'px');
+  height: expression(this.parentNode.offsetHeight+'px');
+}
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+/* line 34, ../scss/_jqModal.scss */
+* html .jqmWindow {
+  position: absolute;
+  top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
 }

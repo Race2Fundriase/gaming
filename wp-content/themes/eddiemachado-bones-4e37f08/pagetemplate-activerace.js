@@ -21,14 +21,14 @@ var finishGridY = 0;
 
 function drawGrid() {
 
-	if (paper) paper.clear();
+	if (paper) paper.remove();
 
 	paper = Raphael("paperParentAR", mapWidth*scale, mapHeight*scale);
 	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
 
 	console.log(scale);
 	
-	var x, y;
+	/*var x, y;
 	var w = cellWidth * scale;
 	var h = cellHeight * scale;
 
@@ -39,12 +39,22 @@ function drawGrid() {
 			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
 			
 		}
-	}
+	}*/
 	
 	selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
 	
 	selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
 
+}
+
+var players;
+
+function drawPlayers() {
+
+	for (i=0;i<players.length;i++){
+		rcImageUrl = site_url+players[i].tokenImageUrl;
+	    paper.image(rcImageUrl, players[i].gridX * cellWidth * scale, players[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+	}
 }
 
 jQuery(document).ready
@@ -53,6 +63,12 @@ jQuery(document).ready
 	function(jQuery)
 	{
 		var raceId = qs("raceId");
+		
+		jQuery("#mapScale").change(function(e) {
+			scale = jQuery("#mapScale").val();
+			drawGrid();
+			drawPlayers();
+		});
 		
 		jQuery("#day").change(function(e) {
 			jQuery.ajax({
@@ -69,9 +85,11 @@ jQuery(document).ready
 					jQuery("#result").text(data.message + " " + data.error);
 					var li = '';
 					drawGrid();
+					players = new Array();
 					for (i=0;i<data.rows.length;i++){
-					   li += '<li>'+ data.rows[i].name + '(' + data.rows[i].tokenName + ')</li>';
+					   li += '<li>'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 					   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
+					   players[i] = data.rows[i];
 					   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 					}
 					jQuery('#leaderboard').html(li);
@@ -138,11 +156,11 @@ jQuery(document).ready
 									console.log(data);
 									jQuery("#result").text(data.message + " " + data.error);
 									var li = '';
+									players = new Array();
 									for (i=0;i<data.rows.length;i++){
 									   li += '<li>'+ data.rows[i].name + '(' + data.rows[i].tokenName + ')</li>';
 									   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
-									   console.log(rcImageUrl);
-									   //var aCell = paper.rect(data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "url("+rcImageUrl+")");
+									   players[i] = data.rows[i];
 									   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 									}
 									jQuery('#leaderboard').append(li);
