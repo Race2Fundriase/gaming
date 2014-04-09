@@ -2526,6 +2526,7 @@ FOOTER STYLES
 *********************/
 /* line 1565, ../scss/_base.scss */
 .footer {
+  position: relative;
   clear: both;
   background: url("../images/sand-bg.gif");
 }
@@ -2540,6 +2541,15 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
+/* line 1591, ../scss/_base.scss */
+.copyright {
+  font-size: 0.8em;
+  color: #fff;
+  position: absolute;
+  right: 10px;
+  bottom: -10px;
+}
+
 /*
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's

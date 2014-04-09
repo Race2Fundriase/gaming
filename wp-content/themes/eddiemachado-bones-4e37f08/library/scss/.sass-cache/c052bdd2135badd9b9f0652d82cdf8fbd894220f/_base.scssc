@@ -1,7 +1,7 @@
 3.2.7 (Media Mark)
-53addf18bfd5a6cc830c3f42f7cbe4dff07fcf7b
+7d0ff55f4a4905de89799dfc66ca0221a125f685
 o:Sass::Tree::RootNode
-:@template"»d/******************************************************************
+:@template"(e/******************************************************************
 Site Name:
 Author:
 
@@ -1566,6 +1566,7 @@ FOOTER STYLES
 *********************/
 
 .footer {
+	position: relative;
 	clear: both;
 	background: url('../images/sand-bg.gif');
 }
@@ -1590,7 +1591,13 @@ FOOTER STYLES
 	} /* end .footer-links */
 
 
-	.copyright {}
+	.copyright {
+		font-size: 0.8em;
+		color:#fff;
+		position: absolute;
+		right:10px;
+		bottom:-10px;
+	}
 
 
 	:@has_childrenT:@options{ :@children[øo:Sass::Tree::CommentNode
@@ -2889,9 +2896,9 @@ o;;T;@;i ;	[ ;i
 
 ;;;["@/*********************
 FOOTER STYLES
-*********************/;@;	[ ;io;;T;@;i ;	[o;;["
-clear;o;;;;"	both;@;;;@;i ;	[ ;io;;["background;o;,;"url;@;-0;i;.{ ;/[o;	;;0;"../images/sand-bg.gif;@;i;;;@;i ;	[ ;i;i;[".footer;o;;" ;i;[o;;[o;
-; 0;@ä);!o;";#{ ;i;[o;&;["footer;@ä);io;
+*********************/;@;	[ ;io;;T;@;i ;	[o;;["position;o;;;;"relative;@;;;@;i ;	[ ;io;;["
+clear;o;;;;"	both;@;;;@;i ;	[ ;io;;["background;o;,;"url;@;-0;i ;.{ ;/[o;	;;0;"../images/sand-bg.gif;@;i ;;;@;i ;	[ ;i ;i;[".footer;o;;" ;i;[o;;[o;
+; 0;@ê);!o;";#{ ;i;[o;&;["footer;@ê);io;
 
 ;;;["õ/*
 if you checked out the link above:
@@ -2901,12 +2908,15 @@ a bit more in-depth. Remember to keep
 it simple because you'll have to
 override these styles for the desktop
 view.
-*/;@;	[ ;i"o;;T;@;i ;	[o;;T;@;i ;	[o;;T;@;i ;	[ ;i/;["li;o;;" ;i/;[o;;[o;
-; 0;@ü);!o;";#{ ;i/;[o;$	;["li;@ü);%0;i/;i-;["ul;o;;" ;i-;[o;;[o;
-; 0;@
-*;!o;";#{ ;i-;[o;$	;["ul;@
-*;%0;i-;i+;[".footer-links;o;;" ;i+;[o;;[o;
-; 0;@*;!o;";#{ ;i+;[o;&;["footer-links;@*;i+o;
+*/;@;	[ ;i#o;;T;@;i ;	[o;;T;@;i ;	[o;;T;@;i ;	[ ;i0;["li;o;;" ;i0;[o;;[o;
+; 0;@*;!o;";#{ ;i0;[o;$	;["li;@*;%0;i0;i.;["ul;o;;" ;i.;[o;;[o;
+; 0;@*;!o;";#{ ;i.;[o;$	;["ul;@*;%0;i.;i,;[".footer-links;o;;" ;i,;[o;;[o;
+; 0;@*;!o;";#{ ;i,;[o;&;["footer-links;@*;i,o;
 
-;;;["/* end .footer-links */;@;	[ ;i3o;;T;@;i ;	[ ;i6;[".copyright;o;;" ;i6;[o;;[o;
-; 0;@,*;!o;";#{ ;i6;[o;&;["copyright;@,*;i6;i
+;;;["/* end .footer-links */;@;	[ ;i4o;;T;@;i ;	[
+o;;["font-size;o;;;;"
+0.8em;@;;;@;i ;	[ ;i8o;;["
+color;o;;;;"	#fff;@;;;@;i ;	[ ;i9o;;["position;o;;;;"absolute;@;;;@;i ;	[ ;i:o;;["
+right;o;;;;"	10px;@;;;@;i ;	[ ;i;o;;["bottom;o;;;;"
+-10px;@;;;@;i ;	[ ;i<;i7;[".copyright;o;;" ;i7;[o;;[o;
+; 0;@P*;!o;";#{ ;i7;[o;&;["copyright;@P*;i7;i
