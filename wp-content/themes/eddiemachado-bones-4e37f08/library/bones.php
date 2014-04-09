@@ -181,7 +181,7 @@ function bones_scripts_and_styles() {
 			wp_enqueue_script('why');
 		}
 		
-		if (is_page("join") || is_page("races")) {
+		if (is_page("join") || is_page("races") || is_page_template('pagetemplate-help.php')) {
 			wp_enqueue_script('join');
 		}
 		
@@ -381,8 +381,8 @@ function bones_page_navi() {
 			'format' 		=> '',
 			'current' 		=> max( 1, get_query_var('paged') ),
 			'total' 		=> $wp_query->max_num_pages,
-			'prev_text' 	=> '&larr;',
-			'next_text' 	=> '&rarr;',
+			'prev_text' 	=> 'Previous',
+			'next_text' 	=> 'Next',
 			'type'			=> 'list',
 			'end_size'		=> 3,
 			'mid_size'		=> 3

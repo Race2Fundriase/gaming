@@ -184,7 +184,7 @@ function add_login_out_item_to_menu( $items, $args ){
 	
 	$new_links = array();
 	
-	if (is_front_page() ) {
+	/* if (is_front_page() ) {
 	$item = array(
 		'title' => 'Sign up',
 		'menu_item_parent' => 0,
@@ -193,7 +193,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		'url' => '/join',
 		'classes' => 'menu-item sign-up'
 		      );
-	} else {
+	} else { */
 	 $item = array(
 		'title' => 'Enter Now',
 		'menu_item_parent' => 0,
@@ -202,7 +202,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		'url' => '/races',
 		'classes' => 'menu-item sign-up'
 		      );
-	}
+	// }
 	$new_links[] = (object) $item;
 	unset ($item);
 	

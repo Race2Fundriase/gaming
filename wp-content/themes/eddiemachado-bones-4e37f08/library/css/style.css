@@ -940,6 +940,11 @@ TAB CONTROL
 }
 
 /* line 362, ../scss/_mixins.scss */
+.highlight a {
+  color: #de5f02;
+}
+
+/* line 366, ../scss/_mixins.scss */
 h1.highlight, h2.highlight, h3.highlight {
   font-family: 'Headline One';
   font-size: 40px;
@@ -951,31 +956,31 @@ h1.highlight, h2.highlight, h3.highlight {
   display: inline-block;
 }
 
-/* line 373, ../scss/_mixins.scss */
+/* line 377, ../scss/_mixins.scss */
 h3.highlight {
   font-size: 22px;
   font-size: 1.375rem;
 }
 
-/* line 379, ../scss/_mixins.scss */
+/* line 383, ../scss/_mixins.scss */
 p.highlight, li.highlight {
   display: inline;
 }
 
-/* line 384, ../scss/_mixins.scss */
+/* line 388, ../scss/_mixins.scss */
 ol.highlight li, ul.highlight li {
   background: white;
   color: #de5f02;
 }
 
-/* line 390, ../scss/_mixins.scss */
+/* line 394, ../scss/_mixins.scss */
 .tweet-container {
   display: block;
   margin-bottom: 30px;
   padding-top: 30px;
 }
 
-/* line 396, ../scss/_mixins.scss */
+/* line 400, ../scss/_mixins.scss */
 .twitter-user {
   display: inline-block;
   vertical-align: top;
@@ -985,23 +990,23 @@ ol.highlight li, ul.highlight li {
   border-radius: 24px;
 }
 
-/* line 405, ../scss/_mixins.scss */
+/* line 409, ../scss/_mixins.scss */
 .twitter-tweet {
   display: inline-block;
   margin-left: 5%;
   width: 80%;
 }
-/* line 410, ../scss/_mixins.scss */
+/* line 414, ../scss/_mixins.scss */
 .twitter-tweet p {
   display: inline;
 }
-/* line 413, ../scss/_mixins.scss */
+/* line 417, ../scss/_mixins.scss */
 .twitter-tweet p a {
   color: #de5f02;
   text-decoration: underline;
 }
 
-/* line 420, ../scss/_mixins.scss */
+/* line 424, ../scss/_mixins.scss */
 .video-container {
   position: relative;
   bottom: 0;
@@ -1011,7 +1016,7 @@ ol.highlight li, ul.highlight li {
   overflow: hidden;
 }
 
-/* line 429, ../scss/_mixins.scss */
+/* line 433, ../scss/_mixins.scss */
 .video-container iframe,
 .video-container object,
 .video-container embed {
@@ -1022,7 +1027,7 @@ ol.highlight li, ul.highlight li {
   height: 75%;
 }
 
-/* line 437, ../scss/_mixins.scss */
+/* line 441, ../scss/_mixins.scss */
 .featured-game {
   display: block;
   position: relative;
@@ -1034,32 +1039,32 @@ ol.highlight li, ul.highlight li {
   background-color: #000;
   box-shadow: 0px 0px 10px 5px #bf9f6b;
 }
-/* line 448, ../scss/_mixins.scss */
+/* line 452, ../scss/_mixins.scss */
 .featured-game img {
   display: block;
 }
-/* line 452, ../scss/_mixins.scss */
+/* line 456, ../scss/_mixins.scss */
 .featured-game .title {
   display: block;
   position: absolute;
   bottom: 50px;
 }
-/* line 458, ../scss/_mixins.scss */
+/* line 462, ../scss/_mixins.scss */
 .featured-game .charity {
   display: block;
   position: absolute;
   bottom: 10px;
 }
 
-/* line 466, ../scss/_mixins.scss */
+/* line 470, ../scss/_mixins.scss */
 .orange-type {
   color: #de5f02;
 }
-/* line 470, ../scss/_mixins.scss */
+/* line 474, ../scss/_mixins.scss */
 .orange-type a {
   color: #de5f02;
 }
-/* line 473, ../scss/_mixins.scss */
+/* line 477, ../scss/_mixins.scss */
 .orange-type a:hover {
   color: #de5f02 !important;
   text-decoration: underline;
@@ -1531,7 +1536,7 @@ and more scalable.
 }
 /* line 464, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px!important;
+  padding: 3px 15px !important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -1704,9 +1709,10 @@ PAGE NAVI STYLES
 
 /* line 710, ../scss/_base.scss */
 .pagination {
-  text-align: center;
+  margin-top: 30px;
+  color: black;
 }
-/* line 712, ../scss/_base.scss */
+/* line 713, ../scss/_base.scss */
 .pagination ul {
   display: inline-block;
   white-space: nowrap;
@@ -1714,7 +1720,7 @@ PAGE NAVI STYLES
   clear: both;
   margin: 1px;
 }
-/* line 718, ../scss/_base.scss */
+/* line 719, ../scss/_base.scss */
 .pagination ul li {
   padding: 0;
   margin: 0;
@@ -1722,7 +1728,7 @@ PAGE NAVI STYLES
   display: inline;
   overflow: hidden;
 }
-/* line 724, ../scss/_base.scss */
+/* line 725, ../scss/_base.scss */
 .pagination ul li a, .pagination ul li span {
   margin: 0;
   text-decoration: none;
@@ -1733,19 +1739,29 @@ PAGE NAVI STYLES
   padding: .5em;
   min-width: 1em;
   display: block;
+  color: black;
 }
-/* line 735, ../scss/_base.scss */
+/* line 737, ../scss/_base.scss */
 .pagination ul li span.current {
-  font-weight: bold;
+  background: white;
+  color: #de5f02;
+}
+/* line 741, ../scss/_base.scss */
+.pagination ul li a:hover, .pagination ul li a:focus {
+  color: #de5f02;
+}
+/* line 744, ../scss/_base.scss */
+.pagination ul li .next, .pagination ul li .prev {
+  background: white;
 }
 
 /* end .bones_page_navi */
 /* fallback previous & next links */
-/* line 750, ../scss/_base.scss */
+/* line 756, ../scss/_base.scss */
 .wp-prev-next .prev-link {
   float: left;
 }
-/* line 754, ../scss/_base.scss */
+/* line 760, ../scss/_base.scss */
 .wp-prev-next .next-link {
   float: right;
 }
@@ -1755,12 +1771,12 @@ PAGE NAVI STYLES
 COMMENT STYLES
 ******************************************************************/
 /* h3 comment title */
-/* line 765, ../scss/_base.scss */
+/* line 771, ../scss/_base.scss */
 #comments {
   /* number of comments span */
 }
 
-/* line 782, ../scss/_base.scss */
+/* line 788, ../scss/_base.scss */
 .commentlist {
   /* general comment classes */
   /* vcard */
@@ -1771,7 +1787,7 @@ COMMENT STYLES
   /* comment reply link */
   /* end .commentlist .comment-reply-link */
 }
-/* line 784, ../scss/_base.scss */
+/* line 790, ../scss/_base.scss */
 .commentlist li {
   position: relative;
   clear: both;
@@ -1781,63 +1797,63 @@ COMMENT STYLES
   padding: 0.7335em 10px;
   /* end .commentlist li ul.children */
 }
-/* line 792, ../scss/_base.scss */
+/* line 798, ../scss/_base.scss */
 .commentlist li:last-child {
   margin-bottom: 0;
 }
-/* line 796, ../scss/_base.scss */
+/* line 802, ../scss/_base.scss */
 .commentlist li ul.children {
   margin: 0;
   /* variations */
   /* change number for different depth */
 }
-/* line 814, ../scss/_base.scss */
+/* line 820, ../scss/_base.scss */
 .commentlist li[class*=depth-] {
   margin-top: 1.1em;
 }
-/* line 818, ../scss/_base.scss */
+/* line 824, ../scss/_base.scss */
 .commentlist li.depth-1 {
   margin-left: 0;
   margin-top: 0;
 }
-/* line 823, ../scss/_base.scss */
+/* line 829, ../scss/_base.scss */
 .commentlist li:not(.depth-1) {
   margin-right: -10px;
   margin-left: -10px;
   margin-top: 0;
   padding-bottom: 0;
 }
-/* line 837, ../scss/_base.scss */
+/* line 843, ../scss/_base.scss */
 .commentlist .odd {
   background: #eee;
 }
-/* line 840, ../scss/_base.scss */
+/* line 846, ../scss/_base.scss */
 .commentlist .even {
   background: #fefefe;
 }
-/* line 855, ../scss/_base.scss */
+/* line 861, ../scss/_base.scss */
 .commentlist .vcard {
   margin-left: 50px;
 }
-/* line 858, ../scss/_base.scss */
+/* line 864, ../scss/_base.scss */
 .commentlist .vcard cite.fn {
   font-weight: 700;
   font-style: normal;
 }
-/* line 866, ../scss/_base.scss */
+/* line 872, ../scss/_base.scss */
 .commentlist .vcard time {
   float: right;
 }
-/* line 869, ../scss/_base.scss */
+/* line 875, ../scss/_base.scss */
 .commentlist .vcard time a {
   color: #999;
   text-decoration: none;
 }
-/* line 873, ../scss/_base.scss */
+/* line 879, ../scss/_base.scss */
 .commentlist .vcard time a:hover {
   text-decoration: underline;
 }
-/* line 883, ../scss/_base.scss */
+/* line 889, ../scss/_base.scss */
 .commentlist .vcard img.avatar {
   position: absolute;
   left: 10px;
@@ -1845,17 +1861,17 @@ COMMENT STYLES
   border: 1px solid #cecece;
   background: #fff;
 }
-/* line 908, ../scss/_base.scss */
+/* line 914, ../scss/_base.scss */
 .commentlist .comment_content {
   margin-left: 50px;
 }
-/* line 911, ../scss/_base.scss */
+/* line 917, ../scss/_base.scss */
 .commentlist .comment_content p {
   margin: 0.7335em 0 1.5em;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 920, ../scss/_base.scss */
+/* line 926, ../scss/_base.scss */
 .commentlist .comment-reply-link {
   text-decoration: none;
   float: right;
@@ -1867,7 +1883,7 @@ COMMENT STYLES
   font-weight: 700;
   font-size: 0.9em;
 }
-/* line 932, ../scss/_base.scss */
+/* line 938, ../scss/_base.scss */
 .commentlist .comment-reply-link:hover, .commentlist .comment-reply-link:focus {
   opacity: 1;
 }
@@ -1876,27 +1892,27 @@ COMMENT STYLES
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
-/* line 944, ../scss/_base.scss */
+/* line 950, ../scss/_base.scss */
 .respond-form {
   margin: 1.5em 10px;
   padding-bottom: 2.2em;
 }
-/* line 948, ../scss/_base.scss */
+/* line 954, ../scss/_base.scss */
 .respond-form form {
   margin: 0.75em 0;
 }
-/* line 951, ../scss/_base.scss */
+/* line 957, ../scss/_base.scss */
 .respond-form form li {
   list-style-type: none;
   clear: both;
   margin-bottom: 0.7335em;
 }
-/* line 957, ../scss/_base.scss */
+/* line 963, ../scss/_base.scss */
 .respond-form form li label,
 .respond-form form li small {
   display: none;
 }
-/* line 965, ../scss/_base.scss */
+/* line 971, ../scss/_base.scss */
 .respond-form form input[type=text],
 .respond-form form input[type=email],
 .respond-form form input[type=url],
@@ -1907,14 +1923,14 @@ COMMENT FORM STYLES
   line-height: 1.5em;
   /* form validation */
 }
-/* line 971, ../scss/_base.scss */
+/* line 977, ../scss/_base.scss */
 .respond-form form input[type=text]:focus,
 .respond-form form input[type=email]:focus,
 .respond-form form input[type=url]:focus,
 .respond-form form textarea:focus {
   background: #fff;
 }
-/* line 976, ../scss/_base.scss */
+/* line 982, ../scss/_base.scss */
 .respond-form form input[type=text]:invalid,
 .respond-form form input[type=email]:invalid,
 .respond-form form input[type=url]:invalid,
@@ -1927,14 +1943,14 @@ COMMENT FORM STYLES
   -ms-box-shadow: none;
   box-shadow: none;
 }
-/* line 989, ../scss/_base.scss */
+/* line 995, ../scss/_base.scss */
 .respond-form form input[type=text],
 .respond-form form input[type=email],
 .respond-form form input[type=url] {
   max-width: 400px;
   min-width: 250px;
 }
-/* line 994, ../scss/_base.scss */
+/* line 1000, ../scss/_base.scss */
 .respond-form form textarea {
   resize: none;
   width: 97.3%;
@@ -1943,7 +1959,7 @@ COMMENT FORM STYLES
 
 /* comment submit button */
 /* comment form title */
-/* line 1007, ../scss/_base.scss */
+/* line 1013, ../scss/_base.scss */
 #comment-form-title {
   margin: 0 0 1.1em;
 }
@@ -1951,13 +1967,13 @@ COMMENT FORM STYLES
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
-/* line 1020, ../scss/_base.scss */
+/* line 1026, ../scss/_base.scss */
 #allowed_tags {
   margin: 1.5em 10px 0.7335em 0;
 }
 
 /* no comments */
-/* line 1025, ../scss/_base.scss */
+/* line 1031, ../scss/_base.scss */
 .nocomments {
   margin: 0 20px 1.1em;
 }
@@ -1965,7 +1981,7 @@ COMMENT FORM STYLES
 /*****************************************
 FORM STYLES - Media queries included here
 ******************************************/
-/* line 1033, ../scss/_base.scss */
+/* line 1039, ../scss/_base.scss */
 .form-elements h3 span {
   background: white;
   color: #de5f02;
@@ -1975,7 +1991,7 @@ FORM STYLES - Media queries included here
   padding: 0.2em;
 }
 
-/* line 1042, ../scss/_base.scss */
+/* line 1048, ../scss/_base.scss */
 .form-elements > div {
   position: relative;
   clear: both;
@@ -1984,17 +2000,17 @@ FORM STYLES - Media queries included here
   margin: 0 0 5px 0;
 }
 
-/* line 1050, ../scss/_base.scss */
+/* line 1056, ../scss/_base.scss */
 .signup {
   margin-top: 30px;
 }
 
-/* line 1054, ../scss/_base.scss */
+/* line 1060, ../scss/_base.scss */
 .form-elements > div > fieldset > div > div {
   margin: 0 0 5px 0;
 }
 
-/* line 1058, ../scss/_base.scss */
+/* line 1064, ../scss/_base.scss */
 .form-elements > div > label,
 legend {
   width: 35%;
@@ -2002,7 +2018,7 @@ legend {
   padding: 10px;
   padding-right: 30px;
 }
-/* line 1063, ../scss/_base.scss */
+/* line 1069, ../scss/_base.scss */
 .form-elements > div > label span,
 legend span {
   background: white;
@@ -2010,25 +2026,25 @@ legend span {
   padding: 0 0.2em;
 }
 
-/* line 1070, ../scss/_base.scss */
+/* line 1076, ../scss/_base.scss */
 .form-elements > div > div:not(.token),
 .form-elements > div > fieldset > div {
   width: 65%;
   float: right;
 }
 
-/* line 1074, ../scss/_base.scss */
+/* line 1080, ../scss/_base.scss */
 .form-elements > div > fieldset label {
   font-size: 90%;
 }
 
-/* line 1077, ../scss/_base.scss */
+/* line 1083, ../scss/_base.scss */
 fieldset {
   border: 0;
   padding: 0;
 }
 
-/* line 1082, ../scss/_base.scss */
+/* line 1088, ../scss/_base.scss */
 select {
   background: url("../images/select-box-button.gif") no-repeat right white;
   border: 0;
@@ -2040,13 +2056,13 @@ select {
   text-overflow: '';
 }
 
-/* line 1093, ../scss/_base.scss */
+/* line 1099, ../scss/_base.scss */
 input[type=submit] {
   background-color: #de5f02;
   border: none;
 }
 
-/* line 1104, ../scss/_base.scss */
+/* line 1110, ../scss/_base.scss */
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -2061,7 +2077,7 @@ textarea {
   border-bottom: 1px solid #eee;
 }
 
-/* line 1116, ../scss/_base.scss */
+/* line 1122, ../scss/_base.scss */
 input[type=text],
 input[type=tel],
 input[type=email],
@@ -2072,7 +2088,7 @@ select {
   padding: 10px;
 }
 
-/* line 1126, ../scss/_base.scss */
+/* line 1132, ../scss/_base.scss */
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=tel]:focus,
@@ -2085,12 +2101,12 @@ select:focus {
 }
 
 @media (max-width: 768px) {
-  /* line 1132, ../scss/_base.scss */
+  /* line 1138, ../scss/_base.scss */
   .form-elements > div {
     margin: 0 0 15px 0;
   }
 
-  /* line 1136, ../scss/_base.scss */
+  /* line 1142, ../scss/_base.scss */
   .form-elements > div > label,
   legend {
     width: 100%;
@@ -2098,14 +2114,14 @@ select:focus {
     margin: 0 0 5px 0;
   }
 
-  /* line 1142, ../scss/_base.scss */
+  /* line 1148, ../scss/_base.scss */
   .form-elements > div > div,
   .form-elements > div > fieldset > div {
     width: 100%;
     float: none;
   }
 
-  /* line 1152, ../scss/_base.scss */
+  /* line 1158, ../scss/_base.scss */
   input[type=text],
   input[type=tel],
   input[type=email],
@@ -2117,12 +2133,12 @@ select:focus {
   }
 }
 @media (min-width: 1140px) {
-  /* line 1157, ../scss/_base.scss */
+  /* line 1163, ../scss/_base.scss */
   .form-elements > div {
     top: -62px;
   }
 
-  /* line 1161, ../scss/_base.scss */
+  /* line 1167, ../scss/_base.scss */
   .form-elements > div > label,
   legend {
     text-align: right;
@@ -2131,141 +2147,210 @@ select:focus {
 /*********************
  Tabbed Content Form
 *********************/
-/* line 1170, ../scss/_base.scss */
+/* line 1176, ../scss/_base.scss */
 .tabbed_content {
   display: none;
 }
 
-/* line 1174, ../scss/_base.scss */
+/* line 1180, ../scss/_base.scss */
 .tabbed_content.active {
   display: block;
 }
 
-/**********************
- *Active Race Profile
- **********************/
-/* line 1182, ../scss/_base.scss */
-.active-race {
-  padding-top: 20px;
-  padding-bottom: 50px;
-  text-align: center;
-}
-/* line 1186, ../scss/_base.scss */
-.active-race h2 {
-  margin-bottom: 3px;
+/*********************************************
+ *charities, active race, fundraisers info/active races
+ *********************************************/
+/* line 1187, ../scss/_base.scss */
+#info-header {
+  width: 90%;
+  margin: 0 auto;
 }
 /* line 1190, ../scss/_base.scss */
-.active-race h3 {
+#info-header #other-search {
+  text-align: center;
+  margin-left: 0;
+  width: 100%;
+  top: 20px;
+  padding-bottom: 30px;
+  z-index: 20;
+}
+/* line 1198, ../scss/_base.scss */
+#info-header #other-search input {
+  width: 86%;
+}
+/* line 1201, ../scss/_base.scss */
+#info-header #other-search input:focus {
+  width: 86%;
+}
+
+/* line 1208, ../scss/_base.scss */
+.active-race, .charities-info {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+/* line 1212, ../scss/_base.scss */
+.active-race h2, .charities-info h2 {
+  margin-bottom: 3px;
+}
+/* line 1216, ../scss/_base.scss */
+.active-race h3, .charities-info h3 {
   margin-top: 3px;
   margin-bottom: 10px;
 }
-/* line 1194, ../scss/_base.scss */
-.active-race ol {
+/* line 1220, ../scss/_base.scss */
+.active-race ol, .charities-info ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1199, ../scss/_base.scss */
-.active-race ol li {
+/* line 1225, ../scss/_base.scss */
+.active-race ol li, .charities-info ol li {
   width: 100%;
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1206, ../scss/_base.scss */
-.active-race .headings, .active-race .dates {
+/* line 1232, ../scss/_base.scss */
+.active-race .headings, .active-race .dates, .charities-info .headings, .charities-info .dates {
   display: block;
   height: 24px;
   position: relative;
   background-color: #fff;
 }
-/* line 1212, ../scss/_base.scss */
-.active-race .headings p:first-of-type, .active-race .headings time:first-of-type, .active-race .dates p:first-of-type, .active-race .dates time:first-of-type {
+/* line 1238, ../scss/_base.scss */
+.active-race .headings p:first-of-type, .active-race .headings time:first-of-type, .active-race .dates p:first-of-type, .active-race .dates time:first-of-type, .charities-info .headings p:first-of-type, .charities-info .headings time:first-of-type, .charities-info .dates p:first-of-type, .charities-info .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1219, ../scss/_base.scss */
-.active-race .headings p:last-of-type, .active-race .headings time:last-of-type, .active-race .dates p:last-of-type, .active-race .dates time:last-of-type {
+/* line 1245, ../scss/_base.scss */
+.active-race .headings p:last-of-type, .active-race .headings time:last-of-type, .active-race .dates p:last-of-type, .active-race .dates time:last-of-type, .charities-info .headings p:last-of-type, .charities-info .headings time:last-of-type, .charities-info .dates p:last-of-type, .charities-info .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1227, ../scss/_base.scss */
-.active-race .headings {
+/* line 1253, ../scss/_base.scss */
+.active-race .headings, .active-race .headings-3-col, .charities-info .headings, .charities-info .headings-3-col {
   margin-top: 0.8rem;
 }
-/* line 1231, ../scss/_base.scss */
-.active-race .dates {
+/* line 1257, ../scss/_base.scss */
+.active-race .dates, .charities-info .dates {
   margin-top: 2px;
 }
-/* line 1235, ../scss/_base.scss */
-.active-race:after {
+/* line 1261, ../scss/_base.scss */
+.active-race:after, .charities-info:after {
   content: " ";
   display: table;
   clear: both;
 }
-/* line 1241, ../scss/_base.scss */
-.active-race .btn {
+/* line 1267, ../scss/_base.scss */
+.active-race .btn, .charities-info .btn {
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-/* line 1248, ../scss/_base.scss */
+/* line 1274, ../scss/_base.scss */
 .active-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 1251, ../scss/_base.scss */
+/* line 1277, ../scss/_base.scss */
 .active-race.last-on-page .btn {
   bottom: 30px;
 }
 
-/*************************
+/*****************************************
+ *headings & results with 3 colums
+/*****************************************/
+/* line 1285, ../scss/_base.scss */
+.headings-3-col, .result-3-col {
+  margin-bottom: 2px;
+  overflow: hidden;
+}
+
+/* line 1289, ../scss/_base.scss */
+.headings-3-col p, .result-3-col p {
+  width: 33.3333333%;
+  float: left;
+  text-align: center;
+  margin: 0;
+}
+/* line 1295, ../scss/_base.scss */
+.headings-3-col p:first-of-type, .result-3-col p:first-of-type {
+  text-align: left;
+  padding-left: 1em;
+}
+/* line 1300, ../scss/_base.scss */
+.headings-3-col p:last-of-type, .result-3-col p:last-of-type {
+  text-align: right;
+  padding-right: 1em;
+}
+
+/* line 1307, ../scss/_base.scss */
+.faq {
+  border-bottom: 2px dashed #b39c7d !important;
+  padding-bottom: 10px;
+}
+/* line 1308, ../scss/_base.scss */
+.faq h2 {
+  margin-top: 30px;
+}
+/* line 1315, ../scss/_base.scss */
+.faq p {
+  margin-bottom: 0;
+  margin-top: 0.2em;
+}
+
+/* line 1320, ../scss/_base.scss */
+.question, .answer {
+  margin-bottom: 0;
+}
+
+/*********************************
  *Active Race Page / Complete Race
- *************************/
-/* line 1260, ../scss/_base.scss */
+ *********************************/
+/* line 1328, ../scss/_base.scss */
 #active-race-header, #complete-race-header {
   position: relative;
 }
-/* line 1263, ../scss/_base.scss */
+/* line 1331, ../scss/_base.scss */
 #active-race-header img, #complete-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1269, ../scss/_base.scss */
+/* line 1337, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search {
   position: absolute;
   width: 90%;
   top: 20px;
   z-index: 20;
 }
-/* line 1275, ../scss/_base.scss */
+/* line 1343, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input {
   width: 86%;
 }
-/* line 1278, ../scss/_base.scss */
+/* line 1346, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1284, ../scss/_base.scss */
+/* line 1352, ../scss/_base.scss */
 #active-race-header .info, #complete-race-header .info {
   position: absolute;
   width: 100%;
   z-index: 20;
   bottom: 0;
 }
-/* line 1291, ../scss/_base.scss */
+/* line 1359, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1298, ../scss/_base.scss */
+/* line 1366, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   display: block;
   z-index: 20;
@@ -2278,34 +2363,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1310, ../scss/_base.scss */
+/* line 1378, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1317, ../scss/_base.scss */
+/* line 1385, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1325, ../scss/_base.scss */
+/* line 1393, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1329, ../scss/_base.scss */
+/* line 1397, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1336, ../scss/_base.scss */
+/* line 1404, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1340, ../scss/_base.scss */
+/* line 1408, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2313,56 +2398,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1348, ../scss/_base.scss */
+/* line 1416, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1352, ../scss/_base.scss */
+/* line 1420, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1356, ../scss/_base.scss */
+/* line 1424, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1362, ../scss/_base.scss */
+/* line 1430, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1366, ../scss/_base.scss */
+/* line 1434, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1369, ../scss/_base.scss */
+/* line 1437, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1375, ../scss/_base.scss */
+/* line 1443, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1381, ../scss/_base.scss */
+/* line 1449, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1386, ../scss/_base.scss */
+/* line 1454, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1391, ../scss/_base.scss */
+/* line 1459, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1394, ../scss/_base.scss */
+/* line 1462, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2370,16 +2455,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1404, ../scss/_base.scss */
+/* line 1472, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1407, ../scss/_base.scss */
+/* line 1475, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1415, ../scss/_base.scss */
+/* line 1483, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2398,11 +2483,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1434, ../scss/_base.scss */
+/* line 1502, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1436, ../scss/_base.scss */
+/* line 1504, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2412,7 +2497,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1445, ../scss/_base.scss */
+/* line 1513, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2423,7 +2508,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1458, ../scss/_base.scss */
+/* line 1526, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2431,7 +2516,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1476, ../scss/_base.scss */
+/* line 1544, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2439,7 +2524,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1497, ../scss/_base.scss */
+/* line 1565, ../scss/_base.scss */
 .footer {
   clear: both;
   background: url("../images/sand-bg.gif");
@@ -3340,7 +3425,7 @@ you can add resource intensive styles.
   .sign-up {
     font-size: 30px;
     font-size: 1.875rem;
-    left: -3px;
+    left: -7px;
   }
   /* line 699, ../scss/_768up.scss */
   .sign-up a {
@@ -3398,38 +3483,41 @@ you can add resource intensive styles.
   /* line 759, ../scss/_768up.scss */
   .pic-wooden {
     background: url("../images/pic-wooden-339x294.gif") center no-repeat;
-    background-size: contain;
+    background-size: cover;
   }
   /* line 763, ../scss/_768up.scss */
   .pic-wooden img {
+    display: block;
     padding: 10%;
+    max-height: 294px;
+    margin: 0 auto;
   }
 
   /*********************
   SIDEBARS & ASIDES
   *********************/
-  /* line 774, ../scss/_768up.scss */
+  /* line 777, ../scss/_768up.scss */
   .sidebar {
     margin-top: 2.2em;
   }
 
-  /* line 778, ../scss/_768up.scss */
+  /* line 781, ../scss/_768up.scss */
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em;
   }
 
-  /* line 783, ../scss/_768up.scss */
+  /* line 786, ../scss/_768up.scss */
   .widget {
     padding: 0 10px;
     margin: 2.2em 0;
   }
-  /* line 788, ../scss/_768up.scss */
+  /* line 791, ../scss/_768up.scss */
   .widget ul li {
     margin-bottom: 0.75em;
     /* deep nesting */
   }
-  /* line 796, ../scss/_768up.scss */
+  /* line 799, ../scss/_768up.scss */
   .widget ul li ul {
     margin-top: 0.75em;
     padding-left: 1em;
@@ -3454,12 +3542,12 @@ you can add resource intensive styles.
   of overriding here if you styled them for
   mobile. Make sure to double check these!
   */
-  /* line 902, ../scss/_768up.scss */
+  /* line 905, ../scss/_768up.scss */
   .footer {
     background: url("../images/footer-bg.jpg") center repeat-x;
   }
 
-  /* line 907, ../scss/_768up.scss */
+  /* line 910, ../scss/_768up.scss */
   .footer-links ul li {
     /*
     be careful with the depth of your menus.
@@ -3472,22 +3560,22 @@ you can add resource intensive styles.
   /**********************
    *Active Race Profile
    **********************/
-  /* line 925, ../scss/_768up.scss */
+  /* line 928, ../scss/_768up.scss */
   .active-race {
     text-align: left;
     padding-top: 0;
     padding-bottom: 0;
   }
-  /* line 930, ../scss/_768up.scss */
+  /* line 933, ../scss/_768up.scss */
   .active-race .btn {
     bottom: 30px;
   }
 
-  /* line 935, ../scss/_768up.scss */
+  /* line 938, ../scss/_768up.scss */
   .active-race.last-on-page, .create-race.last-on-page {
     padding-bottom: 80px;
   }
-  /* line 938, ../scss/_768up.scss */
+  /* line 941, ../scss/_768up.scss */
   .active-race.last-on-page .btn, .create-race.last-on-page .btn {
     bottom: 110px;
   }
@@ -3495,13 +3583,13 @@ you can add resource intensive styles.
   /*************************
    *Active Race Page
    *************************/
-  /* line 947, ../scss/_768up.scss */
+  /* line 950, ../scss/_768up.scss */
   #active-race-header, #complete-race-header {
     max-width: 1027px;
     padding: 0;
     margin: 0 auto;
   }
-  /* line 952, ../scss/_768up.scss */
+  /* line 955, ../scss/_768up.scss */
   #active-race-header:after, #complete-race-header:after {
     display: block;
     position: absolute;
@@ -3514,14 +3602,14 @@ you can add resource intensive styles.
     background: url("../images/active-race-image-frame.png") center no-repeat;
     background-size: contain;
   }
-  /* line 969, ../scss/_768up.scss */
+  /* line 972, ../scss/_768up.scss */
   #active-race-header .btn, #complete-race-header .btn {
     font-size: 36px;
     font-size: 2.25rem;
     left: 100px;
     bottom: -50px;
   }
-  /* line 976, ../scss/_768up.scss */
+  /* line 979, ../scss/_768up.scss */
   #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
     width: 200px;
     height: 24px;
@@ -3530,17 +3618,17 @@ you can add resource intensive styles.
     left: 280px;
   }
 
-  /* line 986, ../scss/_768up.scss */
+  /* line 989, ../scss/_768up.scss */
   #complete-race-header .headings, #complete-race-header .dates {
     left: 100px;
   }
 
-  /* line 991, ../scss/_768up.scss */
+  /* line 994, ../scss/_768up.scss */
   #race-data .leaderboard {
     margin-bottom: 100px;
   }
 
-  /* line 995, ../scss/_768up.scss */
+  /* line 998, ../scss/_768up.scss */
   #profile-excerpt {
     position: relative;
     font-size: 80%;
@@ -3549,12 +3637,12 @@ you can add resource intensive styles.
     background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
     background-size: contain;
   }
-  /* line 1003, ../scss/_768up.scss */
+  /* line 1006, ../scss/_768up.scss */
   #profile-excerpt .profile-view {
     text-align: center;
   }
 
-  /* line 1010, ../scss/_768up.scss */
+  /* line 1013, ../scss/_768up.scss */
   .winner {
     top: -80px;
   }
@@ -3562,29 +3650,39 @@ you can add resource intensive styles.
   /*************************
    *Create Race Page
    *************************/
-  /* line 1018, ../scss/_768up.scss */
+  /* line 1021, ../scss/_768up.scss */
   #create-race-header {
     margin-top: -80px;
   }
-  /* line 1021, ../scss/_768up.scss */
+  /* line 1024, ../scss/_768up.scss */
   #create-race-header h1 {
     margin-bottom: 60px;
   }
-  /* line 1025, ../scss/_768up.scss */
+  /* line 1028, ../scss/_768up.scss */
   #create-race-header #tab_control {
     margin-top: 20px;
     margin-bottom: 30px;
   }
 
-  /* line 1031, ../scss/_768up.scss */
+  /* line 1034, ../scss/_768up.scss */
   .token {
     text-align: centre;
   }
 
-  /* line 1035, ../scss/_768up.scss */
+  /* line 1038, ../scss/_768up.scss */
   .continue {
     margin-top: 30px;
     margin-bottom: 120px !important;
+  }
+
+  /* line 1045, ../scss/_768up.scss */
+  .faq {
+    padding-bottom: 30px;
+  }
+  /* line 1048, ../scss/_768up.scss */
+  .faq:last-child {
+    border-bottom: none !important;
+    padding-bottom: 70px;
   }
 }
 /*

@@ -11,7 +11,7 @@ Template Name: Races
                     
                     <div class="inner-slider wrap">
                             <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/Logo-Wooden.gif" alt="" />
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                     </div>
                     
@@ -133,7 +133,7 @@ Template Name: Races
 			<div class="inner-container wrap clearfix">
 				<div class="active-race">
 					<div class="fourcol first pic-wooden">
-						<img src="<?php echo site_url(); ?>{image}" width="200"/>
+						<img src="<?php echo site_url(); ?>{image}" />
 					</div>
 					<div class="fivecol">
 						<div><h2 class="highlight">{raceName}</h2></div>
