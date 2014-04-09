@@ -64,7 +64,7 @@
 							
 							/** Note: Set the GET field BEFORE calling buildOauth(); **/
 								    $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-								    $getfield = '?screen_name=Race2F&count=3&include_entities=true';
+								    $getfield = '?screen_name=Race2Fundraise&count=3&include_entities=true';
 								    $requestMethod = 'GET';
 								    $twitter = new TwitterAPIExchange($settings);
 								    $result = json_decode($twitter->setGetfield($getfield)
