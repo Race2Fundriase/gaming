@@ -298,4 +298,13 @@ function custom_login() {
 
 add_action('login_head', 'custom_login');
 
+function loginpage_custom_link() {
+	return 'http://race2fundraise.com';
+}
+add_filter('login_headerurl','loginpage_custom_link');
+
+function change_title_on_logo() {
+	return 'R2F - Join The Race To Fundraise';
+}
+add_filter('login_headertitle', 'change_title_on_logo');
 ?>
