@@ -131,6 +131,7 @@ function bones_scripts_and_styles() {
 	
 		wp_register_script( 'responsiveslides-script', get_stylesheet_directory_uri() . '/library/js/responsiveslides.min.js', array(), '', true );
 		
+		wp_register_script('responsivetable-script', get_stylesheet_directory_uri() . '/library/js/responsive-tables.js', array('jquery'), '', true);
 		// homepage
 		wp_register_script( 'bones-home', get_stylesheet_directory_uri() . '/library/js/home.js', array('responsiveslides-script'), '', true );
 		
@@ -159,6 +160,7 @@ function bones_scripts_and_styles() {
 		// responsive slider style sheet
 		wp_register_style('responsiveslides-css', get_stylesheet_directory_uri() . '/library/css/responsiveslides.css', array(), '' );
 		
+		wp_register_style('responsivetable-css', get_stylesheet_directory_uri() . '/library/css/responsive-tables.css', array(), '');
 		// comment reply script for threaded comments
 		if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
 			wp_enqueue_script( 'comment-reply' );
@@ -202,6 +204,11 @@ function bones_scripts_and_styles() {
 		
 		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')) {
 			wp_enqueue_script('create-race');
+		}
+		
+		if (is_page_template('pagetemplate-completerace.php')) {
+			wp_enqueue_script('responsivetable-script');
+			wp_enqueue_style('responsivetable-css');
 		}
 		
 		$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet

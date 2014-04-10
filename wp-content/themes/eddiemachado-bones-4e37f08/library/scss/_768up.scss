@@ -18,7 +18,7 @@ GENERAL STYLES
 *********************/
 
 body {
-
+ 
 }
 
 .thumb {
@@ -129,7 +129,7 @@ LAYOUT & GRID STYLES
 		bottom:0;
 		content:"";
 		z-index:-1;
-		background: url('../images/footer-bg.jpg') center bottom repeat-x;
+		background: url('../images/footer-bg.jpg') center 14px repeat-x;
 		height:170px;
 	}
 }
@@ -555,7 +555,7 @@ NAVIGATION STYLES
 footer .nav {
 	display:block;
 	margin:0;
-	height:157px;
+	height:155px;
 	text-shadow: 1px 2px 5px #444;
 }
 .nav {

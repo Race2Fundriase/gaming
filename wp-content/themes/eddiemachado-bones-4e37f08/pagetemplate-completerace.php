@@ -96,7 +96,7 @@ Template Name: Complete Race
                             <div class="leaderboard clearfix">
                                 <div><h3 class="highlight">Leaderboard</h3></div>
                               
-                                <table>
+                                <table class="responsive">
                                     <thead>
                                         <tr>
                                         <th>No.</th>
