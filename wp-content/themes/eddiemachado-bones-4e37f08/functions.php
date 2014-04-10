@@ -292,4 +292,10 @@ function getFeaturedVideo($post_id, $width = 680, $height = 360) {
 
 require_once( 'functions-game.php' );
 
+function custom_login() {
+	echo'<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/library/css/custom-login.css"/>';
+}
+
+add_action('login_head', 'custom_login');
+
 ?>
