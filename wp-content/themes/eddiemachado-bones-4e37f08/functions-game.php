@@ -1085,6 +1085,8 @@ function r2f_action_get_races()
 	$limit = $_POST['rows']; // get how many rows we want to have into the grid	
 	$sidx = $_POST['sidx']; // get index row - i.e. user click to sort
 	$sord = $_POST['sord'];
+	$raceStatus = $_POST['raceStatus'];
+	
 	if(!$sidx) $sidx =1;
 	if(!$page) $page = 1;
 	if(!$start) $start = 0;
@@ -1100,7 +1102,7 @@ function r2f_action_get_races()
 		
 	$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
-				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races`");
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races` where raceStatus = $raceStatus");
 			
 	$count = count($queryResult);
 	if( $count >0 ) {
@@ -1114,7 +1116,7 @@ function r2f_action_get_races()
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
-				join `r2f_maps` ON mapId = `r2f_maps`.id
+				join `r2f_maps` ON mapId = `r2f_maps`.id where raceStatus = $raceStatus
 				LIMIT $start, $limit");
 	//print_r($wpdb->last_error);
 	$responce->page = $page;
@@ -1819,7 +1821,7 @@ function r2f_action_get_leaderboard()
 	
 	if ($rows) {
 		$result["error"] = "";
-		$result["message"] = "race characters found.";
+		$result["message"] = "race leaderboard found.";
 		
 		for ($i=0;$i<count($rows);$i++) {
 			if ($rows[$i]->playerName == "")
@@ -1834,6 +1836,125 @@ function r2f_action_get_leaderboard()
 		$result["message"] = "There was a problem getting the leaderboard";
 	}
 	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
+function r2f_action_token_login()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$username = $_POST["username"];
+	$password = $_POST["password"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $raceId;
+	
+	// Validate params
+	if ($username == "" || $password == "") $result["error"] .= "You must supply a username and password.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	$creds = array();
+	$creds['user_login'] = $username;
+	$creds['user_password'] = $password;
+	$creds['remember'] = true;
+	$user = wp_signon( $creds, false );
+	if ( is_wp_error($user) )
+		$result["error"] = $user->get_error_message();
+	
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_token_register()
+{
+	global $wpdb;
+	
+	// Check security
+	
+	// Get Params
+	$name = $_POST["name"];
+	$profile_name = $_POST["profileName"];
+	$email = $_POST["email"];
+	$building_no_or_name = $_POST["building_no_or_name"];
+	$road_name = $_POST["road"];
+	$town_city = $_POST["city"];
+	$county = $_POST["county"];
+	$postcode = $_POST["postcode"];
+	$country = $_POST["country"];
+	$choosePassword = $_POST["choosePassword"];
+	$confirmPassword = $_POST["confirmPassword"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($profile_name == "") {
+		$result["error"] .= "You must enter a profile name.";
+	}
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	$user_login = $profile_name;
+	$user_email = $email;
+	//$errors = register_new_user($user_login, $user_email);
+	
+	$user_id = username_exists( $user_name );
+	if ( !$user_id and email_exists($user_email) == false ) {
+		$user_id = wp_create_user( $user_login, $password, $user_email );
+	} else {
+		$result["error"] = 'User already exists.';
+		$result["message"] = 'User already exists.';
+	}
+	
+	if ( is_wp_error($user_id) ) {
+		$result["message"] = "There was an error registering the user $profile_name with email $email.";
+		$result["error"] = $user_id->get_error_message();
+	} else {
+		$result["message"] = "User $profile_name with email $email registered OK.";
+		
+		// add extra fields
+		
+		add_user_meta( $user_id, 'first_name', $name);
+		add_user_meta( $user_id, 'profile_name', $profile_name);
+		add_user_meta( $user_id, 'building_no_or_name', $building_no_or_name);
+		add_user_meta( $user_id, 'road_name', $road_name);
+		add_user_meta( $user_id, 'town_city', $town_city);
+		add_user_meta( $user_id, 'county', $county);
+		add_user_meta( $user_id, 'postcode', $postcode);
+		add_user_meta( $user_id, 'country', $country);
+		
+		$creds = array();
+		$creds['user_login'] = $user_login;
+		$creds['user_password'] = $password;
+		$creds['remember'] = true;
+		$user = wp_signon( $creds, false );
+		
+	}
+		
 	// Return result
 	echo json_encode($result);
 	
@@ -1903,6 +2024,13 @@ add_action('wp_ajax_nopriv_r2f_action_get_leaderboard', 'r2f_action_get_leaderbo
 
 add_action('wp_ajax_r2f_action_upsert_racecharactersScore', 'r2f_action_upsert_racecharactersScore');
 add_action('wp_ajax_nopriv_r2f_action_upsert_racecharactersScore', 'r2f_action_upsert_racecharactersScore');
+
+add_action('wp_ajax_r2f_action_token_login', 'r2f_action_token_login');
+add_action('wp_ajax_nopriv_r2f_action_token_login', 'r2f_action_token_login');
+
+add_action('wp_ajax_r2f_action_token_register', 'r2f_action_token_register');
+add_action('wp_ajax_nopriv_r2f_action_token_register', 'r2f_action_token_register');
+
 
 function modify_contact_methods($profile_fields) {
 

@@ -116,6 +116,10 @@ jQuery(document).ready
 			return false;
 		} );
 		
+		jQuery("#startDate,#finishDate").change(function(e) {
+			// Build weather grid (and populate if it's already got data)
+			
+		});
 	}
 );
 

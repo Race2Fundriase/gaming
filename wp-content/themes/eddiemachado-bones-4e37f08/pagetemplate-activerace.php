@@ -51,7 +51,9 @@ Template Name: Active Race
                             <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
                             <div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
                         </div>
-                        <img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />
+                        <!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
+						<div id="paperParentAR">
+						</div>
                     </div>
                 </div> 
 	    </div>
@@ -104,8 +106,6 @@ Template Name: Active Race
                     </aside>
                 </div>
             </div>
-			<div id="paperParentAR" class="boxShadow">
-			</div>
 			<div id="scaleSlider">
 				<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
 				<div class="status">

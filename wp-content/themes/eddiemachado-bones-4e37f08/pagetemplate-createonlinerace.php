@@ -120,6 +120,11 @@ Template Name: Create Online Race
 					    <input id="finishDate" name="finishDate" type="text" tabindex="13"/>
 					    </div>
 					</div>
+					<div id="weatherGrid">
+					<div><label for="weatherDay1"><span>Weather Factor Day 1</span></label><div><input id="weatherDay1" name="weatherDay1" type="text" size="10"/></div></div>
+					<div><label for="weatherDay2"><span>Weather Factor Day 2</span></label><div><input id="weatherDay2" name="weatherDay2" type="text" size="10"/></div></div>
+
+					</div>
 					<div>
 					    <label for="entryPrice"><span>Entry Price</span></label>
 					    <div>

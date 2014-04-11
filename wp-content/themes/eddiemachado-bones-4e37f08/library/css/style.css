@@ -3931,16 +3931,15 @@ label {
 
 /* line 76, ../scss/_game.scss */
 #paperParentAR {
-  position: absolute;
-  left: 500px;
-  top: 1650px;
-  width: 700px;
-  height: 600px;
+  position: relative;
+  left: 0;
+  top: 0;
   overflow: scroll;
-  z-index: 1000;
+  width: 100%;
+  height: 400px;
 }
 
-/* line 86, ../scss/_game.scss */
+/* line 85, ../scss/_game.scss */
 #mapDataGrid {
   position: relative;
   width: 800px;
@@ -3949,22 +3948,22 @@ label {
   margin-right: auto;
 }
 
-/* line 94, ../scss/_game.scss */
+/* line 93, ../scss/_game.scss */
 #tokenOffsetResults {
   text-align: center;
 }
 
-/* line 98, ../scss/_game.scss */
+/* line 97, ../scss/_game.scss */
 .nav li.logged-in-nav {
   display: none;
 }
 
-/* line 102, ../scss/_game.scss */
+/* line 101, ../scss/_game.scss */
 body.logged-in .nav li.logged-in-nav {
   display: list-item;
 }
 
-/* line 106, ../scss/_game.scss */
+/* line 105, ../scss/_game.scss */
 #paperParent1 {
   position: absolute;
   left: 400px;
@@ -3974,39 +3973,39 @@ body.logged-in .nav li.logged-in-nav {
   overflow: scroll;
 }
 
-/* line 115, ../scss/_game.scss */
+/* line 114, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 121, ../scss/_game.scss */
+/* line 120, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 127, ../scss/_game.scss */
+/* line 126, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 132, ../scss/_game.scss */
+/* line 131, ../scss/_game.scss */
 #racesDataGrid th {
   background-color: green;
   color: white;
 }
 
-/* line 137, ../scss/_game.scss */
+/* line 136, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 142, ../scss/_game.scss */
+/* line 141, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;

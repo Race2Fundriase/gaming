@@ -60,71 +60,10 @@ Template Name: Races
         
         <div class="tabbed_content">
             
-        <section><!--Finished Races-->
-            <div class="container grit bot-bg bot-bg-alt clearfix">
-                <div class="inner-container wrap clearfix">
-                    <div class="active-race">
-                        <div class="fourcol first pic-wooden">
-                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-test-image-283x214.jpg"/>
-                        </div>
-                        <div class="fivecol">
-                            <div><h2 class="highlight">Thomas Miller Investment</h2></div>
-                            <div><h3 class="highlight">Chauncy Maples Malawi Trust</h3></div>
-                           
-                              
-                            <div class="headings"><p class="highlight">Leaderboard</p><p class="highlight">Race Map: <span class="map">North Pole</span></p></div>
-                              
-                            <ol class="highlight">
-                                <li>Tom</li>
-                                <li>Steve</li>
-                                <li>Bob</li>
-                                <li>Gary</li>
-                                <li>Aaron</li>
-                            </ol>
-                              
-                           
-                        </div>
-                        <div class="threecol last">
-                            <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-                            <div class="dates"><time class="highlight">08/08/13</time><time class="highlight">15/08/13</time></div>
-                        </div>
-                       <a class="btn small right" href="#">View More</a>
-                    </div>
-                </div>
-            </div>
+        <section id="raceResultsFinished"><!--Active Races-->
             
-            <div class="container grit bot-bg top-bg-alt clearfix">
-                <div class="inner-container wrap clearfix">
-                    <div class="active-race last-on-page">
-                        <div class="fourcol first pic-wooden">
-                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-test-image-283x214.jpg"/>
-                        </div>
-                        <div class="fivecol">
-                            <div><h2 class="highlight">Thomas Miller Investment</h2></div>
-                            <div><h3 class="highlight">Chauncy Maples Malawi Trust</h3></div>
-                           
-                              
-                            <div class="headings"><p class="highlight">Leaderboard</p><p class="highlight">Race Map: <span class="map">North Pole</span></p></div>
-                              
-                            <ol class="highlight">
-                                <li>Tom</li>
-                                <li>Steve</li>
-                                <li>Bob</li>
-                                <li>Gary</li>
-                                <li>Aaron</li>
-                            </ol>
-                              
-                           
-                        </div>
-                        <div class="threecol last">
-                            <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-                            <div class="dates"><time class="highlight">08/08/13</time><time class="highlight">15/08/13</time></div>
-                        </div>
-                        <a class="btn small right" href="#">View More</a>
-                    </div>
-                </div>
-            </div>
-            </section>
+            
+        </section>
             </div><!--End of tab-->
         </div><!--End Tabs-->
 		
@@ -132,8 +71,8 @@ Template Name: Races
 		<div class="container grit bot-bg bot-bg-alt clearfix">
 			<div class="inner-container wrap clearfix">
 				<div class="active-race">
-					<div class="fourcol first pic-wooden">
-						<img src="<?php echo site_url(); ?>{image}" width="200"/>
+					<div class="fourcol first pic-wooden" style="overflow: hidden; padding: 25px; height: 400px">
+						<img src="<?php echo site_url(); ?>{image}" style="height: 300px"/>
 					</div>
 					<div class="fivecol">
 						<div><h2 class="highlight">{raceName}</h2></div>
