@@ -184,7 +184,7 @@ function add_login_out_item_to_menu( $items, $args ){
 	
 	$new_links = array();
 	
-	if (is_front_page() ) {
+	/* if (is_front_page() ) {
 	$item = array(
 		'title' => 'Sign up',
 		'menu_item_parent' => 0,
@@ -193,7 +193,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		'url' => '/join',
 		'classes' => 'menu-item sign-up'
 		      );
-	} else {
+	} else { */
 	 $item = array(
 		'title' => 'Enter Now',
 		'menu_item_parent' => 0,
@@ -202,7 +202,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		'url' => '/races',
 		'classes' => 'menu-item sign-up'
 		      );
-	}
+	// }
 	$new_links[] = (object) $item;
 	unset ($item);
 	
@@ -292,4 +292,19 @@ function getFeaturedVideo($post_id, $width = 680, $height = 360) {
 
 require_once( 'functions-game.php' );
 
+function custom_login() {
+	echo'<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/library/css/custom-login.css"/>';
+}
+
+add_action('login_head', 'custom_login');
+
+function loginpage_custom_link() {
+	return 'http://race2fundraise.com';
+}
+add_filter('login_headerurl','loginpage_custom_link');
+
+function change_title_on_logo() {
+	return 'R2F - Join The Race To Fundraise';
+}
+add_filter('login_headertitle', 'change_title_on_logo');
 ?>

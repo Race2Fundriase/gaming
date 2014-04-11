@@ -20,6 +20,8 @@ body {
 	font-size: 100%;
 	line-height: 1.5;
 	color: #565656;
+	background: #000;
+	background-image:url('../images/grit-bg.jpg');
 }
 
 img {
@@ -65,12 +67,16 @@ style a page via class
 .archive {}                       /* archive page */
 .date {}                          /* date archive page */
 	.date-paged-1 {}                /* replace the number to the corresponding page number */
-.search {}                        /* search page */
+.search {
+	color: $white;
+	}                        /* search page */
 	.search-results {}              /* search result page */
 	.search-no-results {}           /* no results search page */
 	.search-paged-1 {}              /* individual paged search (i.e. body.search-paged-3) */
 .error404 {}                      /* 404 page */
-.single {}                        /* single post page */
+.single {
+	color:$white;
+	}                        /* single post page */
 	.postid-1 {}                    /* individual post page by id (i.e. body.postid-73) */
 	.single-paged-1 {}              /* individual paged single (i.e. body.single-paged-3) */
 .attachment {}                    /* attatchment page */
@@ -102,6 +108,11 @@ LAYOUT & GRID STYLES
 	overflow:hidden;
 }
 
+.lt-ie9 {
+	.wrap {
+		width:1140px;
+	}
+}
 .wrap {
 	width: 96%;
 	margin: 0 auto !important;
@@ -202,9 +213,10 @@ LAYOUT & GRID STYLES
 	}
 	
 #logo.secondary {
-	width:245px;
+	width:200px;
 	max-height: 100%;
 	margin:0 auto;
+	z-index: 20;
 }
 
 #nobtn-search, #other-search {
@@ -708,7 +720,8 @@ PAGE NAVI STYLES
 	margin: 1.1em 0 2.2em;
 }
 	.pagination{
-        text-align: center;
+	margin-top: 30px;
+        color: $black;
         ul {
             display: inline-block;
             white-space: nowrap;
@@ -731,13 +744,18 @@ PAGE NAVI STYLES
                     padding: .5em;
                     min-width: 1em;
                     display: block;
+		    color: $black;
                 }
                 span.current{
-                	font-weight: bold;
+                	background: $white;
+			color:$orange;
                 }
                 a:hover, a:focus {
-                    
+                    color:$orange;
                 }
+		.next, .prev {
+			background: $white;
+		}
             }
         }
     } /* end .bones_page_navi */
@@ -1154,6 +1172,11 @@ select:focus {
   }
 }
 @media (min-width: 1140px) {
+	
+  #respond .form-elements > div {
+	top:0px;	
+  }
+  
   .form-elements > div {
 	top:-62px;
   }
@@ -1175,14 +1198,34 @@ select:focus {
 	display: block;
 }
 
-/**********************
- *Active Race Profile
- **********************/
+/*********************************************
+ *charities, active race, fundraisers info/active races
+ *********************************************/
+#info-header {
+	width:90%;
+	margin:0 auto;
+	#other-search {
+		text-align: center;
+		margin-left: 0;
+		width:100%;
+		top:20px;
+		padding-bottom: 30px;
+		z-index: 20;
+		
+		input {
+			width:86%;
+			
+			&:focus {
+				width:86%;
+			}
+		}
+	}
+}
 
-.active-race {
+.active-race, .charities-info {
 	padding-top: 20px;
 	padding-bottom: 50px;
-	text-align: center;
+	//text-align: center;
 	h2 {
 		margin-bottom: 3px;
 	}
@@ -1224,7 +1267,7 @@ select:focus {
 		}
 	}
 	
-	.headings {
+	.headings, .headings-3-col {
 		margin-top: 0.8rem;
 	}
 	
@@ -1253,9 +1296,51 @@ select:focus {
 		}
 	}
 
-/*************************
+/*****************************************
+ *headings & results with 3 colums
+/*****************************************/
+.headings-3-col, .result-3-col  {
+	margin-bottom: 2px;
+	overflow: hidden;
+}
+.headings-3-col p, .result-3-col p {
+	width:33.3333333%;
+	float: left;
+	text-align: center;
+	margin: 0;
+	
+	&:first-of-type {
+		text-align: left;
+		padding-left: 1em;
+	}
+	
+	&:last-of-type {
+		text-align: right;
+		padding-right: 1em;
+	}
+}
+
+// Faq Page
+.faq {
+	h2 {
+		margin-top:30px;	
+	}
+	
+	border-bottom: 2px dashed #b39c7d !important;
+	padding-bottom: 10px;
+	
+	p {
+	margin-bottom: 0;
+	margin-top:0.2em;
+	}
+}
+.question, .answer {
+	margin-bottom: 0;
+}
+
+/*********************************
  *Active Race Page / Complete Race
- *************************/
+ *********************************/
 
 #active-race-header, #complete-race-header {
 	position:relative;
@@ -1495,6 +1580,7 @@ FOOTER STYLES
 *********************/
 
 .footer {
+	position: relative;
 	clear: both;
 	background: url('../images/sand-bg.gif');
 }
@@ -1519,7 +1605,13 @@ FOOTER STYLES
 	} /* end .footer-links */
 
 
-	.copyright {}
+	.copyright {
+		font-size: 0.8em;
+		color:#fff;
+		position: absolute;
+		right:10px;
+		bottom:-10px;
+	}
 
 
 	

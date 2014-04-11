@@ -5,6 +5,8 @@
 					<nav role="navigation">
 							<?php bones_footer_links(); ?>
 					</nav>
+					
+					<p class="copyright">Copyright Race2LTD - 08911930 2014</p>
 
 				</div>
 

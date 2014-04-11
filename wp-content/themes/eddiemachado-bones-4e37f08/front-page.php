@@ -4,11 +4,11 @@
 					<ul class="rslides">
 						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide1.jpg" alt=""/></li>
 						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide2.jpg" alt=""/></li>
-						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide3.jpg" alt=""/></li>
+						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide3a.jpg" alt=""/></li>
 					</ul>
 					<div class="inner-slider">
 						<div id="logo">
-							<img src="<?php echo get_template_directory_uri(); ?>/library/images/Logo-Wooden.gif" alt="" />
+							<img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
 						</div>
 					</div>
 					<div class="enter-race">
@@ -22,18 +22,24 @@
 			<div class="container bot-bg pad-top sand">
 				<div class="inner-container wrap clearfix">
 					<div class="fourcol first text-center">
+						<a href="#">
 						<span class="circle-image start-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Start a race"/></span>
-						<h2 class="highlight">Start A Race</h2><br/>
+						<h2 class="highlight">Create A Race</h2><br/>
+						<a/>
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 					</div>
 					<div class="fourcol text-center">
+						<a href="http://race2fundraise.com/join/">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
-						<h2 class="highlight">Enter A Race</h2><br/>
+						<h2 class="highlight">Sign Up</h2><br/>
+						</a>
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 					</div>
 					<div class="fourcol text-center">
+						<a href="http://race2fundraise.com/charities/">
 						<span class="circle-image our-members"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Our members"/></span>
 						<h2 class="highlight">Our Members</h2><br/>
+						</a>
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 					</div>
 				</div>
@@ -57,7 +63,7 @@
 							
 							/** Note: Set the GET field BEFORE calling buildOauth(); **/
 								    $url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-								    $getfield = '?screen_name=design_spin&count=3&include_entities=true';
+								    $getfield = '?screen_name=Race2Fundraise&count=3&include_entities=true';
 								    $requestMethod = 'GET';
 								    $twitter = new TwitterAPIExchange($settings);
 								    $result = json_decode($twitter->setGetfield($getfield)
@@ -92,7 +98,7 @@
 						    ?>
 					</div>
 					<div class="sixcol wooden text-center">
-						<h2 class="highlight">Testimonials</h2>
+						<h2 class="highlight">Video Placeholder</h2>
 						<div class="video-container">
 						   <?php echo getFeaturedVideo($post->ID); ?>
 						</div>

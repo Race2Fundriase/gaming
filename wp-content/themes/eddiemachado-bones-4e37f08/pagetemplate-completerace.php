@@ -12,7 +12,7 @@ Template Name: Complete Race
                     
                     <div class="inner-slider wrap">
                             <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/Logo-Wooden.gif" alt="" />
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                     </div>
                     
@@ -96,7 +96,7 @@ Template Name: Complete Race
                             <div class="leaderboard clearfix">
                                 <div><h3 class="highlight">Leaderboard</h3></div>
                               
-                                <table>
+                                <table class="responsive">
                                     <thead>
                                         <tr>
                                         <th>No.</th>

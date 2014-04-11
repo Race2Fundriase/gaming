@@ -64,7 +64,7 @@ $btn-blue:	    #3a8ed4;
 $bones-pink:        #f01d4f;
 $bones-blue:        #1990db;
 
-$link-color:        $white;
+$link-color:        $orange;
 $link-hover:        darken($link-color, 9%);
 
 
@@ -256,6 +256,14 @@ TAB CONTROL
 .tab_control {
   display:table;
   margin:0 auto;
+  
+  a, a:visited {
+    color: $white;
+  
+    &:hover, &:focus {color:$white;}
+  }
+  
+  
   li:first-of-type a {
     border-radius:15px 0px 0px 15px;
   }
@@ -356,6 +364,10 @@ TAB CONTROL
 
 .highlight {
   background:$white;
+  color:$orange;
+}
+
+.highlight a {
   color:$orange;
 }
 

@@ -234,34 +234,42 @@ TAB CONTROL
   display: table;
   margin: 0 auto;
 }
-/* line 259, ../scss/_mixins.scss */
+/* line 260, ../scss/_mixins.scss */
+.tab_control a, .tab_control a:visited {
+  color: white;
+}
+/* line 263, ../scss/_mixins.scss */
+.tab_control a:hover, .tab_control a:focus, .tab_control a:visited:hover, .tab_control a:visited:focus {
+  color: white;
+}
+/* line 267, ../scss/_mixins.scss */
 .tab_control li:first-of-type a {
   border-radius: 15px 0px 0px 15px;
 }
-/* line 263, ../scss/_mixins.scss */
+/* line 271, ../scss/_mixins.scss */
 .tab_control li:last-of-type a {
   border-radius: 0px 15px 15px 0px;
 }
-/* line 267, ../scss/_mixins.scss */
+/* line 275, ../scss/_mixins.scss */
 .tab_control li {
   float: left;
 }
-/* line 269, ../scss/_mixins.scss */
+/* line 277, ../scss/_mixins.scss */
 .tab_control li a {
   border-radius: 0px;
 }
 
-/* line 275, ../scss/_mixins.scss */
+/* line 283, ../scss/_mixins.scss */
 .tab_control.left {
   float: left;
 }
 
-/* line 279, ../scss/_mixins.scss */
+/* line 287, ../scss/_mixins.scss */
 .button, .button:visited {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border: 1px solid #dedede;
-  border-top-color: #ededed;
-  border-left-color: #ededed;
+  border: 1px solid #9c4301;
+  border-top-color: #bb5002;
+  border-left-color: #bb5002;
   padding: 4px 12px;
   color: white;
   display: inline-block;
@@ -273,37 +281,37 @@ TAB CONTROL
   margin-bottom: 20px;
   line-height: 21px;
   border-radius: 4px;
-  background-color: #f2f2f2;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, white, #f2f2f2);
-  background-image: -moz-linear-gradient(top, white, #f2f2f2);
-  background-image: -o-linear-gradient(top, white, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-}
-/* line 298, ../scss/_mixins.scss */
-.button:hover, .button:focus, .button:visited:hover, .button:visited:focus {
-  color: white;
-  border: 1px solid #dedede;
-  border-top-color: #cccccc;
-  border-left-color: #cccccc;
-  background-color: #e6e6e6;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e6e6e6));
-  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
-  background-image: -moz-linear-gradient(top, #f2f2f2, #e6e6e6);
-  background-image: -o-linear-gradient(top, #f2f2f2, #e6e6e6);
-  background-image: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+  background-color: #c55402;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#de5f02), to(#c55402));
+  background-image: -webkit-linear-gradient(top, #de5f02, #c55402);
+  background-image: -moz-linear-gradient(top, #de5f02, #c55402);
+  background-image: -o-linear-gradient(top, #de5f02, #c55402);
+  background-image: linear-gradient(to bottom, #de5f02, #c55402);
 }
 /* line 306, ../scss/_mixins.scss */
+.button:hover, .button:focus, .button:visited:hover, .button:visited:focus {
+  color: white;
+  border: 1px solid #9c4301;
+  border-top-color: #793401;
+  border-left-color: #793401;
+  background-color: #ab4902;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#c55402), to(#ab4902));
+  background-image: -webkit-linear-gradient(top, #c55402, #ab4902);
+  background-image: -moz-linear-gradient(top, #c55402, #ab4902);
+  background-image: -o-linear-gradient(top, #c55402, #ab4902);
+  background-image: linear-gradient(to bottom, #c55402, #ab4902);
+}
+/* line 314, ../scss/_mixins.scss */
 .button:active, .button:visited:active {
-  background-color: white;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(white));
-  background-image: -webkit-linear-gradient(top, #f2f2f2, white);
-  background-image: -moz-linear-gradient(top, #f2f2f2, white);
-  background-image: -o-linear-gradient(top, #f2f2f2, white);
-  background-image: linear-gradient(to bottom, #f2f2f2, #ffffff);
+  background-color: #de5f02;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#c55402), to(#de5f02));
+  background-image: -webkit-linear-gradient(top, #c55402, #de5f02);
+  background-image: -moz-linear-gradient(top, #c55402, #de5f02);
+  background-image: -o-linear-gradient(top, #c55402, #de5f02);
+  background-image: linear-gradient(to bottom, #c55402, #de5f02);
 }
 
-/* line 311, ../scss/_mixins.scss */
+/* line 319, ../scss/_mixins.scss */
 .blue-button, .blue-button:visited {
   border-color: #1472ad;
   text-shadow: 0 1px 1px #1472ad;
@@ -315,7 +323,7 @@ TAB CONTROL
   background-image: linear-gradient(to bottom, #1990db, #1681c4);
   box-shadow: inset 0 0 3px #59b3ec;
 }
-/* line 317, ../scss/_mixins.scss */
+/* line 325, ../scss/_mixins.scss */
 .blue-button:hover, .blue-button:focus, .blue-button:visited:hover, .blue-button:visited:focus {
   border-color: #116396;
   background-color: #1472ad;
@@ -325,7 +333,7 @@ TAB CONTROL
   background-image: -o-linear-gradient(top, #1784c9, #1472ad);
   background-image: linear-gradient(to bottom, #1784c9, #1472ad);
 }
-/* line 321, ../scss/_mixins.scss */
+/* line 329, ../scss/_mixins.scss */
 .blue-button:active, .blue-button:visited:active {
   background-color: #1990db;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#1681c4), to(#1990db));
@@ -335,7 +343,7 @@ TAB CONTROL
   background-image: linear-gradient(to bottom, #1681c4, #1990db);
 }
 
-/* line 326, ../scss/_mixins.scss */
+/* line 334, ../scss/_mixins.scss */
 .circle-image {
   display: block;
   width: 218px;
@@ -345,38 +353,43 @@ TAB CONTROL
   box-shadow: 0px 0px 5px 5px #bf9f6b;
 }
 
-/* line 335, ../scss/_mixins.scss */
+/* line 343, ../scss/_mixins.scss */
 .shadow {
   display: inline-block;
   box-shadow: 0px 0px 5px 5px #bf9f6b;
 }
-/* line 339, ../scss/_mixins.scss */
+/* line 347, ../scss/_mixins.scss */
 .shadow img {
   display: block;
 }
 
-/* line 344, ../scss/_mixins.scss */
+/* line 352, ../scss/_mixins.scss */
 .start-a-race {
   background: url("../images/start-a-race-293x220.jpg") center center no-repeat;
 }
 
-/* line 348, ../scss/_mixins.scss */
+/* line 356, ../scss/_mixins.scss */
 .our-members {
   background: url("../images/our-members.jpg") center center no-repeat;
 }
 
-/* line 352, ../scss/_mixins.scss */
+/* line 360, ../scss/_mixins.scss */
 .enter-a-race {
   background: url("../images/enter-a-race.jpg") center center no-repeat;
 }
 
-/* line 357, ../scss/_mixins.scss */
+/* line 365, ../scss/_mixins.scss */
 .highlight {
   background: white;
   color: #de5f02;
 }
 
-/* line 362, ../scss/_mixins.scss */
+/* line 370, ../scss/_mixins.scss */
+.highlight a {
+  color: #de5f02;
+}
+
+/* line 374, ../scss/_mixins.scss */
 h1.highlight, h2.highlight, h3.highlight {
   font-family: 'Headline One';
   font-size: 40px;
@@ -388,31 +401,31 @@ h1.highlight, h2.highlight, h3.highlight {
   display: inline-block;
 }
 
-/* line 373, ../scss/_mixins.scss */
+/* line 385, ../scss/_mixins.scss */
 h3.highlight {
   font-size: 22px;
   font-size: 1.375rem;
 }
 
-/* line 379, ../scss/_mixins.scss */
+/* line 391, ../scss/_mixins.scss */
 p.highlight, li.highlight {
   display: inline;
 }
 
-/* line 384, ../scss/_mixins.scss */
+/* line 396, ../scss/_mixins.scss */
 ol.highlight li, ul.highlight li {
   background: white;
   color: #de5f02;
 }
 
-/* line 390, ../scss/_mixins.scss */
+/* line 402, ../scss/_mixins.scss */
 .tweet-container {
   display: block;
   margin-bottom: 30px;
   padding-top: 30px;
 }
 
-/* line 396, ../scss/_mixins.scss */
+/* line 408, ../scss/_mixins.scss */
 .twitter-user {
   display: inline-block;
   vertical-align: top;
@@ -422,23 +435,23 @@ ol.highlight li, ul.highlight li {
   border-radius: 24px;
 }
 
-/* line 405, ../scss/_mixins.scss */
+/* line 417, ../scss/_mixins.scss */
 .twitter-tweet {
   display: inline-block;
   margin-left: 5%;
   width: 80%;
 }
-/* line 410, ../scss/_mixins.scss */
+/* line 422, ../scss/_mixins.scss */
 .twitter-tweet p {
   display: inline;
 }
-/* line 413, ../scss/_mixins.scss */
+/* line 425, ../scss/_mixins.scss */
 .twitter-tweet p a {
   color: #de5f02;
   text-decoration: underline;
 }
 
-/* line 420, ../scss/_mixins.scss */
+/* line 432, ../scss/_mixins.scss */
 .video-container {
   position: relative;
   bottom: 0;
@@ -448,7 +461,7 @@ ol.highlight li, ul.highlight li {
   overflow: hidden;
 }
 
-/* line 429, ../scss/_mixins.scss */
+/* line 441, ../scss/_mixins.scss */
 .video-container iframe,
 .video-container object,
 .video-container embed {
@@ -459,7 +472,7 @@ ol.highlight li, ul.highlight li {
   height: 75%;
 }
 
-/* line 437, ../scss/_mixins.scss */
+/* line 449, ../scss/_mixins.scss */
 .featured-game {
   display: block;
   position: relative;
@@ -471,32 +484,32 @@ ol.highlight li, ul.highlight li {
   background-color: #000;
   box-shadow: 0px 0px 10px 5px #bf9f6b;
 }
-/* line 448, ../scss/_mixins.scss */
+/* line 460, ../scss/_mixins.scss */
 .featured-game img {
   display: block;
 }
-/* line 452, ../scss/_mixins.scss */
+/* line 464, ../scss/_mixins.scss */
 .featured-game .title {
   display: block;
   position: absolute;
   bottom: 50px;
 }
-/* line 458, ../scss/_mixins.scss */
+/* line 470, ../scss/_mixins.scss */
 .featured-game .charity {
   display: block;
   position: absolute;
   bottom: 10px;
 }
 
-/* line 466, ../scss/_mixins.scss */
+/* line 478, ../scss/_mixins.scss */
 .orange-type {
   color: #de5f02;
 }
-/* line 470, ../scss/_mixins.scss */
+/* line 482, ../scss/_mixins.scss */
 .orange-type a {
   color: #de5f02;
 }
-/* line 473, ../scss/_mixins.scss */
+/* line 485, ../scss/_mixins.scss */
 .orange-type a:hover {
   color: #de5f02 !important;
   text-decoration: underline;
@@ -629,27 +642,32 @@ so you still want to keep it pretty light and simply expand
 upon your base.scss styles.
 
 ******************************************************************/
+/* line 18, ../scss/_481up.scss */
+#logo.secondary {
+  width: 245px;
+}
+
 /*********************
 NAVIGATION STYLES
 *********************/
 /* .menu is clearfixed inside mixins.scss */
-/* line 28, ../scss/_481up.scss */
+/* line 31, ../scss/_481up.scss */
 .menu {
   /* end .menu ul */
 }
-/* line 29, ../scss/_481up.scss */
+/* line 32, ../scss/_481up.scss */
 .menu ul {
   /* end .menu ul li */
   /* highlight current page */
   /* end current highlighters */
 }
-/* line 30, ../scss/_481up.scss */
+/* line 33, ../scss/_481up.scss */
 .menu ul li {
   /*
   plan your menus and drop-downs wisely.
   */
 }
-/* line 31, ../scss/_481up.scss */
+/* line 34, ../scss/_481up.scss */
 .menu ul li a {
   /*
   you can use hover styles here even though this size
@@ -662,23 +680,23 @@ NAVIGATION STYLES
 POSTS & CONTENT STYLES
 *********************/
 /* entry content */
-/* line 75, ../scss/_481up.scss */
+/* line 78, ../scss/_481up.scss */
 .entry-content {
   /* at this larger size, we can start to align images */
 }
-/* line 79, ../scss/_481up.scss */
+/* line 82, ../scss/_481up.scss */
 .entry-content .alignleft, .entry-content img.alignleft {
   margin-right: 1.5em;
   display: inline;
   float: left;
 }
-/* line 84, ../scss/_481up.scss */
+/* line 87, ../scss/_481up.scss */
 .entry-content .alignright, .entry-content img.alignright {
   margin-left: 1.5em;
   display: inline;
   float: right;
 }
-/* line 89, ../scss/_481up.scss */
+/* line 92, ../scss/_481up.scss */
 .entry-content .aligncenter, .entry-content img.aligncenter {
   margin-right: auto;
   margin-left: auto;
@@ -730,15 +748,20 @@ LAYOUT & GRID STYLES
 }
 
 /* line 42, ../scss/_768up.scss */
+.nav-margin {
+  margin-top: 63px !important;
+}
+
+/* line 46, ../scss/_768up.scss */
 .pad-top {
   padding-top: 70px;
 }
 
-/* line 46, ../scss/_768up.scss */
+/* line 50, ../scss/_768up.scss */
 .top-bg {
   padding-top: 70px;
 }
-/* line 49, ../scss/_768up.scss */
+/* line 53, ../scss/_768up.scss */
 .top-bg:before {
   display: block;
   width: 100%;
@@ -750,11 +773,11 @@ LAYOUT & GRID STYLES
   height: 92px;
 }
 
-/* line 61, ../scss/_768up.scss */
+/* line 65, ../scss/_768up.scss */
 .top-bg-alt {
   padding-top: 70px;
 }
-/* line 64, ../scss/_768up.scss */
+/* line 68, ../scss/_768up.scss */
 .top-bg-alt:before {
   display: block;
   width: 100%;
@@ -766,11 +789,27 @@ LAYOUT & GRID STYLES
   height: 92px;
 }
 
-/* line 75, ../scss/_768up.scss */
+/* line 80, ../scss/_768up.scss */
+.top-bg-grass {
+  padding-top: 100px;
+}
+/* line 83, ../scss/_768up.scss */
+.top-bg-grass:before {
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  content: "";
+  z-index: -2;
+  background: url("../images/footer-bg.jpg") center center repeat-x;
+  height: 92px;
+}
+
+/* line 94, ../scss/_768up.scss */
 .bot-bg {
   padding-bottom: 70px;
 }
-/* line 77, ../scss/_768up.scss */
+/* line 96, ../scss/_768up.scss */
 .bot-bg:after {
   display: block;
   width: 100%;
@@ -782,11 +821,11 @@ LAYOUT & GRID STYLES
   height: 170px;
 }
 
-/* line 90, ../scss/_768up.scss */
+/* line 109, ../scss/_768up.scss */
 .bot-bg-alt {
   padding-bottom: 70px;
 }
-/* line 92, ../scss/_768up.scss */
+/* line 111, ../scss/_768up.scss */
 .bot-bg-alt:after {
   display: block;
   width: 100%;
@@ -798,11 +837,11 @@ LAYOUT & GRID STYLES
   height: 170px;
 }
 
-/* line 104, ../scss/_768up.scss */
+/* line 123, ../scss/_768up.scss */
 .bot-bg-grass {
   padding-bottom: 70px;
 }
-/* line 106, ../scss/_768up.scss */
+/* line 125, ../scss/_768up.scss */
 .bot-bg-grass:after {
   display: block;
   width: 100%;
@@ -810,59 +849,64 @@ LAYOUT & GRID STYLES
   bottom: 0;
   content: "";
   z-index: -1;
-  background: url("../images/footer-bg.jpg") center bottom repeat-x;
+  background: url("../images/footer-bg.jpg") center 14px repeat-x;
   height: 170px;
 }
 
-/* line 118, ../scss/_768up.scss */
+/* line 137, ../scss/_768up.scss */
 .bot-dash {
   border-bottom: 2px dashed #b39c7d;
 }
 
-/* line 123, ../scss/_768up.scss */
+/* line 141, ../scss/_768up.scss */
+.nav-margin {
+  margin-top: 78px;
+}
+
+/* line 146, ../scss/_768up.scss */
 #scrolling-slides.bot-bg:after {
   z-index: 4;
 }
 
-/* line 128, ../scss/_768up.scss */
+/* line 151, ../scss/_768up.scss */
 #scrolling-slides.top-bg {
   padding-top: 70px;
 }
-/* line 130, ../scss/_768up.scss */
+/* line 153, ../scss/_768up.scss */
 #scrolling-slides.top-bg:before {
   background: url("../images/why-r2f/slides-top-bg-1590x54.gif") center center repeat-x;
   top: 51px;
   z-index: 5;
 }
 
-/* line 137, ../scss/_768up.scss */
+/* line 160, ../scss/_768up.scss */
 #scrolling-slides {
   position: relative;
   z-index: 3;
   background: url("../images/sand-bg.gif");
 }
 
-/* line 143, ../scss/_768up.scss */
+/* line 166, ../scss/_768up.scss */
 .slide-container {
   font-size: 70%;
   text-shadow: 3px 3px 3px #444;
 }
-/* line 148, ../scss/_768up.scss */
+/* line 171, ../scss/_768up.scss */
 .slide-container h1 {
   font-size: 65px;
   font-size: 4.0625em;
 }
-/* line 153, ../scss/_768up.scss */
+/* line 176, ../scss/_768up.scss */
 .slide-container p {
   font-size: 23px;
   font-size: 1.4375em;
 }
 
-/* line 160, ../scss/_768up.scss */
+/* line 183, ../scss/_768up.scss */
 #slide1 .inner-container {
   height: 100%;
 }
-/* line 163, ../scss/_768up.scss */
+/* line 186, ../scss/_768up.scss */
 #slide1 .title {
   position: relative;
   right: 0;
@@ -871,7 +915,7 @@ LAYOUT & GRID STYLES
   background: url("../images/why-r2f/slidesangles/Slide-One-Title-1206x354.gif") no-repeat;
   background-size: contain;
 }
-/* line 171, ../scss/_768up.scss */
+/* line 194, ../scss/_768up.scss */
 #slide1 .title h1 {
   text-align: right;
   letter-spacing: 1px;
@@ -882,7 +926,7 @@ LAYOUT & GRID STYLES
   -ms-transform: rotate(-10deg);
   transform: rotate(-10deg);
 }
-/* line 183, ../scss/_768up.scss */
+/* line 206, ../scss/_768up.scss */
 #slide1 .angle {
   position: absolute;
   bottom: 100%;
@@ -894,7 +938,7 @@ LAYOUT & GRID STYLES
   background: url("../images/why-r2f/slidesangles/slide-one-angle-991x196.gif") right 100% no-repeat;
   background-size: contain;
 }
-/* line 194, ../scss/_768up.scss */
+/* line 217, ../scss/_768up.scss */
 #slide1 .angle p {
   float: right;
   width: 80%;
@@ -905,11 +949,11 @@ LAYOUT & GRID STYLES
   transform: rotate(-8deg);
 }
 
-/* line 207, ../scss/_768up.scss */
+/* line 230, ../scss/_768up.scss */
 #slide2 .inner-container {
   height: 100%;
 }
-/* line 210, ../scss/_768up.scss */
+/* line 233, ../scss/_768up.scss */
 #slide2 .angle {
   position: absolute;
   width: 100%;
@@ -919,16 +963,16 @@ LAYOUT & GRID STYLES
   right: 0;
   background: url("../images/why-r2f/slidesangles/slide2-angle-562x456.gif") right 100% no-repeat;
 }
-/* line 219, ../scss/_768up.scss */
+/* line 242, ../scss/_768up.scss */
 #slide2 .angle p {
   width: 562px;
 }
 
-/* line 226, ../scss/_768up.scss */
+/* line 249, ../scss/_768up.scss */
 #slide3 .inner-container {
   height: 100%;
 }
-/* line 229, ../scss/_768up.scss */
+/* line 252, ../scss/_768up.scss */
 #slide3 .angle {
   position: absolute;
   width: 100%;
@@ -938,18 +982,18 @@ LAYOUT & GRID STYLES
   right: 0;
   background: url("../images/why-r2f/slidesangles/slide3-angle-725x347.gif") right 100% no-repeat;
 }
-/* line 238, ../scss/_768up.scss */
+/* line 261, ../scss/_768up.scss */
 #slide3 .angle p {
   margin-top: 120px;
   width: 512px;
   float: right;
 }
 
-/* line 247, ../scss/_768up.scss */
+/* line 270, ../scss/_768up.scss */
 #slide4 .inner-container {
   height: 100%;
 }
-/* line 250, ../scss/_768up.scss */
+/* line 273, ../scss/_768up.scss */
 #slide4 .angle {
   position: absolute;
   width: 100%;
@@ -959,18 +1003,18 @@ LAYOUT & GRID STYLES
   right: 0;
   background: url("../images/why-r2f/slidesangles/slide4-angle-488x387.gif") right 100% no-repeat;
 }
-/* line 259, ../scss/_768up.scss */
+/* line 282, ../scss/_768up.scss */
 #slide4 .angle p {
   margin-top: 80px;
   width: 468px;
   float: right;
 }
 
-/* line 268, ../scss/_768up.scss */
+/* line 291, ../scss/_768up.scss */
 #slide5 .inner-container {
   height: 100%;
 }
-/* line 271, ../scss/_768up.scss */
+/* line 294, ../scss/_768up.scss */
 #slide5 .angle {
   position: absolute;
   width: 100%;
@@ -980,18 +1024,18 @@ LAYOUT & GRID STYLES
   right: 0;
   background: url("../images/why-r2f/slidesangles/slide5-angle-791x262.gif") right 100% no-repeat;
 }
-/* line 280, ../scss/_768up.scss */
+/* line 303, ../scss/_768up.scss */
 #slide5 .angle p {
   margin-top: 230px;
   width: 488px;
   float: right;
 }
 
-/* line 289, ../scss/_768up.scss */
+/* line 312, ../scss/_768up.scss */
 #slide6 .inner-container {
   height: 100%;
 }
-/* line 292, ../scss/_768up.scss */
+/* line 315, ../scss/_768up.scss */
 #slide6 .angle {
   position: absolute;
   width: 100%;
@@ -1001,14 +1045,14 @@ LAYOUT & GRID STYLES
   right: 0;
   background: url("../images/why-r2f/slidesangles/slide6-angle-562x230.gif") right 100% no-repeat;
 }
-/* line 301, ../scss/_768up.scss */
+/* line 324, ../scss/_768up.scss */
 #slide6 .angle p {
   margin-top: 90px;
   width: 538px;
   float: right;
 }
 
-/* line 310, ../scss/_768up.scss */
+/* line 333, ../scss/_768up.scss */
 #logo.secondary {
   margin: 0 0 0 40px;
 }
@@ -1016,12 +1060,12 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
-/* line 319, ../scss/_768up.scss */
+/* line 342, ../scss/_768up.scss */
 .header {
   position: fixed;
 }
 
-/* line 328, ../scss/_768up.scss */
+/* line 351, ../scss/_768up.scss */
 #logo {
   width: 40%;
 }
@@ -1029,52 +1073,52 @@ HEADER STYLES
 /***************************************
  *Search used in header and other pages
  ***************************************/
-/* line 336, ../scss/_768up.scss */
+/* line 359, ../scss/_768up.scss */
 #nobtn-search, #other-search {
   position: absolute;
   bottom: -70px;
   right: 0;
 }
-/* line 341, ../scss/_768up.scss */
+/* line 364, ../scss/_768up.scss */
 #nobtn-search input, #other-search input {
   width: 150px;
 }
-/* line 345, ../scss/_768up.scss */
+/* line 368, ../scss/_768up.scss */
 #nobtn-search input:focus, #other-search input:focus {
   width: 250px;
 }
 
-/* line 352, ../scss/_768up.scss */
+/* line 375, ../scss/_768up.scss */
 #other-search {
   position: relative;
   top: 4px;
   display: inline-block;
   float: left;
 }
-/* line 357, ../scss/_768up.scss */
+/* line 380, ../scss/_768up.scss */
 #other-search input {
   width: 200px;
 }
-/* line 360, ../scss/_768up.scss */
+/* line 383, ../scss/_768up.scss */
 #other-search input:focus {
   width: 300px;
 }
 
-/* line 366, ../scss/_768up.scss */
+/* line 389, ../scss/_768up.scss */
 .enter-race {
   bottom: 112px;
 }
-/* line 368, ../scss/_768up.scss */
+/* line 391, ../scss/_768up.scss */
 .enter-race .btn {
   font-size: 36px;
 }
 
-/* line 373, ../scss/_768up.scss */
+/* line 396, ../scss/_768up.scss */
 .fences {
   position: relative;
   height: 0px;
 }
-/* line 376, ../scss/_768up.scss */
+/* line 399, ../scss/_768up.scss */
 .fences:before, .fences:after {
   display: block;
   content: "";
@@ -1083,26 +1127,26 @@ HEADER STYLES
   height: 151px;
   z-index: 2000;
 }
-/* line 386, ../scss/_768up.scss */
+/* line 409, ../scss/_768up.scss */
 .fences:before {
   bottom: 0;
   left: -187px;
   background: url("../images/left-fence.gif");
 }
-/* line 392, ../scss/_768up.scss */
+/* line 415, ../scss/_768up.scss */
 .fences:after {
   bottom: 0;
   right: -187px;
   background: url("../images/right-fence.gif");
 }
 
-/* line 399, ../scss/_768up.scss */
+/* line 422, ../scss/_768up.scss */
 .wide-fence {
   position: relative;
   bottom: 0;
   height: 0;
 }
-/* line 403, ../scss/_768up.scss */
+/* line 426, ../scss/_768up.scss */
 .wide-fence:after {
   position: absolute;
   display: block;
@@ -1115,7 +1159,7 @@ HEADER STYLES
   top: -190px;
 }
 
-/* line 416, ../scss/_768up.scss */
+/* line 439, ../scss/_768up.scss */
 .wide-fence.why {
   bottom: -70px;
 }
@@ -1123,14 +1167,14 @@ HEADER STYLES
 /*********************
 Slider STYLES
 *********************/
-/* line 423, ../scss/_768up.scss */
+/* line 446, ../scss/_768up.scss */
 .slider {
   margin-top: 63px;
   background: #4dd2fd;
   position: relative;
   max-height: 600px;
 }
-/* line 429, ../scss/_768up.scss */
+/* line 452, ../scss/_768up.scss */
 .slider:before {
   display: block;
   content: "";
@@ -1142,7 +1186,7 @@ Slider STYLES
   z-index: 3;
 }
 
-/* line 444, ../scss/_768up.scss */
+/* line 467, ../scss/_768up.scss */
 .centered-btns_tabs,
 .transparent-btns_tabs,
 .large-btns_tabs {
@@ -1162,17 +1206,17 @@ Slider STYLES
 /*********************
 NAVIGATION STYLES
 *********************/
-/* line 463, ../scss/_768up.scss */
+/* line 486, ../scss/_768up.scss */
 #scrolling-nav.scrolling {
   top: 500px;
 }
 
-/* line 467, ../scss/_768up.scss */
+/* line 490, ../scss/_768up.scss */
 #scrolling-nav.stopped {
   top: 3420px;
 }
 
-/* line 471, ../scss/_768up.scss */
+/* line 494, ../scss/_768up.scss */
 .scrolling-nav-inner {
   display: block;
   height: 243px;
@@ -1181,7 +1225,7 @@ NAVIGATION STYLES
   z-index: 100;
   font-size: 70%;
 }
-/* line 479, ../scss/_768up.scss */
+/* line 502, ../scss/_768up.scss */
 .scrolling-nav-inner ul {
   font-family: 'Headline One';
   display: block;
@@ -1189,7 +1233,7 @@ NAVIGATION STYLES
   width: 320px;
   height: 333px;
 }
-/* line 486, ../scss/_768up.scss */
+/* line 509, ../scss/_768up.scss */
 .scrolling-nav-inner ul li {
   font-size: 26px;
   font-size: 1.625em;
@@ -1198,7 +1242,7 @@ NAVIGATION STYLES
   padding-left: 15px;
   display: block;
 }
-/* line 494, ../scss/_768up.scss */
+/* line 517, ../scss/_768up.scss */
 .scrolling-nav-inner ul li .bullet {
   margin-top: 0;
   text-align: center;
@@ -1216,31 +1260,31 @@ NAVIGATION STYLES
   text-shadow: none;
   display: none;
 }
-/* line 512, ../scss/_768up.scss */
+/* line 535, ../scss/_768up.scss */
 .scrolling-nav-inner ul li a {
   color: white;
   text-shadow: 3px 3px 3px #444;
   text-decoration: none;
 }
-/* line 521, ../scss/_768up.scss */
+/* line 544, ../scss/_768up.scss */
 .scrolling-nav-inner ul li.highlight .bullet {
   display: block;
 }
-/* line 524, ../scss/_768up.scss */
+/* line 547, ../scss/_768up.scss */
 .scrolling-nav-inner ul li.highlight a {
   text-shadow: none;
   color: #de5f02;
 }
 
-/* line 532, ../scss/_768up.scss */
+/* line 555, ../scss/_768up.scss */
 footer .nav {
   display: block;
   margin: 0;
-  height: 157px;
+  height: 155px;
   text-shadow: 1px 2px 5px #444;
 }
 
-/* line 538, ../scss/_768up.scss */
+/* line 561, ../scss/_768up.scss */
 .nav {
   font-size: 25px;
   font-size: 1.5625rem;
@@ -1253,15 +1297,15 @@ footer .nav {
   /* highlight current page */
   /* end current highlighters */
 }
-/* line 550, ../scss/_768up.scss */
+/* line 573, ../scss/_768up.scss */
 .nav li:first-of-type {
   margin-left: 0px;
 }
-/* line 557, ../scss/_768up.scss */
+/* line 580, ../scss/_768up.scss */
 .nav li:last-of-type {
   margin-right: 0px;
 }
-/* line 561, ../scss/_768up.scss */
+/* line 584, ../scss/_768up.scss */
 .nav li {
   float: left;
   position: relative;
@@ -1272,7 +1316,7 @@ footer .nav {
   */
   /* showing sub-menus */
 }
-/* line 567, ../scss/_768up.scss */
+/* line 590, ../scss/_768up.scss */
 .nav li a {
   padding: 12px 0px 6px 0px;
   margin: 0;
@@ -1283,12 +1327,12 @@ footer .nav {
   has the possibility of being a mobile device.
   */
 }
-/* line 577, ../scss/_768up.scss */
+/* line 600, ../scss/_768up.scss */
 .nav li a:hover, .nav li a:focus {
   color: white;
   text-decoration: underline;
 }
-/* line 591, ../scss/_768up.scss */
+/* line 614, ../scss/_768up.scss */
 .nav li ul.sub-menu,
 .nav li ul.children {
   margin-top: 0;
@@ -1299,7 +1343,7 @@ footer .nav {
   z-index: 8999;
   /* highlight sub-menu current page */
 }
-/* line 599, ../scss/_768up.scss */
+/* line 622, ../scss/_768up.scss */
 .nav li ul.sub-menu li,
 .nav li ul.children li {
   /*
@@ -1308,7 +1352,7 @@ footer .nav {
   for usability. k, bai.
   */
 }
-/* line 601, ../scss/_768up.scss */
+/* line 624, ../scss/_768up.scss */
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 10px;
@@ -1317,19 +1361,19 @@ footer .nav {
   width: 180px;
   border-bottom: 1px solid #ccc;
 }
-/* line 618, ../scss/_768up.scss */
+/* line 641, ../scss/_768up.scss */
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
   border-bottom: 0;
 }
-/* line 640, ../scss/_768up.scss */
+/* line 663, ../scss/_768up.scss */
 .nav li:hover ul {
   top: auto;
   display: block;
 }
 
 /* end .nav */
-/* line 657, ../scss/_768up.scss */
+/* line 680, ../scss/_768up.scss */
 .log-in-out a {
   /*padding: 3px 15px!important;
   margin-top: 8px !important;
@@ -1337,18 +1381,18 @@ footer .nav {
   border:1px solid $white !important;*/
 }
 
-/* line 665, ../scss/_768up.scss */
+/* line 688, ../scss/_768up.scss */
 .logged-in .sign-up {
-  left: 2px;
+  left: 1px;
 }
 
-/* line 669, ../scss/_768up.scss */
+/* line 692, ../scss/_768up.scss */
 .sign-up {
   font-size: 30px;
   font-size: 1.875rem;
-  left: -3px;
+  left: -7px;
 }
-/* line 676, ../scss/_768up.scss */
+/* line 699, ../scss/_768up.scss */
 .sign-up a {
   box-sizing: border-box;
   display: block;
@@ -1360,7 +1404,7 @@ footer .nav {
   color: #de5f02 !important;
   text-decoration: none;
 }
-/* line 690, ../scss/_768up.scss */
+/* line 713, ../scss/_768up.scss */
 .sign-up a:after {
   position: absolute;
   display: block;
@@ -1372,70 +1416,73 @@ footer .nav {
   content: "";
   background: url("../images/nav-bar-decor-white.png") center right 1px repeat-x;
 }
-/* line 703, ../scss/_768up.scss */
+/* line 726, ../scss/_768up.scss */
 .sign-up a:hover {
   color: #de5f02;
   text-decoration: underline;
 }
 
-/* line 715, ../scss/_768up.scss */
+/* line 738, ../scss/_768up.scss */
 html > body .sign-up a:after, x:-moz-any-link a:after, x:default a:after {
-  background-position: center right 9px;
+  background-position: center right 4px;
 }
 
-/* line 721, ../scss/_768up.scss */
+/* line 744, ../scss/_768up.scss */
 .wooden {
   background: url("../images/wooden-sign-529x433.gif") center center no-repeat;
   min-height: 433px;
   background-size: contain;
 }
 
-/* line 727, ../scss/_768up.scss */
+/* line 750, ../scss/_768up.scss */
 .vid-wooden {
   background: url("../images/vid-wooden-board-468x333.gif") center no-repeat;
   background-size: contain;
 }
 
-/* line 732, ../scss/_768up.scss */
+/* line 755, ../scss/_768up.scss */
 .vid-wooden .video-container {
   bottom: 30px;
 }
 
-/* line 736, ../scss/_768up.scss */
+/* line 759, ../scss/_768up.scss */
 .pic-wooden {
   background: url("../images/pic-wooden-339x294.gif") center no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
-/* line 740, ../scss/_768up.scss */
+/* line 763, ../scss/_768up.scss */
 .pic-wooden img {
+  display: block;
   padding: 10%;
+  max-height: 294px;
+  margin: 0 auto;
 }
 
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 751, ../scss/_768up.scss */
+/* line 777, ../scss/_768up.scss */
 .sidebar {
   margin-top: 2.2em;
 }
 
-/* line 755, ../scss/_768up.scss */
+/* line 781, ../scss/_768up.scss */
 .widgettitle {
   border-bottom: 2px solid #444;
   margin-bottom: 0.75em;
 }
 
-/* line 760, ../scss/_768up.scss */
+/* line 786, ../scss/_768up.scss */
 .widget {
   padding: 0 10px;
   margin: 2.2em 0;
 }
-/* line 765, ../scss/_768up.scss */
+/* line 791, ../scss/_768up.scss */
 .widget ul li {
   margin-bottom: 0.75em;
   /* deep nesting */
 }
-/* line 773, ../scss/_768up.scss */
+/* line 799, ../scss/_768up.scss */
 .widget ul li ul {
   margin-top: 0.75em;
   padding-left: 1em;
@@ -1460,12 +1507,12 @@ you'll probably need to do quite a bit
 of overriding here if you styled them for
 mobile. Make sure to double check these!
 */
-/* line 879, ../scss/_768up.scss */
+/* line 905, ../scss/_768up.scss */
 .footer {
   background: url("../images/footer-bg.jpg") center repeat-x;
 }
 
-/* line 884, ../scss/_768up.scss */
+/* line 910, ../scss/_768up.scss */
 .footer-links ul li {
   /*
   be careful with the depth of your menus.
@@ -1478,36 +1525,36 @@ mobile. Make sure to double check these!
 /**********************
  *Active Race Profile
  **********************/
-/* line 902, ../scss/_768up.scss */
+/* line 928, ../scss/_768up.scss */
 .active-race {
   text-align: left;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 907, ../scss/_768up.scss */
+/* line 933, ../scss/_768up.scss */
 .active-race .btn {
   bottom: 30px;
 }
 
-/* line 912, ../scss/_768up.scss */
-.active-race.last-on-page {
+/* line 938, ../scss/_768up.scss */
+.active-race.last-on-page, .create-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 915, ../scss/_768up.scss */
-.active-race.last-on-page .btn {
+/* line 941, ../scss/_768up.scss */
+.active-race.last-on-page .btn, .create-race.last-on-page .btn {
   bottom: 110px;
 }
 
 /*************************
  *Active Race Page
  *************************/
-/* line 924, ../scss/_768up.scss */
+/* line 950, ../scss/_768up.scss */
 #active-race-header, #complete-race-header {
   max-width: 1027px;
   padding: 0;
   margin: 0 auto;
 }
-/* line 929, ../scss/_768up.scss */
+/* line 955, ../scss/_768up.scss */
 #active-race-header:after, #complete-race-header:after {
   display: block;
   position: absolute;
@@ -1520,14 +1567,14 @@ mobile. Make sure to double check these!
   background: url("../images/active-race-image-frame.png") center no-repeat;
   background-size: contain;
 }
-/* line 946, ../scss/_768up.scss */
+/* line 972, ../scss/_768up.scss */
 #active-race-header .btn, #complete-race-header .btn {
   font-size: 36px;
   font-size: 2.25rem;
   left: 100px;
   bottom: -50px;
 }
-/* line 953, ../scss/_768up.scss */
+/* line 979, ../scss/_768up.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   width: 200px;
   height: 24px;
@@ -1536,17 +1583,17 @@ mobile. Make sure to double check these!
   left: 280px;
 }
 
-/* line 963, ../scss/_768up.scss */
+/* line 989, ../scss/_768up.scss */
 #complete-race-header .headings, #complete-race-header .dates {
   left: 100px;
 }
 
-/* line 968, ../scss/_768up.scss */
+/* line 994, ../scss/_768up.scss */
 #race-data .leaderboard {
   margin-bottom: 100px;
 }
 
-/* line 972, ../scss/_768up.scss */
+/* line 998, ../scss/_768up.scss */
 #profile-excerpt {
   position: relative;
   font-size: 80%;
@@ -1555,14 +1602,52 @@ mobile. Make sure to double check these!
   background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
   background-size: contain;
 }
-/* line 980, ../scss/_768up.scss */
+/* line 1006, ../scss/_768up.scss */
 #profile-excerpt .profile-view {
   text-align: center;
 }
 
-/* line 987, ../scss/_768up.scss */
+/* line 1013, ../scss/_768up.scss */
 .winner {
   top: -80px;
+}
+
+/*************************
+ *Create Race Page
+ *************************/
+/* line 1021, ../scss/_768up.scss */
+#create-race-header {
+  margin-top: -80px;
+}
+/* line 1024, ../scss/_768up.scss */
+#create-race-header h1 {
+  margin-bottom: 60px;
+}
+/* line 1028, ../scss/_768up.scss */
+#create-race-header #tab_control {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+/* line 1034, ../scss/_768up.scss */
+.token {
+  text-align: centre;
+}
+
+/* line 1038, ../scss/_768up.scss */
+.continue {
+  margin-top: 30px;
+  margin-bottom: 120px !important;
+}
+
+/* line 1045, ../scss/_768up.scss */
+.faq {
+  padding-bottom: 30px;
+}
+/* line 1048, ../scss/_768up.scss */
+.faq:last-child {
+  border-bottom: none !important;
+  padding-bottom: 70px;
 }
 
 /******************************************************************
