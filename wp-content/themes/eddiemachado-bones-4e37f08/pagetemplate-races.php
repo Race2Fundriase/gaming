@@ -71,13 +71,8 @@ Template Name: Races
 		<div class="container grit bot-bg bot-bg-alt clearfix">
 			<div class="inner-container wrap clearfix">
 				<div class="active-race">
-<<<<<<< HEAD
-					<div class="fourcol first pic-wooden" style="overflow: hidden; padding: 25px; height: 400px">
-						<img src="<?php echo site_url(); ?>{image}" style="height: 300px"/>
-=======
 					<div class="fourcol first pic-wooden">
 						<img src="<?php echo site_url(); ?>{image}" />
->>>>>>> b93d55dd60a42905d95036e289e9a18b41573ead
 					</div>
 					<div class="fivecol">
 						<div><h2 class="highlight">{raceName}</h2></div>
