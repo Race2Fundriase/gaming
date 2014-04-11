@@ -3,6 +3,67 @@
 Template Name: Help
 */
 ?>
+
+<?php
+ 
+  //response generation function
+  $response = "";
+ 
+  //function to generate response
+  function my_contact_form_generate_response($type, $message){
+ 
+    global $response;
+ 
+    if($type == "success") $response = "<div class='success'>{$message}</div>";
+    else $response = "<div class='error'>{$message}</div>";
+ 
+  }
+  
+    //response messages
+    $not_human       = "Human verification incorrect.";
+    $missing_content = "Please supply all information.";
+    $email_invalid   = "Email Address Invalid.";
+    $message_unsent  = "Message was not sent. Try Again.";
+    $message_sent    = "Thanks! Your message has been sent.";
+     
+    //user posted variables
+    $name = $_POST['message_name'];
+    $email = $_POST['message_email'];
+    $message = $_POST['message_text'];
+    $human = $_POST['message_human'];
+     
+    //php mailer variables
+    $to = get_option('admin_email');
+    $subject = "Someone sent a message from ".get_bloginfo('name');
+    $headers = 'From: '. $email . "rn" .
+      'Reply-To: ' . $email . "rn";
+      
+    if(!$human == 0){
+	if($human != 2) my_contact_form_generate_response("error", $not_human); //not human!
+	else {
+       
+	  //validate email
+	    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+	      my_contact_form_generate_response("error", $email_invalid);
+	    else //email is valid
+	    {
+	      //validate presence of name and message
+		if(empty($name) || empty($message)){
+		  my_contact_form_generate_response("error", $missing_content);
+		}
+		else //ready to go!
+		{
+		  $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+		    if($sent) my_contact_form_generate_response("success", $message_sent); //message sent!
+		    else my_contact_form_generate_response("error", $message_unsent); //message wasn't sent
+		}
+	    }
+	}
+      }
+    else if ($_POST['submitted']) my_contact_form_generate_response("error", $missing_content);
+
+?>
+
 <?php get_header(); ?>
         <section>
             <div class="slider secondary clearfix">
@@ -63,7 +124,7 @@ Template Name: Help
 	?>
         <!--Tabbed Content-->
         <div id="tabs">
-	    <div class="tabbed_content active">
+	    <div class="tabbed_content <?php if (!$response) {?> active <?php }; ?>">
 		
 	    <?php if ($wp_query->have_posts()) : while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 	    
@@ -100,8 +161,73 @@ Template Name: Help
 	    
 	</div><!--End of tab-->
         
-	    <div class="tabbed_content">
-		<p>Contact Form Goes Here!</p>
+	    <div class="tabbed_content <?php if ($response) {?> active <?php }; ?>">
+		<div class="container grit bot-bg-alt top-bg-grass">
+		    <div class="inner-container wrap clearfix">
+			<style type="text/css">
+			.error{
+			  padding: 5px 9px;
+			  border: 1px solid red;
+			  color: red;
+			  border-radius: 3px;
+			}
+		       
+			.success{
+			  padding: 5px 9px;
+			  border: 1px solid green;
+			  color: green;
+			  border-radius: 3px;
+			}
+		       
+			form span{
+			  color: red;
+			}
+		      </style>
+		       
+		      <div id="respond">
+			<?php echo $response; ?>
+			<?php if (!$sent) : ?>
+			<form action="<?php the_permalink(); ?>" method="post">
+			<div class="form-elements">
+			    <div>
+			      <label for="name"><span>Name: </span> <span>*</span></label>
+			      <div>
+			      <input type="text" name="message_name" value="<?php echo esc_attr($_POST['message_name']); ?>">
+			      </div>
+			    </div>
+			  
+			  <div>
+			    <label for="message_email"><span>Email: </span> <span>*</span></label>
+			    <div>
+			    <input type="text" name="message_email" value="<?php echo esc_attr($_POST['message_email']); ?>">
+			    </div>
+			  </div>
+			  
+			  <div>
+			  <label for="message_text"><span>Message: </span> <span>*</span></label>
+			    <div>
+			    <textarea name="message_text" rows="8"><?php echo esc_textarea($_POST['message_text']); ?></textarea>
+			    </div>
+			  </div>
+			  
+			  <div>
+			    <label for="message_human"><span>Human Verification:</span> <span>*</span></label>
+			    <div>
+			    <input type="text" style="width: 60px;" name="message_human"> <span>+ 3 = 5</span>
+			    </div>
+			  </div>
+			 
+			  <input type="hidden" name="submitted" value="1">
+			  
+			  <div class="text-center">  
+			    <input class="btn large" type="submit"></p>
+			  </div>
+			  </div>
+			</form>
+			<?php endif; ?>
+		      </div>
+		    </div>
+		</div>
 	    </div><!--End of tab-->
         </div><!--End Tabs-->
 <?php get_footer(); ?>
