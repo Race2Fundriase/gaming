@@ -29,12 +29,11 @@
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 					</div>
 					<div class="fourcol text-center">
-						<a href="#">
+						<a href="http://race2fundraise.com/join/">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 						<h2 class="highlight">Sign Up</h2><br/>
 						</a>
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-						</a>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/charities/">

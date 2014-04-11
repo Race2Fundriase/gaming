@@ -108,6 +108,11 @@ LAYOUT & GRID STYLES
 	overflow:hidden;
 }
 
+.lt-ie9 {
+	.wrap {
+		width:1140px;
+	}
+}
 .wrap {
 	width: 96%;
 	margin: 0 auto !important;

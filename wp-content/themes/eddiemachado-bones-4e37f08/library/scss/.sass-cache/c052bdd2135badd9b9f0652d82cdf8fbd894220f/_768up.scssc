@@ -1,5 +1,5 @@
 3.2.7 (Media Mark)
-feebd19388edfcf17fe68e29ea1b688b825b9210
+4463c14d980c1afecd87a92ad9f083c3a7ad9ded
 o:Sass::Tree::RootNode
 :@template"h@/******************************************************************
 Site Name:
@@ -689,7 +689,7 @@ footer .nav {
 }
 
 .logged-in .sign-up {
-	left:2px;
+	left:1px;
 }
 
 .sign-up {	
@@ -739,7 +739,7 @@ footer .nav {
 html>/**/body .sign-up, x:-moz-any-link, x:default {
   a {
     &:after {
-        background-position:center right 9px;
+        background-position:center right 4px;
     }
   }
 }
@@ -1504,7 +1504,7 @@ margin-top: 8px !important;
 border-radius:1em;
 border:1px solid $white !important;*/;@;	[ ;i©;i¨;["a;o;;" ;i¨;[o;;[o;
 ;0;@c;o;;{ ;i¨;[o;	;["a;@c;0;i¨;i§;[".log-in-out;o;;" ;i§;[o;;[o;
-;0;@q;o;;{ ;i§;[o;$;["log-in-out;@q;i§o;;T;@;i ;	[o;;["	left;o; ;;!;"2px;@;";#;@;i ;	[ ;i±;i°;[".logged-in .sign-up;o;;" ;i°;[o;;[o;
+;0;@q;o;;{ ;i§;[o;$;["log-in-out;@q;i§o;;T;@;i ;	[o;;["	left;o; ;;!;"1px;@;";#;@;i ;	[ ;i±;i°;[".logged-in .sign-up;o;;" ;i°;[o;;[o;
 ;0;@‡;o;;{ ;i°;[o;$;["logged-in;@‡;i°o;
 ;0;@‡;o;;{ ;i°;[o;$;["sign-up;@‡;i°o;;T;@;i ;	[	o;;["font-size;o; ;;!;"	30px;@;";#;@;i ;	[ ;iµo;;["font-size;o; ;;!;"1.875rem;@;";#;@;i ;	[ ;i¶o;;["	left;o; ;;!;"	-7px;@;";#;@;i ;	[ ;i·o;;T;@;i ;	[o;;["box-sizing;o; ;;!;"border-box;@;";#;@;i ;	[ ;i¼o;;["display;o; ;;!;"
 block;@;";#;@;i ;	[ ;i½o;;["position;o; ;;!;"relative;@;";#;@;i ;	[ ;i¾o;;["background-color;o;7	;"
@@ -1531,7 +1531,7 @@ hover;;/;@];00;iÖ;i»;["a;o;;" ;i»;[o;;[o;
 ;0;@l;o;;{ ;i»;[o;	;["a;@l;0;i»;i´;[".sign-up;o;;" ;i´;[o;;[o;
 ;0;@z;o;;{ ;i´;[o;$;["sign-up;@z;i´o;
 
-;;6;["V/*Firefox hack to position the white triangles on the signup button correctly! */;@;	[ ;ißo;;T;@;i ;	[o;;T;@;i ;	[o;;T;@;i ;	[o;;["background-position;o; ;;!;"center right 9px;@;";#;@;i ;	[ ;iã;iâ;["&:after;o;;" ;iâ;[o;;[o;
+;;6;["V/*Firefox hack to position the white triangles on the signup button correctly! */;@;	[ ;ißo;;T;@;i ;	[o;;T;@;i ;	[o;;T;@;i ;	[o;;["background-position;o; ;;!;"center right 4px;@;";#;@;i ;	[ ;iã;iâ;["&:after;o;;" ;iâ;[o;;[o;
 ;0;@˜;o;;{ ;iâ;[o;-;@˜;iâo;.
 ;["
 after;;/;@˜;00;iâ;iá;["a;o;;" ;iá;[o;;[o;
