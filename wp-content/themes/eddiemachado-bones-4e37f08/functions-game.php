@@ -1137,6 +1137,68 @@ function r2f_action_get_races()
 	die();
 }
 
+function r2f_action_get_user_races()
+{
+	global $wpdb;
+	
+	$page = $_POST['page']; // get the requested page
+	$limit = $_POST['rows']; // get how many rows we want to have into the grid	
+	$sidx = $_POST['sidx']; // get index row - i.e. user click to sort
+	$sord = $_POST['sord'];
+	
+	
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	if(!$start) $start = 0;
+	if(!$limit) $limit = 100;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+	
+	$userid = get_current_user_id();
+	
+		
+	$queryResult = $wpdb->get_results("select r2f_races.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, raceStatus from `r2f_races` 
+				join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId where playerId = $userid");
+			
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+
+	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
+				join `r2f_maps` ON mapId = `r2f_maps`.id join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId where playerId = $userid
+				LIMIT $start, $limit");
+	//print_r($wpdb->last_error);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+
+	$i=0;
+	foreach($queryResult as $row) {
+		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
+	
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->status,
+			'<a href="'.site_url().'/active-race/?raceId='.$row->id.'">View</a>',
+			$charityName, $row->startDate, $row->finishDate, $row->mapImageUrl);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+
 function r2f_action_get_race()
 {
 	global $wpdb;
@@ -2030,6 +2092,9 @@ add_action('wp_ajax_nopriv_r2f_action_token_login', 'r2f_action_token_login');
 
 add_action('wp_ajax_r2f_action_token_register', 'r2f_action_token_register');
 add_action('wp_ajax_nopriv_r2f_action_token_register', 'r2f_action_token_register');
+
+add_action('wp_ajax_r2f_action_get_user_races', 'r2f_action_get_user_races');
+add_action('wp_ajax_nopriv_r2f_action_get_user_races', 'r2f_action_get_user_races');
 
 
 function modify_contact_methods($profile_fields) {

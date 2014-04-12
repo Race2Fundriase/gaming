@@ -43,9 +43,13 @@ Template Name: Active Race
                             </form>
                         </div>
                         <div class="info">
-                            <?php if(!user_can_edit_race()) { ?>
+                            <?php if(get_current_user_id() <> 0) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/enter-race/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
-							<?php } else { ?>
+							<?php } ?>
+							<?php if(get_current_user_id() == 0) { ?>
+							<a class="btn large blue" href="<?=site_url()?>/token-join">Enter Now</a>
+							<?php } ?>
+							<?php if(user_can_edit_race()) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/create-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
 							<?php } ?>
                             <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
