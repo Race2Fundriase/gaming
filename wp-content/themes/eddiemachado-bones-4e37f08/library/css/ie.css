@@ -1555,44 +1555,35 @@ mobile. Make sure to double check these!
 /*************************
  *Active Race Page
  *************************/
-/* line 955, ../scss/_768up.scss */
-#active-race-header .info {
-  position: relative;
-}
-
-/* line 959, ../scss/_768up.scss */
-#paperParentAR {
-  border-width: 136px 129px 146px 98px;
-  -webkit-border-image: url("../images/active-race-image-frame.png") 136 129 146 98;
-}
-
-/* line 964, ../scss/_768up.scss */
+/* line 960, ../scss/_768up.scss */
 #active-race-header, #complete-race-header {
+  display: block;
   box-sizing: border-box;
   max-width: 1027px;
+  max-height: 578px;
   padding: 0;
   margin: 0 auto;
   /*&:before {
-  	display: inline-block;
+  	display: block;
   	position: absolute;
   	top:0;
-  	left:-1px;
+  	left:0px;
   	z-index: 10;
   	height:100%;
   	width: 100%;
   	content:"";
   	background: url('../images/active-race-image-frame.png') center no-repeat;
-  	background-size: contain;
+  	background-size: cover;
   }*/
 }
-/* line 988, ../scss/_768up.scss */
+/* line 990, ../scss/_768up.scss */
 #active-race-header .btn, #complete-race-header .btn {
   font-size: 36px;
   font-size: 2.25rem;
   left: 100px;
   bottom: -50px;
 }
-/* line 995, ../scss/_768up.scss */
+/* line 997, ../scss/_768up.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   width: 200px;
   height: 24px;
@@ -1601,17 +1592,17 @@ mobile. Make sure to double check these!
   left: 280px;
 }
 
-/* line 1005, ../scss/_768up.scss */
+/* line 1007, ../scss/_768up.scss */
 #complete-race-header .headings, #complete-race-header .dates {
   left: 100px;
 }
 
-/* line 1010, ../scss/_768up.scss */
+/* line 1012, ../scss/_768up.scss */
 #race-data .leaderboard {
   margin-bottom: 100px;
 }
 
-/* line 1014, ../scss/_768up.scss */
+/* line 1016, ../scss/_768up.scss */
 #profile-excerpt {
   position: relative;
   font-size: 80%;
@@ -1620,12 +1611,12 @@ mobile. Make sure to double check these!
   background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
   background-size: contain;
 }
-/* line 1022, ../scss/_768up.scss */
+/* line 1024, ../scss/_768up.scss */
 #profile-excerpt .profile-view {
   text-align: center;
 }
 
-/* line 1029, ../scss/_768up.scss */
+/* line 1031, ../scss/_768up.scss */
 .winner {
   top: -80px;
 }
@@ -1633,36 +1624,36 @@ mobile. Make sure to double check these!
 /*************************
  *Create Race Page
  *************************/
-/* line 1037, ../scss/_768up.scss */
+/* line 1039, ../scss/_768up.scss */
 #create-race-header {
   margin-top: -80px;
 }
-/* line 1040, ../scss/_768up.scss */
+/* line 1042, ../scss/_768up.scss */
 #create-race-header h1 {
   margin-bottom: 60px;
 }
-/* line 1044, ../scss/_768up.scss */
+/* line 1046, ../scss/_768up.scss */
 #create-race-header #tab_control {
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-/* line 1050, ../scss/_768up.scss */
+/* line 1052, ../scss/_768up.scss */
 .token {
   text-align: centre;
 }
 
-/* line 1054, ../scss/_768up.scss */
+/* line 1056, ../scss/_768up.scss */
 .continue {
   margin-top: 30px;
   margin-bottom: 120px !important;
 }
 
-/* line 1061, ../scss/_768up.scss */
+/* line 1063, ../scss/_768up.scss */
 .faq {
   padding-bottom: 30px;
 }
-/* line 1064, ../scss/_768up.scss */
+/* line 1066, ../scss/_768up.scss */
 .faq:last-child {
   border-bottom: none !important;
   padding-bottom: 70px;
