@@ -49,7 +49,7 @@ Template Name: Active Race
 			
                         <div class="info">
                             <?php if(get_current_user_id() <> 0) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/enter-race/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
+							<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
 							<?php } ?>
 							<?php if(get_current_user_id() == 0) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/token-join">Enter Now</a>

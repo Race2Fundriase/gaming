@@ -2023,6 +2023,61 @@ function r2f_action_token_register()
 	die();
 }
 
+function r2f_action_notify()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	/*if ($raceId == "") $result["error"] .= "You must supply a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racetokens.id, tokenId, tokenName, tokenDescription, tokenImageUrl
+			FROM r2f_racetokens
+			JOIN r2f_tokens
+			ON r2f_racetokens.tokenId = r2f_tokens.id
+			WHERE raceId = %d
+		", 
+			array(
+				$raceId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "race found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the race";
+	}
+	*/
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 
 add_action('wp_ajax_r2f_action_get_tokens', 'r2f_action_get_tokens');
 add_action('wp_ajax_nopriv_r2f_action_get_tokens', 'r2f_action_get_tokens');
