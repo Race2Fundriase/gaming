@@ -41,7 +41,12 @@ Template Name: Active Race
                                 
                                 <input type="hidden" id="racesearchsubmit" /> 
                             </form>
-                        </div>
+			</div>
+			
+			
+			<div id="paperParentAR">
+			</div>
+			
                         <div class="info">
                             <?php if(!user_can_edit_race()) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/enter-race/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
@@ -52,8 +57,7 @@ Template Name: Active Race
                             <div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
                         </div>
                         <!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
-						<div id="paperParentAR">
-						</div>
+						
                     </div>
                 </div> 
 	    </div>
