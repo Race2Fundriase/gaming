@@ -60,12 +60,22 @@ Template Name: Active Race
 							<?php if(user_can_edit_race()) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/create-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
 							<?php } ?>
-                            <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
+                            <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p>
+							<div id="scaleSlider" style="padding-left: 200px">
+								<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
+								<div class="status">
+									<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
+								 </div>
+							</div>
+
+							</div>
                             <div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
-                        </div>
+
+							</div>
                         <!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
 						
                     </div>
+
                 </div> 
 	    </div>
 	</section>
@@ -117,12 +127,6 @@ Template Name: Active Race
                     </aside>
                 </div>
             </div>
-			<div id="scaleSlider">
-				<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
-				<div class="status">
-					<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
-				 </div>
-			</div>
 			
         </section>
 		<div id="templateDiv" style="display: none">

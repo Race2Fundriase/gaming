@@ -63,6 +63,24 @@ jQuery(document).ready
 	function(jQuery)
 	{
 		var raceId = qs("raceId");
+		var md = false;
+		jQuery('#frame').on('mousedown', function(e) {
+			jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			md = true;
+		}).on('mouseup', function(e) {
+			md = false;
+		}).on('mousemove', function(e) {
+			if (md) {
+				var p0 = jQuery(this).data('p0');
+				var curX = parseInt(jQuery('#paperParentAR').css('left'), 10);
+				var curY = parseInt(jQuery('#paperParentAR').css('top'), 10);
+				
+				jQuery('#paperParentAR').css('left', curX + e.pageX - p0.x);
+				jQuery('#paperParentAR').css('top', curY + e.pageY - p0.y);
+				
+				jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			}
+		});
 		
 		jQuery("#mapScale").change(function(e) {
 			scale = jQuery("#mapScale").val();
