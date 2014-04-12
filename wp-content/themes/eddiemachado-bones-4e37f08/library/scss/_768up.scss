@@ -385,6 +385,11 @@ HEADER STYLES
 		}
 	}
 }
+#active-race-header #other-search {
+	position: relative;
+	margin-bottom: -40px;
+	text-align: center;
+}
 
 .enter-race {
 	bottom:112px;
@@ -947,23 +952,34 @@ mobile. Make sure to double check these!
  *Active Race Page
  *************************/
 
+#active-race-header .info {
+	position: relative;
+}
+
+#paperParentAR {
+	border-width: 136px 129px 146px 98px;
+	-webkit-border-image:url('../images/active-race-image-frame.png') 136 129 146 98;
+}
+
 #active-race-header, #complete-race-header {
+	box-sizing: border-box;
 	max-width: 1027px;
 	padding: 0;
 	margin:0 auto;
 	
-	&:after {
-		display: block;
+	
+	/*&:before {
+		display: inline-block;
 		position: absolute;
-		top:-3px;
-		left:0;
+		top:0;
+		left:-1px;
 		z-index: 10;
 		height:100%;
-		width:100%;
+		width: 100%;
 		content:"";
 		background: url('../images/active-race-image-frame.png') center no-repeat;
 		background-size: contain;
-	}
+	}*/
 	
 	.info {
 		
