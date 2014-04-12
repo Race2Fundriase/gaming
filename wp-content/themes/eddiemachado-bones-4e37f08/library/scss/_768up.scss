@@ -953,33 +953,35 @@ mobile. Make sure to double check these!
  *************************/
 
 #active-race-header .info {
-	position: relative;
+	//position: relative;
 }
 
-#paperParentAR {
-	border-width: 136px 129px 146px 98px;
-	-webkit-border-image:url('../images/active-race-image-frame.png') 136 129 146 98;
-}
 
 #active-race-header, #complete-race-header {
+	display: block;
 	box-sizing: border-box;
 	max-width: 1027px;
+	max-height:578px;
 	padding: 0;
 	margin:0 auto;
 	
 	
+	
+	
+	
 	/*&:before {
-		display: inline-block;
+		display: block;
 		position: absolute;
 		top:0;
-		left:-1px;
+		left:0px;
 		z-index: 10;
 		height:100%;
 		width: 100%;
 		content:"";
 		background: url('../images/active-race-image-frame.png') center no-repeat;
-		background-size: contain;
+		background-size: cover;
 	}*/
+	
 	
 	.info {
 		

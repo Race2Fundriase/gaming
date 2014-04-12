@@ -43,8 +43,11 @@ Template Name: Active Race
                             </form>
 			</div>
 			
-			
-			<div id="paperParentAR">
+			<div class="stretchy">
+			    <div id="frame"></div>
+			    <div id="paperParentAR">
+			    </div>
+			    
 			</div>
 			
                         <div class="info">
