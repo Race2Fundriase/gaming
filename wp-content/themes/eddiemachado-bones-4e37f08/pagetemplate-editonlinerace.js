@@ -4,8 +4,8 @@ jQuery(document).ready
 	{
 
 		var raceId = qs("raceId");
-		
-		
+		var rowHtml = jQuery("#templateDiv").html();
+		var lengthInDays;
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
 			type: "POST",
@@ -50,6 +50,36 @@ jQuery(document).ready
 							jQuery("#raceStatus").val(data.rows[0].raceStatus);
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
+							
+							
+							var row = "";
+							lengthInDays = data.rows[0].lengthInDays;
+							for(i=0;i<lengthInDays;i++) {
+								r = rowHtml;
+								r = r.replace(/{day}/g, i+1);
+								row += r;	
+							}
+							jQuery("#weatherResults").append(row);
+							
+							jQuery.ajax({
+								url: site_url+"/wp-admin/admin-ajax.php",
+								type: "POST",
+								data: {
+									action: 'r2f_action_get_raceweather',
+									raceId: raceId
+								},
+								dataType: "JSON",
+								success: function (data) {
+									console.log(data);
+									var option = '';
+									for (i=0;i<data.rows.length;i++){
+									   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
+									   jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+									}
+									
+									
+								}
+							});
 						}
 					});
 				}
@@ -125,6 +155,27 @@ jQuery(document).ready
 					var n = noty({text: data.message + " " + data.error});
 				}
 			});
+			var i;
+			for (i=0;i<lengthInDays;i++) {
+				jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_upsert_raceweather',
+						raceId: raceId,
+						day: i,
+						weather: jQuery("#weatherDay"+(i+1)).val(),
+						weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						//jQuery("#result").text(data.message + " " + data.error);
+						//options(data.id);
+						//var n = noty({text: data.message + " " + data.error});
+					}
+				});
+			}
 			return false;
 		} );
 		

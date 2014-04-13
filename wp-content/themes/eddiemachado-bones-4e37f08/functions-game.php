@@ -1358,7 +1358,7 @@ function r2f_action_get_race()
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
-				locationDescription, terrainDescription, weatherDescription, curDay, featured, justGivingCharityId from `r2f_races` 
+				locationDescription, terrainDescription, weatherDescription, curDay, featured, justGivingCharityId, lengthInDays from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
 		", 
@@ -1817,6 +1817,73 @@ function r2f_action_upsert_racecharacters()
 	
 	die();
 }
+
+function r2f_action_upsert_raceweather()
+{
+	global $wpdb;
+	
+	
+	// Get Params
+	$raceId = $_POST["raceId"];
+	$day = $_POST["day"];
+	$weather = $_POST["weather"];
+	$weatherForecast = $_POST["weatherForecast"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($raceId == "" || $day == "" ) $result["error"] .= "You must enter a race id and a day.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_raceweather
+			WHERE raceId = %d and day = %d
+		", 
+			array(
+			$raceId, $day
+			) 
+	) );
+
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			INSERT INTO r2f_raceweather
+			( id, raceId, day, weather, weatherForecast
+				 )
+			VALUES ( %d, %d, %d, %d, %d )
+		", 
+			array(
+			$id, $raceId, $day, $weather, $weatherForecast
+			) 
+	) );
+		
+	if ($rows == 1) {
+		$id = $wpdb->insert_id;
+		$result["id"] = $id;
+		$result["error"] = "";
+		$result["message"] = "A new Race weather $id was created for day $day.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem creating the race weather.";
+	}
+		
+	
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_activate_racecharacter()
 {
@@ -2425,6 +2492,59 @@ function r2f_action_get_products()
 	die();
 }
 
+function r2f_action_get_raceweather()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$raceId = $_POST["raceId"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($raceId == "") $result["error"] .= "You must supply a raceId.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_raceweather
+			WHERE raceId = %d
+			ORDER BY day
+		", 
+			array(
+				$raceId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "raceweather found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the raceweather";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function get_leaderboard_pos($raceId, $playerId, $day = "")
 {
@@ -2749,6 +2869,15 @@ add_action('wp_ajax_nopriv_r2f_action_get_fundraisers', 'r2f_action_get_fundrais
 
 add_action('wp_ajax_r2f_action_get_charity', 'r2f_action_get_charity');
 add_action('wp_ajax_nopriv_r2f_action_get_charity', 'r2f_action_get_charity');
+
+add_action('wp_ajax_r2f_action_upsert_raceweather', 'r2f_action_upsert_raceweather');
+add_action('wp_ajax_nopriv_r2f_action_upsert_raceweather', 'r2f_action_upsert_raceweather');
+
+add_action('wp_ajax_r2f_action_get_raceweather', 'r2f_action_get_raceweather');
+add_action('wp_ajax_nopriv_r2f_action_get_raceweather', 'r2f_action_get_raceweather');
+
+
+
 
 function modify_contact_methods($profile_fields) {
 
