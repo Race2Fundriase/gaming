@@ -54,6 +54,18 @@ Template Name: Edit Online Race
 					    </div>
 					</div>
 					<div>
+					    <label for="paymentMethodEmail"><span>Payment Method Email</span></label>
+					    <div>
+					    <input id="paymentMethodEmail" name="paymentMethodEmail" type="text" value="" tabindex="9"/>
+					    </div>
+					</div>
+					<div>
+					    <label for="justGivingCharityId"><span>Just Giving Charity ID</span></label>
+					    <div>
+					    <input id="justGivingCharityId" name="justGivingCharityId" type="text" value="" tabindex="9"/>
+					    </div>
+					</div>
+					<div>
 					    <label for="raceDescription"><span>Description of Race</span></label>
 					    <div>
 					    <input id="raceDescription" name="raceDescription" type="text" value="" tabindex="9"/>

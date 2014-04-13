@@ -26,7 +26,7 @@ Template Name: Purchase Token
                     <div>
 		    <h1 class="highlight">Purchase Token</h1>
                     </div>
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypalForm">
 					<input type="hidden" name="cmd" value="_xclick">
 					<input type="hidden" name="business" value="" id="business">
 					<input type="hidden" name="item_name"
@@ -45,6 +45,9 @@ Template Name: Purchase Token
 					<input type="image" name="submit" border="0"
 					src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
 					alt="PayPal - The safer, easier way to pay online">
+					</form>
+					<form id="justGivingForm">
+						<a href="" id="justGivingLink">Enter with Just Giving</a>
 					</form>
                     <div id="active-race-header">
                         <div class="info">
