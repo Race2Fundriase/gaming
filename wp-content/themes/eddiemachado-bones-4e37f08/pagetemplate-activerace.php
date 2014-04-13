@@ -115,13 +115,10 @@ Template Name: Active Race
                     </div>
                     
                     <aside id="profile-excerpt" class="fivecol last">
-                        <div><h3 class="highlight">Chauncy Maples Malawi Trust</h3></div>
-                        <p class="highlight">Lorem ipsum dolor sit amet, maiores ornare ac fermentum, imperdiet ut vivamus a, nam lectus at nunc. Quam euismod sem, semper ut potenti pellentespellentesque quisque.</p>
+                        <div><h3 class="highlight" id="charityProfileName"></h3></div>
+                        <p class="highlight" id="charityProfileDesc"></p>
                         <div><br/><p class="highlight">Find out more:</p></div>
-                        <div><br/><p class="highlight">Website:<a href="#">www.url.com</a></p></div>
-                        <div><p class="highlight">Facebook:<a href="#">www.facebook.com/yourfacebook</a></p></div>
-                        <div><p class="highlight">Twitter:<a href="#">www.twitter.com/user</a></p></div>
-                        <div class="profile-view"><a class="btn small center" href="#">Profile Page</a></div>
+                        <div><br/><p class="highlight">Website:<a href="#" id="charityProfileWebsite"></a></p></div>
                     </aside>
 					<?php if (appthemes_check_user_role("administrator")) {?>
 					<div id="featureracediv">

@@ -141,7 +141,7 @@ jQuery(document).ready
 				
 				var curDay = data.rows[0].curDay;
 				var raceStatus = data.rows[0].raceStatus;
-				
+				var createdBy = data.rows[0].createdBy;
 				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
@@ -212,8 +212,28 @@ jQuery(document).ready
 						jQuery("#day").val(curDay);
 					}
 				});
+				
+				jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_get_charity',
+						id: createdBy
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						jQuery("#result").text(data.message + " " + data.error);
+						jQuery("#charityProfileName").html(data.user.data.charityName);
+						jQuery("#charityProfileWebsite").html(data.user.data.website);
+						jQuery("#charityProfileDesc").html(data.user.data.description);
+						
+					}
+				});
 			}
 		});
+		
+		
 
 	}
 );
