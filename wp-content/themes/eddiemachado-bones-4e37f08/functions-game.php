@@ -1440,6 +1440,144 @@ function r2f_action_get_racetokens()
 	die();
 }
 
+function r2f_action_get_charities()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$q = $_POST["q"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+		
+	
+	// Select
+
+	if(!isset($q) || $q == "")
+
+		$rows = get_users(array('meta_query' => array(
+			array(
+				'key' => 'join_type',
+				'value' => 'charity',
+				'compare' => '='
+			)
+		)));
+	else
+		$rows = get_users(array('meta_query' => array(
+			array(
+				'key' => 'join_type',
+				'value' => 'charity',
+				'compare' => '='
+			),
+			array(
+				'key' => 'main_contact_name',
+				'value' => $q,
+				'compare' => 'LIKE'
+			)
+		)));	
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "charity users found.";
+		
+		$i=0;
+		foreach($rows as $row) {
+			
+			$charityName = get_user_meta( $row->data->ID, "official_charity_name", true );
+			$row->data->charityName = $charityName;
+			$result["rows"][$i] = $row;
+			
+			$i++;
+		}    
+		
+		
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting charity users";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_get_fundraisers()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$q = $_POST["q"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+		
+	
+	// Select
+	if(!isset($q) || $q == "")
+
+		$rows = get_users(array('meta_query' => array(
+			array(
+				'key' => 'join_type',
+				'value' => 'fundraiser',
+				'compare' => '='
+			)
+		)));
+	else
+		$rows = get_users(array('meta_query' => array(
+			array(
+				'key' => 'join_type',
+				'value' => 'fundraiser',
+				'compare' => '='
+			),
+			array(
+				'key' => 'main_contact_name',
+				'value' => $q,
+				'compare' => 'LIKE'
+			)
+		)));	
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "fundraiser users found.";
+		
+		$i=0;
+		foreach($rows as $row) {
+			
+			$charityName = get_user_meta( $row->data->ID, "main_contact_name", true );
+			$row->data->charityName = $charityName;
+			$result["rows"][$i] = $row;
+			
+			$i++;
+		}    
+		
+		
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting fundraiser users";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_get_featured_races()
 {
 	global $wpdb;
@@ -2564,6 +2702,11 @@ add_action('wp_ajax_nopriv_r2f_action_update_race_featured', 'r2f_action_update_
 add_action('wp_ajax_r2f_action_get_featured_races', 'r2f_action_get_featured_races');
 add_action('wp_ajax_nopriv_r2f_action_get_featured_races', 'r2f_action_get_featured_races');
 
+add_action('wp_ajax_r2f_action_get_charities', 'r2f_action_get_charities');
+add_action('wp_ajax_nopriv_r2f_action_get_charities', 'r2f_action_get_charities');
+
+add_action('wp_ajax_r2f_action_get_fundraisers', 'r2f_action_get_fundraisers');
+add_action('wp_ajax_nopriv_r2f_action_get_fundraisers', 'r2f_action_get_fundraisers');
 
 
 
