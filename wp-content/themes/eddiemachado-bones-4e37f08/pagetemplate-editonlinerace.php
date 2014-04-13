@@ -2,6 +2,8 @@
 /*
 Template Name: Edit Online Race
 */
+
+if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
 ?>
 
 <?php get_header(); ?>

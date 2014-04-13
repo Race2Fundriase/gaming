@@ -2,9 +2,9 @@
 /*
 Template Name: Token Admin
 */
-?>
 
-<?php get_currentuserinfo(); if (!current_user_can('publish_posts')) die("Access denied");?>
+if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
+?>
 
 <?php get_header(); ?>
 

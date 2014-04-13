@@ -2778,6 +2778,43 @@ function user_can_edit_race() {
 $fundraiser = appthemes_check_user_role("contributor");
 $charity = appthemes_check_user_role("contributor");
 
+function check_security($pageName) {
+
+	switch ($pageName) {
+    case "pagetemplate-admin-dashboard":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+    case "pagetemplate-creategamefour":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-creategamethree":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-creategametwo":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-creategameone":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-editonlinerace":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-map-admin":
+        return appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-maps-admin":
+        return appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-master-dashboard":
+        return appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-token-admin":
+        return appthemes_check_user_role("administrator");
+        break;		
+	}
+	return true;
+}
+ 
 
   
 ?>
