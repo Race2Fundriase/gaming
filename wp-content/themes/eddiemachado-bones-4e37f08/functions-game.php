@@ -813,6 +813,8 @@ function r2f_action_upsert_race()
 	$terrainDescription = $_POST["terrainDescription"];
 	$weatherDescription = $_POST["weatherDescription"];
 	$curDay = $_POST["curDay"];
+	$paymentMethodEmail = $_POST["paymentMethodEmail"];
+	$justGivingCharityId = $_POST["justGivingCharityId"];
 		
 	// Init results
 	$result["message"] = "";
@@ -836,13 +838,13 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, 
 					finishDate, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription, curDay)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d )
+					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
 				$createdBy, 0, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId
 				) 
 		) );
 		
@@ -864,13 +866,15 @@ function r2f_action_upsert_race()
 				SET maxNoOfPlayers = %d, raceName = %s, raceDescription = %s, mapId = %d, 
 				startDate = %s, finishDate = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
-				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d
+				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d,
+				paymentMethodEmail = %s, justGivingCharityId = %s
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay,
+				$paymentMethodEmail, $justGivingCharityId,
 				$id
 				) 
 		) );
@@ -962,6 +966,60 @@ function r2f_action_upsert_race_options()
 	
 	die();
 }
+
+function r2f_action_update_race_startfinish()
+{
+	global $wpdb;
+	
+	// Get Params
+	$id = $_POST["id"];
+	$startGridX = $_POST["startGridX"];
+	$startGridY = $_POST["startGridY"];
+	$finishGridX = $_POST["finishGridX"];
+	$finishGridY = $_POST["finishGridY"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+		
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET startGridX = %d, startGridY = %d, finishGridX = %d, finishGridY = %d
+			WHERE id = %d
+		", 
+			array(
+			$startGridY, $startGridY, $finishGridX, $finishGridY,
+			$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Race '$id' was updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updating the race $id. $rows";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_upsert_racetokens()
 {
@@ -2017,6 +2075,60 @@ function r2f_action_get_leaderboard()
 	die();
 }
 
+function r2f_action_get_products()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$productType = $_POST["productType"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($productType == "") $result["error"] .= "You must supply a product Type.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_products
+			WHERE productType = %s
+			ORDER BY qty
+		", 
+			array(
+				$productType
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "products found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the products";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function get_leaderboard_pos($raceId, $playerId, $day = "")
 {
 	global $wpdb;
@@ -2320,6 +2432,13 @@ add_action('wp_ajax_nopriv_r2f_action_get_racecharacter', 'r2f_action_get_racech
 add_action('wp_ajax_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
 add_action('wp_ajax_nopriv_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
 
+add_action('wp_ajax_r2f_action_get_products', 'r2f_action_get_products');
+add_action('wp_ajax_nopriv_r2f_action_get_products', 'r2f_action_get_products');
+
+add_action('wp_ajax_r2f_action_update_race_startfinish', 'r2f_action_update_race_startfinish');
+add_action('wp_ajax_nopriv_r2f_action_update_race_startfinish', 'r2f_action_update_race_startfinish');
+
+
 
 
 function modify_contact_methods($profile_fields) {
@@ -2389,7 +2508,8 @@ function user_can_edit_race() {
 	
 }
 
-$fundraiser = appthemes_check_user_role("subscriber");
+
+$fundraiser = appthemes_check_user_role("contributor");
 $charity = appthemes_check_user_role("contributor");
 
 
