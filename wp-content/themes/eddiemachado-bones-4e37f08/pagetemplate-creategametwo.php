@@ -134,10 +134,17 @@
 													<input id="curDay" name="curDay" type="text" tabindex="13"/>
 													</div>
 												</div>
-                                            
+                                            					<div>
+					    <label for="raceTokens"><span>Select Tokens</span></label>
+					    <div>
+							<select multiple id="raceTokens" name="raceTokens">
+							</select>
+					    </div>
+					</div>
+
                                             <input name="token" type="hidden" value="a2"/>
                                             
-                                            <div class="clearfix">
+                                            <!--<div class="clearfix">
                                             <div class="fourcol first token">
                                                 <a href="#" class="vehicleselect" data-selection="a2">
                                                     <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
@@ -174,7 +181,7 @@
                                                 </a>
                                             </div>
                                             </div>
-                                                  
+                                                -->  
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
                         
                                 </div>

@@ -112,7 +112,8 @@ jQuery(document).ready
 					startGridY: jQuery("#startGridY").val(),
 					curDay: jQuery("#curDay").val(),
 					paymentMethodEmail: jQuery("#paymentMethodEmail").val(),
-					justGivingCharityId: jQuery("#justGivingCharityId").val()
+					justGivingCharityId: jQuery("#justGivingCharityId").val(),
+					createdBy: current_user_id
 				},
 				dataType: "JSON",
 				success: function (data) {

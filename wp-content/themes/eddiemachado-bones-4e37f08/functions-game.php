@@ -1427,7 +1427,7 @@ function r2f_action_get_racetokens()
 		$result["rows"] = $rows;
 	} else {
 		$result["error"] = $wpdb->last_error;
-		$result["message"] = "There was a problem getting the race";
+		$result["message"] = "There was a problem getting the race tokens";
 	}
 	
 	// Return result
