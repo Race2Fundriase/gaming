@@ -1200,6 +1200,7 @@ function r2f_action_get_races()
 	$sidx = $_POST['sidx']; // get index row - i.e. user click to sort
 	$sord = $_POST['sord'];
 	$raceStatus = $_POST['raceStatus'];
+	$q = $_POST['q'];
 	
 	if(!$sidx) $sidx =1;
 	if(!$page) $page = 1;
@@ -1211,17 +1212,19 @@ function r2f_action_get_races()
 	$result["id"] = "";
 	$result["results"] = "";
 	
-
+	$where = "";
 	
 	if (isset($raceStatus))
-		$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+		$where .= " AND raceStatus = $raceStatus";
+	if (isset($q) && $q != "")
+		$where .= " AND raceName LIKE '%$q%'";
+	
+	
+	$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
-				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races` where raceStatus = $raceStatus");
-	else
-		$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
-				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
-				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races`");
-			
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races` where 1=1$where");
+
+				
 	$count = count($queryResult);
 	if( $count >0 ) {
 		$total_pages = ceil($count/$limit);
@@ -1231,17 +1234,10 @@ function r2f_action_get_races()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	if (isset($raceStatus))
-		$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
-				join `r2f_maps` ON mapId = `r2f_maps`.id where raceStatus = $raceStatus
-				LIMIT $start, $limit");
-	else
-		$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
-				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
-				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
-				join `r2f_maps` ON mapId = `r2f_maps`.id 
+				join `r2f_maps` ON mapId = `r2f_maps`.id where 1=1$where
 				LIMIT $start, $limit");
 	
 	$responce->page = $page;

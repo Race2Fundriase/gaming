@@ -2,6 +2,8 @@ jQuery(document).ready
 (
 	function(jQuery)
 	{
+		var q = qs('race-s');
+	
 		var rowHtml = jQuery("#templateDiv").html();
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
@@ -10,7 +12,8 @@ jQuery(document).ready
 				action: 'r2f_action_get_races',
 				page: 0,
 				rows: 100,
-				raceStatus: 0
+				raceStatus: 0,
+				q: q
 			},
 			dataType: "JSON",
 			success: function (data) {
@@ -62,7 +65,8 @@ jQuery(document).ready
 				action: 'r2f_action_get_races',
 				page: 0,
 				rows: 100,
-				raceStatus: 1
+				raceStatus: 1,
+				q: q
 			},
 			dataType: "JSON",
 			success: function (data) {
@@ -110,3 +114,8 @@ jQuery(document).ready
 	}
 );
 
+function qs(key) {
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}
