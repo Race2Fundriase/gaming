@@ -819,6 +819,8 @@ function r2f_action_upsert_race()
 	$curDay = $_POST["curDay"];
 	$paymentMethodEmail = $_POST["paymentMethodEmail"];
 	$justGivingCharityId = $_POST["justGivingCharityId"];
+	$raceStatus = $_POST["raceStatus"];
+	if ($raceStatus == "") $raceStatus = 0;
 		
 	// Init results
 	$result["message"] = "";
@@ -842,13 +844,13 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
+					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId, raceStatus)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, 0, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId, $raceStatus
 				) 
 		) );
 		
@@ -871,14 +873,14 @@ function r2f_action_upsert_race()
 				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d,
-				paymentMethodEmail = %s, justGivingCharityId = %s
+				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay,
-				$paymentMethodEmail, $justGivingCharityId,
+				$paymentMethodEmail, $justGivingCharityId, $raceStatus,
 				$id
 				) 
 		) );

@@ -140,6 +140,16 @@ Template Name: Edit Online Race
 					    </div>
 					</div>
 					<div>
+					    <label for="raceStatus"><span>Race Status</span></label>
+					    <div>
+					    <select id="raceStatus">
+							<option value="0">Not Started</option>
+							<option value="1">Active</option>
+							<option value="2">Complete</option>
+						</select>
+					    </div>
+					</div>
+					<div>
 					    <label for="raceTokens"><span>Select Tokens</span></label>
 					    <div>
 							<select multiple id="raceTokens" name="raceTokens">

@@ -47,6 +47,7 @@ jQuery(document).ready
 							jQuery("#startGridX").val(data.rows[0].startGridX);
 							jQuery("#startGridY").val(data.rows[0].startGridY);
 							jQuery("#curDay").val(data.rows[0].curDay);
+							jQuery("#raceStatus").val(data.rows[0].raceStatus);
 						}
 					});
 				}
@@ -109,7 +110,8 @@ jQuery(document).ready
 					finishGridY: jQuery("#finishGridY").val(),
 					startGridX: jQuery("#startGridX").val(),
 					startGridY: jQuery("#startGridY").val(),
-					curDay: jQuery("#curDay").val()
+					curDay: jQuery("#curDay").val(),
+					raceStatus: jQuery("#raceStatus").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
