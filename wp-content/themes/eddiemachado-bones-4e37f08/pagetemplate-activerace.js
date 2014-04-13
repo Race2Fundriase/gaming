@@ -109,30 +109,9 @@ jQuery(document).ready
 		});
 		
 		jQuery("#day").change(function(e) {
-			jQuery.ajax({
-				url: site_url+"/wp-admin/admin-ajax.php",
-				type: "POST",
-				data: {
-					action: 'r2f_action_get_leaderboard',
-					raceId: raceId,
-					day: jQuery("#day").val()
-				},
-				dataType: "JSON",
-				success: function (data) {
-					console.log(data);
-					jQuery("#result").text(data.message + " " + data.error);
-					var li = '';
-					drawGrid();
-					players = new Array();
-					for (i=0;i<data.rows.length;i++){
-					   li += '<li>'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
-					   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
-					   players[i] = data.rows[i];
-					   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-					}
-					jQuery('#leaderboard').html(li);
-				}
-			});
+				
+			getLeaderBoard(raceId, jQuery("#day").val());
+		
 		});
 		
 		jQuery.ajax({
@@ -159,6 +138,10 @@ jQuery(document).ready
 				startGridY = data.rows[0].startGridY;
 				finishGridX = data.rows[0].finishGridX;
 				finishGridY = data.rows[0].finishGridY;
+				
+				var curDay = data.rows[0].curDay;
+				
+				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
 					type: "POST",
@@ -182,53 +165,7 @@ jQuery(document).ready
 							jQuery("#cellHeight").val(data.result.cellHeight);
 							updateMapOptions();
 							drawGrid();
-							jQuery.ajax({
-								url: site_url+"/wp-admin/admin-ajax.php",
-								type: "POST",
-								data: {
-									action: 'r2f_action_get_leaderboard',
-									raceId: raceId,
-									day: 0
-								},
-								dataType: "JSON",
-								success: function (data) {
-									console.log(data);
-									jQuery("#result").text(data.message + " " + data.error);
-									var li = '';
-									players = new Array();
-									for (i=0;i<data.rows.length;i++){
-									   li += '<li id="lbli'+idata.rows[i].playerId+'">'+ data.rows[i].name + '(' + data.rows[i].tokenName + ')</li>';
-									   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
-									   players[i] = data.rows[i];
-									   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-										/*jQuery.ajax({
-											url: site_url+"/wp-admin/admin-ajax.php",
-											type: "POST",
-											data: {
-												action: 'r2f_action_get_leaderboard_history',
-												raceId: raceId,
-												playerId, data.rows[i].playerId,
-												day: 0
-											},
-											dataType: "JSON",
-											success: function (data) {
-												console.log(data);
-												jQuery("#result").text(data.message + " " + data.error);
-												var row = "";
-												
-												for(i=0;i<data.rows.length;i++) {
-													r = '<div style="width: 10px">';
-													r += data.rows[i].position;
-													r += '</div>';
-													row += r;
-												}
-												jQuery("#lbli"+data.rows[i].playerId).append(row);
-											}
-										});*/
-									}
-									jQuery('#leaderboard').append(li);
-								}
-							});
+							getLeaderBoard(raceId, curDay);
 						}
 					}
 				});
@@ -271,6 +208,7 @@ jQuery(document).ready
 						   li += '<option value="'+(i+1)+'">'+ (i + 1) + '</option>';
 						}
 						jQuery('#day').append(li);
+						jQuery("#day").val(curDay);
 					}
 				});
 			}
@@ -278,6 +216,56 @@ jQuery(document).ready
 
 	}
 );
+
+function getLeaderBoard(raceId, day) {
+	jQuery.ajax({
+		url: site_url+"/wp-admin/admin-ajax.php",
+		type: "POST",
+		data: {
+			action: 'r2f_action_get_leaderboard',
+			raceId: raceId,
+			day: day
+		},
+		dataType: "JSON",
+		success: function (data) {
+			console.log(data);
+			jQuery("#result").text(data.message + " " + data.error);
+			var li = '';
+			players = new Array();
+			for (i=0;i<data.rows.length;i++){
+			   li += '<li id="lbli'+data.rows[i].playerId+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
+			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
+			   players[i] = data.rows[i];
+			   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+				/*jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_get_leaderboard_history',
+						raceId: raceId,
+						playerId, data.rows[i].playerId,
+						day: 0
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						jQuery("#result").text(data.message + " " + data.error);
+						var row = "";
+						
+						for(i=0;i<data.rows.length;i++) {
+							r = '<div style="width: 10px">';
+							r += data.rows[i].position;
+							r += '</div>';
+							row += r;
+						}
+						jQuery("#lbli"+data.rows[i].playerId).append(row);
+					}
+				});*/
+			}
+			jQuery('#leaderboard').append(li);
+		}
+	});
+}
 
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

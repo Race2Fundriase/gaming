@@ -143,9 +143,8 @@ Template Name: Edit Online Race
 					    <label for="raceStatus"><span>Race Status</span></label>
 					    <div>
 					    <select id="raceStatus">
-							<option value="0">Not Started</option>
-							<option value="1">Active</option>
-							<option value="2">Complete</option>
+							<option value="0">Active</option>
+							<option value="1">Complete</option>
 						</select>
 					    </div>
 					</div>

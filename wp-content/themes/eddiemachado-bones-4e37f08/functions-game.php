@@ -1213,10 +1213,14 @@ function r2f_action_get_races()
 	
 
 	
-		
-	$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+	if ($raceStatus) 
+		$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races` where raceStatus = $raceStatus");
+	else
+		$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races`");
 			
 	$count = count($queryResult);
 	if( $count >0 ) {
@@ -1227,12 +1231,19 @@ function r2f_action_get_races()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+	if ($raceStatus) 
+		$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id where raceStatus = $raceStatus
 				LIMIT $start, $limit");
-	//print_r($wpdb->last_error);
+	else
+		$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
+				join `r2f_maps` ON mapId = `r2f_maps`.id 
+				LIMIT $start, $limit");
+	
 	$responce->page = $page;
 	$responce->total = $total_pages;
 	$responce->records = $count;
@@ -1242,9 +1253,9 @@ function r2f_action_get_races()
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
 	
 		$responce->rows[$i]['id']=$row->id;
-		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->status,
+		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/create-online-race/?raceId='.$row->id.'">Edit</a>',
-			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl);
+			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->maxNoOfPlayers);
 		$i++;
 	}        
 	echo json_encode($responce);
@@ -1416,7 +1427,7 @@ function r2f_action_get_racetokens()
 	
 	if ($rows) {
 		$result["error"] = "";
-		$result["message"] = "race found.";
+		$result["message"] = "race tokens found.";
 		$result["rows"] = $rows;
 	} else {
 		$result["error"] = $wpdb->last_error;
