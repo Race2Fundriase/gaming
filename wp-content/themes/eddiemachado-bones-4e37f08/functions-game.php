@@ -844,13 +844,13 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId, raceStatus)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s, %d )
+					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
-				$createdBy, 0, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId, $raceStatus
+				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId
 				) 
 		) );
 		

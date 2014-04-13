@@ -118,7 +118,7 @@ jQuery(document).ready
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					location.href = site_url+"/create-online-race-4/?raceId="+raceId;
+					location.href = site_url+"/create-online-race-4/?raceId="+data.id;
 				}
 			});
 			return false;

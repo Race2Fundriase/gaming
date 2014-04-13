@@ -52,8 +52,10 @@ jQuery(document).ready
 			jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
 			return_url = site_url+"/create-online-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
 			
-			if (jQuery("#tokenprice_race").val() == 0)
+			if (jQuery("#tokenprice_race").val() == 0) {
 				location.href = return_url;
+				return;
+			}
 			
 			jQuery("#return").val(return_url);
 			jQuery("#amount").val(jQuery("#tokenprice_race").val());
