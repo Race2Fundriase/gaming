@@ -14,7 +14,7 @@ Template Name: Admin Dashboard
 		    <h1 class="highlight"><?php the_title(); ?></h1>
                     </div>
 		    <ul id="tab_control" class="">
-			<li><a href="<?=site_url();?>/create-online-race" class="btn large ">Create Online Game</a></li>
+			<li><a href="<?=site_url();?>/create-online-race-1" class="btn large ">Create Online Game</a></li>
 			<li><a href="<?=site_url();?>/" class="btn large ">Create Offline Game</a></li>
 			<li><a href="<?=site_url();?>/profile" class="btn large">Your Profile</a></li>
 		    </ul>

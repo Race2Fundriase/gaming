@@ -4,7 +4,8 @@ jQuery(document).ready
 	{
 
 		var raceId = qs("raceId");
-	
+		
+		
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
 			type: "POST",
@@ -37,7 +38,9 @@ jQuery(document).ready
 							jQuery("#raceDescription").val(data.rows[0].raceDescription);
 							jQuery("#mapId").val(data.rows[0].mapId);
 							jQuery("#startDate").val(data.rows[0].startDate);
+							jQuery("#startTime").val(data.rows[0].startTime);
 							jQuery("#finishDate").val(data.rows[0].finishDate);
+							jQuery("#finishTime").val(data.rows[0].finishTime);
 							jQuery("#entryPrice").val(data.rows[0].entryPrice);
 							jQuery("#finishGridX").val(data.rows[0].finishGridX);
 							jQuery("#finishGridY").val(data.rows[0].finishGridY);
@@ -97,7 +100,9 @@ jQuery(document).ready
 					raceDescription: jQuery("#raceDescription").val(),
 					mapId: jQuery("#mapId").val(),
 					startDate: jQuery("#startDate").val(),
+					startTime: jQuery("#startTime").val(),
 					finishDate: jQuery("#finishDate").val(),
+					finishTime: jQuery("#finishTime").val(),
 					entryPrice: jQuery("#entryPrice").val(),
 					raceTokens: jQuery("#raceTokens").val(),
 					finishGridX: jQuery("#finishGridX").val(),
@@ -109,8 +114,9 @@ jQuery(document).ready
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
-					jQuery("#result").text(data.message + " " + data.error);
+					//jQuery("#result").text(data.message + " " + data.error);
 					//options(data.id);
+					var n = noty({text: data.message + " " + data.error});
 				}
 			});
 			return false;

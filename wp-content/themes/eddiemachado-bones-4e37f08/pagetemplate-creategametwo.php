@@ -102,14 +102,24 @@
 													<input id="startDate" name="startDate" type="text" value="" tabindex="12"/>
 													</div>
                                                 </div>
-                                                
+												<div>
+                                                <label for="startTime"><span>Start Time</span></label>
+                                                    <div>
+													<input id="startTime" name="startTime" type="text" value="" tabindex="12"/>
+													</div>
+                                                </div>
                                                 <div>
                                                 <label for="finishdate"><span>Finish Date</span></label>
                                                    <div>
 													<input id="finishDate" name="finishDate" type="text" tabindex="13"/>
 													</div>
                                                 </div>
-                                                
+												<div>
+                                                <label for="finishTime"><span>Finish Time</span></label>
+                                                   <div>
+													<input id="finishTime" name="finishTime" type="text" tabindex="13"/>
+													</div>
+                                                </div>
                                                 <div>
                                                     <label for="entryprice"><span>Entry Price:</span></label>
                                                     <div>

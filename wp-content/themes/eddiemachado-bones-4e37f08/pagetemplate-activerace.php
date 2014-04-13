@@ -58,7 +58,7 @@ Template Name: Active Race
 							<a class="btn large blue" href="<?=site_url()?>/token-join">Enter Now</a>
 							<?php } ?>
 							<?php if(user_can_edit_race()) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/create-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
+							<br/><a class="btn large blue" href="<?=site_url()?>/edit-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
 							<?php } ?>
                             <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p>
 							<div id="scaleSlider" style="padding-left: 200px">
@@ -92,10 +92,7 @@ Template Name: Active Race
                                 <!--Removing closing /dt closes the gap between inline elements valid HTML5-->
                                 <dt>Location:
                                 <dd id="mapName"></dd>
-                                <dt>Terrain:
-                                <dd id="terrain"></dd>
-                                <dt>Weather:
-                                <dd id="weather"></dd>
+                                
                             </dl>
                             <p class="highlight" id="prize">Prize:</p>
                             

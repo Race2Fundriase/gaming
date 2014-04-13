@@ -17,7 +17,7 @@ Template Name: Master Dashboard
 			<li><a href="<?=site_url();?>/wp-admin" class="btn large ">WP Admin</a></li>
 			<li><a href="<?=site_url();?>/maps-admin" class="btn large ">Map Admin</a></li>
 			<li><a href="<?=site_url();?>/token-admin" class="btn large">Token Admin</a></li>
-			<li><a href="<?=site_url();?>/create-online-race" class="btn large ">Create Online Game</a></li>
+			<li><a href="<?=site_url();?>/create-online-race-1" class="btn large ">Create Online Game</a></li>
 			<li><a href="<?=site_url();?>/" class="btn large ">Create Offline Game</a></li>
 		    </ul>
             </div> 

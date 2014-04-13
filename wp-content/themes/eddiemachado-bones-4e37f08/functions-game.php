@@ -8,12 +8,14 @@ function add_jQuery_libraries() {
 	wp_register_script('jquery-grid-lang-plugin', get_template_directory_uri().'/library/jquery.jqGrid-4.6.0/js/grid.locale-en.js', array('jquery'));
 	wp_register_script('jquery-grid-plugin', get_template_directory_uri().'/library/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js', array('jquery-grid-lang-plugin'));
 	wp_register_script('raphael', get_template_directory_uri().'/library/js/raphael-min.js', array('jquery'));
-
+	wp_register_script('noty', get_template_directory_uri().'/library/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'));
+	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
 	wp_enqueue_script('jquery-grid-lang-plugin');
 	wp_enqueue_script('jquery-grid-plugin');
 	wp_enqueue_script('raphael');
+	wp_enqueue_script('noty');
 	
 }
  
@@ -801,7 +803,9 @@ function r2f_action_upsert_race()
 	$raceDescription = $_POST["raceDescription"];
 	$mapId = $_POST["mapId"];
 	$startDate = $_POST["startDate"];
+	$startTime = $_POST["startTime"];
 	$finishDate = $_POST["finishDate"];
+	$finishTime = $_POST["finishTime"];
 	$entryPrice = $_POST["entryPrice"];
 	$raceTokens = $_POST["raceTokens"];
 	$createdBy = $_POST["createdBy"];
@@ -836,13 +840,13 @@ function r2f_action_upsert_race()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_races
-				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, 
-					finishDate, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
+				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
+					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
 			", 
 				array(
-				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
+				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, 0, $finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId
 				) 
@@ -864,14 +868,14 @@ function r2f_action_upsert_race()
 			"
 				UPDATE r2f_races
 				SET maxNoOfPlayers = %d, raceName = %s, raceDescription = %s, mapId = %d, 
-				startDate = %s, finishDate = %s, entryPrice = %f,
+				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d,
 				paymentMethodEmail = %s, justGivingCharityId = %s
 				WHERE id = %d
 			", 
 				array(
-				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $finishDate, $entryPrice, 
+				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay,
 				$paymentMethodEmail, $justGivingCharityId,
@@ -879,7 +883,7 @@ function r2f_action_upsert_race()
 				) 
 		) );
 		
-		if ($rows == 1) {
+		if ($wpdb->last_error == "" ) {
 			$result["error"] = "";
 			$result["message"] = "Race '$raceName' was updated.";
 		} else {
@@ -1222,7 +1226,7 @@ function r2f_action_get_races()
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
-				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id where raceStatus = $raceStatus
 				LIMIT $start, $limit");
@@ -1238,7 +1242,7 @@ function r2f_action_get_races()
 		$responce->rows[$i]['id']=$row->id;
 		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->status,
 			'<a href="'.site_url().'/create-online-race/?raceId='.$row->id.'">Edit</a>',
-			$charityName, $row->startDate, $row->finishDate, $row->mapImageUrl);
+			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl);
 		$i++;
 	}        
 	echo json_encode($responce);
@@ -1283,7 +1287,7 @@ function r2f_action_get_user_races()
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
-				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, 
 				mapImageUrl, terrainDescription, locationDescription, weatherDescription ,
 				tokenName
@@ -1306,7 +1310,7 @@ function r2f_action_get_user_races()
 		$responce->rows[$i]['id']=$row->id;
 		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/active-race/?raceId='.$row->id.'">View</a>',
-			$charityName, $row->startDate, $row->finishDate, $row->mapImageUrl, $row->tokenName, $pos);
+			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->tokenName, $pos);
 		$i++;
 	}        
 	echo json_encode($responce);
@@ -1343,7 +1347,7 @@ function r2f_action_get_race()
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
-				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
+				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
 				locationDescription, terrainDescription, weatherDescription, curDay, featured from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
@@ -2613,7 +2617,8 @@ function appthemes_check_user_role( $role, $user_id = null ) {
 
 function user_can_edit_race() {
 
-	return appthemes_check_user_role("contributor");
+	// need also to do sec check on createdBy
+	return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
 	
 }
 

@@ -197,10 +197,34 @@ jQuery(document).ready
 									var li = '';
 									players = new Array();
 									for (i=0;i<data.rows.length;i++){
-									   li += '<li>'+ data.rows[i].name + '(' + data.rows[i].tokenName + ')</li>';
+									   li += '<li id="lbli'+idata.rows[i].playerId+'">'+ data.rows[i].name + '(' + data.rows[i].tokenName + ')</li>';
 									   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 									   players[i] = data.rows[i];
 									   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+										/*jQuery.ajax({
+											url: site_url+"/wp-admin/admin-ajax.php",
+											type: "POST",
+											data: {
+												action: 'r2f_action_get_leaderboard_history',
+												raceId: raceId,
+												playerId, data.rows[i].playerId,
+												day: 0
+											},
+											dataType: "JSON",
+											success: function (data) {
+												console.log(data);
+												jQuery("#result").text(data.message + " " + data.error);
+												var row = "";
+												
+												for(i=0;i<data.rows.length;i++) {
+													r = '<div style="width: 10px">';
+													r += data.rows[i].position;
+													r += '</div>';
+													row += r;
+												}
+												jQuery("#lbli"+data.rows[i].playerId).append(row);
+											}
+										});*/
 									}
 									jQuery('#leaderboard').append(li);
 								}

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Create Online Race
+Template Name: Edit Online Race
 */
 ?>
 
@@ -37,6 +37,7 @@ Template Name: Create Online Race
 		    <div id="tabs">
 			<div class="tabbed_content active">
 			    <form id="">
+				 <div class="form-elements">
 					<input type="hidden" id="join_type" value="charity"/>
 								     
 					<div>
@@ -62,12 +63,6 @@ Template Name: Create Online Race
 					    <label for="locationDescription"><span>Description of Location</span></label>
 					    <div>
 					    <input id="locationDescription" name="locationDescription" type="text" value="" tabindex="9"/>
-					    </div>
-					</div>
-					<div>
-					    <label for="terrainDescription"><span>Description of Terrain</span></label>
-					    <div>
-					    <input id="terrainDescription" name="terrainDescription" type="text" value="" tabindex="9"/>
 					    </div>
 					</div>
 					<div>
@@ -115,15 +110,22 @@ Template Name: Create Online Race
 					    </div>
 					</div>
 					<div>
+					<label for="startTime"><span>Start Time</span></label>
+						<div>
+						<input id="startTime" name="startTime" type="text" value="" tabindex="12"/>
+						</div>
+					</div>
+					<div>
 					    <label for="finishDate"><span>Finish Date</span></label>
 					    <div>
 					    <input id="finishDate" name="finishDate" type="text" tabindex="13"/>
 					    </div>
 					</div>
-					<div id="weatherGrid">
-					<div><label for="weatherDay1"><span>Weather Factor Day 1</span></label><div><input id="weatherDay1" name="weatherDay1" type="text" size="10"/></div></div>
-					<div><label for="weatherDay2"><span>Weather Factor Day 2</span></label><div><input id="weatherDay2" name="weatherDay2" type="text" size="10"/></div></div>
-
+					<div>
+					<label for="finishTime"><span>Finish Time</span></label>
+					   <div>
+						<input id="finishTime" name="finishTime" type="text" tabindex="13"/>
+						</div>
 					</div>
 					<div>
 					    <label for="entryPrice"><span>Entry Price</span></label>
@@ -146,7 +148,7 @@ Template Name: Create Online Race
 					</div>
 					
 					<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-				   
+				   </div>
 			    </form>
 			</div>
 		</div>
