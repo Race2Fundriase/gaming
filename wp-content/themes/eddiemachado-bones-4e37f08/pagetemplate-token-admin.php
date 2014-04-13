@@ -20,15 +20,20 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div id="tokenOptions" class="boxShadow">
 		<H2>Token Options</h2>
 		<form id="dataForm">
-		<fieldset class="myfields">
-		<div><label for="id" id="scaleLabel">id:</label><input type="text" id="id" value="" /></div>
-		<div><label for="tokenName" id="scaleLabel">Token Name:</label><input type="text" id="tokenName" value="" required /></div>
-		<div><label for="tokenDescription" id="scaleLabel">Token Description:</label><input type="text" id="tokenDescription" value="" required /></div>
-		<div><label for="tokenImageUrl" id="scaleLabel">Token Image URL:</label><input type="text" id="tokenImageUrl" value="" required /></div>
-		<div><label for="speed" id="scaleLabel">Speed:</label><input type="text" id="speed" value=""/></div>
-		<div><label for="optimumNoOfPitstops" id="optimumNoOfPitstopsLabel">Optimum No Of Pitstops:</label><input type="text" id="optimumNoOfPitstops" value=""/></div>
+		<div class="form-elements">
+		<div>
+			<label for="curDay"><span>id</span></label>
+			<div>
+			<input id="id" name="id" type="text" tabindex="13"/>
+			</div>
+		</div>
+		<div><label for="tokenName" id="scaleLabel"><span>Token Name:</span></label><input type="text" id="tokenName" value="" required /></div>
+		<div><label for="tokenDescription" id="scaleLabel"><span>Token Description:</span></label><input type="text" id="tokenDescription" value="" required /></div>
+		<div><label for="tokenImageUrl" id="scaleLabel"><span>Token Image URL:</span></label><input type="text" id="tokenImageUrl" value="" required /></div>
+		<div><label for="speed" id="scaleLabel"><span>Speed:</span></label><input type="text" id="speed" value=""/></div>
+		<div><label for="optimumNoOfPitstops" id="optimumNoOfPitstopsLabel"><span>Optimum No Of Pitstops:</span></label><input type="text" id="optimumNoOfPitstops" value=""/></div>
 		<input type="button" value="Apply" id="upsertToken"/>
-		</fieldset>
+		</div>
 		</form>
 	</div>
 	<div id="result" class="boxShadow"></div>
