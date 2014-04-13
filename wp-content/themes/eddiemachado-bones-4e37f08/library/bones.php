@@ -187,7 +187,10 @@ function bones_scripts_and_styles() {
 			wp_enqueue_script('join');
 		}
 		
-		if (is_page_template('pagetemplate-creategameoptions.php')) {
+		wp_enqueue_script('options');
+		wp_enqueue_style('options-css');
+		
+		/*if (is_page_template('pagetemplate-creategameoptions.php')) {
 			wp_enqueue_script('options');
 			wp_enqueue_style('options-css');
 		}
@@ -201,6 +204,7 @@ function bones_scripts_and_styles() {
 			wp_enqueue_script('options');
 			wp_enqueue_style('options-css');
 		}
+		*/
 		
 		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')) {
 			wp_enqueue_script('create-race');

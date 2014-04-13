@@ -1163,7 +1163,7 @@ function r2f_action_get_user_races()
 	$queryResult = $wpdb->get_results("select r2f_races.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, raceStatus from `r2f_races` 
-				join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId where playerId = $userid");
+				join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId where playerId = $userid and r2f_racecharacters.status = 1");
 			
 	$count = count($queryResult);
 	if( $count >0 ) {
@@ -1176,8 +1176,14 @@ function r2f_action_get_user_races()
 
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
-				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
-				join `r2f_maps` ON mapId = `r2f_maps`.id join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId where playerId = $userid
+				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, 
+				mapImageUrl, terrainDescription, locationDescription, weatherDescription ,
+				tokenName
+				from `r2f_races` 
+				join `r2f_maps` ON mapId = `r2f_maps`.id join r2f_racecharacters on r2f_races.id = r2f_racecharacters.raceId 
+				join r2f_tokens ON r2f_racecharacters.tokenId = r2f_tokens.id
+				where playerId = $userid 
+				and r2f_racecharacters.status = 1
 				LIMIT $start, $limit");
 	//print_r($wpdb->last_error);
 	$responce->page = $page;
@@ -1187,11 +1193,12 @@ function r2f_action_get_user_races()
 	$i=0;
 	foreach($queryResult as $row) {
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
-	
+		$pos = get_leaderboard_pos($row->id, $userid);
+		
 		$responce->rows[$i]['id']=$row->id;
-		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->status,
+		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/active-race/?raceId='.$row->id.'">View</a>',
-			$charityName, $row->startDate, $row->finishDate, $row->mapImageUrl);
+			$charityName, $row->startDate, $row->finishDate, $row->mapImageUrl, $row->tokenName, $pos);
 		$i++;
 	}        
 	echo json_encode($responce);
@@ -1308,6 +1315,61 @@ function r2f_action_get_racetokens()
 	die();
 }
 
+function r2f_action_get_racecharacter()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$racecharacterId = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($racecharacterId == "") $result["error"] .= "You must supply a racecharacter Id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacters.*, tokenName, tokenImageUrl
+			FROM r2f_racecharacters
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
+			WHERE r2f_racecharacters.id = %d
+		", 
+			array(
+				$racecharacterId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "race character found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the race character";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_upsert_racecharacters()
 {
 	global $wpdb;
@@ -1400,6 +1462,57 @@ function r2f_action_upsert_racecharacters()
 	
 	die();
 }
+
+function r2f_action_activate_racecharacter()
+{
+	global $wpdb;
+	
+
+	// Get Params
+	$id = $_POST["id"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a racecharcater id";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+		
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_racecharacters
+			SET status = 1
+			WHERE id = %d
+		", 
+			array(
+				$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Race Character $id was updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updating the race character.";
+	}
+
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_upsert_racecharactersScore()
 {
@@ -1581,7 +1694,7 @@ function get_winner($raceId) {
 			FROM r2f_racecharacters 
 			JOIN r2f_racecharacterstepscores
 			ON r2f_racecharacters.id = r2f_racecharacterstepscores.racecharacterId
-			WHERE r2f_racecharacters.raceId = %d
+			WHERE r2f_racecharacters.raceId = %d AND r2f_racecharacters.status = 1
 			GROUP BY racecharacterId
 			ORDER BY SUM(ticks) 
 		", 
@@ -1663,7 +1776,7 @@ function get_racecharacters($raceId)
 		"
 			SELECT r2f_racecharacters.*
 			FROM r2f_racecharacters 
-			WHERE r2f_racecharacters.raceId = %d
+			WHERE r2f_racecharacters.raceId = %d AND r2f_racecharacters.status = 1
 		", 
 			array(
 				$raceId
@@ -1873,7 +1986,7 @@ function r2f_action_get_leaderboard()
 			ON r2f_racecharacters.raceId = r2f_races.id
 			JOIN r2f_tokens
 			ON r2f_racecharacters.tokenId = r2f_tokens.id
-			WHERE raceId = %d AND day = %d
+			WHERE raceId = %d AND day = %d AND r2f_racecharacters.status = 1
 			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
 		", 
 			array(
@@ -1900,6 +2013,56 @@ function r2f_action_get_leaderboard()
 	
 	// Return result
 	echo json_encode($result);
+	
+	die();
+}
+
+function get_leaderboard_pos($raceId, $playerId, $day = "")
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	if ($day == "") {
+		$race = get_race($raceId);
+		$day = $race["rows"][0]->curDay;
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacterscores.id, playerId, playerName,
+				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
+				gridX, gridY, tokenImageUrl, tokenName
+			FROM r2f_racecharacterscores
+			JOIN r2f_racecharacters 
+			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
+			JOIN r2f_races
+			ON r2f_racecharacters.raceId = r2f_races.id
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
+			WHERE raceId = %d AND day = %d AND r2f_racecharacters.status = 1
+			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
+		", 
+			array(
+				$raceId, $day
+			) 
+	) );
+	
+	if ($rows) {
+		
+		for ($i=0;$i<count($rows);$i++) {
+			if ($rows[$i]->playerId == $playerId)
+				return $i+1;
+		}
+		
+	} else {
+		return $wpdb->last_error;
+	}
+	
+	
 	
 	die();
 }
@@ -2150,6 +2313,13 @@ add_action('wp_ajax_nopriv_r2f_action_token_register', 'r2f_action_token_registe
 
 add_action('wp_ajax_r2f_action_get_user_races', 'r2f_action_get_user_races');
 add_action('wp_ajax_nopriv_r2f_action_get_user_races', 'r2f_action_get_user_races');
+
+add_action('wp_ajax_r2f_action_get_racecharacter', 'r2f_action_get_racecharacter');
+add_action('wp_ajax_nopriv_r2f_action_get_racecharacter', 'r2f_action_get_racecharacter');
+
+add_action('wp_ajax_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
+add_action('wp_ajax_nopriv_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
+
 
 
 function modify_contact_methods($profile_fields) {

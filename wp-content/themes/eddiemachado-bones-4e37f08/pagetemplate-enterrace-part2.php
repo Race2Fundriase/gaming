@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Enter Race
+Template Name: Enter Race Part 2
 */
 ?>
 
@@ -13,7 +13,7 @@ Template Name: Enter Race
 	<br/>
 	<br/>
 	<h1 class="highlight">Enter Race</h1>
-	<p>Trace your route on the map by selecting grid squares. Choose your character and enter the race.</p>
+	
 	<div id="viewOptions" class="boxShadow" style="display: none;">
 		<h2 class="highlight">View Options</h2>
 		<label for="scale" id="scaleLabel">Scale:<input type="text" id="scale" value="0.2"/></label>
@@ -55,50 +55,6 @@ Template Name: Enter Race
 		
 		</table>
 		<input type="button" value="Apply" id="upsertMapGridTokenOffset"/>
-		</fieldset>
-		</form>
-	</div>
-	
-	<div id="signUp" class="boxShadow">
-		<form id="signUpDataForm">
-       
-		<h2 class="highlight">Player Name</h2>
-		<fieldset class="myfields">
-		<div><input type="text" id="playerName" value=""/></div>
-		</fieldset>
-       
-		</form>
-	</div>
-	<div id="chooseCharacter" class="boxShadow">
-		<form id="raceTokensDataForm">
-       
-		<h2 class="highlight">Choose a Character</h2>
-		<fieldset class="myfields">
-		<div>
-			<select id="tokenId" name="tokenId" style="width: 350px">
-			</select>
-		</div>
-		</fieldset>
-       
-		</form>
-	</div>
-
-	
-	<div id="cellOptions" class="boxShadow">
-		<form id="mapGridDataForm">
-		<h2 class="highlight">Character Options</h2>
-		<fieldset class="myfields">
-		<div><input type="text" id="drivingStyleWeight" value="0.5" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
-			<div class="status">
-				<p class="left-status">Careful</p><p class="right-status">Agressive</p>
-			</div>
-		</div>
-		<br/>
-		<div><input type="text" id="noOfPitstops" value="0.5" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
-			<div class="status">
-				<p class="left-status">Fewer Pitsops</p><p class="right-status">More Pitstops</p>
-			</div>
-		</div>
 		</fieldset>
 		</form>
 	</div>

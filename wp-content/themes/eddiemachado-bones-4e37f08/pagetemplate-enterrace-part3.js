@@ -216,6 +216,8 @@ window.onload = function () {
 		
 	} );
 	var raceId = qs("raceId");
+	var racecharacterId = qs("racecharacterId");
+	
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "POST",
@@ -259,18 +261,18 @@ window.onload = function () {
 						url: site_url+"/wp-admin/admin-ajax.php",
 						type: "POST",
 						data: {
-							action: 'r2f_action_get_racetokens',
-							raceId: raceId
+							action: 'r2f_action_get_racecharacter',
+							id: racecharacterId
 						},
 						dataType: "JSON",
 						success: function (data) {
 							console.log(data);
 							jQuery("#result").text(data.message + " " + data.error);
-							var option = '';
-							for (i=0;i<data.rows.length;i++){
-							   option += '<option value="'+ data.rows[i].tokenId + '">' + data.rows[i].tokenName + '</option>';
-							}
-							jQuery('#tokenId').append(option);
+							jQuery("#playerName").html(data.rows[0].playerName);
+							jQuery("#drivingStyleWeight").html(data.rows[0].drivingStyleWeight);
+							jQuery("#noOfPitstops").html(data.rows[0].noOfPitstops);
+							jQuery("#tokenName").html(data.rows[0].tokenName);
+							
 						}
 					});
 				}
@@ -282,54 +284,23 @@ window.onload = function () {
 	
 	jQuery("#continue").click(function(e) { 
 		
-		if (selectedCells.length > 0 ) {
-			var lastCell = selectedCells[selectedCells.length-1];
-			
-			if (Math.abs(lastCell.x - finishGridX) > 1 || Math.abs(lastCell.y - finishGridY) > 1) {
-				jQuery("#feedback").text("You must finish at the finish grid position.");
-				return false;
-				
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_activate_racecharacter',
+				id: racecharacterId
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				jQuery("#result").text(data.message + " " + data.error);
+				if (data.error == "")
+					location.href = site_url+"/active-race/?raceId="+raceId;
 			}
+		});
 			
-			// if we get here we are good to go - calculate the route, save the entry and re-direct to the race view
-			tokenId = jQuery("#tokenId").val();
-			playerId = current_user_id;
-			joinDate = d.yyyymmdd();
-			route = "";
-			playerName = jQuery("#playerName").val();
-			for(i=0;i<selectedCells.length;i++) {
-				route += selectedCells[i].x + ',' + selectedCells[i].y + '|';
-			}
-			
-			drivingStyleWeight = jQuery("#drivingStyleWeight").val();
-			noOfPitstops = jQuery("#noOfPitstops").val();
-
-			jQuery.ajax({
-				url: site_url+"/wp-admin/admin-ajax.php",
-				type: "POST",
-				data: {
-					action: 'r2f_action_upsert_racecharacters',
-					id: "",
-					raceId: raceId,
-					tokenId: tokenId,
-					playerId: playerId,
-					joinDate: joinDate,
-					route: route,
-					drivingStyleWeight: drivingStyleWeight,
-					noOfPitstops: noOfPitstops,
-					playerName: playerName
-				},
-				dataType: "JSON",
-				success: function (data) {
-					console.log(data);
-					jQuery("#result").text(data.message + " " + data.error);
-					if (data.error == "")
-						location.href = site_url+"/active-race/?raceId="+raceId;
-				}
-			});
-			
-		}
-		jQuery("#feedback").text("You must choose a route.");
+		
 		return false;
 	} );
 };
