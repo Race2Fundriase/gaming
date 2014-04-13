@@ -114,41 +114,10 @@
 						<h2 class="highlight">Featured Games</h2>
 					</div>
 					
-					<div class="threecol first text-center">
-						<div class="featured-game">
-							<img src="<?php echo get_template_directory_uri(); ?>/library/images/start-a-race-293x220.jpg" alt="game title"/>
-							<p class="title highlight">A great race online</p>
-							<p class="charity highlight">By XYZ Charity</p>
-						</div>
-						<a class="btn medium">Enter Race</a>
+					<div id="featuredGames">
 					</div>
 					
-					<div class="threecol text-center">
-						<div class="featured-game">
-							<img src="<?php echo get_template_directory_uri(); ?>/library/images/start-a-race-293x220.jpg" alt="game title"/>
-							<p class="title highlight">A great race online</p>
-							<p class="charity highlight">By XYZ Charity</p>
-						</div>
-						<a class="btn medium">Enter Race</a>
-					</div>
 					
-					<div class="threecol text-center">
-						<div class="featured-game">
-							<img src="<?php echo get_template_directory_uri(); ?>/library/images/start-a-race-293x220.jpg" alt="game title"/>
-							<p class="title highlight">A great race online</p>
-							<p class="charity highlight">By XYZ Charity</p>
-						</div>
-						<a class="btn medium">Enter Race</a>
-					</div>
-					
-					<div class="threecol text-center">
-						<div class="featured-game">
-							<img src="<?php echo get_template_directory_uri(); ?>/library/images/start-a-race-293x220.jpg" alt="game title"/>
-							<p class="title highlight">A great race online</p>
-							<p class="charity highlight">By XYZ Charity</p>
-						</div>
-						<a class="btn medium">Enter Race</a>
-					</div>
 				</div>
 			</div>
 			</section>
@@ -205,6 +174,16 @@
 				</div>
 			</div>
 			</section>
-			
+				<div id="templateDiv" style="display: none">
+					<div class="threecol first text-center">
+						<div class="featured-game" style="overflow: hidden">
+							<img src="{mapImageUrl}" alt="{raceName}" />
+							<p class="title highlight">{raceName}</p>
+							<p class="charity highlight">{charityName}</p>
+						</div>
+						<a class="btn medium" href="{enterRaceUrl}">Enter Race</a>
+					</div>
+				</div>
 
 <?php get_footer(); ?>
+<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

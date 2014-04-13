@@ -125,6 +125,11 @@ Template Name: Active Race
                         <div><p class="highlight">Twitter:<a href="#">www.twitter.com/user</a></p></div>
                         <div class="profile-view"><a class="btn small center" href="#">Profile Page</a></div>
                     </aside>
+					<?php if (appthemes_check_user_role("administrator")) {?>
+					<div id="featureracediv">
+						Featured Race? <input type="checkbox" name="featured" id="featured"/>
+					</div>
+					<?php } ?>
                 </div>
             </div>
 			

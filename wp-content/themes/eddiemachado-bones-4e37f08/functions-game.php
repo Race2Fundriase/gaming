@@ -1020,6 +1020,56 @@ function r2f_action_update_race_startfinish()
 	die();
 }
 
+function r2f_action_update_race_featured()
+{
+	global $wpdb;
+	
+	// Get Params
+	$id = $_POST["id"];
+	$featured = $_POST["featured"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+		
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET featured = %d
+			WHERE id = %d
+		", 
+			array(
+			$featured,
+			$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Race '$id' was updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updating the race $id. $rows";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_upsert_racetokens()
 {
@@ -1295,7 +1345,7 @@ function r2f_action_get_race()
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
-				locationDescription, terrainDescription, weatherDescription, curDay from `r2f_races` 
+				locationDescription, terrainDescription, weatherDescription, curDay, featured from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
 		", 
@@ -1365,6 +1415,59 @@ function r2f_action_get_racetokens()
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem getting the race";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_get_featured_races()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_races.*, mapImageUrl
+			FROM r2f_races
+			JOIN r2f_maps
+			ON r2f_races.mapId = r2f_maps.id
+			WHERE featured = 1
+		", 
+			array(
+				$raceId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "featured races found.";
+		
+		$i=0;
+		foreach($rows as $row) {
+			$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
+			$row->charityName = $charityName;
+			$result["rows"][$i] = $row;
+			
+			$i++;
+		}        
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the featured races";
 	}
 	
 	// Return result
@@ -2437,6 +2540,12 @@ add_action('wp_ajax_nopriv_r2f_action_get_products', 'r2f_action_get_products');
 
 add_action('wp_ajax_r2f_action_update_race_startfinish', 'r2f_action_update_race_startfinish');
 add_action('wp_ajax_nopriv_r2f_action_update_race_startfinish', 'r2f_action_update_race_startfinish');
+
+add_action('wp_ajax_r2f_action_update_race_featured', 'r2f_action_update_race_featured');
+add_action('wp_ajax_nopriv_r2f_action_update_race_featured', 'r2f_action_update_race_featured');
+
+add_action('wp_ajax_r2f_action_get_featured_races', 'r2f_action_get_featured_races');
+add_action('wp_ajax_nopriv_r2f_action_get_featured_races', 'r2f_action_get_featured_races');
 
 
 

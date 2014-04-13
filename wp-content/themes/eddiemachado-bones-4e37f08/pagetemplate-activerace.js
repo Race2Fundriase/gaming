@@ -64,6 +64,26 @@ jQuery(document).ready
 	{
 		var raceId = qs("raceId");
 		var md = false;
+		
+		jQuery("#featured").change( function(e) {
+			var f = jQuery(this).prop('checked') ? 1 : 0;
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_update_race_featured',
+					id: raceId,
+					featured: f
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					
+					
+				}
+			});
+		});
+		
 		jQuery('#frame').on('mousedown', function(e) {
 			jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
 			md = true;
@@ -133,6 +153,7 @@ jQuery(document).ready
 				jQuery("#mapName").html(data.rows[0].mapName);
 				jQuery("#weather").html(data.rows[0].weather);
 				jQuery("#terrain").html(data.rows[0].terrain);
+				jQuery("#featured").prop("checked", (data.rows[0].featured == 1));
 				
 				startGridX = data.rows[0].startGridX;
 				startGridY = data.rows[0].startGridY;
