@@ -83,6 +83,7 @@ Template Name: Active Race
         <section>
             <div class="container grit bot-bg">
                 <div class="inner-container wrap clearfix">
+				<h1 class="winner" id="winbanner" style="display:none">WINNER:<span class="name" id="winnerName">  </span> with the <span class="vehicle" id="winnerTokenName"></span></h1>
                     <div class="fivecol first">
                         <h2 class="highlight" id="raceName"></h2>
                         

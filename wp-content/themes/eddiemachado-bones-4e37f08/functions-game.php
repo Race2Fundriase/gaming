@@ -1213,7 +1213,7 @@ function r2f_action_get_races()
 	
 
 	
-	if ($raceStatus) 
+	if (isset($raceStatus))
 		$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, `finishDate`, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY` from `r2f_races` where raceStatus = $raceStatus");
@@ -1231,7 +1231,7 @@ function r2f_action_get_races()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	if ($raceStatus) 
+	if (isset($raceStatus))
 		$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 
@@ -1247,7 +1247,7 @@ function r2f_action_get_races()
 	$responce->page = $page;
 	$responce->total = $total_pages;
 	$responce->records = $count;
-
+	$responce->raceStatus = $raceStatus;
 	$i=0;
 	foreach($queryResult as $row) {
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );

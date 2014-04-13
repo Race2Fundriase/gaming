@@ -110,7 +110,7 @@ jQuery(document).ready
 		
 		jQuery("#day").change(function(e) {
 				
-			getLeaderBoard(raceId, jQuery("#day").val());
+			getLeaderBoard(raceId, jQuery("#day").val(), raceStatus);
 		
 		});
 		
@@ -140,6 +140,7 @@ jQuery(document).ready
 				finishGridY = data.rows[0].finishGridY;
 				
 				var curDay = data.rows[0].curDay;
+				var raceStatus = data.rows[0].raceStatus;
 				
 				
 				jQuery.ajax({
@@ -165,7 +166,7 @@ jQuery(document).ready
 							jQuery("#cellHeight").val(data.result.cellHeight);
 							updateMapOptions();
 							drawGrid();
-							getLeaderBoard(raceId, curDay);
+							getLeaderBoard(raceId, curDay, raceStatus);
 						}
 					}
 				});
@@ -217,7 +218,7 @@ jQuery(document).ready
 	}
 );
 
-function getLeaderBoard(raceId, day) {
+function getLeaderBoard(raceId, day, raceStatus) {
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "POST",
@@ -263,6 +264,13 @@ function getLeaderBoard(raceId, day) {
 				});*/
 			}
 			jQuery('#leaderboard').append(li);
+			
+			if (raceStatus == 1) {
+				jQuery("#winnerName").html(data.rows[0].name);
+				jQuery("#winnerTokenName").html(data.rows[0].tokenName);
+				jQuery("#winbanner").css("display", "block");
+			}
+
 		}
 	});
 }
