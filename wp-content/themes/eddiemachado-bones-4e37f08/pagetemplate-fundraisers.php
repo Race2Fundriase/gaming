@@ -51,7 +51,7 @@ Template Name: Fundraisers
             
         </section>
 		<div id="templateDiv" style="display: none">
-			<div class="container grit bot-bg bot-bg-alt clearfix">
+		<div class="container grit bot-bg bot-bg-alt clearfix">
                 <div class="inner-container wrap clearfix">
                     <div class="charities-info">
                         <div class="fourcol first pic-wooden">

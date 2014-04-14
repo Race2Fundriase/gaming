@@ -12,7 +12,7 @@
 						</div>
 					</div>
 					<div class="enter-race">
-						<a class="btn large" href="<?=site_url()?>/races">Enter A Race</a>
+						<a class="btn large" href="<?=site_url()?>/races">Sign Up</a>
 					</div>
 					<div class="fences wrap"></div>
 				</div>
@@ -31,7 +31,7 @@
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/join/">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
-						<h2 class="highlight">Sign Up</h2><br/>
+						<h2 class="highlight">Enter A Race</h2><br/>
 						</a>
 						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 					</div>
@@ -98,7 +98,7 @@
 						    ?>
 					</div>
 					<div class="sixcol wooden text-center">
-						<h2 class="highlight">Video Placeholder</h2>
+						<!--<h2 class="highlight">Video Placeholder</h2>-->
 						<div class="video-container">
 						   <?php echo getFeaturedVideo($post->ID); ?>
 						</div>
