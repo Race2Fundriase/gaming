@@ -2678,36 +2678,41 @@ function r2f_action_token_register()
 	
 	$user_id = username_exists( $user_name );
 	if ( !$user_id and email_exists($user_email) == false ) {
+		$password = $choosePassword;
 		$user_id = wp_create_user( $user_login, $password, $user_email );
+		
+		if ( is_wp_error($user_id) ) {
+			$result["message"] = "There was an error registering the user $profile_name with email $email.";
+			$result["error"] = $user_id->get_error_message();
+		} else {
+			$result["message"] = "User $profile_name with email $email registered OK.";
+			
+			// add extra fields
+			
+			add_user_meta( $user_id, 'first_name', $name);
+			add_user_meta( $user_id, 'profile_name', $profile_name);
+			add_user_meta( $user_id, 'building_no_or_name', $building_no_or_name);
+			add_user_meta( $user_id, 'road_name', $road_name);
+			add_user_meta( $user_id, 'town_city', $town_city);
+			add_user_meta( $user_id, 'county', $county);
+			add_user_meta( $user_id, 'postcode', $postcode);
+			add_user_meta( $user_id, 'country', $country);
+			
+			$creds = array();
+			$creds['user_login'] = $user_login;
+			$creds['user_password'] = $password;
+			$creds['remember'] = true;
+			$user = wp_signon( $creds, false );
+			
+			wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password" ); 
+		}
+		
 	} else {
 		$result["error"] = 'User already exists.';
 		$result["message"] = 'User already exists.';
 	}
 	
-	if ( is_wp_error($user_id) ) {
-		$result["message"] = "There was an error registering the user $profile_name with email $email.";
-		$result["error"] = $user_id->get_error_message();
-	} else {
-		$result["message"] = "User $profile_name with email $email registered OK.";
-		
-		// add extra fields
-		
-		add_user_meta( $user_id, 'first_name', $name);
-		add_user_meta( $user_id, 'profile_name', $profile_name);
-		add_user_meta( $user_id, 'building_no_or_name', $building_no_or_name);
-		add_user_meta( $user_id, 'road_name', $road_name);
-		add_user_meta( $user_id, 'town_city', $town_city);
-		add_user_meta( $user_id, 'county', $county);
-		add_user_meta( $user_id, 'postcode', $postcode);
-		add_user_meta( $user_id, 'country', $country);
-		
-		$creds = array();
-		$creds['user_login'] = $user_login;
-		$creds['user_password'] = $password;
-		$creds['remember'] = true;
-		$user = wp_signon( $creds, false );
-		
-	}
+	
 		
 	// Return result
 	echo json_encode($result);

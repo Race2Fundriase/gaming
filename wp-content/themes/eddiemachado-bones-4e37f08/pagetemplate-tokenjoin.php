@@ -352,9 +352,9 @@ Template Name: Token Join
 					<h3><span>Part 3</span></h3>
 					
 					<div>
-					    <label for="choosepassword"><span>Choose a Password</span></label>
+					    <label for="choosePassword"><span>Choose a Password</span></label>
 					    <div>
-					    <input name="choosepassword" id="choosepassword" type="password" value="" tabindex="12"/>
+					    <input name="choosePassword" id="choosePassword" type="password" value="" tabindex="12"/>
 					    </div>
 					</div>
 					<div>

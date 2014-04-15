@@ -45,15 +45,16 @@ jQuery(document).ready
 					county: jQuery("#county").val(),
 					postcode: jQuery("#postcode").val(),
 					country: jQuery("#country").val(),
-					choosepassword: jQuery("#choosepassword").val(),
+					choosePassword: jQuery("#choosePassword").val(),
 					confirmPassword: jQuery("#confirmPassword").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					if (data.error == "")
-						location.href = "/";
+					var n = noty({text: data.message + " " + data.error});
+					//if (data.error == "")
+						//location.href = "/";
 				}
 			});
 			return false;
