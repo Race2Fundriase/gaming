@@ -34,77 +34,77 @@
 		<div class="inner-container wrap">
 		    <div id="tabs">
 			<div class="tabbed_content active">
-			    <form method="post" action="#">
+			    <form method="post" action="#" id="registerForm">
 				   <div class="form-elements">
 					<h3><span>Part 1</span></h3>
 				     
 					<div>
 					    <label for="name"><span>Official Charity Name:</span></label>
 					    <div>
-					    <input name="name" type="text" value="" size="8" tabindex="1"/> 
+					    <input name="official_charity_name" id="official_charity_name" type="text" value="" size="8" tabindex="1"/> 
 					    </div>
 					</div>
 					<div>
-					    <label for="profileName"><span>Profile Name:</span></label>
+					    <label for="profile_name"><span>Profile Name:</span></label>
 					    <div>
-					    <input name="profileName" type="text" value="" size="8" tabindex="2"/>
+					    <input name="profile_name" id="profile_name" type="text" value="" size="8" tabindex="2"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="mainName"><span>Main Contact Name:</span></label>
+					    <label for="main_contact_name"><span>Main Contact Name:</span></label>
 					    <div>
-					    <input name="mainName" type="text" value="" size="8" tabindex="3"/>
+					    <input name="main_contact_name" id="main_contact_name" type="text" value="" size="8" tabindex="3"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="tel"><span>Telephone Number:</span></label>
+					    <label for="telephone_number"><span>Telephone Number:</span></label>
 					    <div>
-					    <input name="tel" type="tel" value="" tabindex="4"/>
+					    <input name="telephone_number" id="telephone_number" type="tel" value="" tabindex="4"/>
 					    </div>
 					</div>
 					<div>
 					    <label for="email"><span>Email Address:</span></label>
 					    <div>
-					    <input name="email" type="email" spellcheck="false" maxlength="255" tabindex="5"/>
+					    <input name="email" id="email" type="email" spellcheck="false" maxlength="255" tabindex="5"/>
 					    </div>
 					</div>
 					
 					<h3><span>Part 2</span></h3>
 				     
 					<div>
-					    <label for="building"><span>Building No. or Name*</span></label>
+					    <label for="building_no_or_name"><span>Building No. or Name*</span></label>
 					    <div>
-					    <input name="building" type="text" value="" size="8" tabindex="6" required/> 
+					    <input name="building_no_or_name" id="building_no_or_name" type="text" value="" size="8" tabindex="6" required/> 
 					    </div>
 					</div>
 					<div>
-					    <label for="road"><span>Road Name*</span></label>
+					    <label for="road_name"><span>Road Name*</span></label>
 					    <div>
-					    <input name="road" type="text" value="" size="8" tabindex="7" required/>
+					    <input name="road_name" id="road_name" type="text" value="" size="8" tabindex="7" required/>
 					    </div>
 					</div>
 					<div>
-					    <label for="city"><span>Town/City*</span></label>
+					    <label for="town_city"><span>Town/City*</span></label>
 					    <div>
-					    <input name="city" type="text" value="" size="8" tabindex="8"/>
+					    <input name="town_city" id="town_city" type="text" value="" size="8" tabindex="8"/>
 					    </div>
 					</div>
 					<div>
 					    <label for="county"><span>County*</span></label>
 					    <div>
-					    <input name="county" type="text" value="" tabindex="9"/>
+					    <input name="county" id="county" type="text" value="" tabindex="9"/>
 					    </div>
 					</div>
 					<div>
 					    <label for="postcode"><span>Postcode*</span></label>
 					    <div>
-					    <input name="postcode" type="text" spellcheck="false" tabindex="10"/>
+					    <input name="postcode" id="postcode" type="text" spellcheck="false" tabindex="10"/>
 					    </div>
 					</div>
 					<div>
 					    <label for="country"><span>Country*</span></label>
 					    <div>
-					    <select name="country" tabindex="11">
+					    <select name="country" i="country" tabindex="11">
 						<option value="">Country...</option>
 						<option value="Afganistan">Afghanistan</option>
 						<option value="Albania">Albania</option>
@@ -360,88 +360,88 @@
 					<h3><span>Part 3</span></h3>
 					
 					<div>
-					    <label for="gift"><span>Gift Aid</span></label>
+					    <label for="gift_aid"><span>Gift Aid</span></label>
 					    <div>
-					    <input name="county" type="text" value="" tabindex="12"/>
+					    <input name="gift_aid" id="gift_aid" type="text" value="" tabindex="12"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="url"><span>Website Address</span></label>
+					    <label for="website_address"><span>Website Address</span></label>
 					    <div>
-					    <input name="url" type="url" tabindex="13"/>
+					    <input name="website_address" id="website_address" type="url" tabindex="13"/>
 					    </div>
 					</div>
 					
-					<div class="text-center signup"><input type="submit" value="SIGNUP" class="btn large"/></div>
+					<div class="text-center signup"><input type="submit" value="SIGNUP" id="register_charity" class="btn large"/></div>
 				  </div> 
 			    </form>
 			</div>
 			<div class="tabbed_content">
-			    <form method="post" action="#">
+			    <form method="post" action="#" id="registerForm_fund">
 				   <div class="form-elements">
 					<h3><span>Part 1</span></h3>
 				     
 					<div>
-					    <label for="profileName"><span>Profile Name:</span></label>
+					    <label for="profile_name_fund"><span>Profile Name:</span></label>
 					    <div>
-					    <input name="profileName" type="text" value="" size="8" tabindex="2"/>
+					    <input name="profile_name_fund" id="profile_name_fund" type="text" value="" size="8" tabindex="2"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="mainName"><span>Main Contact Name:</span></label>
+					    <label for="main_contact_name_fund"><span>Main Contact Name:</span></label>
 					    <div>
-					    <input name="mainName" type="text" value="" size="8" tabindex="3"/>
+					    <input name="main_contact_name_fund" type="text" value="" size="8" tabindex="3"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="tel"><span>Telephone Number:</span></label>
+					    <label for="telephone_number_fund"><span>Telephone Number:</span></label>
 					    <div>
-					    <input name="tel" type="tel" value="" tabindex="4"/>
+					    <input name="telephone_number_fund" id="telephone_number_fund" type="tel" value="" tabindex="4"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="email"><span>Email Address:</span></label>
+					    <label for="email_fund"><span>Email Address:</span></label>
 					    <div>
-					    <input name="email" type="email" spellcheck="false" maxlength="255" tabindex="5"/>
+					    <input name="email_fund" id="email_fund" type="email" spellcheck="false" maxlength="255" tabindex="5"/>
 					    </div>
 					</div>
 					
 					<h3><span>Part 2</span></h3>
 				     
 					<div>
-					    <label for="building"><span>Building No. or Name*</span></label>
+					    <label for="building_no_or_name_fund"><span>Building No. or Name*</span></label>
 					    <div>
-					    <input name="building" type="text" value="" size="8" tabindex="6" required/> 
+					    <input name="building_no_or_name_fund" id="building_no_or_name_fund" type="text" value="" size="8" tabindex="6" required/> 
 					    </div>
 					</div>
 					<div>
-					    <label for="road"><span>Road Name*</span></label>
+					    <label for="road_name_fund"><span>Road Name*</span></label>
 					    <div>
-					    <input name="road" type="text" value="" size="8" tabindex="7" required/>
+					    <input name="road_name_fund" id="road_name_fund" type="text" value="" size="8" tabindex="7" required/>
 					    </div>
 					</div>
 					<div>
-					    <label for="city"><span>Town/City*</span></label>
+					    <label for="town_city_fund"><span>Town/City*</span></label>
 					    <div>
-					    <input name="city" type="text" value="" size="8" tabindex="8"/>
+					    <input name="town_city_fund" id="town_city_fund" type="text" value="" size="8" tabindex="8"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="county"><span>County*</span></label>
+					    <label for="county_fund"><span>County*</span></label>
 					    <div>
-					    <input name="county" type="text" value="" tabindex="9"/>
+					    <input name="county_fund" id="county_fund" type="text" value="" tabindex="9"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="postcode"><span>Postcode*</span></label>
+					    <label for="postcode_fund"><span>Postcode*</span></label>
 					    <div>
-					    <input name="postcode" type="text" spellcheck="false" tabindex="10"/>
+					    <input name="postcode_fund" id="postcode_fund" type="text" spellcheck="false" tabindex="10"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="country"><span>Country*</span></label>
+					    <label for="country_fund"><span>Country*</span></label>
 					    <div>
-					    <select name="country" tabindex="11">
+					    <select name="country_fund" id="county_fund" tabindex="11">
 						<option value="">Country...</option>
 						<option value="Afganistan">Afghanistan</option>
 						<option value="Albania">Albania</option>
@@ -697,19 +697,19 @@
 					<h3><span>Part 3</span></h3>
 					
 					<div>
-					    <label for="gift"><span>Gift Aid</span></label>
+					    <label for="gift_aid_fund"><span>Gift Aid</span></label>
 					    <div>
-					    <input name="county" type="text" value="" tabindex="12"/>
+					    <input name="gift_aid_fund" id="gift_aid_fund" type="text" value="" tabindex="12"/>
 					    </div>
 					</div>
 					<div>
-					    <label for="url"><span>Website Address</span></label>
+					    <label for="website_address_fund"><span>Website Address</span></label>
 					    <div>
-					    <input name="url" type="url" tabindex="13"/>
+					    <input name="website_address_fund" id="website_address_fund" type="url" tabindex="13"/>
 					    </div>
 					</div>
 					
-					<div class="text-center signup"><input type="submit" value="SIGNUP" class="btn large"/></div>
+					<div class="text-center signup"><input type="submit" value="SIGNUP" id="register_fund" class="btn large"/></div>
 				</div>
 			    </form>
 			</div>
@@ -766,3 +766,4 @@
 	</section>
 	
 <?php get_footer(); ?>
+<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

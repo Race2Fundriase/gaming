@@ -53,8 +53,8 @@ jQuery(document).ready
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					var n = noty({text: data.message + " " + data.error});
-					//if (data.error == "")
-						//location.href = "/";
+					if (data.error == "")
+						location.href = "/";
 				}
 			});
 			return false;
