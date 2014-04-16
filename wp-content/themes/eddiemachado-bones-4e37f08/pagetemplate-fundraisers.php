@@ -40,6 +40,8 @@ Template Name: Fundraisers
 				
 				<input type="hidden" id="membersearchsubmit" /> 
 			    </form>
+			    
+			     <a href="http://race2fundraise.com/join/" class="btn small right">Create A Fundraiser</a>
 			</div>
 		    </div>
                 </div> 

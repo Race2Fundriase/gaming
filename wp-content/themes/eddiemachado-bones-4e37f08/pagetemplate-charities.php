@@ -27,7 +27,7 @@ Template Name: Charities
                     </div>
                     
 		    <div id="info-header" class="clearfix">
-			<div id="other-search">
+			<div id="other-search" class="clearfix">
 			    <?php $search_text = "Search Charities"; ?> 
 			    <form method="get" id="charitysearch"  action=""> 
 				
@@ -40,7 +40,11 @@ Template Name: Charities
 				
 				<input type="hidden" id="charitysearchsubmit" /> 
 			    </form>
+			    
+			    <a href="http://race2fundraise.com/join/" class="btn small right">Create A Charity</a>
+		
 			</div>
+			
 		    </div>
                 </div> 
 	    </div>
