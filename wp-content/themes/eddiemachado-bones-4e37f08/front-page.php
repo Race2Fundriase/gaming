@@ -26,21 +26,21 @@
 						<span class="circle-image start-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Start a race"/></span>
 						<h2 class="highlight">Create A Race</h2><br/>
 						<a/>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">You can create your own unique race using our easy to use interface. You can set your own start and end points and select characters that your supporters will use, if you wish you can make it relevant to your own cause and it can be sensible or crazy as you chose. Race2Fundraise is a great unique FUNdraising idea!</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/join/">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 						<h2 class="highlight">Enter A Race</h2><br/>
 						</a>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">By entering a race you get to have great fun whilst supporting your chosen fundraising cause. You will have to choose a character to take account of the race conditions, and set your driving style, you may even have to plot your course. Be warned, the weather can affect the way your character will perform and the crazy race administrators control the weather so be you'll need to keep your wits about you.</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/charities/">
 						<span class="circle-image our-members"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Our members"/></span>
 						<h2 class="highlight">Our Members</h2><br/>
 						</a>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">Charities, clubs, societies, places of education and fundraisers raising money for their chosen cause are all eligible to run setup a race2fundraise account.</p>
 					</div>
 				</div>
 			</div>
