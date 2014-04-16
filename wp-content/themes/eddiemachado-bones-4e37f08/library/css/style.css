@@ -2269,25 +2269,26 @@ select:focus {
 /* line 1274, ../scss/_base.scss */
 .active-race .dates, .charities-info .dates {
   margin-top: 2px;
+  font-size: 0.8em;
 }
-/* line 1278, ../scss/_base.scss */
+/* line 1279, ../scss/_base.scss */
 .active-race:after, .charities-info:after {
   content: " ";
   display: table;
   clear: both;
 }
-/* line 1284, ../scss/_base.scss */
+/* line 1285, ../scss/_base.scss */
 .active-race .btn, .charities-info .btn {
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-/* line 1291, ../scss/_base.scss */
+/* line 1292, ../scss/_base.scss */
 .active-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 1294, ../scss/_base.scss */
+/* line 1295, ../scss/_base.scss */
 .active-race.last-on-page .btn {
   bottom: 30px;
 }
@@ -2295,46 +2296,46 @@ select:focus {
 /*****************************************
  *headings & results with 3 colums
 /*****************************************/
-/* line 1302, ../scss/_base.scss */
+/* line 1303, ../scss/_base.scss */
 .headings-3-col, .result-3-col {
   margin-bottom: 2px;
   overflow: hidden;
 }
 
-/* line 1306, ../scss/_base.scss */
+/* line 1307, ../scss/_base.scss */
 .headings-3-col p, .result-3-col p {
   width: 33.3333333%;
   float: left;
   text-align: center;
   margin: 0;
 }
-/* line 1312, ../scss/_base.scss */
+/* line 1313, ../scss/_base.scss */
 .headings-3-col p:first-of-type, .result-3-col p:first-of-type {
   text-align: left;
   padding-left: 1em;
 }
-/* line 1317, ../scss/_base.scss */
+/* line 1318, ../scss/_base.scss */
 .headings-3-col p:last-of-type, .result-3-col p:last-of-type {
   text-align: right;
   padding-right: 1em;
 }
 
-/* line 1324, ../scss/_base.scss */
+/* line 1325, ../scss/_base.scss */
 .faq {
   border-bottom: 2px dashed #b39c7d !important;
   padding-bottom: 10px;
 }
-/* line 1325, ../scss/_base.scss */
+/* line 1326, ../scss/_base.scss */
 .faq h2 {
   margin-top: 30px;
 }
-/* line 1332, ../scss/_base.scss */
+/* line 1333, ../scss/_base.scss */
 .faq p {
   margin-bottom: 0;
   margin-top: 0.2em;
 }
 
-/* line 1337, ../scss/_base.scss */
+/* line 1338, ../scss/_base.scss */
 .question, .answer {
   margin-bottom: 0;
 }
@@ -2342,17 +2343,17 @@ select:focus {
 /*********************************
  *Active Race Page / Complete Race
  *********************************/
-/* line 1345, ../scss/_base.scss */
+/* line 1346, ../scss/_base.scss */
 #active-race-header, #complete-race-header {
   position: relative;
 }
-/* line 1348, ../scss/_base.scss */
+/* line 1349, ../scss/_base.scss */
 #active-race-header img, #complete-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1355, ../scss/_base.scss */
+/* line 1356, ../scss/_base.scss */
 #active-race-header div.stretchy, #complete-race-header div.stretchy {
   display: inline-block;
   position: relative;
@@ -2361,7 +2362,7 @@ select:focus {
   padding-bottom: 50.5050505%;
   overflow: hidden;
 }
-/* line 1363, ../scss/_base.scss */
+/* line 1364, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame {
   position: absolute;
   z-index: 10;
@@ -2372,36 +2373,36 @@ select:focus {
   background: url("../images/active-race-image-frame.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1371, ../scss/_base.scss */
+/* line 1372, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search {
   position: absolute;
   width: 90%;
   top: 20px;
   z-index: 20;
 }
-/* line 1377, ../scss/_base.scss */
+/* line 1378, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input {
   width: 86%;
 }
-/* line 1380, ../scss/_base.scss */
+/* line 1381, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1386, ../scss/_base.scss */
+/* line 1387, ../scss/_base.scss */
 #active-race-header .info, #complete-race-header .info {
   position: absolute;
   width: 100%;
   z-index: 20;
   bottom: 0;
 }
-/* line 1393, ../scss/_base.scss */
+/* line 1394, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1400, ../scss/_base.scss */
+/* line 1401, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   display: block;
   z-index: 20;
@@ -2414,34 +2415,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1412, ../scss/_base.scss */
+/* line 1413, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1419, ../scss/_base.scss */
+/* line 1420, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1427, ../scss/_base.scss */
+/* line 1428, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1431, ../scss/_base.scss */
+/* line 1432, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1438, ../scss/_base.scss */
+/* line 1439, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1442, ../scss/_base.scss */
+/* line 1443, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2449,56 +2450,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1450, ../scss/_base.scss */
+/* line 1451, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1454, ../scss/_base.scss */
+/* line 1455, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1458, ../scss/_base.scss */
+/* line 1459, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1464, ../scss/_base.scss */
+/* line 1465, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1468, ../scss/_base.scss */
+/* line 1469, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1471, ../scss/_base.scss */
+/* line 1472, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1477, ../scss/_base.scss */
+/* line 1478, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1483, ../scss/_base.scss */
+/* line 1484, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1488, ../scss/_base.scss */
+/* line 1489, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1493, ../scss/_base.scss */
+/* line 1494, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1496, ../scss/_base.scss */
+/* line 1497, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2506,16 +2507,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1506, ../scss/_base.scss */
+/* line 1507, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1509, ../scss/_base.scss */
+/* line 1510, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1517, ../scss/_base.scss */
+/* line 1518, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2534,11 +2535,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1536, ../scss/_base.scss */
+/* line 1537, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1538, ../scss/_base.scss */
+/* line 1539, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2548,7 +2549,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1547, ../scss/_base.scss */
+/* line 1548, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2559,7 +2560,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1560, ../scss/_base.scss */
+/* line 1561, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2567,7 +2568,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1578, ../scss/_base.scss */
+/* line 1579, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2575,7 +2576,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1599, ../scss/_base.scss */
+/* line 1600, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2592,7 +2593,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1625, ../scss/_base.scss */
+/* line 1626, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;

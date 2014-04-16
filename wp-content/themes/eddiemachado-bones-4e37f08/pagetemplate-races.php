@@ -88,7 +88,8 @@ Template Name: Races
 					</div>
 					<div class="threecol last">
 						<div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-						<div class="dates"><time class="highlight">{start} {stime}</time><time class="highlight">{finish} {ftime}</time></div>
+						<div class="dates"><time class="highlight">{start}</time><time class="highlight">{finish}</time></div>
+						<div class="dates"><time class="highlight">{stime}</time><time class="highlight">{ftime}</time></div>
 					</div>
 				  <a class="btn small right" href="{viewMoreUrl}">View More</a>
 				</div>
