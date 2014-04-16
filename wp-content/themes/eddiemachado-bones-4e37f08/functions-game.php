@@ -1201,6 +1201,7 @@ function r2f_action_get_races()
 	$sord = $_POST['sord'];
 	$raceStatus = $_POST['raceStatus'];
 	$q = $_POST['q'];
+	$createdBy = $_POST['createdBy'];
 	
 	if(!$sidx) $sidx =1;
 	if(!$page) $page = 1;
@@ -1218,6 +1219,8 @@ function r2f_action_get_races()
 		$where .= " AND raceStatus = $raceStatus";
 	if (isset($q) && $q != "")
 		$where .= " AND raceName LIKE '%$q%'";
+	if (isset($createdBy))
+		$where .= " AND createdBy = $createdBy";
 	
 	
 	$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
@@ -1233,7 +1236,7 @@ function r2f_action_get_races()
 	}
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
-
+	if ($start < 0) $start = 0;
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl, terrainDescription, locationDescription, weatherDescription from `r2f_races` 

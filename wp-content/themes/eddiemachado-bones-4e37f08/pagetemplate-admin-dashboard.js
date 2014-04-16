@@ -3,6 +3,7 @@ jQuery(document).ready
 (
 	function(jQuery)
 	{
+		
 		var rowHtml = jQuery("#templateDiv").html();
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
@@ -10,10 +11,12 @@ jQuery(document).ready
 			data: {
 				action: 'r2f_action_get_races',
 				page: 0,
-				rows: 100
+				rows: 100,
+				createdBy: current_user_id
 			},
 			dataType: "JSON",
 			success: function (data) {
+				
 				console.log(data);
 				jQuery("#result").text(data.message + " " + data.error);
 				var row = "";
