@@ -2704,7 +2704,8 @@ function r2f_action_token_register()
 			$creds['remember'] = true;
 			$user = wp_signon( $creds, false );
 			
-			wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password" ); 
+			$headers = 'From: Race2Fundraise <noreply@race2fundraise.com>' . "\r\n";
+			wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password", $header ); 
 		}
 		
 	} else {
