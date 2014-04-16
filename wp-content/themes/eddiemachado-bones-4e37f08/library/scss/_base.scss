@@ -1353,7 +1353,7 @@ select:focus {
 	
 	
 	div.stretchy {
-		display: block;
+		display: inline-block; // Changed to inline-block cause FF does not like block!!
 		position:relative;
 		width:100%;
 		max-height: 578px;
