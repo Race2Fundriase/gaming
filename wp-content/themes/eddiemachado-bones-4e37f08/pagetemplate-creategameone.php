@@ -10,7 +10,7 @@
         <div class="container sand bot-bg clearfix nav-margin">
                     <div class="inner-container wrap">
                             <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/Logo-Wooden.gif" alt="" />
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                             <div id="create-race-header">
                                 <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
