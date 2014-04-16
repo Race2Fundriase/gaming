@@ -1256,72 +1256,74 @@ LAYOUT & GRID STYLES
 
 /* line 155, ../scss/_base.scss */
 .slide-container {
-  font-family: 'Headline One';
-  text-transform: uppercase;
-  color: white;
-  height: 568px;
+  text-align: center;
 }
-/* line 161, ../scss/_base.scss */
-.slide-container h1 {
-  font-size: 65px;
-  font-size: 4.0625em;
+/* line 157, ../scss/_base.scss */
+.slide-container h2 {
+  display: inline-block;
+  background-color: white;
+  padding: 0 0.2em 0.1em 0.2em;
+  margin: 0 auto;
+  margin-top: 30px;
 }
-/* line 166, ../scss/_base.scss */
+/* line 165, ../scss/_base.scss */
 .slide-container p {
-  font-size: 20px;
-  font-size: 1.25em;
+  display: block;
+  background-color: white;
+  padding: 0.5em;
+  margin-bottom: 60px;
 }
 
-/* line 173, ../scss/_base.scss */
-.slide-container.one {
+/* line 174, ../scss/_base.scss */
+.slide-container.six {
   background: url("../images/why-r2f/slides/r2fwhy_01.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 178, ../scss/_base.scss */
-.slide-container.two {
+/* line 179, ../scss/_base.scss */
+.slide-container.one {
   background: url("../images/why-r2f/slides/r2fwhy_02.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 183, ../scss/_base.scss */
-.slide-container.three {
+/* line 184, ../scss/_base.scss */
+.slide-container.two {
   background: url("../images/why-r2f/slides/r2fwhy_03.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 188, ../scss/_base.scss */
-.slide-container.four {
+/* line 189, ../scss/_base.scss */
+.slide-container.three {
   background: url("../images/why-r2f/slides/r2fwhy_04.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 193, ../scss/_base.scss */
-.slide-container.five {
+/* line 194, ../scss/_base.scss */
+.slide-container.four {
   background: url("../images/why-r2f/slides/r2fwhy_05.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 198, ../scss/_base.scss */
-.slide-container.six {
+/* line 199, ../scss/_base.scss */
+.slide-container.five {
   background: url("../images/why-r2f/slides/r2fwhy_06.jpg") no-repeat center top;
   background-size: cover;
 }
 
-/* line 203, ../scss/_base.scss */
+/* line 204, ../scss/_base.scss */
 #scrolling-slides.top-bg {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* line 209, ../scss/_base.scss */
+/* line 210, ../scss/_base.scss */
 #logo {
   width: 60%;
   margin: 0 auto;
   text-align: center;
 }
 
-/* line 215, ../scss/_base.scss */
+/* line 216, ../scss/_base.scss */
 #logo.secondary {
   width: 200px;
   max-height: 100%;
@@ -1329,7 +1331,7 @@ LAYOUT & GRID STYLES
   z-index: 20;
 }
 
-/* line 224, ../scss/_base.scss */
+/* line 225, ../scss/_base.scss */
 #nobtn-search input, #other-search input {
   font-family: 'Headline One';
   font-size: 22px;
@@ -1342,22 +1344,22 @@ LAYOUT & GRID STYLES
   margin-bottom: 5px;
   width: 100%;
 }
-/* line 236, ../scss/_base.scss */
+/* line 237, ../scss/_base.scss */
 #nobtn-search input:focus, #other-search input:focus {
   outline: none;
 }
 
-/* line 242, ../scss/_base.scss */
+/* line 243, ../scss/_base.scss */
 #other-search {
   margin-left: 1em;
 }
-/* line 244, ../scss/_base.scss */
+/* line 245, ../scss/_base.scss */
 #other-search input {
   font-size: 35px;
 }
 
 /* Enter race btn home page */
-/* line 250, ../scss/_base.scss */
+/* line 251, ../scss/_base.scss */
 .enter-race {
   position: absolute;
   width: 100%;
@@ -1365,7 +1367,7 @@ LAYOUT & GRID STYLES
   z-index: 2000;
   text-align: center;
 }
-/* line 257, ../scss/_base.scss */
+/* line 258, ../scss/_base.scss */
 .enter-race .btn {
   font-size: 30px;
 }
@@ -1373,17 +1375,17 @@ LAYOUT & GRID STYLES
 /*********************
 LINK STYLES
 *********************/
-/* line 266, ../scss/_base.scss */
+/* line 267, ../scss/_base.scss */
 a, a:visited {
   /* on hover */
   /* on click */
   /* mobile tap color */
 }
-/* line 269, ../scss/_base.scss */
+/* line 270, ../scss/_base.scss */
 a:hover, a:focus, a:visited:hover, a:visited:focus {
   color: #b14c02;
 }
-/* line 279, ../scss/_base.scss */
+/* line 280, ../scss/_base.scss */
 a:link, a:visited:link {
   /*
   this highlights links on iPhones/iPads.
@@ -1396,7 +1398,7 @@ a:link, a:visited:link {
 /******************************************************************
 H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
-/* line 293, ../scss/_base.scss */
+/* line 294, ../scss/_base.scss */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizelegibility;
@@ -1407,36 +1409,36 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   */
   /* removing text decoration from all headline links */
 }
-/* line 303, ../scss/_base.scss */
+/* line 304, ../scss/_base.scss */
 h1 a, .h1 a, h2 a, .h2 a, h3 a, .h3 a, h4 a, .h4 a, h5 a, .h5 a {
   text-decoration: none;
 }
 
-/* line 308, ../scss/_base.scss */
+/* line 309, ../scss/_base.scss */
 h1, .h1 {
   font-size: 2.5em;
   line-height: 1.333em;
 }
 
-/* line 313, ../scss/_base.scss */
+/* line 314, ../scss/_base.scss */
 h2, .h2 {
   font-size: 1.75em;
   line-height: 1.4em;
   margin-bottom: 0.375em;
 }
 
-/* line 319, ../scss/_base.scss */
+/* line 320, ../scss/_base.scss */
 h3, .h3 {
   font-size: 1.125em;
 }
 
-/* line 323, ../scss/_base.scss */
+/* line 324, ../scss/_base.scss */
 h4, .h4 {
   font-size: 1.1em;
   font-weight: 700;
 }
 
-/* line 328, ../scss/_base.scss */
+/* line 329, ../scss/_base.scss */
 h5, .h5 {
   font-size: 0.846em;
   line-height: 2.09em;
@@ -1447,7 +1449,7 @@ h5, .h5 {
 /*********************
 HEADER STYLES
 *********************/
-/* line 339, ../scss/_base.scss */
+/* line 340, ../scss/_base.scss */
 .header {
   background-color: #de5f02;
   position: relative;
@@ -1455,7 +1457,7 @@ HEADER STYLES
   z-index: 10000;
 }
 
-/* line 346, ../scss/_base.scss */
+/* line 347, ../scss/_base.scss */
 .header:after {
   display: block;
   position: absolute;
@@ -1467,7 +1469,7 @@ HEADER STYLES
   background: url("../images/nav-bar-decor-orange.png") center repeat-x;
 }
 
-/* line 357, ../scss/_base.scss */
+/* line 358, ../scss/_base.scss */
 #inner-header {
   position: relative;
 }
@@ -1483,7 +1485,7 @@ the navs on the site so our css is cleaner
 and more scalable.
 */
 /*Scrolling Navigation Page: Why R2F*/
-/* line 376, ../scss/_base.scss */
+/* line 377, ../scss/_base.scss */
 #scrolling-nav {
   position: fixed;
   width: 100%;
@@ -1491,7 +1493,7 @@ and more scalable.
   top: 500px;
 }
 
-/* line 383, ../scss/_base.scss */
+/* line 384, ../scss/_base.scss */
 #scrolling-nav.stopped {
   position: absolute;
   width: 100%;
@@ -1499,12 +1501,12 @@ and more scalable.
   top: 3750px;
 }
 
-/* line 390, ../scss/_base.scss */
+/* line 391, ../scss/_base.scss */
 .scrolling-nav-inner {
   display: none;
 }
 
-/* line 396, ../scss/_base.scss */
+/* line 397, ../scss/_base.scss */
 .nav {
   font-family: 'Headline One';
   text-rendering: optimizeLegibility;
@@ -1514,7 +1516,7 @@ and more scalable.
   /* highlight current page */
   /* end current highlighters */
 }
-/* line 402, ../scss/_base.scss */
+/* line 403, ../scss/_base.scss */
 .nav li {
   /*
   so you really have to rethink your dropdowns for mobile.
@@ -1524,7 +1526,7 @@ and more scalable.
   http://www.alistapart.com/articles/organizing-mobile/
   */
 }
-/* line 404, ../scss/_base.scss */
+/* line 405, ../scss/_base.scss */
 .nav li a {
   display: block;
   text-decoration: none;
@@ -1536,18 +1538,18 @@ and more scalable.
   keep this file as small as possible!
   */
 }
-/* line 436, ../scss/_base.scss */
+/* line 437, ../scss/_base.scss */
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 30px;
 }
-/* line 461, ../scss/_base.scss */
+/* line 462, ../scss/_base.scss */
 .nav li.current-menu-item a,
 .nav li.current_page_item a,
 .nav li.current-page-ancestor a {
   color: #ccc;
 }
-/* line 464, ../scss/_base.scss */
+/* line 465, ../scss/_base.scss */
 .nav li.current-menu-item a:hover,
 .nav li.current_page_item a:hover,
 .nav li.current-page-ancestor a:hover {
@@ -1556,11 +1558,11 @@ and more scalable.
 }
 
 /* end .nav */
-/* line 474, ../scss/_base.scss */
+/* line 475, ../scss/_base.scss */
 .log-in-out {
   margin-bottom: 5px !important;
 }
-/* line 476, ../scss/_base.scss */
+/* line 477, ../scss/_base.scss */
 .log-in-out a {
   padding: 3px 15px !important;
   margin-top: 8px !important;
@@ -1568,7 +1570,7 @@ and more scalable.
   border: 1px solid white !important;
 }
 
-/* line 486, ../scss/_base.scss */
+/* line 487, ../scss/_base.scss */
 .sign-up a {
   display: block;
   position: relative;
@@ -1576,20 +1578,20 @@ and more scalable.
   color: #de5f02 !important;
   text-decoration: none;
 }
-/* line 495, ../scss/_base.scss */
+/* line 496, ../scss/_base.scss */
 .sign-up a:hover {
   color: #de5f02;
 }
 
-/* line 503, ../scss/_base.scss */
+/* line 504, ../scss/_base.scss */
 header nav, footer nav {
   margin: 0;
 }
-/* line 505, ../scss/_base.scss */
+/* line 506, ../scss/_base.scss */
 header nav a, footer nav a {
   color: white;
 }
-/* line 508, ../scss/_base.scss */
+/* line 509, ../scss/_base.scss */
 header nav a:hover, footer nav a:hover {
   color: white;
 }
@@ -1597,21 +1599,21 @@ header nav a:hover, footer nav a:hover {
 /*********************
 SLIDER STYLES
 *********************/
-/* line 517, ../scss/_base.scss */
+/* line 518, ../scss/_base.scss */
 .slider {
   background: #4dd2fd;
   position: relative;
   max-height: 600px;
 }
 
-/* line 523, ../scss/_base.scss */
+/* line 524, ../scss/_base.scss */
 .secondary {
   max-height: 300px !important;
   width: 100%;
   overflow: hidden;
 }
 
-/* line 529, ../scss/_base.scss */
+/* line 530, ../scss/_base.scss */
 .inner-slider {
   position: absolute;
   width: 100%;
@@ -1621,18 +1623,18 @@ SLIDER STYLES
   z-index: 20;
 }
 
-/* line 538, ../scss/_base.scss */
+/* line 539, ../scss/_base.scss */
 .slider.secondary {
   max-height: 300px;
 }
-/* line 541, ../scss/_base.scss */
+/* line 542, ../scss/_base.scss */
 .slider.secondary img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* line 550, ../scss/_base.scss */
+/* line 551, ../scss/_base.scss */
 .centered-btns_tabs,
 .transparent-btns_tabs,
 .large-btns_tabs {
@@ -1643,7 +1645,7 @@ SLIDER STYLES
 /*********************
 POSTS & CONTENT STYLES
 *********************/
-/* line 559, ../scss/_base.scss */
+/* line 560, ../scss/_base.scss */
 #content {
   margin-top: 2.2em;
 }
@@ -1659,13 +1661,13 @@ POSTS & CONTENT STYLES
 /* style by category (i.e. category-videos) */
 /* style by tag (i.e. tag-news) */
 /* post meta */
-/* line 591, ../scss/_base.scss */
+/* line 592, ../scss/_base.scss */
 .byline {
   color: #999;
 }
 
 /* entry content */
-/* line 598, ../scss/_base.scss */
+/* line 599, ../scss/_base.scss */
 .entry-content {
   /*
   image alignment on a screen this size may be
@@ -1674,25 +1676,25 @@ POSTS & CONTENT STYLES
   but it's up to you. Feel free to change it up.
   */
 }
-/* line 633, ../scss/_base.scss */
+/* line 634, ../scss/_base.scss */
 .entry-content dd {
   margin-left: 0;
   font-size: 0.9em;
   color: #787878;
   margin-bottom: 1.5em;
 }
-/* line 640, ../scss/_base.scss */
+/* line 641, ../scss/_base.scss */
 .entry-content img {
   margin: 0 0 1.5em 0;
   max-width: 100%;
   height: auto;
 }
-/* line 656, ../scss/_base.scss */
+/* line 657, ../scss/_base.scss */
 .entry-content video, .entry-content object {
   max-width: 100%;
   height: auto;
 }
-/* line 661, ../scss/_base.scss */
+/* line 662, ../scss/_base.scss */
 .entry-content pre {
   background: #eee;
   border: 1px solid #cecece;
@@ -1700,20 +1702,20 @@ POSTS & CONTENT STYLES
 }
 
 /* end .entry-content */
-/* line 669, ../scss/_base.scss */
+/* line 670, ../scss/_base.scss */
 .wp-caption {
   max-width: 100%;
   background: #eee;
   padding: 5px;
   /* images inside wp-caption */
 }
-/* line 675, ../scss/_base.scss */
+/* line 676, ../scss/_base.scss */
 .wp-caption img {
   max-width: 100%;
   margin-bottom: 0;
   width: 100%;
 }
-/* line 681, ../scss/_base.scss */
+/* line 682, ../scss/_base.scss */
 .wp-caption p.wp-caption-text {
   font-size: 0.85em;
   margin: 4px 0 7px;
@@ -1727,18 +1729,18 @@ POSTS & CONTENT STYLES
 /******************************************************************
 PAGE NAVI STYLES
 ******************************************************************/
-/* line 719, ../scss/_base.scss */
+/* line 720, ../scss/_base.scss */
 .pagination,
 .wp-prev-next {
   margin: 1.1em 0 2.2em;
 }
 
-/* line 722, ../scss/_base.scss */
+/* line 723, ../scss/_base.scss */
 .pagination {
   margin-top: 30px;
   color: black;
 }
-/* line 725, ../scss/_base.scss */
+/* line 726, ../scss/_base.scss */
 .pagination ul {
   display: inline-block;
   white-space: nowrap;
@@ -1746,7 +1748,7 @@ PAGE NAVI STYLES
   clear: both;
   margin: 1px;
 }
-/* line 731, ../scss/_base.scss */
+/* line 732, ../scss/_base.scss */
 .pagination ul li {
   padding: 0;
   margin: 0;
@@ -1754,7 +1756,7 @@ PAGE NAVI STYLES
   display: inline;
   overflow: hidden;
 }
-/* line 737, ../scss/_base.scss */
+/* line 738, ../scss/_base.scss */
 .pagination ul li a, .pagination ul li span {
   margin: 0;
   text-decoration: none;
@@ -1767,27 +1769,27 @@ PAGE NAVI STYLES
   display: block;
   color: black;
 }
-/* line 749, ../scss/_base.scss */
+/* line 750, ../scss/_base.scss */
 .pagination ul li span.current {
   background: white;
   color: #de5f02;
 }
-/* line 753, ../scss/_base.scss */
+/* line 754, ../scss/_base.scss */
 .pagination ul li a:hover, .pagination ul li a:focus {
   color: #de5f02;
 }
-/* line 756, ../scss/_base.scss */
+/* line 757, ../scss/_base.scss */
 .pagination ul li .next, .pagination ul li .prev {
   background: white;
 }
 
 /* end .bones_page_navi */
 /* fallback previous & next links */
-/* line 768, ../scss/_base.scss */
+/* line 769, ../scss/_base.scss */
 .wp-prev-next .prev-link {
   float: left;
 }
-/* line 772, ../scss/_base.scss */
+/* line 773, ../scss/_base.scss */
 .wp-prev-next .next-link {
   float: right;
 }
@@ -1797,12 +1799,12 @@ PAGE NAVI STYLES
 COMMENT STYLES
 ******************************************************************/
 /* h3 comment title */
-/* line 783, ../scss/_base.scss */
+/* line 784, ../scss/_base.scss */
 #comments {
   /* number of comments span */
 }
 
-/* line 800, ../scss/_base.scss */
+/* line 801, ../scss/_base.scss */
 .commentlist {
   /* general comment classes */
   /* vcard */
@@ -1813,7 +1815,7 @@ COMMENT STYLES
   /* comment reply link */
   /* end .commentlist .comment-reply-link */
 }
-/* line 802, ../scss/_base.scss */
+/* line 803, ../scss/_base.scss */
 .commentlist li {
   position: relative;
   clear: both;
@@ -1823,63 +1825,63 @@ COMMENT STYLES
   padding: 0.7335em 10px;
   /* end .commentlist li ul.children */
 }
-/* line 810, ../scss/_base.scss */
+/* line 811, ../scss/_base.scss */
 .commentlist li:last-child {
   margin-bottom: 0;
 }
-/* line 814, ../scss/_base.scss */
+/* line 815, ../scss/_base.scss */
 .commentlist li ul.children {
   margin: 0;
   /* variations */
   /* change number for different depth */
 }
-/* line 832, ../scss/_base.scss */
+/* line 833, ../scss/_base.scss */
 .commentlist li[class*=depth-] {
   margin-top: 1.1em;
 }
-/* line 836, ../scss/_base.scss */
+/* line 837, ../scss/_base.scss */
 .commentlist li.depth-1 {
   margin-left: 0;
   margin-top: 0;
 }
-/* line 841, ../scss/_base.scss */
+/* line 842, ../scss/_base.scss */
 .commentlist li:not(.depth-1) {
   margin-right: -10px;
   margin-left: -10px;
   margin-top: 0;
   padding-bottom: 0;
 }
-/* line 855, ../scss/_base.scss */
+/* line 856, ../scss/_base.scss */
 .commentlist .odd {
   background: #eee;
 }
-/* line 858, ../scss/_base.scss */
+/* line 859, ../scss/_base.scss */
 .commentlist .even {
   background: #fefefe;
 }
-/* line 873, ../scss/_base.scss */
+/* line 874, ../scss/_base.scss */
 .commentlist .vcard {
   margin-left: 50px;
 }
-/* line 876, ../scss/_base.scss */
+/* line 877, ../scss/_base.scss */
 .commentlist .vcard cite.fn {
   font-weight: 700;
   font-style: normal;
 }
-/* line 884, ../scss/_base.scss */
+/* line 885, ../scss/_base.scss */
 .commentlist .vcard time {
   float: right;
 }
-/* line 887, ../scss/_base.scss */
+/* line 888, ../scss/_base.scss */
 .commentlist .vcard time a {
   color: #999;
   text-decoration: none;
 }
-/* line 891, ../scss/_base.scss */
+/* line 892, ../scss/_base.scss */
 .commentlist .vcard time a:hover {
   text-decoration: underline;
 }
-/* line 901, ../scss/_base.scss */
+/* line 902, ../scss/_base.scss */
 .commentlist .vcard img.avatar {
   position: absolute;
   left: 10px;
@@ -1887,17 +1889,17 @@ COMMENT STYLES
   border: 1px solid #cecece;
   background: #fff;
 }
-/* line 926, ../scss/_base.scss */
+/* line 927, ../scss/_base.scss */
 .commentlist .comment_content {
   margin-left: 50px;
 }
-/* line 929, ../scss/_base.scss */
+/* line 930, ../scss/_base.scss */
 .commentlist .comment_content p {
   margin: 0.7335em 0 1.5em;
   font-size: 1em;
   line-height: 1.5em;
 }
-/* line 938, ../scss/_base.scss */
+/* line 939, ../scss/_base.scss */
 .commentlist .comment-reply-link {
   text-decoration: none;
   float: right;
@@ -1909,7 +1911,7 @@ COMMENT STYLES
   font-weight: 700;
   font-size: 0.9em;
 }
-/* line 950, ../scss/_base.scss */
+/* line 951, ../scss/_base.scss */
 .commentlist .comment-reply-link:hover, .commentlist .comment-reply-link:focus {
   opacity: 1;
 }
@@ -1918,27 +1920,27 @@ COMMENT STYLES
 /******************************************************************
 COMMENT FORM STYLES
 ******************************************************************/
-/* line 962, ../scss/_base.scss */
+/* line 963, ../scss/_base.scss */
 .respond-form {
   margin: 1.5em 10px;
   padding-bottom: 2.2em;
 }
-/* line 966, ../scss/_base.scss */
+/* line 967, ../scss/_base.scss */
 .respond-form form {
   margin: 0.75em 0;
 }
-/* line 969, ../scss/_base.scss */
+/* line 970, ../scss/_base.scss */
 .respond-form form li {
   list-style-type: none;
   clear: both;
   margin-bottom: 0.7335em;
 }
-/* line 975, ../scss/_base.scss */
+/* line 976, ../scss/_base.scss */
 .respond-form form li label,
 .respond-form form li small {
   display: none;
 }
-/* line 983, ../scss/_base.scss */
+/* line 984, ../scss/_base.scss */
 .respond-form form input[type=text],
 .respond-form form input[type=email],
 .respond-form form input[type=url],
@@ -1949,14 +1951,14 @@ COMMENT FORM STYLES
   line-height: 1.5em;
   /* form validation */
 }
-/* line 989, ../scss/_base.scss */
+/* line 990, ../scss/_base.scss */
 .respond-form form input[type=text]:focus,
 .respond-form form input[type=email]:focus,
 .respond-form form input[type=url]:focus,
 .respond-form form textarea:focus {
   background: #fff;
 }
-/* line 994, ../scss/_base.scss */
+/* line 995, ../scss/_base.scss */
 .respond-form form input[type=text]:invalid,
 .respond-form form input[type=email]:invalid,
 .respond-form form input[type=url]:invalid,
@@ -1969,14 +1971,14 @@ COMMENT FORM STYLES
   -ms-box-shadow: none;
   box-shadow: none;
 }
-/* line 1007, ../scss/_base.scss */
+/* line 1008, ../scss/_base.scss */
 .respond-form form input[type=text],
 .respond-form form input[type=email],
 .respond-form form input[type=url] {
   max-width: 400px;
   min-width: 250px;
 }
-/* line 1012, ../scss/_base.scss */
+/* line 1013, ../scss/_base.scss */
 .respond-form form textarea {
   resize: none;
   width: 97.3%;
@@ -1985,7 +1987,7 @@ COMMENT FORM STYLES
 
 /* comment submit button */
 /* comment form title */
-/* line 1025, ../scss/_base.scss */
+/* line 1026, ../scss/_base.scss */
 #comment-form-title {
   margin: 0 0 1.1em;
 }
@@ -1993,13 +1995,13 @@ COMMENT FORM STYLES
 /* cancel comment reply link */
 /* logged in comments */
 /* allowed tags */
-/* line 1038, ../scss/_base.scss */
+/* line 1039, ../scss/_base.scss */
 #allowed_tags {
   margin: 1.5em 10px 0.7335em 0;
 }
 
 /* no comments */
-/* line 1043, ../scss/_base.scss */
+/* line 1044, ../scss/_base.scss */
 .nocomments {
   margin: 0 20px 1.1em;
 }
@@ -2007,7 +2009,7 @@ COMMENT FORM STYLES
 /*****************************************
 FORM STYLES - Media queries included here
 ******************************************/
-/* line 1051, ../scss/_base.scss */
+/* line 1052, ../scss/_base.scss */
 .form-elements h3 span {
   background: white;
   color: #de5f02;
@@ -2017,7 +2019,7 @@ FORM STYLES - Media queries included here
   padding: 0.2em;
 }
 
-/* line 1060, ../scss/_base.scss */
+/* line 1061, ../scss/_base.scss */
 .form-elements > div {
   position: relative;
   clear: both;
@@ -2026,17 +2028,17 @@ FORM STYLES - Media queries included here
   margin: 0 0 5px 0;
 }
 
-/* line 1068, ../scss/_base.scss */
+/* line 1069, ../scss/_base.scss */
 .signup {
   margin-top: 30px;
 }
 
-/* line 1072, ../scss/_base.scss */
+/* line 1073, ../scss/_base.scss */
 .form-elements > div > fieldset > div > div {
   margin: 0 0 5px 0;
 }
 
-/* line 1076, ../scss/_base.scss */
+/* line 1077, ../scss/_base.scss */
 .form-elements > div > label,
 legend {
   width: 35%;
@@ -2044,7 +2046,7 @@ legend {
   padding: 10px;
   padding-right: 30px;
 }
-/* line 1081, ../scss/_base.scss */
+/* line 1082, ../scss/_base.scss */
 .form-elements > div > label span,
 legend span {
   background: white;
@@ -2052,25 +2054,25 @@ legend span {
   padding: 0 0.2em;
 }
 
-/* line 1088, ../scss/_base.scss */
+/* line 1089, ../scss/_base.scss */
 .form-elements > div > div:not(.token),
 .form-elements > div > fieldset > div {
   width: 65%;
   float: right;
 }
 
-/* line 1092, ../scss/_base.scss */
+/* line 1093, ../scss/_base.scss */
 .form-elements > div > fieldset label {
   font-size: 90%;
 }
 
-/* line 1095, ../scss/_base.scss */
+/* line 1096, ../scss/_base.scss */
 fieldset {
   border: 0;
   padding: 0;
 }
 
-/* line 1100, ../scss/_base.scss */
+/* line 1101, ../scss/_base.scss */
 select {
   background: url("../images/select-box-button.gif") no-repeat right white;
   border: 0;
@@ -2082,13 +2084,13 @@ select {
   text-overflow: '';
 }
 
-/* line 1111, ../scss/_base.scss */
+/* line 1112, ../scss/_base.scss */
 input[type=submit] {
   background-color: #de5f02;
   border: none;
 }
 
-/* line 1122, ../scss/_base.scss */
+/* line 1123, ../scss/_base.scss */
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -2103,7 +2105,7 @@ textarea {
   border-bottom: 1px solid #eee;
 }
 
-/* line 1134, ../scss/_base.scss */
+/* line 1135, ../scss/_base.scss */
 input[type=text],
 input[type=tel],
 input[type=email],
@@ -2114,7 +2116,7 @@ select {
   padding: 10px;
 }
 
-/* line 1144, ../scss/_base.scss */
+/* line 1145, ../scss/_base.scss */
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=tel]:focus,
@@ -2127,12 +2129,12 @@ select:focus {
 }
 
 @media (max-width: 768px) {
-  /* line 1150, ../scss/_base.scss */
+  /* line 1151, ../scss/_base.scss */
   .form-elements > div {
     margin: 0 0 15px 0;
   }
 
-  /* line 1154, ../scss/_base.scss */
+  /* line 1155, ../scss/_base.scss */
   .form-elements > div > label,
   legend {
     width: 100%;
@@ -2140,14 +2142,14 @@ select:focus {
     margin: 0 0 5px 0;
   }
 
-  /* line 1160, ../scss/_base.scss */
+  /* line 1161, ../scss/_base.scss */
   .form-elements > div > div,
   .form-elements > div > fieldset > div {
     width: 100%;
     float: none;
   }
 
-  /* line 1170, ../scss/_base.scss */
+  /* line 1171, ../scss/_base.scss */
   input[type=text],
   input[type=tel],
   input[type=email],
@@ -2159,17 +2161,17 @@ select:focus {
   }
 }
 @media (min-width: 1140px) {
-  /* line 1176, ../scss/_base.scss */
+  /* line 1177, ../scss/_base.scss */
   #respond .form-elements > div {
     top: 0px;
   }
 
-  /* line 1180, ../scss/_base.scss */
+  /* line 1181, ../scss/_base.scss */
   .form-elements > div {
     top: -62px;
   }
 
-  /* line 1184, ../scss/_base.scss */
+  /* line 1185, ../scss/_base.scss */
   .form-elements > div > label,
   legend {
     text-align: right;
@@ -2178,12 +2180,12 @@ select:focus {
 /*********************
  Tabbed Content Form
 *********************/
-/* line 1193, ../scss/_base.scss */
+/* line 1194, ../scss/_base.scss */
 .tabbed_content {
   display: none;
 }
 
-/* line 1197, ../scss/_base.scss */
+/* line 1198, ../scss/_base.scss */
 .tabbed_content.active {
   display: block;
 }
@@ -2191,12 +2193,12 @@ select:focus {
 /*********************************************
  *charities, active race, fundraisers info/active races
  *********************************************/
-/* line 1204, ../scss/_base.scss */
+/* line 1205, ../scss/_base.scss */
 #info-header {
   width: 90%;
   margin: 0 auto;
 }
-/* line 1207, ../scss/_base.scss */
+/* line 1208, ../scss/_base.scss */
 #info-header #other-search {
   text-align: center;
   margin-left: 0;
@@ -2205,90 +2207,90 @@ select:focus {
   padding-bottom: 30px;
   z-index: 20;
 }
-/* line 1215, ../scss/_base.scss */
+/* line 1216, ../scss/_base.scss */
 #info-header #other-search input {
   width: 86%;
 }
-/* line 1218, ../scss/_base.scss */
+/* line 1219, ../scss/_base.scss */
 #info-header #other-search input:focus {
   width: 86%;
 }
 
-/* line 1225, ../scss/_base.scss */
+/* line 1226, ../scss/_base.scss */
 .active-race, .charities-info {
   padding-top: 20px;
   padding-bottom: 50px;
 }
-/* line 1229, ../scss/_base.scss */
+/* line 1230, ../scss/_base.scss */
 .active-race h2, .charities-info h2 {
   margin-bottom: 3px;
 }
-/* line 1233, ../scss/_base.scss */
+/* line 1234, ../scss/_base.scss */
 .active-race h3, .charities-info h3 {
   margin-top: 3px;
   margin-bottom: 10px;
 }
-/* line 1237, ../scss/_base.scss */
+/* line 1238, ../scss/_base.scss */
 .active-race ol, .charities-info ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1242, ../scss/_base.scss */
+/* line 1243, ../scss/_base.scss */
 .active-race ol li, .charities-info ol li {
   width: 100%;
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1249, ../scss/_base.scss */
+/* line 1250, ../scss/_base.scss */
 .active-race .headings, .active-race .dates, .charities-info .headings, .charities-info .dates {
   display: block;
   height: 24px;
   position: relative;
   background-color: #fff;
 }
-/* line 1255, ../scss/_base.scss */
+/* line 1256, ../scss/_base.scss */
 .active-race .headings p:first-of-type, .active-race .headings time:first-of-type, .active-race .dates p:first-of-type, .active-race .dates time:first-of-type, .charities-info .headings p:first-of-type, .charities-info .headings time:first-of-type, .charities-info .dates p:first-of-type, .charities-info .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1262, ../scss/_base.scss */
+/* line 1263, ../scss/_base.scss */
 .active-race .headings p:last-of-type, .active-race .headings time:last-of-type, .active-race .dates p:last-of-type, .active-race .dates time:last-of-type, .charities-info .headings p:last-of-type, .charities-info .headings time:last-of-type, .charities-info .dates p:last-of-type, .charities-info .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1270, ../scss/_base.scss */
+/* line 1271, ../scss/_base.scss */
 .active-race .headings, .active-race .headings-3-col, .charities-info .headings, .charities-info .headings-3-col {
   margin-top: 0.8rem;
 }
-/* line 1274, ../scss/_base.scss */
+/* line 1275, ../scss/_base.scss */
 .active-race .dates, .charities-info .dates {
   margin-top: 2px;
   font-size: 0.8em;
 }
-/* line 1279, ../scss/_base.scss */
+/* line 1280, ../scss/_base.scss */
 .active-race:after, .charities-info:after {
   content: " ";
   display: table;
   clear: both;
 }
-/* line 1285, ../scss/_base.scss */
+/* line 1286, ../scss/_base.scss */
 .active-race .btn, .charities-info .btn {
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-/* line 1292, ../scss/_base.scss */
+/* line 1293, ../scss/_base.scss */
 .active-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 1295, ../scss/_base.scss */
+/* line 1296, ../scss/_base.scss */
 .active-race.last-on-page .btn {
   bottom: 30px;
 }
@@ -2296,64 +2298,69 @@ select:focus {
 /*****************************************
  *headings & results with 3 colums
 /*****************************************/
-/* line 1303, ../scss/_base.scss */
+/* line 1304, ../scss/_base.scss */
 .headings-3-col, .result-3-col {
   margin-bottom: 2px;
   overflow: hidden;
 }
 
-/* line 1307, ../scss/_base.scss */
+/* line 1308, ../scss/_base.scss */
 .headings-3-col p, .result-3-col p {
   width: 33.3333333%;
   float: left;
   text-align: center;
   margin: 0;
 }
-/* line 1313, ../scss/_base.scss */
+/* line 1314, ../scss/_base.scss */
 .headings-3-col p:first-of-type, .result-3-col p:first-of-type {
   text-align: left;
   padding-left: 1em;
 }
-/* line 1318, ../scss/_base.scss */
+/* line 1319, ../scss/_base.scss */
 .headings-3-col p:last-of-type, .result-3-col p:last-of-type {
   text-align: right;
   padding-right: 1em;
 }
 
-/* line 1325, ../scss/_base.scss */
+/* line 1326, ../scss/_base.scss */
 .faq {
   border-bottom: 2px dashed #b39c7d !important;
   padding-bottom: 10px;
 }
-/* line 1326, ../scss/_base.scss */
+/* line 1327, ../scss/_base.scss */
 .faq h2 {
   margin-top: 30px;
 }
-/* line 1333, ../scss/_base.scss */
+/* line 1334, ../scss/_base.scss */
 .faq p {
   margin-bottom: 0;
   margin-top: 0.2em;
 }
 
-/* line 1338, ../scss/_base.scss */
+/* line 1339, ../scss/_base.scss */
 .question, .answer {
   margin-bottom: 0;
+}
+
+/* line 1346, ../scss/_base.scss */
+.pic-wooden img {
+  max-height: 400px;
 }
 
 /*********************************
  *Active Race Page / Complete Race
  *********************************/
-/* line 1346, ../scss/_base.scss */
+/* line 1355, ../scss/_base.scss */
 #active-race-header, #complete-race-header {
   position: relative;
 }
-/* line 1349, ../scss/_base.scss */
+/* line 1358, ../scss/_base.scss */
 #active-race-header img, #complete-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1356, ../scss/_base.scss */
+/* line 1365, ../scss/_base.scss */
 #active-race-header div.stretchy, #complete-race-header div.stretchy {
   display: inline-block;
   position: relative;
@@ -2362,7 +2369,7 @@ select:focus {
   padding-bottom: 50.5050505%;
   overflow: hidden;
 }
-/* line 1364, ../scss/_base.scss */
+/* line 1373, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame {
   position: absolute;
   z-index: 10;
@@ -2373,36 +2380,36 @@ select:focus {
   background: url("../images/active-race-image-frame.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1372, ../scss/_base.scss */
+/* line 1381, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search {
   position: absolute;
   width: 90%;
   top: 20px;
   z-index: 20;
 }
-/* line 1378, ../scss/_base.scss */
+/* line 1387, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input {
   width: 86%;
 }
-/* line 1381, ../scss/_base.scss */
+/* line 1390, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1387, ../scss/_base.scss */
+/* line 1396, ../scss/_base.scss */
 #active-race-header .info, #complete-race-header .info {
   position: absolute;
   width: 100%;
   z-index: 20;
   bottom: 0;
 }
-/* line 1394, ../scss/_base.scss */
+/* line 1403, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1401, ../scss/_base.scss */
+/* line 1410, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   display: block;
   z-index: 20;
@@ -2415,34 +2422,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1413, ../scss/_base.scss */
+/* line 1422, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1420, ../scss/_base.scss */
+/* line 1429, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1428, ../scss/_base.scss */
+/* line 1437, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1432, ../scss/_base.scss */
+/* line 1441, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1439, ../scss/_base.scss */
+/* line 1448, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1443, ../scss/_base.scss */
+/* line 1452, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2450,56 +2457,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1451, ../scss/_base.scss */
+/* line 1460, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1455, ../scss/_base.scss */
+/* line 1464, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1459, ../scss/_base.scss */
+/* line 1468, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1465, ../scss/_base.scss */
+/* line 1474, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1469, ../scss/_base.scss */
+/* line 1478, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1472, ../scss/_base.scss */
+/* line 1481, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1478, ../scss/_base.scss */
+/* line 1487, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1484, ../scss/_base.scss */
+/* line 1493, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1489, ../scss/_base.scss */
+/* line 1498, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1494, ../scss/_base.scss */
+/* line 1503, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1497, ../scss/_base.scss */
+/* line 1506, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2507,16 +2514,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1507, ../scss/_base.scss */
+/* line 1516, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1510, ../scss/_base.scss */
+/* line 1519, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1518, ../scss/_base.scss */
+/* line 1527, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2535,11 +2542,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1537, ../scss/_base.scss */
+/* line 1546, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1539, ../scss/_base.scss */
+/* line 1548, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2549,7 +2556,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1548, ../scss/_base.scss */
+/* line 1557, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2560,7 +2567,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1561, ../scss/_base.scss */
+/* line 1570, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2568,7 +2575,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1579, ../scss/_base.scss */
+/* line 1588, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2576,7 +2583,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1600, ../scss/_base.scss */
+/* line 1609, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2593,7 +2600,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1626, ../scss/_base.scss */
+/* line 1635, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;
@@ -2990,171 +2997,10 @@ you can add resource intensive styles.
 
   /* line 166, ../scss/_768up.scss */
   .slide-container {
-    font-size: 70%;
-    text-shadow: 3px 3px 3px #444;
+    min-height: 400px;
   }
+
   /* line 171, ../scss/_768up.scss */
-  .slide-container h1 {
-    font-size: 65px;
-    font-size: 4.0625em;
-  }
-  /* line 176, ../scss/_768up.scss */
-  .slide-container p {
-    font-size: 23px;
-    font-size: 1.4375em;
-  }
-
-  /* line 183, ../scss/_768up.scss */
-  #slide1 .inner-container {
-    height: 100%;
-  }
-  /* line 186, ../scss/_768up.scss */
-  #slide1 .title {
-    position: relative;
-    right: 0;
-    width: 100%;
-    height: 354px;
-    background: url("../images/why-r2f/slidesangles/Slide-One-Title-1206x354.gif") no-repeat;
-    background-size: contain;
-  }
-  /* line 194, ../scss/_768up.scss */
-  #slide1 .title h1 {
-    text-align: right;
-    letter-spacing: 1px;
-    padding-top: 105px;
-    -moz-transform: rotate(-10deg);
-    -webkit-transform: rotate(-10deg);
-    -o-transform: rotate(-10deg);
-    -ms-transform: rotate(-10deg);
-    transform: rotate(-10deg);
-  }
-  /* line 206, ../scss/_768up.scss */
-  #slide1 .angle {
-    position: absolute;
-    bottom: 100%;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    max-width: 991px;
-    height: 196px;
-    background: url("../images/why-r2f/slidesangles/slide-one-angle-991x196.gif") right 100% no-repeat;
-    background-size: contain;
-  }
-  /* line 217, ../scss/_768up.scss */
-  #slide1 .angle p {
-    float: right;
-    width: 80%;
-    -moz-transform: rotate(-8deg);
-    -webkit-transform: rotate(-8deg);
-    -o-transform: rotate(-8deg);
-    -ms-transform: rotate(-8deg);
-    transform: rotate(-8deg);
-  }
-
-  /* line 230, ../scss/_768up.scss */
-  #slide2 .inner-container {
-    height: 100%;
-  }
-  /* line 233, ../scss/_768up.scss */
-  #slide2 .angle {
-    position: absolute;
-    width: 100%;
-    max-width: 562px;
-    height: 456px;
-    top: 40px;
-    right: 0;
-    background: url("../images/why-r2f/slidesangles/slide2-angle-562x456.gif") right 100% no-repeat;
-  }
-  /* line 242, ../scss/_768up.scss */
-  #slide2 .angle p {
-    width: 562px;
-  }
-
-  /* line 249, ../scss/_768up.scss */
-  #slide3 .inner-container {
-    height: 100%;
-  }
-  /* line 252, ../scss/_768up.scss */
-  #slide3 .angle {
-    position: absolute;
-    width: 100%;
-    max-width: 725px;
-    height: 347px;
-    top: 40px;
-    right: 0;
-    background: url("../images/why-r2f/slidesangles/slide3-angle-725x347.gif") right 100% no-repeat;
-  }
-  /* line 261, ../scss/_768up.scss */
-  #slide3 .angle p {
-    margin-top: 120px;
-    width: 512px;
-    float: right;
-  }
-
-  /* line 270, ../scss/_768up.scss */
-  #slide4 .inner-container {
-    height: 100%;
-  }
-  /* line 273, ../scss/_768up.scss */
-  #slide4 .angle {
-    position: absolute;
-    width: 100%;
-    max-width: 488px;
-    height: 387px;
-    top: 40px;
-    right: 0;
-    background: url("../images/why-r2f/slidesangles/slide4-angle-488x387.gif") right 100% no-repeat;
-  }
-  /* line 282, ../scss/_768up.scss */
-  #slide4 .angle p {
-    margin-top: 80px;
-    width: 468px;
-    float: right;
-  }
-
-  /* line 291, ../scss/_768up.scss */
-  #slide5 .inner-container {
-    height: 100%;
-  }
-  /* line 294, ../scss/_768up.scss */
-  #slide5 .angle {
-    position: absolute;
-    width: 100%;
-    max-width: 791px;
-    height: 387px;
-    bottom: 40px;
-    right: 0;
-    background: url("../images/why-r2f/slidesangles/slide5-angle-791x262.gif") right 100% no-repeat;
-  }
-  /* line 303, ../scss/_768up.scss */
-  #slide5 .angle p {
-    margin-top: 230px;
-    width: 488px;
-    float: right;
-  }
-
-  /* line 312, ../scss/_768up.scss */
-  #slide6 .inner-container {
-    height: 100%;
-  }
-  /* line 315, ../scss/_768up.scss */
-  #slide6 .angle {
-    position: absolute;
-    width: 100%;
-    max-width: 562px;
-    height: 287px;
-    top: -20px;
-    right: 0;
-    background: url("../images/why-r2f/slidesangles/slide6-angle-562x230.gif") right 100% no-repeat;
-  }
-  /* line 324, ../scss/_768up.scss */
-  #slide6 .angle p {
-    margin-top: 90px;
-    width: 538px;
-    float: right;
-  }
-
-  /* line 333, ../scss/_768up.scss */
   #logo.secondary {
     margin: 0 0 0 40px;
   }
@@ -3162,12 +3008,12 @@ you can add resource intensive styles.
   /*********************
   HEADER STYLES
   *********************/
-  /* line 342, ../scss/_768up.scss */
+  /* line 180, ../scss/_768up.scss */
   .header {
     position: fixed;
   }
 
-  /* line 351, ../scss/_768up.scss */
+  /* line 189, ../scss/_768up.scss */
   #logo {
     width: 40%;
   }
@@ -3175,59 +3021,59 @@ you can add resource intensive styles.
   /***************************************
    *Search used in header and other pages
    ***************************************/
-  /* line 359, ../scss/_768up.scss */
+  /* line 197, ../scss/_768up.scss */
   #nobtn-search, #other-search {
     position: absolute;
     bottom: -70px;
     right: 0;
   }
-  /* line 364, ../scss/_768up.scss */
+  /* line 202, ../scss/_768up.scss */
   #nobtn-search input, #other-search input {
     width: 150px;
   }
-  /* line 368, ../scss/_768up.scss */
+  /* line 206, ../scss/_768up.scss */
   #nobtn-search input:focus, #other-search input:focus {
     width: 250px;
   }
 
-  /* line 375, ../scss/_768up.scss */
+  /* line 213, ../scss/_768up.scss */
   #other-search {
     position: relative;
     top: 4px;
     display: inline-block;
     float: left;
   }
-  /* line 380, ../scss/_768up.scss */
+  /* line 218, ../scss/_768up.scss */
   #other-search input {
     width: 200px;
   }
-  /* line 383, ../scss/_768up.scss */
+  /* line 221, ../scss/_768up.scss */
   #other-search input:focus {
     width: 300px;
   }
 
-  /* line 388, ../scss/_768up.scss */
+  /* line 226, ../scss/_768up.scss */
   #active-race-header #other-search {
     position: relative;
     margin-bottom: -40px;
     text-align: center;
   }
 
-  /* line 394, ../scss/_768up.scss */
+  /* line 232, ../scss/_768up.scss */
   .enter-race {
     bottom: 112px;
   }
-  /* line 396, ../scss/_768up.scss */
+  /* line 234, ../scss/_768up.scss */
   .enter-race .btn {
     font-size: 36px;
   }
 
-  /* line 401, ../scss/_768up.scss */
+  /* line 239, ../scss/_768up.scss */
   .fences {
     position: relative;
     height: 0px;
   }
-  /* line 404, ../scss/_768up.scss */
+  /* line 242, ../scss/_768up.scss */
   .fences:before, .fences:after {
     display: block;
     content: "";
@@ -3236,26 +3082,26 @@ you can add resource intensive styles.
     height: 151px;
     z-index: 2000;
   }
-  /* line 414, ../scss/_768up.scss */
+  /* line 252, ../scss/_768up.scss */
   .fences:before {
     bottom: 0;
     left: -187px;
     background: url("../images/left-fence.gif");
   }
-  /* line 420, ../scss/_768up.scss */
+  /* line 258, ../scss/_768up.scss */
   .fences:after {
     bottom: 0;
     right: -187px;
     background: url("../images/right-fence.gif");
   }
 
-  /* line 427, ../scss/_768up.scss */
+  /* line 265, ../scss/_768up.scss */
   .wide-fence {
     position: relative;
     bottom: 0;
     height: 0;
   }
-  /* line 431, ../scss/_768up.scss */
+  /* line 269, ../scss/_768up.scss */
   .wide-fence:after {
     position: absolute;
     display: block;
@@ -3268,7 +3114,7 @@ you can add resource intensive styles.
     top: -190px;
   }
 
-  /* line 444, ../scss/_768up.scss */
+  /* line 282, ../scss/_768up.scss */
   .wide-fence.why {
     bottom: -70px;
   }
@@ -3276,14 +3122,14 @@ you can add resource intensive styles.
   /*********************
   Slider STYLES
   *********************/
-  /* line 451, ../scss/_768up.scss */
+  /* line 289, ../scss/_768up.scss */
   .slider {
     margin-top: 63px;
     background: #4dd2fd;
     position: relative;
     max-height: 600px;
   }
-  /* line 457, ../scss/_768up.scss */
+  /* line 295, ../scss/_768up.scss */
   .slider:before {
     display: block;
     content: "";
@@ -3295,7 +3141,7 @@ you can add resource intensive styles.
     z-index: 3;
   }
 
-  /* line 472, ../scss/_768up.scss */
+  /* line 310, ../scss/_768up.scss */
   .centered-btns_tabs,
   .transparent-btns_tabs,
   .large-btns_tabs {
@@ -3315,17 +3161,17 @@ you can add resource intensive styles.
   /*********************
   NAVIGATION STYLES
   *********************/
-  /* line 491, ../scss/_768up.scss */
+  /* line 329, ../scss/_768up.scss */
   #scrolling-nav.scrolling {
     top: 500px;
   }
 
-  /* line 495, ../scss/_768up.scss */
+  /* line 333, ../scss/_768up.scss */
   #scrolling-nav.stopped {
     top: 3420px;
   }
 
-  /* line 499, ../scss/_768up.scss */
+  /* line 337, ../scss/_768up.scss */
   .scrolling-nav-inner {
     display: block;
     height: 243px;
@@ -3334,7 +3180,7 @@ you can add resource intensive styles.
     z-index: 100;
     font-size: 70%;
   }
-  /* line 507, ../scss/_768up.scss */
+  /* line 345, ../scss/_768up.scss */
   .scrolling-nav-inner ul {
     font-family: 'Headline One';
     display: block;
@@ -3342,7 +3188,7 @@ you can add resource intensive styles.
     width: 320px;
     height: 333px;
   }
-  /* line 514, ../scss/_768up.scss */
+  /* line 352, ../scss/_768up.scss */
   .scrolling-nav-inner ul li {
     font-size: 26px;
     font-size: 1.625em;
@@ -3351,7 +3197,7 @@ you can add resource intensive styles.
     padding-left: 15px;
     display: block;
   }
-  /* line 522, ../scss/_768up.scss */
+  /* line 360, ../scss/_768up.scss */
   .scrolling-nav-inner ul li .bullet {
     margin-top: 0;
     text-align: center;
@@ -3369,23 +3215,23 @@ you can add resource intensive styles.
     text-shadow: none;
     display: none;
   }
-  /* line 540, ../scss/_768up.scss */
+  /* line 378, ../scss/_768up.scss */
   .scrolling-nav-inner ul li a {
     color: white;
     text-shadow: 3px 3px 3px #444;
     text-decoration: none;
   }
-  /* line 549, ../scss/_768up.scss */
+  /* line 387, ../scss/_768up.scss */
   .scrolling-nav-inner ul li.highlight .bullet {
     display: block;
   }
-  /* line 552, ../scss/_768up.scss */
+  /* line 390, ../scss/_768up.scss */
   .scrolling-nav-inner ul li.highlight a {
     text-shadow: none;
     color: #de5f02;
   }
 
-  /* line 560, ../scss/_768up.scss */
+  /* line 398, ../scss/_768up.scss */
   footer .nav {
     display: block;
     margin: 0;
@@ -3393,7 +3239,7 @@ you can add resource intensive styles.
     text-shadow: 1px 2px 5px #444;
   }
 
-  /* line 566, ../scss/_768up.scss */
+  /* line 404, ../scss/_768up.scss */
   .nav {
     font-size: 25px;
     font-size: 1.5625rem;
@@ -3406,15 +3252,15 @@ you can add resource intensive styles.
     /* highlight current page */
     /* end current highlighters */
   }
-  /* line 578, ../scss/_768up.scss */
+  /* line 416, ../scss/_768up.scss */
   .nav li:first-of-type {
     margin-left: 0px;
   }
-  /* line 585, ../scss/_768up.scss */
+  /* line 423, ../scss/_768up.scss */
   .nav li:last-of-type {
     margin-right: 0px;
   }
-  /* line 589, ../scss/_768up.scss */
+  /* line 427, ../scss/_768up.scss */
   .nav li {
     float: left;
     position: relative;
@@ -3425,7 +3271,7 @@ you can add resource intensive styles.
     */
     /* showing sub-menus */
   }
-  /* line 595, ../scss/_768up.scss */
+  /* line 433, ../scss/_768up.scss */
   .nav li a {
     padding: 12px 0px 6px 0px;
     margin: 0;
@@ -3436,12 +3282,12 @@ you can add resource intensive styles.
     has the possibility of being a mobile device.
     */
   }
-  /* line 605, ../scss/_768up.scss */
+  /* line 443, ../scss/_768up.scss */
   .nav li a:hover, .nav li a:focus {
     color: white;
     text-decoration: underline;
   }
-  /* line 619, ../scss/_768up.scss */
+  /* line 457, ../scss/_768up.scss */
   .nav li ul.sub-menu,
   .nav li ul.children {
     margin-top: 0;
@@ -3452,7 +3298,7 @@ you can add resource intensive styles.
     z-index: 8999;
     /* highlight sub-menu current page */
   }
-  /* line 627, ../scss/_768up.scss */
+  /* line 465, ../scss/_768up.scss */
   .nav li ul.sub-menu li,
   .nav li ul.children li {
     /*
@@ -3461,7 +3307,7 @@ you can add resource intensive styles.
     for usability. k, bai.
     */
   }
-  /* line 629, ../scss/_768up.scss */
+  /* line 467, ../scss/_768up.scss */
   .nav li ul.sub-menu li a,
   .nav li ul.children li a {
     padding-left: 10px;
@@ -3470,19 +3316,19 @@ you can add resource intensive styles.
     width: 180px;
     border-bottom: 1px solid #ccc;
   }
-  /* line 646, ../scss/_768up.scss */
+  /* line 484, ../scss/_768up.scss */
   .nav li ul.sub-menu li:last-child a,
   .nav li ul.children li:last-child a {
     border-bottom: 0;
   }
-  /* line 668, ../scss/_768up.scss */
+  /* line 506, ../scss/_768up.scss */
   .nav li:hover ul {
     top: auto;
     display: block;
   }
 
   /* end .nav */
-  /* line 685, ../scss/_768up.scss */
+  /* line 523, ../scss/_768up.scss */
   .log-in-out a {
     /*padding: 3px 15px!important;
     margin-top: 8px !important;
@@ -3490,18 +3336,18 @@ you can add resource intensive styles.
     border:1px solid $white !important;*/
   }
 
-  /* line 693, ../scss/_768up.scss */
+  /* line 531, ../scss/_768up.scss */
   .logged-in .sign-up {
     left: 1px;
   }
 
-  /* line 697, ../scss/_768up.scss */
+  /* line 535, ../scss/_768up.scss */
   .sign-up {
     font-size: 30px;
     font-size: 1.875rem;
     left: -7px;
   }
-  /* line 704, ../scss/_768up.scss */
+  /* line 542, ../scss/_768up.scss */
   .sign-up a {
     box-sizing: border-box;
     display: block;
@@ -3513,7 +3359,7 @@ you can add resource intensive styles.
     color: #de5f02 !important;
     text-decoration: none;
   }
-  /* line 718, ../scss/_768up.scss */
+  /* line 556, ../scss/_768up.scss */
   .sign-up a:after {
     position: absolute;
     display: block;
@@ -3525,41 +3371,41 @@ you can add resource intensive styles.
     content: "";
     background: url("../images/nav-bar-decor-white.png") center right 1px repeat-x;
   }
-  /* line 731, ../scss/_768up.scss */
+  /* line 569, ../scss/_768up.scss */
   .sign-up a:hover {
     color: #de5f02;
     text-decoration: underline;
   }
 
-  /* line 743, ../scss/_768up.scss */
+  /* line 581, ../scss/_768up.scss */
   html > body .sign-up a:after, x:-moz-any-link a:after, x:default a:after {
     background-position: center right 4px;
   }
 
-  /* line 749, ../scss/_768up.scss */
+  /* line 587, ../scss/_768up.scss */
   .wooden {
     background: url("../images/wooden-sign-529x433.gif") center center no-repeat;
     min-height: 433px;
     background-size: contain;
   }
 
-  /* line 755, ../scss/_768up.scss */
+  /* line 593, ../scss/_768up.scss */
   .vid-wooden {
     background: url("../images/vid-wooden-board-468x333.gif") center no-repeat;
     background-size: contain;
   }
 
-  /* line 760, ../scss/_768up.scss */
+  /* line 598, ../scss/_768up.scss */
   .vid-wooden .video-container {
     bottom: 30px;
   }
 
-  /* line 764, ../scss/_768up.scss */
+  /* line 602, ../scss/_768up.scss */
   .pic-wooden {
     background: url("../images/pic-wooden-339x294.gif") center no-repeat;
     background-size: cover;
   }
-  /* line 768, ../scss/_768up.scss */
+  /* line 606, ../scss/_768up.scss */
   .pic-wooden img {
     display: block;
     padding: 10%;
@@ -3570,28 +3416,28 @@ you can add resource intensive styles.
   /*********************
   SIDEBARS & ASIDES
   *********************/
-  /* line 782, ../scss/_768up.scss */
+  /* line 620, ../scss/_768up.scss */
   .sidebar {
     margin-top: 2.2em;
   }
 
-  /* line 786, ../scss/_768up.scss */
+  /* line 624, ../scss/_768up.scss */
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em;
   }
 
-  /* line 791, ../scss/_768up.scss */
+  /* line 629, ../scss/_768up.scss */
   .widget {
     padding: 0 10px;
     margin: 2.2em 0;
   }
-  /* line 796, ../scss/_768up.scss */
+  /* line 634, ../scss/_768up.scss */
   .widget ul li {
     margin-bottom: 0.75em;
     /* deep nesting */
   }
-  /* line 804, ../scss/_768up.scss */
+  /* line 642, ../scss/_768up.scss */
   .widget ul li ul {
     margin-top: 0.75em;
     padding-left: 1em;
@@ -3616,12 +3462,12 @@ you can add resource intensive styles.
   of overriding here if you styled them for
   mobile. Make sure to double check these!
   */
-  /* line 910, ../scss/_768up.scss */
+  /* line 748, ../scss/_768up.scss */
   .footer {
     background: url("../images/footer-bg.jpg") center repeat-x;
   }
 
-  /* line 915, ../scss/_768up.scss */
+  /* line 753, ../scss/_768up.scss */
   .footer-links ul li {
     /*
     be careful with the depth of your menus.
@@ -3634,22 +3480,22 @@ you can add resource intensive styles.
   /**********************
    *Active Race Profile
    **********************/
-  /* line 933, ../scss/_768up.scss */
+  /* line 771, ../scss/_768up.scss */
   .active-race {
     text-align: left;
     padding-top: 0;
     padding-bottom: 0;
   }
-  /* line 938, ../scss/_768up.scss */
+  /* line 776, ../scss/_768up.scss */
   .active-race .btn {
     bottom: 30px;
   }
 
-  /* line 943, ../scss/_768up.scss */
+  /* line 781, ../scss/_768up.scss */
   .active-race.last-on-page, .create-race.last-on-page {
     padding-bottom: 80px;
   }
-  /* line 946, ../scss/_768up.scss */
+  /* line 784, ../scss/_768up.scss */
   .active-race.last-on-page .btn, .create-race.last-on-page .btn {
     bottom: 110px;
   }
@@ -3657,7 +3503,7 @@ you can add resource intensive styles.
   /*************************
    *Active Race Page
    *************************/
-  /* line 960, ../scss/_768up.scss */
+  /* line 798, ../scss/_768up.scss */
   #active-race-header, #complete-race-header {
     display: block;
     box-sizing: border-box;
@@ -3678,14 +3524,14 @@ you can add resource intensive styles.
     	background-size: cover;
     }*/
   }
-  /* line 990, ../scss/_768up.scss */
+  /* line 828, ../scss/_768up.scss */
   #active-race-header .btn, #complete-race-header .btn {
     font-size: 36px;
     font-size: 2.25rem;
     left: 100px;
     bottom: -50px;
   }
-  /* line 997, ../scss/_768up.scss */
+  /* line 835, ../scss/_768up.scss */
   #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
     width: 200px;
     height: 24px;
@@ -3694,17 +3540,17 @@ you can add resource intensive styles.
     left: 280px;
   }
 
-  /* line 1007, ../scss/_768up.scss */
+  /* line 845, ../scss/_768up.scss */
   #complete-race-header .headings, #complete-race-header .dates {
     left: 100px;
   }
 
-  /* line 1012, ../scss/_768up.scss */
+  /* line 850, ../scss/_768up.scss */
   #race-data .leaderboard {
     margin-bottom: 100px;
   }
 
-  /* line 1016, ../scss/_768up.scss */
+  /* line 854, ../scss/_768up.scss */
   #profile-excerpt {
     position: relative;
     font-size: 80%;
@@ -3713,12 +3559,12 @@ you can add resource intensive styles.
     background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
     background-size: contain;
   }
-  /* line 1024, ../scss/_768up.scss */
+  /* line 862, ../scss/_768up.scss */
   #profile-excerpt .profile-view {
     text-align: center;
   }
 
-  /* line 1031, ../scss/_768up.scss */
+  /* line 869, ../scss/_768up.scss */
   .winner {
     top: -80px;
   }
@@ -3726,36 +3572,36 @@ you can add resource intensive styles.
   /*************************
    *Create Race Page
    *************************/
-  /* line 1039, ../scss/_768up.scss */
+  /* line 877, ../scss/_768up.scss */
   #create-race-header {
     margin-top: -80px;
   }
-  /* line 1042, ../scss/_768up.scss */
+  /* line 880, ../scss/_768up.scss */
   #create-race-header h1 {
     margin-bottom: 60px;
   }
-  /* line 1046, ../scss/_768up.scss */
+  /* line 884, ../scss/_768up.scss */
   #create-race-header #tab_control {
     margin-top: 20px;
     margin-bottom: 30px;
   }
 
-  /* line 1052, ../scss/_768up.scss */
+  /* line 890, ../scss/_768up.scss */
   .token {
     text-align: centre;
   }
 
-  /* line 1056, ../scss/_768up.scss */
+  /* line 894, ../scss/_768up.scss */
   .continue {
     margin-top: 30px;
     margin-bottom: 120px !important;
   }
 
-  /* line 1063, ../scss/_768up.scss */
+  /* line 901, ../scss/_768up.scss */
   .faq {
     padding-bottom: 30px;
   }
-  /* line 1066, ../scss/_768up.scss */
+  /* line 904, ../scss/_768up.scss */
   .faq:last-child {
     border-bottom: none !important;
     padding-bottom: 70px;
@@ -3824,15 +3670,10 @@ you can add resource intensive styles.
     background: url("../images/nav-bar-decor-white.png") center right -2px repeat-x;
   }
 
-  /* line 59, ../scss/_1030up.scss */
-  .slide-container {
-    font-size: 100%;
-  }
-
   /*********************
   Slider STYLES
   *********************/
-  /* line 66, ../scss/_1030up.scss */
+  /* line 62, ../scss/_1030up.scss */
   .slider {
     margin-top: 78px;
   }
@@ -3840,7 +3681,7 @@ you can add resource intensive styles.
   /*************************
    *Active Race Page
    *************************/
-  /* line 74, ../scss/_1030up.scss */
+  /* line 70, ../scss/_1030up.scss */
   #profile-excerpt {
     font-size: 100%;
   }

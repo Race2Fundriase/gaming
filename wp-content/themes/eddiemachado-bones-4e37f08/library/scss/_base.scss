@@ -153,49 +153,50 @@ LAYOUT & GRID STYLES
 }
 
 .slide-container  {
-	font-family: 'Headline One';
-	text-transform: uppercase;
-	color:$white;
-	height:568px;
-	
-	h1 {
-		font-size: 65px;
-		font-size: 4.0625em;
+text-align:center;
+	h2 {
+		display:inline-block;
+		background-color:$white;
+		padding:0 0.2em 0.1em 0.2em;
+		margin:0 auto;
+		margin-top:30px;
 	}
 	
 	p {
-		font-size: 20px;
-		font-size: 1.25em;
+		display:block;
+		background-color:$white;
+		padding:0.5em;
+		margin-bottom:60px;
 	}
 }
 
 
-.slide-container.one {
+.slide-container.six {
 	background: url('../images/why-r2f/slides/r2fwhy_01.jpg') no-repeat center top;
 	background-size: cover;
 }
 
-.slide-container.two {
+.slide-container.one {
 	background: url('../images/why-r2f/slides/r2fwhy_02.jpg') no-repeat center top;
 	background-size: cover;
 }
 
-.slide-container.three {
+.slide-container.two {
 	background: url('../images/why-r2f/slides/r2fwhy_03.jpg') no-repeat center top;
 	background-size: cover;
 }
 
-.slide-container.four {
+.slide-container.three {
 	background: url('../images/why-r2f/slides/r2fwhy_04.jpg') no-repeat center top;
 	background-size: cover;
 }
 
-.slide-container.five {
+.slide-container.four {
 	background: url('../images/why-r2f/slides/r2fwhy_05.jpg') no-repeat center top;
 	background-size: cover;
 }
 
-.slide-container.six {
+.slide-container.five {
 	background: url('../images/why-r2f/slides/r2fwhy_06.jpg') no-repeat center top;
 	background-size: cover;
 }
@@ -1337,6 +1338,14 @@ select:focus {
 }
 .question, .answer {
 	margin-bottom: 0;
+}
+
+//Race template
+
+.pic-wooden {
+	img {
+		max-height:400px;
+	}
 }
 
 /*********************************
