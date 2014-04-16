@@ -2962,6 +2962,35 @@ function user_can_edit_race() {
 	
 }
 
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+function my_login_redirect( $redirect_to, $request, $user ) {
+	//is there a user to check?
+	
+	global $user;
+	//print_r($user->roles);
+	//die();
+	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+		//check for admins
+		if ( in_array( 'administrator', $user->roles ) ) {
+			// redirect them to the default place
+			return home_url()."/master-admin-dashboard";
+		} else if ( in_array( 'contributor', $user->roles ) ) {
+			return home_url()."/admin-dashboard";
+		} else
+			return home_url()."/user-dashboard";
+	} else {
+		return home_url()."/user-dashboard";
+	}
+}
+
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 
 $fundraiser = appthemes_check_user_role("contributor");
 $charity = appthemes_check_user_role("contributor");
