@@ -129,6 +129,7 @@ jQuery(document).ready
 			// Build weather grid (and populate if it's already got data)
 			
 		});
+		
 	}
 );
 

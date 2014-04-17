@@ -55,9 +55,12 @@ function faq_post() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */
-			'supports' => array( 'title', 'custom-fields', 'revisions')
+			'supports' => array( 'title', 'editor', 'revisions')
 		) /* end of options */
 	); /* end of register post type */
+	
+	/* this adds your post categories to your custom post type */
+	register_taxonomy_for_object_type( 'category', 'faq_type' );
 }
 
 	// adding the function to the Wordpress init
@@ -67,6 +70,29 @@ function faq_post() {
 	for more information on taxonomies, go here:
 	http://codex.wordpress.org/Function_Reference/register_taxonomy
 	*/
+	
+	// now let's add custom categories (these act like categories)
+	register_taxonomy( 'faq_type', 
+		array('custom_type'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('hierarchical' => true,     /* if this is true, it acts like categories */
+			'labels' => array(
+				'name' => __( 'FAQ Type', 'bonestheme' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'FAQ Type', 'bonestheme' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search FAQ Types', 'bonestheme' ), /* search title for taxomony */
+				'all_items' => __( 'All FAQ Types', 'bonestheme' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent FAQ Type', 'bonestheme' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent FAQ Type:', 'bonestheme' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit FAQ Type', 'bonestheme' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update FAQ Type', 'bonestheme' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New FAQ Type', 'bonestheme' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New FAQ Type', 'bonestheme' ) /* name title for taxonomy */
+			),
+			'show_admin_column' => true, 
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'custom-slug' ),
+		)
+	);
 	
 	/*
 		looking for custom meta boxes?

@@ -114,8 +114,9 @@ Template Name: Help
 	    
 	    $args = array(
 		'post_type' => 'custom_type',
+		'faq_type' => 'R2F',
 		'order' => 'ASC',
-		'posts_per_page' => '2',
+		'posts_per_page' => '5',
 		'paged' => $paged
 	    );
 	    
@@ -130,7 +131,7 @@ Template Name: Help
 	    
 	    <?php if ($wp_query->current_post == 0) { $first = true; } else { $first = false; } ?>
 	    <?php if ($wp_query->current_post == $wp_query->post_count - 1) { $last = true; } else { $last = false; } ?>
-	    <?php $meta_values = get_post_meta( get_the_ID(), 'Answer', true); ?>
+	   
 	    
 	    <div class="faq container sand <?php if (!$first) : ?> top-bg <?php endif; ?><?php if ($last) : ?> bot-bg <?php endif; ?> clearfix">
                 <div class="inner-container wrap clearfix">
@@ -142,7 +143,7 @@ Template Name: Help
                     <h3 class="highlight question">Question</h3>
 		    <p><?php the_title(); ?></p>
 		    <h3 class="highlight answer">Answer</h3>
-		    <p><?php echo $meta_values ?></p>
+		    <?php the_content(); ?>
 		    
 		    <?php if ($last) : ?>
 			 <?php bones_page_navi(); ?>
