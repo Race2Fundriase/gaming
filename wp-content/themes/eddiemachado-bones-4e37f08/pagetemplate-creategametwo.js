@@ -65,26 +65,61 @@ jQuery(document).ready
 			dataType: "JSON",
 			success: function (data) {
 				console.log(data);
+				var rowHtml = jQuery("#templateDiv").html();
+				var row = "";
 				var option = '';
 				for (i=0;i<data.records;i++){
-				   option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
+					option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
+					r = rowHtml;
+					r = r.replace(/{tokenId}/g, data.rows[i].cell[0]);
+					r = r.replace(/{tokenName}/g, data.rows[i].cell[1]);
+					r = r.replace(/{imageUrl}/g,site_url+data.rows[i].cell[3]);
+					row += r;
 				}
+				jQuery("#raceTokenResults").html(row);
 				jQuery('#raceTokens').append(option);
-				jQuery.ajax({
-					url: site_url+"/wp-admin/admin-ajax.php",
-					type: "POST",
-					data: {
-						action: 'r2f_action_get_racetokens',
-						raceId: raceId
-					},
-					dataType: "JSON",
-					success: function (data) {
-						console.log(data);
-						for(i=0;i<data.rows.length;i++)
-							jQuery("#raceTokens option[value='"+data.rows[i].tokenId+"']").prop("selected", true);
-						
+				
+				for (i=0;i<data.records;i++){
+					
+					jQuery("#token_"+i).click(function() { 
+						alert();
+						return false;
+					} );
+				}
+				
+				 jQuery(".optionselect").bind("click", function(e) {
+					var selection = jQuery(this).data('selection');        
+					
+					if (!jQuery(this).hasClass("active")) {
+						jQuery(this).addClass("active");
+						jQuery("#raceTokens option[value='"+selection+"']").prop("selected", true);
+					} else {
+						jQuery(this).removeClass("active");
+						jQuery("#raceTokens option[value='"+selection+"']").prop("selected", false);
 					}
-				});
+					
+					e.preventDefault();
+				});    
+				
+				if (raceId) {
+					jQuery.ajax({
+						url: site_url+"/wp-admin/admin-ajax.php",
+						type: "POST",
+						data: {
+							action: 'r2f_action_get_racetokens',
+							raceId: raceId
+						},
+						dataType: "JSON",
+						success: function (data) {
+							console.log(data);
+							
+							for(i=0;i<data.rows.length;i++) {
+								jQuery("#raceTokens option[value='"+data.rows[i].tokenId+"']").prop("selected", true);
+							}
+							
+						}
+					});
+				}
 			}
 		});
 		

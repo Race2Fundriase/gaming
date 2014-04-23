@@ -130,13 +130,16 @@
                                                 </div>
 												
 												
-                                            					<div>
-					    <label for="raceTokens"><span>Select Tokens</span></label>
-					    <div>
-							<select multiple id="raceTokens" name="raceTokens">
-							</select>
-					    </div>
-					</div>
+												<div>
+													<label for="raceTokens"><span>Select Tokens</span></label>
+													<div>
+														<select multiple id="raceTokens" name="raceTokens">
+														</select>
+													</div>
+												</div>
+												<div class="clearfix" id="raceTokenResults">
+													
+												</div>
 
                                             <input name="token" type="hidden" value="a2"/>
                                             
@@ -198,7 +201,14 @@
                  </div>
 
             </div>
-           
+					<div id="templateDiv" style="display: none">
+						<div class="fourcol token">
+							<a href="#" class="optionselect" data-selection="{tokenId}" id="token_{tokenId}">
+								<img src="{imageUrl}"/>
+							</a>
+							<div class="text-center"><p class="highlight">{tokenName}</p></div>
+						</div>
+					</div>
 
 		   
 <?php get_footer(); ?>

@@ -54,7 +54,7 @@ jQuery(document).ready
 					jQuery("#result").text(data.message + " " + data.error);
 					var n = noty({text: data.message + " " + data.error});
 					if (data.error == "")
-						location.href = "/";
+						setTimeout(function(){location.href = "/"},5000);
 				}
 			});
 			return false;

@@ -63,7 +63,7 @@ function r2f_action_get_tokens()
 	foreach($queryResult as $row) {
 	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 		$responce->rows[$i]['id']=$row->id;
-		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription);
+		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription,$row->tokenImageUrl);
 		$i++;
 	}        
 	echo json_encode($responce);
