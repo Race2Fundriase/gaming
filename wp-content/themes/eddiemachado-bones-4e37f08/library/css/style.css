@@ -2609,6 +2609,64 @@ view.
   bottom: -10px;
 }
 
+/* css for timepicker */
+/* line 1644, ../scss/_base.scss */
+.ui-timepicker-div .ui-widget-header {
+  margin-bottom: 8px;
+}
+
+/* line 1645, ../scss/_base.scss */
+.ui-timepicker-div dl {
+  text-align: left;
+}
+
+/* line 1646, ../scss/_base.scss */
+.ui-timepicker-div dl dt {
+  float: left;
+  clear: left;
+  padding: 0 0 0 5px;
+}
+
+/* line 1647, ../scss/_base.scss */
+.ui-timepicker-div dl dd {
+  margin: 0 10px 10px 45%;
+}
+
+/* line 1648, ../scss/_base.scss */
+.ui-timepicker-div td {
+  font-size: 90%;
+}
+
+/* line 1649, ../scss/_base.scss */
+.ui-tpicker-grid-label {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 1651, ../scss/_base.scss */
+.ui-timepicker-rtl {
+  direction: rtl;
+}
+
+/* line 1652, ../scss/_base.scss */
+.ui-timepicker-rtl dl {
+  text-align: right;
+  padding: 0 5px 0 0;
+}
+
+/* line 1653, ../scss/_base.scss */
+.ui-timepicker-rtl dl dt {
+  float: right;
+  clear: right;
+}
+
+/* line 1654, ../scss/_base.scss */
+.ui-timepicker-rtl dl dd {
+  margin: 0 45% 10px 10px;
+}
+
 /*
 LARGER MOBILE DEVICES
 This is for devices like the Galaxy Note or something that's

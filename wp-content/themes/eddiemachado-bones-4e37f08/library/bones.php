@@ -147,6 +147,7 @@ function bones_scripts_and_styles() {
 		// Race Options
 		wp_register_script('create-race-options', get_stylesheet_directory_uri() . '/library/js/simple-slider.min.js', array('jquery'), '', true);
 		wp_register_script('options', get_stylesheet_directory_uri() . '/library/js/options.js', array('jquery', 'create-race-options'), '', true);
+		wp_register_script('timepicker', get_stylesheet_directory_uri() . '/library/js/libs/jquery-ui-timepicker-addon.js', array('jquery-ui-datepicker', 'jquery-ui-slider'), '', true);
 		
 		// register main stylesheet
 		wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/css/style.css', array(), '', 'all' );
@@ -207,7 +208,16 @@ function bones_scripts_and_styles() {
 		*/
 		
 		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')) {
+
 			wp_enqueue_script('create-race');
+			wp_enqueue_script('timepicker');
+			//Enqueue theme for jQuery UI
+			wp_enqueue_style('plugin_name-admin-ui-css',
+                'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-darkness/jquery-ui.css',
+                false,
+                PLUGIN_VERSION,
+                false);
+			
 		}
 		
 	
