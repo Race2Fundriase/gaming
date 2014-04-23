@@ -207,11 +207,10 @@ function bones_scripts_and_styles() {
 		*/
 		
 		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')) {
-			//wp_enqueue_script('create-race');
+			wp_enqueue_script('create-race');
 		}
 		
-		wp_enqueue_script('create-race');
-		
+	
 		if (is_page_template('pagetemplate-completerace.php')) {
 			wp_enqueue_script('responsivetable-script');
 			wp_enqueue_style('responsivetable-css');
