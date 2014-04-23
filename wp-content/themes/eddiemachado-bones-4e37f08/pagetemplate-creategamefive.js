@@ -18,7 +18,7 @@ function drawGrid() {
 
 	if (paper) paper.clear();
 
-	paper = Raphael("paperParentSF", mapWidth*scale, mapHeight*scale);
+	paper = Raphael("paperParentSF2", mapWidth*scale, mapHeight*scale);
 	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
 
 	var x, y;
@@ -70,6 +70,8 @@ window.onload = function () {
 	xoff = 400;
 	yoff = 100;
 	
+	jQuery('#create-game input').attr('readonly', 'readonly');
+
 	//drawGrid();
 	jQuery("#startGridX,#startGridY,#finishGridX,#finishGridY").change(function(e) {
 		startGridX = jQuery("#startGridX").val();
@@ -92,6 +94,22 @@ window.onload = function () {
 		dataType: "JSON",
 		success: function (data) {
 			console.log(data);
+			jQuery("#maxNoOfPlayers").val(data.rows[0].maxNoOfPlayers);
+			jQuery("#raceName").val(data.rows[0].raceName);
+			jQuery("#raceDescription").val(data.rows[0].raceDescription);
+			jQuery("#mapName").val(data.rows[0].mapName);
+			jQuery("#startDate").val(data.rows[0].startDate);
+			jQuery("#startTime").val(data.rows[0].startTime);
+			jQuery("#finishDate").val(data.rows[0].finishDate);
+			jQuery("#finishTime").val(data.rows[0].finishTime);
+			jQuery("#entryPrice").val(data.rows[0].entryPrice);
+			jQuery("#finishGridX").val(data.rows[0].finishGridX);
+			jQuery("#finishGridY").val(data.rows[0].finishGridY);
+			jQuery("#startGridX").val(data.rows[0].startGridX);
+			jQuery("#startGridY").val(data.rows[0].startGridY);
+			jQuery("#curDay").val(data.rows[0].curDay);
+			jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
+			jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
 			startGridX = data.rows[0].startGridX;
 			startGridY = data.rows[0].startGridY;
 			finishGridX = data.rows[0].finishGridX;
@@ -101,6 +119,27 @@ window.onload = function () {
 			jQuery("#startGridY").val(startGridY);
 			jQuery("#finishGridX").val(finishGridX);
 			jQuery("#finishGridY").val(finishGridY);
+			
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_get_racetokens',
+					raceId: raceId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					var ts = "";
+					var sep = "";
+					for(i=0;i<data.rows.length;i++) {
+						ts += sep+data.rows[i].tokenName;
+						sep = ",";
+					}
+					jQuery("#selectedTokens").val(ts);
+					
+				}
+			});
 					
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
@@ -136,31 +175,18 @@ window.onload = function () {
 	
 	jQuery("#continue").click(function(e) { 
 		
-		jQuery.ajax({
-				url: site_url+"/wp-admin/admin-ajax.php",
-				type: "POST",
-				data: {
-					action: 'r2f_action_update_race_startfinish',
-					id: raceId,
-					startGridX: jQuery("#startGridX").val(),
-					startGridY: jQuery("#startGridY").val(),
-					finishGridX: jQuery("#finishGridX").val(),
-					finishGridY: jQuery("#finishGridY").val()
-				},
-				dataType: "JSON",
-				success: function (data) {
-					console.log(data);
-					jQuery("#result").text(data.message + " " + data.error);
-					if (data.error == "") {
-						location.href = site_url+"/create-online-game-5/?raceId="+raceId;
-					}
-					
-				}
-			});
-			
+		location.href = site_url+"/active-race/?raceId="+raceId;
 		
 		return false;
 	} );
+	
+	jQuery("#startagain").click(function(e) { 
+		
+		location.href = site_url+"/create-online-race-2/?raceId="+raceId;
+		
+		return false;
+	} );
+
 };
 
 function updateMapOptions() {

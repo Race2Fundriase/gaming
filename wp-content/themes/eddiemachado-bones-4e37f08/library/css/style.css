@@ -1564,7 +1564,7 @@ and more scalable.
 }
 /* line 477, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px !important;
+  padding: 3px 15px!important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -3982,39 +3982,49 @@ body.logged-in .nav li.logged-in-nav {
   overflow: scroll;
 }
 
-/* line 111, ../scss/_game.scss */
+/* line 110, ../scss/_game.scss */
+#paperParentSF2 {
+  position: absolute;
+  left: 400px;
+  top: 1220px;
+  width: 800px;
+  height: 800px;
+  overflow: scroll;
+}
+
+/* line 120, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 117, ../scss/_game.scss */
+/* line 126, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 123, ../scss/_game.scss */
+/* line 132, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 128, ../scss/_game.scss */
+/* line 137, ../scss/_game.scss */
 #racesDataGrid th {
   background-color: green;
   color: white;
 }
 
-/* line 133, ../scss/_game.scss */
+/* line 142, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 138, ../scss/_game.scss */
+/* line 147, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;

@@ -880,7 +880,7 @@ function r2f_action_upsert_race()
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
 				$paymentMethodEmail, $justGivingCharityId, $raceStatus,
 				$id
 				) 
@@ -3015,6 +3015,9 @@ function check_security($pageName) {
 
 	switch ($pageName) {
     case "pagetemplate-admin-dashboard":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-creategamefive":
         return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
         break;
     case "pagetemplate-creategamefour":

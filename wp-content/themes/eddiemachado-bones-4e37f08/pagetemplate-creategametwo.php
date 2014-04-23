@@ -20,7 +20,7 @@
                                 
                                 <ul id="tab_control" class="tab_control">
                                      <li><a href="#" class="btn btn-blue large active">Paypal</a></li>
-                                     <li><a href="#" class="btn large">Just Giving</a></li>
+                                     <!--<li><a href="#" class="btn large">Just Giving</a></li>-->
                                 </ul>
                                 
                                <p class="text-center orange-type">Don't have a paypal account? sign up for one <a href="#">here</a></p>
@@ -182,19 +182,7 @@
                                             </div>
                                                 -->  
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
-												<P>TESTING ONLY TESTING ONLY</P>
-                                                <div>
-												<label for="curDay"><span>Current Day</span></label>
-													<div>
-													<input id="curDay" name="curDay" type="text" tabindex="13"/>
-													</div>
-												</div>
-												<div>
-												<label for="curDay"><span>Current Hour</span></label>
-													<div>
-													<input id="curHour" name="curHour" type="text" tabindex="13"/>
-													</div>
-												</div>
+												
                                 </div>
                         </form>
 					</div>

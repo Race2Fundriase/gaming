@@ -146,6 +146,7 @@ jQuery(document).ready
 					startGridX: jQuery("#startGridX").val(),
 					startGridY: jQuery("#startGridY").val(),
 					curDay: jQuery("#curDay").val(),
+					curHour: 0,
 					paymentMethodEmail: jQuery("#paymentMethodEmail").val(),
 					justGivingCharityId: jQuery("#justGivingCharityId").val(),
 					createdBy: current_user_id

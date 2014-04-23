@@ -47,6 +47,7 @@ jQuery(document).ready
 							jQuery("#startGridX").val(data.rows[0].startGridX);
 							jQuery("#startGridY").val(data.rows[0].startGridY);
 							jQuery("#curDay").val(data.rows[0].curDay);
+							jQuery("#curHour").val(data.rows[0].curHour);
 							jQuery("#raceStatus").val(data.rows[0].raceStatus);
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
@@ -143,6 +144,7 @@ jQuery(document).ready
 					startGridX: jQuery("#startGridX").val(),
 					startGridY: jQuery("#startGridY").val(),
 					curDay: jQuery("#curDay").val(),
+					curHour: jQuery("#curHour").val(),
 					raceStatus: jQuery("#raceStatus").val(),
 					paymentMethodEmail: jQuery("#paymentMethodEmail").val(),
 					justGivingCharityId: jQuery("#justGivingCharityId").val()
