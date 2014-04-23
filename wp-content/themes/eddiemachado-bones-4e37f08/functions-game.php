@@ -817,6 +817,7 @@ function r2f_action_upsert_race()
 	$terrainDescription = $_POST["terrainDescription"];
 	$weatherDescription = $_POST["weatherDescription"];
 	$curDay = $_POST["curDay"];
+	$curHour = $_POST["curHour"];
 	$paymentMethodEmail = $_POST["paymentMethodEmail"];
 	$justGivingCharityId = $_POST["justGivingCharityId"];
 	$raceStatus = $_POST["raceStatus"];
@@ -844,13 +845,13 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription, curDay, paymentMethodEmail, justGivingCharityId)
+					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId)
 				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $paymentMethodEmail, $justGivingCharityId
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId
 				) 
 		) );
 		
@@ -872,14 +873,14 @@ function r2f_action_upsert_race()
 				SET maxNoOfPlayers = %d, raceName = %s, raceDescription = %s, mapId = %d, 
 				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
-				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d,
+				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
 				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay,
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour
 				$paymentMethodEmail, $justGivingCharityId, $raceStatus,
 				$id
 				) 
