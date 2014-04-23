@@ -125,8 +125,14 @@ jQuery(document).ready
 			success: function (data) {
 				console.log(data);
 				jQuery("#result").text(data.message + " " + data.error);
-				jQuery("#startDate").html(data.rows[0].startDate);
-				jQuery("#finishDate").html(data.rows[0].finishDate);
+				var dateParts = data.rows[0].startDate.split("-");
+				var d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
+				jQuery("#startDate").html(d.toLocaleDateString());
+				jQuery("#startTime").html(data.rows[0].startTime);
+				dateParts = data.rows[0].finishDate.split("-");
+				d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
+				jQuery("#finishDate").html(d.toLocaleDateString());
+				jQuery("#finishTime").html(data.rows[0].finishTime);
 				jQuery("#raceName").html(data.rows[0].raceName);
 				jQuery("#raceDescription").html(data.rows[0].raceName);
 				jQuery("#mapName").html(data.rows[0].mapName);

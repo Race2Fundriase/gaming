@@ -799,8 +799,8 @@ function r2f_action_upsert_race()
 	// Get Params
 	$id = $_POST["id"];
 	$maxNoOfPlayers = $_POST["maxNoOfPlayers"];
-	$raceName = $_POST["raceName"];
-	$raceDescription = $_POST["raceDescription"];
+	$raceName = stripslashes_deep($_POST["raceName"]);
+	$raceDescription = stripslashes_deep($_POST["raceDescription"]);
 	$mapId = $_POST["mapId"];
 	$startDate = $_POST["startDate"];
 	$startTime = $_POST["startTime"];
@@ -1007,7 +1007,7 @@ function r2f_action_update_race_startfinish()
 			WHERE id = %d
 		", 
 			array(
-			$startGridY, $startGridY, $finishGridX, $finishGridY,
+			$startGridX, $startGridY, $finishGridX, $finishGridY,
 			$id
 			) 
 	) );
@@ -1983,11 +1983,11 @@ function updateScores($raceId) {
 
 	global $wpdb;
 
-	// rebuild all daily step scores- obliterate and rebuild for now
+	// rebuild all hourly step scores- obliterate and rebuild for now
 	$race = get_race($raceId);
 	
-	$start = strtotime($race["rows"][0]->startDate);
-	$finish = strtotime($race["rows"][0]->finishDate);
+	$start = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
+	$finish = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
 	
 	if ($date < $start) $date = $start;
 	if ($date > $finish) $date = $finish;
@@ -2049,24 +2049,30 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays) {
 function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays) {
 	global $wpdb;
 	
-	// Calculate ticks per day
+	// Calculate ticks per hour
 	// Winner ticks (least number of ticks to finish)
 	$winner = get_winner($raceId);
-	$ticksperday = $winner->ticks / $lengthInDays;
+	$ticksperhour = $winner->ticks / ($lengthInDays * 24);
 
-	// For each race character calculate which grid they are on for each day
-	// by summing ticks until exceed max for that day
+	// For each race character calculate which grid they are on for each hour
+	// by summing ticks until exceed max for that hour
 	$scores = get_racecharacterstepsscores($raceCharacter);
 	$ticks = 0;
 	$day = 0;
+	$hour = 0;
 	for($i=0;$i<count($scores);$i++) {
 		$score = $scores[$i];
 		
 		while($ticks < $score->ticks) {
-			$ticks += $ticksperday;
-			$explain = "ticks: $ticks; ticksperday: $ticksperday";
-			insert_racecharacterscores($score, $day, $explain);
-			$day++;
+			$ticks += $ticksperhour;
+			$explain = "ticks: $ticks; ticksperhour: $ticksperhour";
+			insert_racecharacterscores($score, $day, $hour, $explain);
+			$hour++;
+			if ($hour >= 24) {
+				$day++;
+				$hour = 0;
+			}
+			
 		}		
 
 		$ticks = $ticks - $score->ticks;
@@ -2075,17 +2081,17 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays) {
 	
 }
 
-function insert_racecharacterscores($score, $day, $explain) {
+function insert_racecharacterscores($score, $day, $hour, $explain) {
 	global $wpdb;
 
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			INSERT INTO r2f_racecharacterscores
-			( id, racecharacterId, day, gridX, gridY, explaination )
-			VALUES ( %d, %d, %d, %d, %d, %s )
+			( id, racecharacterId, day, hour, gridX, gridY, explaination )
+			VALUES ( %d, %d, %d, %d, %d, %d, %s )
 		", 
 			array(
-			0, $score->racecharacterId, $day, $score->gridX, $score->gridY, $explain
+			0, $score->racecharacterId, $day, $hour, $score->gridX, $score->gridY, $explain
 			) 
 	) );
 	
@@ -2377,6 +2383,7 @@ function r2f_action_get_leaderboard()
 	// Get Params
 	$raceId = $_POST["raceId"];
 	$day = $_POST["day"];
+	$hour = $_POST["hour"];
 	
 	// Init results
 	$result["message"] = "";
@@ -2411,11 +2418,11 @@ function r2f_action_get_leaderboard()
 			ON r2f_racecharacters.raceId = r2f_races.id
 			JOIN r2f_tokens
 			ON r2f_racecharacters.tokenId = r2f_tokens.id
-			WHERE raceId = %d AND day = %d AND r2f_racecharacters.status = 1
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.status = 1
 			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
 		", 
 			array(
-				$raceId, $day
+				$raceId, $day, $hour
 			) 
 	) );
 	

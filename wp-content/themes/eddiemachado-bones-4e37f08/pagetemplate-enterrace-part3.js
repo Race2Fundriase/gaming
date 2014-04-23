@@ -273,6 +273,16 @@ window.onload = function () {
 							jQuery("#noOfPitstops").html(data.rows[0].noOfPitstops);
 							jQuery("#tokenName").html(data.rows[0].tokenName);
 							
+							// Draw the Route
+							var r = data.rows[0].route.split('|');
+							for(i=0;i<r.length;i++) {
+								if (r[i] != "") {
+									var p = r[i].split(',');
+									var x = p[0];
+									var y = p[1];
+									selectedCell = paper.rect(x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#00f");
+								}
+							}
 						}
 					});
 				}
