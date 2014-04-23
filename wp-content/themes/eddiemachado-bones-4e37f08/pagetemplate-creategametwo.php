@@ -190,7 +190,7 @@
 
             </div>
 					<div id="templateDiv" style="display: none">
-						<div class="fourcol token">
+						<div class="fourcol token" id="wrapper_{index}">
 							<a href="#" class="optionselect" data-selection="{tokenId}" id="token_{tokenId}">
 								<img src="{imageUrl}"/>
 							</a>

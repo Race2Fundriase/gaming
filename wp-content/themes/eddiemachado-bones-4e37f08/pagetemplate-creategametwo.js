@@ -36,7 +36,7 @@ jQuery(document).ready
 							jQuery("#raceName").val(data.rows[0].raceName);
 							jQuery("#raceDescription").val(data.rows[0].raceDescription);
 							jQuery("#mapId").val(data.rows[0].mapId);
-							jQuery("#startDate").val(data.rows[0].startDate);
+							jQuery("#startDate").val(data.rows[0].startDate + " " + data.rows[0].startTime);
 							jQuery("#startTime").val(data.rows[0].startTime);
 							jQuery("#finishDate").val(data.rows[0].finishDate);
 							jQuery("#finishTime").val(data.rows[0].finishTime);
@@ -71,6 +71,7 @@ jQuery(document).ready
 				for (i=0;i<data.records;i++){
 					option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
 					r = rowHtml;
+					r = r.replace(/{index}/g, i);
 					r = r.replace(/{tokenId}/g, data.rows[i].cell[0]);
 					r = r.replace(/{tokenName}/g, data.rows[i].cell[1]);
 					r = r.replace(/{imageUrl}/g,site_url+data.rows[i].cell[3]);
@@ -85,7 +86,14 @@ jQuery(document).ready
 						alert();
 						return false;
 					} );
+					
+					if ((i % 3) == 0)
+						jQuery("#wrapper_"+i).addClass("first");
+					if ((i % 3) == 2)
+						jQuery("#wrapper_"+i).addClass("last");										
 				}
+				
+				
 				
 				 jQuery(".optionselect").bind("click", function(e) {
 					var selection = jQuery(this).data('selection');        
