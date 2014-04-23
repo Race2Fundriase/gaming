@@ -33,7 +33,7 @@
              
             <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
                 <div class="inner-container wrap"> 
-					<div class="tabbed_content active">
+			<div class="tabbed_content active">
                         <form id="create-game" action=""><!--start form-->
                                         <div class="form-elements">
                                                 <h3><span>Part 2</span></h3>
@@ -44,15 +44,13 @@
                                                     <input name="merchantemail" id="paymentMethodEmail" type="email" value="" tabindex="1"/> 
                                                     </div>
                                                 </div>
-                                                
-                                               
-                                           
                                         </div>
                         </form>
-					</div>
-					<div class="tabbed_content">
-						<form id="create-game" action=""><!--start form-->
-                                <div class="form-elements">
+			</div>
+					
+			<div class="tabbed_content">
+			<form id="create-game" action=""><!--start form-->
+					<div class="form-elements">
                                                 <h3><span>Part 2</span></h3>
                                              
                                                 <div>
@@ -61,14 +59,11 @@
                                                     <input name="merchantemail" id="justGivingCharityId" type="text" value="" tabindex="1"/> 
                                                     </div>
                                                 </div>
-
-                                            </div>
-                                                  
-                                           
-                        
-                                </div>
-                        </form>
-					</div>
+					</div>	
+			</form>                
+			</div>
+                       
+					
 					<div>
                         <form id="create-game" action=""><!--start form-->
                                 <div class="form-elements">
