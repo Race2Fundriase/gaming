@@ -36,10 +36,12 @@ jQuery(document).ready
 							jQuery("#raceName").val(data.rows[0].raceName);
 							jQuery("#raceDescription").val(data.rows[0].raceDescription);
 							jQuery("#mapId").val(data.rows[0].mapId);
-							jQuery("#startDate").val(data.rows[0].startDate + " " + data.rows[0].startTime);
+							jQuery("#startDate").val(data.rows[0].startDate);
 							jQuery("#startTime").val(data.rows[0].startTime);
+							jQuery("#startDateTime").val(data.rows[0].startDate + " " + data.rows[0].startTime);
 							jQuery("#finishDate").val(data.rows[0].finishDate);
 							jQuery("#finishTime").val(data.rows[0].finishTime);
+							jQuery("#finishDateTime").val(data.rows[0].finishDate + " " + data.rows[0].finishTime);
 							jQuery("#entryPrice").val(data.rows[0].entryPrice);
 							jQuery("#finishGridX").val(data.rows[0].finishGridX);
 							jQuery("#finishGridY").val(data.rows[0].finishGridY);
@@ -169,14 +171,25 @@ jQuery(document).ready
 			return false;
 		} );
 		
-		jQuery("#startDate,#finishDate").change(function(e) {
+		jQuery("#startDateTime").change(function(e) {
 			// Build weather grid (and populate if it's already got data)
-			
+			ds = jQuery(this).val().split(" ");
+			jQuery("#startDate").val(ds[0]);
+			jQuery("#startTime").val(ds[1]);
+
+		});
+		
+		jQuery("#finishDateTime").change(function(e) {
+			// Build weather grid (and populate if it's already got data)
+			ds = jQuery(this).val().split(" ");
+			jQuery("#finishDate").val(ds[0]);
+			jQuery("#finishTime").val(ds[1]);
+
 		});
 		
 		//Timepicker
 		
-		jQuery("#startDate, #finishDate").datetimepicker();
+		jQuery("#startDateTime, #finishDateTime").datetimepicker({ dateFormat: "yy-mm-dd" });
 		
 	}
 );

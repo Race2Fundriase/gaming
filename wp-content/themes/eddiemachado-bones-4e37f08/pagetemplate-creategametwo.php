@@ -97,32 +97,25 @@
 														</select>
 													</div>
                                                 </div>
+                                                <div>
+                                                <label for="startDateTime"><span>Start Date</span></label>
+                                                    <div>
+													<input id="startDateTime" name="startDateTime" type="text" value="" tabindex="12" readonly/>
+													</div>
+                                                </div>
+                                                <input id="startDate" name="startDate" type="hidden" value="" tabindex="12"/>
+												<input id="startTime" name="startTime" type="hidden" value="" tabindex="12"/>
+												
+												<div>
+                                                <label for="finishDateTime"><span>Finish Date</span></label>
+                                                   <div>
+													<input id="finishDateTime" name="finishDateTime" type="text" tabindex="13" readonly/>
+													</div>
+                                                </div>
                                                 
-                                                <div>
-                                                <label for="startdate"><span>Start Date</span></label>
-                                                    <div>
-													<input id="startDate" name="startDate" type="text" value="" tabindex="12"/>
-													</div>
-                                                </div>
-												<!--<div>
-                                                <label for="startTime"><span>Start Time</span></label>
-                                                    <div>
-													<input id="startTime" name="startTime" type="text" value="" tabindex="12"/>
-													</div>
-                                                </div>-->
-                                                <div>
-                                                <label for="finishdate"><span>Finish Date</span></label>
-                                                   <div>
-													<input id="finishDate" name="finishDate" type="text" tabindex="13"/>
-													</div>
-                                                </div>
-												<!--<div>
-                                                <label for="finishTime"><span>Finish Time</span></label>
-                                                   <div>
-													<input id="finishTime" name="finishTime" type="text" tabindex="13"/>
-													</div>
-                                                </div>-->
-                                                <div>
+												<input id="finishDate" name="finishDate" type="hidden" tabindex="13" readonly/>
+												<input id="finishTime" name="finishTime" type="hidden" tabindex="13"/>
+												<div>
                                                     <label for="entryprice"><span>Entry Price:</span></label>
                                                     <div>
                                                     <input id="entryPrice" name="entryprice" type="text" value="" tabindex="3"/> 
@@ -143,44 +136,7 @@
 
                                             <input name="token" type="hidden" value="a2"/>
                                             
-                                            <!--<div class="clearfix">
-                                            <div class="fourcol first token">
-                                                <a href="#" class="vehicleselect" data-selection="a2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="fourcol token">
-                                                <a href="#" class="vehicleselect active" data-selection="b2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="fourcol last token">
-                                                <a href="#" class="vehicleselect" data-selection="c2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="fourcol first token">
-                                                <a href="#" class="vehicleselect" data-selection="d2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="fourcol token">
-                                                <a href="#" class="vehicleselect" data-selection="e2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            
-                                            <div class="fourcol last token">
-                                                <a href="#" class="vehicleselect" data-selection="f2">
-                                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/token-test-image.jpg"/>
-                                                </a>
-                                            </div>
-                                            </div>
-                                                -->  
+                                           
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
 												
                                 </div>
