@@ -276,6 +276,7 @@ jQuery(document).ready
 				var mapgridId = jQuery("#mapgridId").val();
 				var tokenId = jQuery("#tokenId_"+i).val();
 				var value = jQuery("#value_"+i).val();
+				var inPlayToken = jQuery("#inPlayToken_"+i).val();
 				//console.log(mapgridId+","+tokenId);
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
@@ -286,7 +287,8 @@ jQuery(document).ready
 						mapgridId: mapgridId,
 						tokenId: tokenId,
 						value: value,
-						i: i
+						i: i,
+						inPlayToken: inPlayToken
 					},
 					dataType: "JSON",
 					success: function (data) {

@@ -617,6 +617,60 @@ function r2f_action_get_mapgridtokenoffsets()
 	die();
 }
 
+function r2f_action_get_mapgridtokenoffsets_bymap()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$mapId = get_param("mapId");
+	$tokenId = get_param("tokenId");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($mapId == "") $result["error"] .= "You must supply a map id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT gridX, gridY, inPlay, inPlayToken
+			FROM r2f_mapgrids g
+			LEFT JOIN r2f_mapgridtokenoffsets o 
+			ON g.id = o.mapgridId
+			WHERE mapId = %d AND (tokenId = %d OR tokenId IS NULL)
+		", 
+			array(
+				$mapId,
+				$tokenId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "mapgridtokenoffsets found.";
+		$result["rows"] = $rows;
+	} 	
+		
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_upsert_mapgridtokenoffset()
 {
 	global $wpdb;
@@ -2820,6 +2874,9 @@ add_action('wp_ajax_nopriv_r2f_action_upsert_mapgrid', 'r2f_action_upsert_mapgri
 
 add_action('wp_ajax_r2f_action_get_mapgridtokenoffsets', 'r2f_action_get_mapgridtokenoffsets');
 add_action('wp_ajax_nopriv_r2f_action_get_mapgridtokenoffsets', 'r2f_action_get_mapgridtokenoffsets');
+
+add_action('wp_ajax_r2f_action_get_mapgridtokenoffsets_bymap', 'r2f_action_get_mapgridtokenoffsets_bymap');
+add_action('wp_ajax_nopriv_r2f_action_get_mapgridtokenoffsets_bymap', 'r2f_action_get_mapgridtokenoffsets_bymap');
 
 add_action('wp_ajax_r2f_action_upsert_mapgridtokenoffset', 'r2f_action_upsert_mapgridtokenoffset');
 add_action('wp_ajax_nopriv_r2f_action_upsert_mapgridtokenoffset', 'r2f_action_upsert_mapgridtokenoffset');

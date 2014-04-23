@@ -14,6 +14,8 @@ var selectedCell;
 var mapImageUrl = "";
 var mapImage;
 
+var inPlays;
+
 function drawGrid() {
 
 	if (paper) paper.clear();
@@ -60,6 +62,8 @@ function selectGrid(x, y) {
 	
 	curx = Math.floor(curx);
 	cury = Math.floor(cury);
+	
+	if (inPlays[curx][cury] == "0") return;
 	
 //	if (selectedCell) selectedCell.remove();
 	
@@ -259,25 +263,51 @@ window.onload = function () {
 						jQuery("#cellHeight").val(data.result.cellHeight);
 						updateMapOptions();
 						drawGrid();
-					}
-					jQuery.ajax({
-						url: site_url+"/wp-admin/admin-ajax.php",
-						type: "POST",
-						data: {
-							action: 'r2f_action_get_racetokens',
-							raceId: raceId
-						},
-						dataType: "JSON",
-						success: function (data) {
-							console.log(data);
-							jQuery("#result").text(data.message + " " + data.error);
-							var option = '';
-							for (i=0;i<data.rows.length;i++){
-							   option += '<option value="'+ data.rows[i].tokenId + '">' + data.rows[i].tokenName + '</option>';
+						
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_get_racetokens',
+								raceId: raceId
+							},
+							dataType: "JSON",
+							success: function (data) {
+								console.log(data);
+								jQuery("#result").text(data.message + " " + data.error);
+								var option = '';
+								for (i=0;i<data.rows.length;i++){
+								   option += '<option value="'+ data.rows[i].tokenId + '">' + data.rows[i].tokenName + '</option>';
+								}
+								jQuery('#tokenId').append(option);
 							}
-							jQuery('#tokenId').append(option);
-						}
-					});
+						});
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_get_mapgridtokenoffsets_bymap',
+								mapId: data.result.id,
+								tokenId: tokenId
+							},
+							dataType: "JSON",
+							success: function (data) {
+								console.log(data);
+								jQuery("#result").text(data.message + " " + data.error);
+								inPlays = createArray(jQuery("#gridWidth").val(), jQuery("#gridHeight").val());
+								for(x=0;x<jQuery("#gridWidth").val();x++) 
+									for(y=0;y<jQuery("#gridHeight").val();y++)
+										inPlays[x][y] = "1";
+																	
+								for(i=0;i<data.rows.length;i++) {
+									if(data.rows[i].inPlay == "0" || data.rows[i].inPlayToken == "0")
+										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
+								}
+								
+							}
+						});
+					}
+					
 				}
 			});
 
@@ -348,4 +378,15 @@ function updateMapOptions() {
 	gridHeight = jQuery("#gridHeight").val();
 	cellWidth = jQuery("#cellHeight").val();
 	cellHeight = jQuery("#cellHeight").val();
+}
+function createArray(length) {
+    var arr = new Array(length || 0),
+        i = length;
+
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = createArray.apply(this, args);
+    }
+
+    return arr;
 }
