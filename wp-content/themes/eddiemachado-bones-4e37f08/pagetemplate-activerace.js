@@ -64,6 +64,7 @@ jQuery(document).ready
 	{
 		var raceId = qs("raceId");
 		var md = false;
+		var raceStatus;
 		
 		jQuery("#featured").change( function(e) {
 			var f = jQuery(this).prop('checked') ? 1 : 0;
@@ -108,9 +109,9 @@ jQuery(document).ready
 			drawPlayers();
 		});
 		
-		jQuery("#day").change(function(e) {
+		jQuery("#day, #hour").change(function(e) {
 				
-			getLeaderBoard(raceId, jQuery("#day").val(), raceStatus);
+			getLeaderBoard(raceId, jQuery("#day").val(), jQuery("#hour").val(), raceStatus);
 		
 		});
 		
@@ -146,7 +147,8 @@ jQuery(document).ready
 				finishGridY = data.rows[0].finishGridY;
 				
 				var curDay = data.rows[0].curDay;
-				var raceStatus = data.rows[0].raceStatus;
+				var curHour = data.rows[0].curHour;
+				raceStatus = data.rows[0].raceStatus;
 				var createdBy = data.rows[0].createdBy;
 				
 				jQuery.ajax({
@@ -170,9 +172,13 @@ jQuery(document).ready
 							jQuery("#gridHeight").val(data.result.gridHeight);
 							jQuery("#cellWidth").val(data.result.cellWidth);
 							jQuery("#cellHeight").val(data.result.cellHeight);
+							jQuery("#mapScale").val(data.result.mapWidth / 12521.0);
+							scale = jQuery("#mapScale").val();
 							updateMapOptions();
 							drawGrid();
-							getLeaderBoard(raceId, curDay, raceStatus);
+							
+							
+							
 						}
 					}
 				});
@@ -212,10 +218,13 @@ jQuery(document).ready
 						jQuery("#result").text(data.message + " " + data.error);
 						var li = '';
 						for (i=0;i<data.lengthInDays;i++){
-						   li += '<option value="'+(i+1)+'">'+ (i + 1) + '</option>';
+						   li += '<option value="'+(i)+'">'+ (i + 1) + '</option>';
 						}
 						jQuery('#day').append(li);
 						jQuery("#day").val(curDay);
+						jQuery("#hour").val(curHour);
+						
+						getLeaderBoard(raceId, curDay, curHour, raceStatus);
 					}
 				});
 				
@@ -244,14 +253,16 @@ jQuery(document).ready
 	}
 );
 
-function getLeaderBoard(raceId, day, raceStatus) {
+function getLeaderBoard(raceId, day, hour, raceStatus) {
+	console.log("glb "+raceId+":"+day+":"+hour);
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "POST",
 		data: {
 			action: 'r2f_action_get_leaderboard',
 			raceId: raceId,
-			day: day
+			day: day,
+			hour: hour
 		},
 		dataType: "JSON",
 		success: function (data) {

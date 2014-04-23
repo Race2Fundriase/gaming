@@ -1329,6 +1329,11 @@ function r2f_action_get_user_races()
 	die();
 }
 
+function get_param($p) {
+	$v = $_POST[$p];
+	if (!isset($v)) $v = $_GET[$p];
+	return $v;
+}
 
 function r2f_action_get_race()
 {
@@ -1338,7 +1343,7 @@ function r2f_action_get_race()
 	// Public
 	
 	// Get Params
-	$id = $_POST["id"];
+	$id = get_param("id");
 	
 	// Init results
 	$result["message"] = "";
@@ -1361,7 +1366,7 @@ function r2f_action_get_race()
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
-				locationDescription, terrainDescription, weatherDescription, curDay, featured, justGivingCharityId, lengthInDays from `r2f_races` 
+				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
 		", 
@@ -2381,10 +2386,10 @@ function r2f_action_get_leaderboard()
 	// Public
 	
 	// Get Params
-	$raceId = $_POST["raceId"];
-	$day = $_POST["day"];
-	$hour = $_POST["hour"];
-	
+	$raceId = get_param("raceId");
+	$day = get_param("day");
+	$hour = get_param("hour");
+		
 	// Init results
 	$result["message"] = "";
 	$result["error"] = "";
@@ -2393,10 +2398,11 @@ function r2f_action_get_leaderboard()
 	if ($day == "") {
 		$race = get_race($raceId);
 		$day = $race["rows"][0]->curDay;
+		$hour = $race["rows"][0]->curHour;
 	}
 	
 	// Validate params
-	if ($raceId == "" || $day == "") $result["error"] .= "You must supply a race id and a day.";
+	if ($raceId == "" || $day == "" || $hour == "") $result["error"] .= "You must supply a race id and a day and an hour.";
 		
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
@@ -2405,12 +2411,11 @@ function r2f_action_get_leaderboard()
 	}
 	
 	// Select
-
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
@@ -2418,7 +2423,7 @@ function r2f_action_get_leaderboard()
 			ON r2f_racecharacters.raceId = r2f_races.id
 			JOIN r2f_tokens
 			ON r2f_racecharacters.tokenId = r2f_tokens.id
-			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.status = 1
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
 			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
 		", 
 			array(
