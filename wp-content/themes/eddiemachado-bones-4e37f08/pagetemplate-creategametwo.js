@@ -166,6 +166,10 @@ jQuery(document).ready
 			
 		});
 		
+		//Timepicker
+		
+		jQuery("#startDate, #finishDate").datetimepicker();
+		
 	}
 );
 
