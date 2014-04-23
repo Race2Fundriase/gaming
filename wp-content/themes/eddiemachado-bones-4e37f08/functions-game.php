@@ -572,7 +572,7 @@ function r2f_action_get_mapgridtokenoffsets()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT IFNULL(o.id, 0) AS id, %d as mapgridId, t.id AS tokenId, IFNULL(o.value,0) AS value, tokenName
+			SELECT IFNULL(o.id, 0) AS id, %d as mapgridId, t.id AS tokenId, IFNULL(o.value,0) AS value, tokenName, IFNULL(inPlayToken,1) AS inPlayToken
 			FROM r2f_tokens t
 			LEFT JOIN r2f_mapgridtokenoffsets o ON t.id = o.tokenId
 			WHERE mapgridId =%d
@@ -592,7 +592,7 @@ function r2f_action_get_mapgridtokenoffsets()
 	} else {
 		$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT 0 AS id, %d as mapgridId, t.id AS tokenId, 0 AS value, tokenName
+			SELECT 0 AS id, %d as mapgridId, t.id AS tokenId, 0 AS value, tokenName, 1 AS inPlayToken
 			FROM r2f_tokens t
 			ORDER BY tokenName
 			 
@@ -636,6 +636,7 @@ function r2f_action_upsert_mapgridtokenoffset()
 	$tokenId = $_POST["tokenId"];
 	$value = $_POST["value"];
 	$i = $_POST["i"];
+	$inPlayToken = $_POST["inPlayToken"];
 	
 	// Init results
 	$result["message"] = "";
@@ -658,11 +659,11 @@ function r2f_action_upsert_mapgridtokenoffset()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_mapgridtokenoffsets
-				( id, mapgridId, tokenId, value )
-				VALUES ( %d, %d, %d, %d )
+				( id, mapgridId, tokenId, value, inPlayToken )
+				VALUES ( %d, %d, %d, %d, %d )
 			", 
 				array(
-				$id, $mapgridId, $tokenId, $value
+				$id, $mapgridId, $tokenId, $value, $inPlayToken
 				) 
 		) );
 		
@@ -681,11 +682,11 @@ function r2f_action_upsert_mapgridtokenoffset()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				UPDATE r2f_mapgridtokenoffsets
-				SET value = %d
+				SET value = %d, inPlayToken = %d
 				WHERE mapgridId = %d AND tokenId = %d
 			", 
 				array(
-				$value, $mapgridId, $tokenId
+				$value, $inPlayToken, $mapgridId, $tokenId
 				) 
 		) );
 		

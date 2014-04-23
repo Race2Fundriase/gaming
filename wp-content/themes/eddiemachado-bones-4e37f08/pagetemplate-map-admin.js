@@ -107,9 +107,10 @@ function getMapGridTokenOffsets() {
 		success: function (data) {
 			console.log(data);
 			jQuery("#result").text(data.message + " " + data.error);
-			var row = '<input type="hidden" id="cellTokenOffsetCount" value="'+data.rows.length+'"/><tr><th>Token</th><th>Value</th></tr>';
+			var row = '<input type="hidden" id="cellTokenOffsetCount" value="'+data.rows.length+'"/><tr><th>Token</th><th>Value</th><th>In Play</th></tr>';
+			
 			for(i=0;i<data.rows.length;i++) {
-				row += '<tr><td>'+data.rows[i].tokenName+'</td><td><input type="hidden" id="mapgridtokenoffsetId_'+i+'" value="'+data.rows[i].id+'"/><input type="hidden" id="tokenId_'+i+'" value="'+data.rows[i].tokenId+'"/><input id="value_'+i+'" type="text" value="'+data.rows[i].value+'"/></td></tr>';
+				row += '<tr><td>'+data.rows[i].tokenName+'</td><td><input type="hidden" id="mapgridtokenoffsetId_'+i+'" value="'+data.rows[i].id+'"/><input type="hidden" id="tokenId_'+i+'" value="'+data.rows[i].tokenId+'"/><input id="value_'+i+'" type="text" value="'+data.rows[i].value+'"/></td><td><input id="inPlayToken_'+i+'" type="text" value="'+data.rows[i].inPlayToken+'"/></td></tr>';
 			}
 			jQuery("#tokenOffsetResults").html(row);
 		}
