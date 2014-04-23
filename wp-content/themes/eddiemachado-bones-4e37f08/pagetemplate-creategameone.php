@@ -165,7 +165,7 @@
                         </form><!--End Form-->
                 </div><!--End Inner Container-->
             </div><!--End Container-->
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal_form">
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal_form" style="display: none">
 			<input type="hidden" name="cmd" value="_xclick">
 			<input type="hidden" name="business" value="david@edupayment.co.uk" id="business">
 			<input type="hidden" name="item_name"

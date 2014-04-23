@@ -759,6 +759,60 @@ function r2f_action_upsert_mapgridtokenoffset()
 	die();
 }
 
+function r2f_action_bulk_upsert_mapgridtokenoffset()
+{
+	global $wpdb;
+	
+	// Check security
+	if (!is_admin()) { 
+		$result["message"] = "You must have admin rights to change mapgridtokenoffsets";
+		$result["error"] = "";
+		$result["id"] = ""; 
+		echo json_encode($result);
+		die();
+	}
+	
+	// Get Params
+	$fromGridX = get_param("fromGridX");
+	$fromGridY = get_param("fromGridY");
+	$toGridX = get_param("toGridX");
+	$toGridY = get_param("toGridY");
+	$tokenId = get_param("tokenId");
+	$value = get_param("value");
+	$inPlayToken = get_param("inPlayToken");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($fromGridX == "" || $fromGridY == "" || $toGridX == "" || $toGridY == "" || $tokenId == "") $result["error"] .= "You must enter a mapgrid id and token id.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	for ($x=$fromGridX;$x<=$toGridX;$x++) {
+	
+		for ($y=$fromGridY;$y<=$toGridY;$y++) {
+
+			// Is there a r2f_mapgrids record?
+		
+		}
+		
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_join()
 {
 	global $wpdb;
