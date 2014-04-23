@@ -4022,12 +4022,12 @@ body.logged-in .nav li.logged-in-nav {
 
 /* line 92, ../scss/_game.scss */
 #paperParent1 {
-  position: absolute;
-  left: 400px;
-  top: 220px;
+  position: relative;
   width: 800px;
   height: 800px;
   overflow: scroll;
+  display: block;
+  margin: auto;
 }
 
 /* line 101, ../scss/_game.scss */

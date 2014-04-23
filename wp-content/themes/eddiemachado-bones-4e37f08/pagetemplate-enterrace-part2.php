@@ -5,15 +5,40 @@ Template Name: Enter Race Part 2
 ?>
 
 <?php get_header(); ?>
+<div class="container sand bot-bg clearfix nav-margin">
+                    <div class="inner-container wrap">
+                            <div id="logo" class="secondary">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+                            </div>
+                            <div id="create-race-header">
+                                <div class="text-center"><h1 class="highlight">Choose a Route</h1>
+								<p style="width: 400px; margin: auto">Click on the map to highlight the route you will take. You must start at the green starting grid position and finish at the red finish grid position</p>                                            
+								</div>
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?=get_template_directory_uri()?>/library/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" />
-<section>
-<div id="content" class="container grit bot-bg bot-bg-alt clearfix">
-	<div class="inner-container wrap">
-	<br/>
-	<br/>
-	<h1 class="highlight">Enter Race</h1>
-	
+                        </div>
+                                        
+                </div>
+        </div>
+		<div class="fences wrap"></div>
+		
+<div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
+                <div class="inner-container wrap">
+						<form id="enterRaceForm">
+								<div class="form-elements">
+							
+                                                <h3><span>Part 3</span></h3>
+                                                
+                                                <input name="token" type="hidden" value="a"/>
+                                                          <div class="text-left signup"><div id="feedback" class=""></div></div>                              
+														<div id="paperParent1">
+														</div>                                                
+         
+                                            <div class="text-center continue"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+                                </div><!--End Form Elements-->
+                        </form><!--End Form-->
+                </div><!--End Inner Container-->
+            </div><!--End Container-->
+
 	<div id="viewOptions" class="boxShadow" style="display: none;">
 		<h2 class="highlight">View Options</h2>
 		<label for="scale" id="scaleLabel">Scale:<input type="text" id="scale" value="0.2"/></label>
@@ -58,22 +83,6 @@ Template Name: Enter Race Part 2
 		</fieldset>
 		</form>
 	</div>
-	
-	<div id="chooseRoute" class="boxShadow">
-	<h2 class="highlight">Choose a Route</h2>
-	<p>Click on the map to highlight the route you will take. You must start at the green starting grid position and finish at the red finish grid position</p>
-	</div>
-	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-	<div class="text-left signup"><div id="feedback" class=""></div></div>
-	<div id="paperParent1" class="boxShadow">
-	</div>
-	
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<div class="text-left signup"><div id="result" class=""></div></div>
-    </div>
-</div>
-</section>
 <?php get_footer(); ?>
 
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>
