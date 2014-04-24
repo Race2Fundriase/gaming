@@ -4014,17 +4014,22 @@ label {
   text-align: center;
 }
 
-/* line 84, ../scss/_game.scss */
+/* line 83, ../scss/_game.scss */
+#wpadminbar {
+  display: none;
+}
+
+/* line 87, ../scss/_game.scss */
 .nav li.logged-in-nav {
   display: none;
 }
 
-/* line 88, ../scss/_game.scss */
+/* line 91, ../scss/_game.scss */
 body.logged-in .nav li.logged-in-nav {
   display: list-item;
 }
 
-/* line 92, ../scss/_game.scss */
+/* line 95, ../scss/_game.scss */
 #paperParent1 {
   position: relative;
   width: 800px;
@@ -4034,7 +4039,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 101, ../scss/_game.scss */
+/* line 104, ../scss/_game.scss */
 #paperParentSF {
   position: relative;
   width: 800px;
@@ -4044,7 +4049,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 110, ../scss/_game.scss */
+/* line 113, ../scss/_game.scss */
 #paperParentSF2 {
   position: relative;
   width: 800px;
@@ -4054,39 +4059,39 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 120, ../scss/_game.scss */
+/* line 123, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 126, ../scss/_game.scss */
+/* line 129, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 132, ../scss/_game.scss */
+/* line 135, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 137, ../scss/_game.scss */
+/* line 140, ../scss/_game.scss */
 #racesDataGrid th {
   background-color: green;
   color: white;
 }
 
-/* line 142, ../scss/_game.scss */
+/* line 145, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 147, ../scss/_game.scss */
+/* line 150, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;
