@@ -932,6 +932,7 @@ function r2f_action_upsert_race()
 	$raceStatus = $_POST["raceStatus"];
 	if ($raceStatus == "") $raceStatus = -1;
 	$private = $_POST["private"];
+	$prizeDesc = $_POST["prizeDesc"];
 		
 	// Init results
 	$result["message"] = "";
@@ -956,14 +957,14 @@ function r2f_action_upsert_race()
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
-					private)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d )
+					private, prizeDesc)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId,
-				$private
+				$private, $prizeDesc
 				) 
 		) );
 		
@@ -986,14 +987,14 @@ function r2f_action_upsert_race()
 				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
-				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d
+				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
-				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private,
+				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc,
 				$id
 				) 
 		) );

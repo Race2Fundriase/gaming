@@ -69,7 +69,7 @@
                                 <div class="form-elements">
                                                 
                                                 <h3><span>Part 3</span></h3>
-                                             
+												<input id="maxNoOfPlayers" name="maxNoOfPlayers" type="hidden" value="" tabindex="3"/> 
                                                 <div>
                                                     <label for="nameofrace"><span>Name Of Race:</span></label>
                                                     <div>
@@ -81,6 +81,13 @@
                                                     <label for="desc"><span>Description Of Race:</span></label>
                                                     <div>
                                                     <textarea id="raceDescription" name="desc" value="" tabindex="2"></textarea>
+                                                    </div>
+                                                </div>
+												
+												<div>
+                                                    <label for="prizeDesc"><span>Prize:</span></label>
+                                                    <div>
+                                                    <textarea id="prizeDesc" name="prizeDesc" value="" tabindex="2"></textarea>
                                                     </div>
                                                 </div>
                                                 

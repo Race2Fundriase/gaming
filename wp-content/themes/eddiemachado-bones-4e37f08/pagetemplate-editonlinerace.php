@@ -74,6 +74,12 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    </div>
 					</div>
 					<div>
+						<label for="prizeDesc"><span>Prize:</span></label>
+						<div>
+						<textarea id="prizeDesc" name="prizeDesc" value="" tabindex="2"></textarea>
+						</div>
+					</div>
+					<div>
 					    <label for="locationDescription"><span>Description of Location</span></label>
 					    <div>
 					    <input id="locationDescription" name="locationDescription" type="text" value="" tabindex="9"/>

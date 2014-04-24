@@ -51,10 +51,13 @@ jQuery(document).ready
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
 							jQuery("#private").val(data.rows[0].private);
+							jQuery("#prizeDesc").val(data.rows[0].prizeDesc);
 							
 							
 						}
 					});
+				} else {
+					jQuery("#maxNoOfPlayers").val(qs("qty"));
 				}
 			}
 		});
@@ -163,13 +166,17 @@ jQuery(document).ready
 					paymentMethodEmail: jQuery("#paymentMethodEmail").val(),
 					justGivingCharityId: jQuery("#justGivingCharityId").val(),
 					createdBy: current_user_id,
-					private: jQuery("#private").val()
+					private: jQuery("#private").val(),
+					prizeDesc: jQuery("#prizeDesc").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					location.href = site_url+"/create-online-race-3/?raceId="+data.id;
+					if (data.error == "")
+						location.href = site_url+"/create-online-race-3/?raceId="+data.id;
+					else
+						var n = noty({text: data.message + " " + data.error});
 				}
 			});
 			
