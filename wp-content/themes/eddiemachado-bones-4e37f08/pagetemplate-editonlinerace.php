@@ -169,6 +169,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    <label for="raceStatus"><span>Race Status</span></label>
 					    <div>
 					    <select id="raceStatus">
+							<option value="-1">Being Prepared</option>
 							<option value="0">Active</option>
 							<option value="1">Complete</option>
 						</select>

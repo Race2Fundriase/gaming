@@ -930,7 +930,7 @@ function r2f_action_upsert_race()
 	$paymentMethodEmail = $_POST["paymentMethodEmail"];
 	$justGivingCharityId = $_POST["justGivingCharityId"];
 	$raceStatus = $_POST["raceStatus"];
-	if ($raceStatus == "") $raceStatus = 0;
+	if ($raceStatus == "") $raceStatus = -1;
 	$private = $_POST["private"];
 		
 	// Init results
@@ -1173,6 +1173,56 @@ function r2f_action_update_race_featured()
 		", 
 			array(
 			$featured,
+			$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Race '$id' was updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updating the race $id. $rows";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_update_race_raceStatus()
+{
+	global $wpdb;
+	
+	// Get Params
+	$id = $_POST["id"];
+	$raceStatus = $_POST["raceStatus"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+		
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET raceStatus = %d
+			WHERE id = %d
+		", 
+			array(
+			$raceStatus,
 			$id
 			) 
 	) );
@@ -3071,6 +3121,9 @@ add_action('wp_ajax_nopriv_r2f_action_upsert_raceweather', 'r2f_action_upsert_ra
 
 add_action('wp_ajax_r2f_action_get_raceweather', 'r2f_action_get_raceweather');
 add_action('wp_ajax_nopriv_r2f_action_get_raceweather', 'r2f_action_get_raceweather');
+
+add_action('wp_ajax_r2f_action_update_race_raceStatus', 'r2f_action_update_race_raceStatus');
+add_action('wp_ajax_nopriv_r2f_action_update_race_raceStatus', 'r2f_action_update_race_raceStatus');
 
 
 

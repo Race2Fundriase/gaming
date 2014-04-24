@@ -205,7 +205,23 @@ window.onload = function () {
 	
 	jQuery("#continue").click(function(e) { 
 		
-		location.href = site_url+"/active-race/?raceId="+raceId;
+		jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_update_race_raceStatus',
+					id: raceId,
+					raceStatus: 1
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					location.href = site_url+"/active-race/?raceId="+raceId;			
+					
+				}
+			});
+		
+		
 		
 		return false;
 	} );
