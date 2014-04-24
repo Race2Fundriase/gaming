@@ -2588,6 +2588,21 @@ function updateRaceCurDayHour($raceId) {
 	
 	$hour = date("G", $now);
 	
+	// check limits
+	
+	
+	if ($day == $race["rows"][0]->lengthInDays-1) {
+		$finishDate = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+		$maxhour = date("G", $finishDate);
+		if ($hour > $maxhour) $hour = $maxhour;
+	}
+	
+	if ($day > ($race["rows"][0]->lengthInDays-1)) {
+		$day = $race["rows"][0]->lengthInDays-1;
+		$finishDate = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+		$hour = date("G", $finishDate);
+	}
+
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			UPDATE r2f_races
@@ -2598,6 +2613,24 @@ function updateRaceCurDayHour($raceId) {
 			$day, $hour, $raceId
 			) 
 	) );
+	
+	// If finish is less than now then game is complete
+	$rt = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+	
+	if ($rt < $now) {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_races
+				SET raceStatus = %d
+				WHERE id = %d
+			", 
+				array(
+				1, $raceId
+				) 
+		) );
+		
+	}
 }
 
 function r2f_action_get_leaderboard()
@@ -3221,8 +3254,6 @@ function user_can_enter_race() {
 	if ($rt < $now) return false;
 	
 	return true;
-	
-	
 	
 }
 

@@ -270,6 +270,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			jQuery("#result").text(data.message + " " + data.error);
 			var li = '';
 			players = new Array();
+			
 			for (i=0;i<data.rows.length;i++){
 			   li += '<li id="lbli'+data.rows[i].playerId+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
