@@ -3566,27 +3566,15 @@ you can add resource intensive styles.
     max-width: 1027px;
     padding: 0;
     margin: 0 auto;
-    /*&:before {
-    	display: block;
-    	position: absolute;
-    	top:0;
-    	left:0px;
-    	z-index: 10;
-    	height:100%;
-    	width: 100%;
-    	content:"";
-    	background: url('../images/active-race-image-frame.png') center no-repeat;
-    	background-size: cover;
-    }*/
   }
-  /* line 828, ../scss/_768up.scss */
+  /* line 811, ../scss/_768up.scss */
   #active-race-header .btn, #complete-race-header .btn {
     font-size: 36px;
     font-size: 2.25rem;
     left: 100px;
     bottom: -50px;
   }
-  /* line 835, ../scss/_768up.scss */
+  /* line 818, ../scss/_768up.scss */
   #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
     width: 200px;
     height: 24px;
@@ -3595,17 +3583,17 @@ you can add resource intensive styles.
     left: 280px;
   }
 
-  /* line 845, ../scss/_768up.scss */
+  /* line 828, ../scss/_768up.scss */
   #complete-race-header .headings, #complete-race-header .dates {
     left: 100px;
   }
 
-  /* line 850, ../scss/_768up.scss */
+  /* line 833, ../scss/_768up.scss */
   #race-data .leaderboard {
     margin-bottom: 100px;
   }
 
-  /* line 854, ../scss/_768up.scss */
+  /* line 837, ../scss/_768up.scss */
   #profile-excerpt {
     position: relative;
     font-size: 80%;
@@ -3614,12 +3602,12 @@ you can add resource intensive styles.
     background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
     background-size: contain;
   }
-  /* line 862, ../scss/_768up.scss */
+  /* line 845, ../scss/_768up.scss */
   #profile-excerpt .profile-view {
     text-align: center;
   }
 
-  /* line 869, ../scss/_768up.scss */
+  /* line 852, ../scss/_768up.scss */
   .winner {
     top: -80px;
   }
@@ -3627,36 +3615,36 @@ you can add resource intensive styles.
   /*************************
    *Create Race Page
    *************************/
-  /* line 877, ../scss/_768up.scss */
+  /* line 860, ../scss/_768up.scss */
   #create-race-header {
     margin-top: -80px;
   }
-  /* line 880, ../scss/_768up.scss */
+  /* line 863, ../scss/_768up.scss */
   #create-race-header h1 {
     margin-bottom: 60px;
   }
-  /* line 884, ../scss/_768up.scss */
+  /* line 867, ../scss/_768up.scss */
   #create-race-header #tab_control {
     margin-top: 20px;
     margin-bottom: 30px;
   }
 
-  /* line 890, ../scss/_768up.scss */
+  /* line 873, ../scss/_768up.scss */
   .token {
     text-align: centre;
   }
 
-  /* line 894, ../scss/_768up.scss */
+  /* line 877, ../scss/_768up.scss */
   .continue {
     margin-top: 30px;
     margin-bottom: 120px !important;
   }
 
-  /* line 901, ../scss/_768up.scss */
+  /* line 884, ../scss/_768up.scss */
   .faq {
     padding-bottom: 30px;
   }
-  /* line 904, ../scss/_768up.scss */
+  /* line 887, ../scss/_768up.scss */
   .faq:last-child {
     border-bottom: none !important;
     padding-bottom: 70px;
