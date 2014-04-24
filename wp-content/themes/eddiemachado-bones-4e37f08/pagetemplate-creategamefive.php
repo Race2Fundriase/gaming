@@ -95,7 +95,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 									<input id="selectedTokens" name="selectedTokens" type="text" value="" tabindex="3"/> 
 								</div>
 							</div>
-							
+							<div>
+								<div>
+								<div style="width: 50%; float: left; color: white">Weather</div><div style="width: 50%; float: right; color: white">Forecast</div>
+								</div>
+
+							</div>	
+							<div id="weatherResults">
+
+							</div>	
 							<h3><span>Part 4</span></h3>
 						 
 							<div>
@@ -123,6 +131,8 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								</div>
 							</div>
 								
+	<div id="paperParentSF2" >
+	</div>
 						   
 					   
 					</div>
@@ -176,13 +186,44 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
 	<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
 	<div class="text-left signup"><div id="feedback" class=""></div></div>
-	<div id="paperParentSF2" class="boxShadow">
-	</div>
 	
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	<div class="text-left signup"><div id="result" class=""></div></div>
     </div>
+</div>
+<div id="templateDiv2" style="display: none">
+		
+	<label for="weatherDay{day}" style="padding: 12px 12px 12px 12px"><span>Weather Day {day}</span></label>
+		<div>
+			<div style="width: 50%; float: left">
+			<select id="weatherDay{day}">
+				<option value="1">Icy</option>
+				<option value="2">Snow</option>
+				<option value="3">Thunderstorm</option>
+				<option value="4">Heavy Rain</option>
+				<option value="5">Rain</option>
+				<option value="6">Overcast</option>
+				<option value="7">Light cloud</option>
+				<option value="8">Clear skies</option>
+				<option value="9">Sunny</option>
+				<option value="10">Heat wave</option>
+				</select></div>
+			<div style="width: 50%; float: right;">
+			<select id="weatherForecastDay{day}">
+			<option value="1">Icy</option>
+				<option value="2">Snow</option>
+				<option value="3">Thunderstorm</option>
+				<option value="4">Heavy Rain</option>
+				<option value="5">Rain</option>
+				<option value="6">Overcast</option>
+				<option value="7">Light cloud</option>
+				<option value="8">Clear skies</option>
+				<option value="9">Sunny</option>
+				<option value="10">Heat wave</option>
+			</select></div>
+		</div>
+	
 </div>
 </section>
 <?php get_footer(); ?>

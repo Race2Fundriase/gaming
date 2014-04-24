@@ -152,7 +152,7 @@ window.onload = function () {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					if (data.error == "") {
-						location.href = site_url+"/create-online-game-5/?raceId="+raceId;
+						location.href = site_url+"/create-online-race-5/?raceId="+raceId;
 					}
 					
 				}

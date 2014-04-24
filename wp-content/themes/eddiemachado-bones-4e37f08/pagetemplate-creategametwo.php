@@ -156,6 +156,7 @@
 							<div class="text-center"><p class="highlight">{tokenName}</p></div>
 						</div>
 					</div>
+					
 
 		   
 <?php get_footer(); ?>

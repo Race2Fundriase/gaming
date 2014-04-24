@@ -957,7 +957,7 @@ function r2f_action_upsert_race()
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
 					private)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s, %d )
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
@@ -1012,6 +1012,8 @@ function r2f_action_upsert_race()
 		for($i=0;$i<count($raceTokens);$i++) {
 			$wpdb->query( $wpdb->prepare("INSERT INTO r2f_racetokens (raceId, tokenId) VALUES (%d, %d)", array( $id, $raceTokens[$i] ) ) );
 		}
+		
+		update_LengthInDays($id);
 	}
 	
 	// Return result
@@ -2127,6 +2129,26 @@ function updateScores($raceId) {
 		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
 	
 	}
+	
+	return $lengthInDays;
+}
+
+function update_LengthInDays($raceId) {
+
+	global $wpdb;
+
+	// rebuild all hourly step scores- obliterate and rebuild for now
+	$race = get_race($raceId);
+	
+	$start = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
+	$finish = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+	
+	if ($date < $start) $date = $start;
+	if ($date > $finish) $date = $finish;
+	
+	$lengthInDays = ceil(abs($finish - $start) / 86400);
+
+	updateRaceLengthInDays($raceId, $lengthInDays);
 	
 	return $lengthInDays;
 }

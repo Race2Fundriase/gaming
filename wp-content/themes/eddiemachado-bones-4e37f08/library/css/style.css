@@ -4042,47 +4042,47 @@ body.logged-in .nav li.logged-in-nav {
 
 /* line 110, ../scss/_game.scss */
 #paperParentSF2 {
-  position: absolute;
-  left: 400px;
-  top: 1220px;
+  position: relative;
   width: 800px;
   height: 800px;
   overflow: scroll;
+  display: block;
+  margin: auto;
 }
 
-/* line 121, ../scss/_game.scss */
+/* line 120, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 127, ../scss/_game.scss */
+/* line 126, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 133, ../scss/_game.scss */
+/* line 132, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 138, ../scss/_game.scss */
+/* line 137, ../scss/_game.scss */
 #racesDataGrid th {
   background-color: green;
   color: white;
 }
 
-/* line 143, ../scss/_game.scss */
+/* line 142, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 148, ../scss/_game.scss */
+/* line 147, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;

@@ -4,7 +4,7 @@ jQuery(document).ready
 	{
 
 		var raceId = qs("raceId");
-	
+				
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
 			type: "POST",
@@ -51,6 +51,8 @@ jQuery(document).ready
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
 							jQuery("#private").val(data.rows[0].private);
+							
+							
 						}
 					});
 				}
@@ -167,9 +169,10 @@ jQuery(document).ready
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					location.href = site_url+"/create-online-race-4/?raceId="+data.id;
+					location.href = site_url+"/create-online-race-3/?raceId="+data.id;
 				}
 			});
+			
 			return false;
 		} );
 		
