@@ -27,7 +27,7 @@ Template Name: Enter Race Part 2
 								<div class="form-elements">
 							
                                                 <h3><span>Part 3</span></h3>
-                                                
+												<div class="text-center continue"><input type="submit" value="RANDOM ROUTE" class="btn large" id="random"/></div>
                                                 <input name="token" type="hidden" value="a"/>
                                                           <div class="text-left signup"><div id="feedback" class=""></div></div>                              
 														<div id="paperParent1">

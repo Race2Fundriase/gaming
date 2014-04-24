@@ -5,49 +5,75 @@ Template Name: Enter Race Part 3
 ?>
 
 <?php get_header(); ?>
+<div class="container sand bot-bg clearfix nav-margin">
+                    <div class="inner-container wrap">
+                            <div id="logo" class="secondary">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+                            </div>
+                            <div id="create-race-header">
+                                <div class="text-center"><h1 class="highlight">Enter Race</h1>
+								</div>
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?=get_template_directory_uri()?>/library/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" />
-<section>
-<div id="content" class="container grit bot-bg bot-bg-alt clearfix">
-	<div class="inner-container wrap">
-	<br/>
-	<br/>
-	<h1 class="highlight">Enter Race</h1>
-	<div id="signUp" class="boxShadow">
-		<form id="signUpDataForm">
-       
-		<h2 class="highlight">Player Name</h2>
-		<fieldset class="myfields">
-		<div><span id="playerName"></span></div>
-		</fieldset>
-       
-		</form>
-	</div>
-	<div id="chooseCharacter" class="boxShadow">
-		<form id="raceTokensDataForm">
-       
-		<h2 class="highlight">Character</h2>
-		<fieldset class="myfields">
-		<div>
-			<span id="tokenName"></span>
-			
-		</div>
-		</fieldset>
-       
-		</form>
-	</div>
-
-	
-	<div id="cellOptions" class="boxShadow">
-		<form id="mapGridDataForm">
-		<h2 class="highlight">Character Options</h2>
-		<fieldset class="myfields">
-		<div>Driving Style: <span id="drivingStyleWeight"></span></div>
-		<br/>
-		<div>No Of Pit Stops: <span id="noOfPitstops"></span></div>
-		</fieldset>
-		</form>
-	</div>
+                        </div>
+                                        
+                </div>
+        </div>
+		<div class="fences wrap"></div>
+	<div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
+                <div class="inner-container wrap">
+						<form id="enterRaceForm">
+								<div class="form-elements">
+							
+                                                 <h3><span>Part 1</span></h3>
+                                                
+                                                <input name="token" type="hidden" value="a"/>
+                                                                                        
+                                                <div>
+                                                    <label for="playerName"><span>Player Name:</span></label>
+                                                    <div>
+                                                    <input type="text" name="playerName" id="playerName" value=""/>
+                                                    </div>
+                                                </div>
+												
+												<div>
+                                                    <label for="playerName"><span>Choose a Character:</span></label>
+                                                    <div>
+                                                    <select id="tokenId" name="tokenId" style="width: 350px">
+														
+													</select>
+                                                    </div>
+                                                </div>
+												<div class="clearfix" id="raceTokenResults">
+													
+												</div>
+												<h3><span>Part 2</span></h3>
+												
+												<div>
+                                                    <label for="playerName"><span>Driving Style:</span></label>
+                                                    <div><input type="text" id="drivingStyleWeight" value="0.5" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
+														<div class="status">
+															<p class="left-status">Careful</p><p class="right-status">Agressive</p>
+														</div>
+													</div>
+                                                </div>
+												<div>
+                                                    <label for="playerName"><span>Pitstops:</span></label>
+                                                    <div><input type="text" id="noOfPitstops" value="1" data-slider-highlight="true" data-slider-theme="control" data-slider="true" data-slider-range="1,10"/>
+														<div class="status">
+															<p class="left-status">Fewer Pitsops</p><p class="right-status">More Pitstops</p>
+														</div>
+													</div>
+                                                </div>
+         <div id="paperParent1" class="boxShadow">
+						</div>
+                                            <div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+						<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
+						<div class="text-left signup"><div id="feedback" class=""></div></div>
+						
+                                </div><!--End Form Elements-->
+                        </form><!--End Form-->
+                </div><!--End Inner Container-->
+            </div><!--End Container-->
 	<div id="viewOptions" class="boxShadow" style="display: none;">
 		<h2 class="highlight">View Options</h2>
 		<label for="scale" id="scaleLabel">Scale:<input type="text" id="scale" value="0.2"/></label>
@@ -94,11 +120,7 @@ Template Name: Enter Race Part 3
 	</div>
 	
 	
-	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-	<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
-	<div class="text-left signup"><div id="feedback" class=""></div></div>
-	<div id="paperParent1" class="boxShadow">
-	</div>
+	
 	
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

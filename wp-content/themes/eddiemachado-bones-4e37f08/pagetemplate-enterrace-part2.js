@@ -367,6 +367,38 @@ window.onload = function () {
 		jQuery("#feedback").text("You must choose a route.");
 		return false;
 	} );
+	
+	jQuery("#random").click(function(e) { 
+		playerId = current_user_id;
+		joinDate = d.yyyymmdd();
+		route = "random";
+		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_upsert_racecharacters',
+				id: "",
+				raceId: raceId,
+				tokenId: tokenId,
+				playerId: playerId,
+				joinDate: joinDate,
+				route: route,
+				drivingStyleWeight: drivingStyleWeight,
+				noOfPitstops: noOfPitstops,
+				playerName: playerName
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				jQuery("#result").text(data.message + " " + data.error);
+				if (data.error == "")
+					location.href = site_url+"/enter-race-part-3/?raceId="+raceId+"&racecharacterId="+data.id;
+			}
+		});
+			
+		return false;
+	} );
 };
 
 function updateMapOptions() {

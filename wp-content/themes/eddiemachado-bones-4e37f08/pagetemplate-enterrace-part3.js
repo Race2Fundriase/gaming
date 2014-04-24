@@ -209,6 +209,8 @@ window.onload = function () {
 	
 	//drawGrid();
 	
+	jQuery('#enterRaceForm input').attr('readonly', 'readonly');
+	
 	jQuery("#paperParent1").click(function(e) { 
 	
 		selectGrid(e.pageX - jQuery("#paperParent1").offset().left + jQuery("#paperParent1").scrollLeft(), 
@@ -268,10 +270,15 @@ window.onload = function () {
 						success: function (data) {
 							console.log(data);
 							jQuery("#result").text(data.message + " " + data.error);
-							jQuery("#playerName").html(data.rows[0].playerName);
-							jQuery("#drivingStyleWeight").html(data.rows[0].drivingStyleWeight);
-							jQuery("#noOfPitstops").html(data.rows[0].noOfPitstops);
-							jQuery("#tokenName").html(data.rows[0].tokenName);
+							jQuery("#playerName").val(data.rows[0].playerName);
+							jQuery("#drivingStyleWeight").val(data.rows[0].drivingStyleWeight);
+							jQuery("#noOfPitstops").val(data.rows[0].noOfPitstops);
+							option = '<option value="'+ data.rows[0].tokenId + '">' + data.rows[0].tokenName + '</option>';
+							jQuery('#tokenId').append(option);
+														
+							jQuery("#tokenId").val(data.rows[0].tokenId);
+							
+							jQuery('#enterRaceForm select').attr('disabled', 'true');
 							
 							// Draw the Route
 							var r = data.rows[0].route.split('|');

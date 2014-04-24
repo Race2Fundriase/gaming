@@ -2171,6 +2171,7 @@ function get_randomRoute($raceId) {
 	$distanceY = ($finishY - $startY) / $noOfSteps;
 		
 	$route = "$startX,$startY|";
+	$prevstep = $route;
 	for ($i=1;$i<$noOfSteps-1;$i++) {
 		$distX1 = $noOfSteps*$distanceX;
 		$distX2 = $distX1+$distanceX;
@@ -2178,7 +2179,11 @@ function get_randomRoute($raceId) {
 		$distY1 = $noOfSteps*$distanceY;
 		$distY2 = $distY1+$distanceY;
 		$y = rand($startY+$distY1, $startY+$distY2);
-		$route .= "$x,$y|";
+		
+		$nextstep = "$x,$y|";
+		
+		// extrapolate between $prevstep and $nextstep
+		
 	}
 	$route .= "$finishX,$finishY|";
 	
