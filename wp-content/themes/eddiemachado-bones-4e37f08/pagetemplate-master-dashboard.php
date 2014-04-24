@@ -20,7 +20,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 			<li><a href="<?=site_url();?>/maps-admin" class="btn large ">Map Admin</a></li>
 			<li><a href="<?=site_url();?>/token-admin" class="btn large">Token Admin</a></li>
 			<li><a href="<?=site_url();?>/create-online-race-1" class="btn large ">Create Online Game</a></li>
-			<li><a href="<?=site_url();?>/" class="btn large ">Create Offline Game</a></li>
+			<li><a href="<?=site_url();?>/create-offline-race-1" class="btn large ">Create Offline Game</a></li>
 		    </ul>
             </div> 
 	    </div>

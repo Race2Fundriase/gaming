@@ -25,7 +25,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
 				</div>
 				<div class="fourcol text-center">
-					<a href="<?=site_url();?>/create-online-race-1">
+					<a href="<?=site_url();?>/create-offline-race-1">
 					<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 					<h2 class="highlight">Create Offline Game</h2><br/>
 					</a>
