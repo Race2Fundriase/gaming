@@ -96,12 +96,12 @@ Template Name: Help
                         <form method="get" id="helpsearch"  action=""> 
                             
                             <input type="text" value="<?php echo $search_text; ?>"  
-                            name="help-s" id="help-s"  
+                            name="search" id="search"
                             onblur="if (this.value == '')  
                             {this.value = '<?php echo $search_text; ?>';}"  
                             onfocus="if (this.value == '<?php echo $search_text; ?>')  
                             {this.value = '';}" /> 
-                            
+                           
                             <input type="hidden" id="helpsearchsubmit" /> 
                         </form>
                     </div>
@@ -112,7 +112,10 @@ Template Name: Help
 	<?php
 	    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 	    
+	    $search = (get_query_var('search'));
+	    
 	    $args = array(
+	        's' => $search,
 		'post_type' => 'custom_type',
 		'faq_type' => 'R2F',
 		'order' => 'ASC',
