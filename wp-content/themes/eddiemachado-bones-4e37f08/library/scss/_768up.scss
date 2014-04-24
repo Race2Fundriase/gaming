@@ -223,11 +223,6 @@ HEADER STYLES
 		}
 	}
 }
-#active-race-header #other-search {
-	position: relative;
-	margin-bottom: -40px;
-	text-align: center;
-}
 
 .enter-race {
 	bottom:112px;
@@ -790,8 +785,14 @@ mobile. Make sure to double check these!
  *Active Race Page
  *************************/
 
-#active-race-header .info {
-	//position: relative;
+#active-race-header {
+
+}
+
+#active-race-header #other-search {
+	display:block;
+	margin:0 auto;
+	float:none;
 }
 
 
@@ -799,7 +800,6 @@ mobile. Make sure to double check these!
 	display: block;
 	box-sizing: border-box;
 	max-width: 1027px;
-	max-height:578px;
 	padding: 0;
 	margin:0 auto;
 	

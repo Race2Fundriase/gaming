@@ -28,6 +28,7 @@ Template Name: Active Race
                     </div>
                     
                     <div id="active-race-header">
+			
                         <div id="other-search">
                             <?php $search_text = "Search Races"; ?> 
                             <form method="get" id="racesearch"  action=""> 
@@ -45,9 +46,7 @@ Template Name: Active Race
 			
 			<div class="stretchy">
 			    <div id="frame"></div>
-			    <div id="paperParentAR">
-			    </div>
-			    
+			    <div id="paperParentAR"></div>
 			</div>
 			
                         <div class="info">

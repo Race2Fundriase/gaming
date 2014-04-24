@@ -1355,6 +1355,7 @@ select:focus {
 #active-race-header, #complete-race-header {
 	position:relative;
 	
+	
 	img {
 		position: relative;
 		top:0;
@@ -1366,15 +1367,16 @@ select:focus {
 		display: inline-block; // Changed to inline-block cause FF does not like block!!
 		position:relative;
 		width:100%;
-		max-height: 578px;
-		padding-bottom: 50.5050505%;
+		//max-height: 578px;
+		//padding-bottom: 50.5050505%;
+		padding-bottom: 96.62803%;
 		overflow: hidden;
 		
 		div#frame {
 		position: absolute;
 		z-index: 10;
 		top:0; right:0; bottom:0; left:0;
-		background: url('../images/active-race-image-frame.png') center no-repeat;
+		background: url('../images/squareframe.png') center no-repeat;
 		background-size: 100% 100%;
 		
 		&:hover {
@@ -1383,8 +1385,10 @@ select:focus {
 		}
 	}
 	#other-search {
-		position: absolute;
+		position: relative;
 		width:90%;
+		margin:0 auto;
+		text-align:center;
 		top:20px;
 		z-index: 20;
 		
@@ -1398,10 +1402,10 @@ select:focus {
 	}
 	
 	.info {
-		position: absolute;
-		width:100%;
-		z-index: 20;
-		bottom: 0;
+		//position: absolute;
+		//width:100%;
+		//z-index: 20;
+		//bottom: 0;
 	}
 	
 	.btn {

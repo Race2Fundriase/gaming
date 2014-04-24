@@ -1564,7 +1564,7 @@ and more scalable.
 }
 /* line 477, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px!important;
+  padding: 3px 15px !important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -2354,22 +2354,21 @@ select:focus {
 #active-race-header, #complete-race-header {
   position: relative;
 }
-/* line 1358, ../scss/_base.scss */
+/* line 1359, ../scss/_base.scss */
 #active-race-header img, #complete-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1365, ../scss/_base.scss */
+/* line 1366, ../scss/_base.scss */
 #active-race-header div.stretchy, #complete-race-header div.stretchy {
   display: inline-block;
   position: relative;
   width: 100%;
-  max-height: 578px;
-  padding-bottom: 50.5050505%;
+  padding-bottom: 96.62803%;
   overflow: hidden;
 }
-/* line 1373, ../scss/_base.scss */
+/* line 1375, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame {
   position: absolute;
   z-index: 10;
@@ -2377,43 +2376,38 @@ select:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  background: url("../images/active-race-image-frame.png") center no-repeat;
+  background: url("../images/squareframe.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1380, ../scss/_base.scss */
+/* line 1382, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover {
   cursor: move;
 }
-/* line 1385, ../scss/_base.scss */
+/* line 1387, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search {
-  position: absolute;
+  position: relative;
   width: 90%;
+  margin: 0 auto;
+  text-align: center;
   top: 20px;
   z-index: 20;
 }
-/* line 1391, ../scss/_base.scss */
+/* line 1395, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input {
   width: 86%;
 }
-/* line 1394, ../scss/_base.scss */
+/* line 1398, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1400, ../scss/_base.scss */
-#active-race-header .info, #complete-race-header .info {
-  position: absolute;
-  width: 100%;
-  z-index: 20;
-  bottom: 0;
-}
-/* line 1407, ../scss/_base.scss */
+/* line 1411, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1414, ../scss/_base.scss */
+/* line 1418, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   display: block;
   z-index: 20;
@@ -2426,34 +2420,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1426, ../scss/_base.scss */
+/* line 1430, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1433, ../scss/_base.scss */
+/* line 1437, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1441, ../scss/_base.scss */
+/* line 1445, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1445, ../scss/_base.scss */
+/* line 1449, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1452, ../scss/_base.scss */
+/* line 1456, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1456, ../scss/_base.scss */
+/* line 1460, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2461,56 +2455,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1464, ../scss/_base.scss */
+/* line 1468, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1468, ../scss/_base.scss */
+/* line 1472, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1472, ../scss/_base.scss */
+/* line 1476, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1478, ../scss/_base.scss */
+/* line 1482, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1482, ../scss/_base.scss */
+/* line 1486, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1485, ../scss/_base.scss */
+/* line 1489, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1491, ../scss/_base.scss */
+/* line 1495, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1497, ../scss/_base.scss */
+/* line 1501, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1502, ../scss/_base.scss */
+/* line 1506, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1507, ../scss/_base.scss */
+/* line 1511, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1510, ../scss/_base.scss */
+/* line 1514, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2518,16 +2512,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1520, ../scss/_base.scss */
+/* line 1524, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1523, ../scss/_base.scss */
+/* line 1527, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1531, ../scss/_base.scss */
+/* line 1535, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2546,11 +2540,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1550, ../scss/_base.scss */
+/* line 1554, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1552, ../scss/_base.scss */
+/* line 1556, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2560,7 +2554,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1561, ../scss/_base.scss */
+/* line 1565, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2571,7 +2565,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1574, ../scss/_base.scss */
+/* line 1578, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2579,7 +2573,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1592, ../scss/_base.scss */
+/* line 1596, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2587,7 +2581,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1613, ../scss/_base.scss */
+/* line 1617, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2604,7 +2598,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1639, ../scss/_base.scss */
+/* line 1643, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;
@@ -2614,34 +2608,34 @@ view.
 }
 
 /* css for timepicker */
-/* line 1648, ../scss/_base.scss */
+/* line 1652, ../scss/_base.scss */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
 
-/* line 1649, ../scss/_base.scss */
+/* line 1653, ../scss/_base.scss */
 .ui-timepicker-div dl {
   text-align: left;
 }
 
-/* line 1650, ../scss/_base.scss */
+/* line 1654, ../scss/_base.scss */
 .ui-timepicker-div dl dt {
   float: left;
   clear: left;
   padding: 0 0 0 5px;
 }
 
-/* line 1651, ../scss/_base.scss */
+/* line 1655, ../scss/_base.scss */
 .ui-timepicker-div dl dd {
   margin: 0 10px 10px 45%;
 }
 
-/* line 1652, ../scss/_base.scss */
+/* line 1656, ../scss/_base.scss */
 .ui-timepicker-div td {
   font-size: 90%;
 }
 
-/* line 1653, ../scss/_base.scss */
+/* line 1657, ../scss/_base.scss */
 .ui-tpicker-grid-label {
   background: none;
   border: none;
@@ -2649,24 +2643,24 @@ view.
   padding: 0;
 }
 
-/* line 1655, ../scss/_base.scss */
+/* line 1659, ../scss/_base.scss */
 .ui-timepicker-rtl {
   direction: rtl;
 }
 
-/* line 1656, ../scss/_base.scss */
+/* line 1660, ../scss/_base.scss */
 .ui-timepicker-rtl dl {
   text-align: right;
   padding: 0 5px 0 0;
 }
 
-/* line 1657, ../scss/_base.scss */
+/* line 1661, ../scss/_base.scss */
 .ui-timepicker-rtl dl dt {
   float: right;
   clear: right;
 }
 
-/* line 1658, ../scss/_base.scss */
+/* line 1662, ../scss/_base.scss */
 .ui-timepicker-rtl dl dd {
   margin: 0 45% 10px 10px;
 }
@@ -3114,28 +3108,21 @@ you can add resource intensive styles.
     width: 300px;
   }
 
-  /* line 226, ../scss/_768up.scss */
-  #active-race-header #other-search {
-    position: relative;
-    margin-bottom: -40px;
-    text-align: center;
-  }
-
-  /* line 232, ../scss/_768up.scss */
+  /* line 227, ../scss/_768up.scss */
   .enter-race {
     bottom: 112px;
   }
-  /* line 234, ../scss/_768up.scss */
+  /* line 229, ../scss/_768up.scss */
   .enter-race .btn {
     font-size: 36px;
   }
 
-  /* line 239, ../scss/_768up.scss */
+  /* line 234, ../scss/_768up.scss */
   .fences {
     position: relative;
     height: 0px;
   }
-  /* line 242, ../scss/_768up.scss */
+  /* line 237, ../scss/_768up.scss */
   .fences:before, .fences:after {
     display: block;
     content: "";
@@ -3144,26 +3131,26 @@ you can add resource intensive styles.
     height: 151px;
     z-index: 2000;
   }
-  /* line 252, ../scss/_768up.scss */
+  /* line 247, ../scss/_768up.scss */
   .fences:before {
     bottom: 0;
     left: -187px;
     background: url("../images/left-fence.gif");
   }
-  /* line 258, ../scss/_768up.scss */
+  /* line 253, ../scss/_768up.scss */
   .fences:after {
     bottom: 0;
     right: -187px;
     background: url("../images/right-fence.gif");
   }
 
-  /* line 265, ../scss/_768up.scss */
+  /* line 260, ../scss/_768up.scss */
   .wide-fence {
     position: relative;
     bottom: 0;
     height: 0;
   }
-  /* line 269, ../scss/_768up.scss */
+  /* line 264, ../scss/_768up.scss */
   .wide-fence:after {
     position: absolute;
     display: block;
@@ -3176,7 +3163,7 @@ you can add resource intensive styles.
     top: -190px;
   }
 
-  /* line 282, ../scss/_768up.scss */
+  /* line 277, ../scss/_768up.scss */
   .wide-fence.why {
     bottom: -70px;
   }
@@ -3184,14 +3171,14 @@ you can add resource intensive styles.
   /*********************
   Slider STYLES
   *********************/
-  /* line 289, ../scss/_768up.scss */
+  /* line 284, ../scss/_768up.scss */
   .slider {
     margin-top: 63px;
     background: #4dd2fd;
     position: relative;
     max-height: 600px;
   }
-  /* line 295, ../scss/_768up.scss */
+  /* line 290, ../scss/_768up.scss */
   .slider:before {
     display: block;
     content: "";
@@ -3203,7 +3190,7 @@ you can add resource intensive styles.
     z-index: 3;
   }
 
-  /* line 310, ../scss/_768up.scss */
+  /* line 305, ../scss/_768up.scss */
   .centered-btns_tabs,
   .transparent-btns_tabs,
   .large-btns_tabs {
@@ -3223,17 +3210,17 @@ you can add resource intensive styles.
   /*********************
   NAVIGATION STYLES
   *********************/
-  /* line 329, ../scss/_768up.scss */
+  /* line 324, ../scss/_768up.scss */
   #scrolling-nav.scrolling {
     top: 500px;
   }
 
-  /* line 333, ../scss/_768up.scss */
+  /* line 328, ../scss/_768up.scss */
   #scrolling-nav.stopped {
     top: 3420px;
   }
 
-  /* line 337, ../scss/_768up.scss */
+  /* line 332, ../scss/_768up.scss */
   .scrolling-nav-inner {
     display: block;
     height: 243px;
@@ -3242,7 +3229,7 @@ you can add resource intensive styles.
     z-index: 100;
     font-size: 70%;
   }
-  /* line 345, ../scss/_768up.scss */
+  /* line 340, ../scss/_768up.scss */
   .scrolling-nav-inner ul {
     font-family: 'Headline One';
     display: block;
@@ -3250,7 +3237,7 @@ you can add resource intensive styles.
     width: 320px;
     height: 333px;
   }
-  /* line 352, ../scss/_768up.scss */
+  /* line 347, ../scss/_768up.scss */
   .scrolling-nav-inner ul li {
     font-size: 26px;
     font-size: 1.625em;
@@ -3259,7 +3246,7 @@ you can add resource intensive styles.
     padding-left: 15px;
     display: block;
   }
-  /* line 360, ../scss/_768up.scss */
+  /* line 355, ../scss/_768up.scss */
   .scrolling-nav-inner ul li .bullet {
     margin-top: 0;
     text-align: center;
@@ -3277,23 +3264,23 @@ you can add resource intensive styles.
     text-shadow: none;
     display: none;
   }
-  /* line 378, ../scss/_768up.scss */
+  /* line 373, ../scss/_768up.scss */
   .scrolling-nav-inner ul li a {
     color: white;
     text-shadow: 3px 3px 3px #444;
     text-decoration: none;
   }
-  /* line 387, ../scss/_768up.scss */
+  /* line 382, ../scss/_768up.scss */
   .scrolling-nav-inner ul li.highlight .bullet {
     display: block;
   }
-  /* line 390, ../scss/_768up.scss */
+  /* line 385, ../scss/_768up.scss */
   .scrolling-nav-inner ul li.highlight a {
     text-shadow: none;
     color: #de5f02;
   }
 
-  /* line 398, ../scss/_768up.scss */
+  /* line 393, ../scss/_768up.scss */
   footer .nav {
     display: block;
     margin: 0;
@@ -3301,7 +3288,7 @@ you can add resource intensive styles.
     text-shadow: 1px 2px 5px #444;
   }
 
-  /* line 404, ../scss/_768up.scss */
+  /* line 399, ../scss/_768up.scss */
   .nav {
     font-size: 25px;
     font-size: 1.5625rem;
@@ -3314,15 +3301,15 @@ you can add resource intensive styles.
     /* highlight current page */
     /* end current highlighters */
   }
-  /* line 416, ../scss/_768up.scss */
+  /* line 411, ../scss/_768up.scss */
   .nav li:first-of-type {
     margin-left: 0px;
   }
-  /* line 423, ../scss/_768up.scss */
+  /* line 418, ../scss/_768up.scss */
   .nav li:last-of-type {
     margin-right: 0px;
   }
-  /* line 427, ../scss/_768up.scss */
+  /* line 422, ../scss/_768up.scss */
   .nav li {
     float: left;
     position: relative;
@@ -3333,7 +3320,7 @@ you can add resource intensive styles.
     */
     /* showing sub-menus */
   }
-  /* line 433, ../scss/_768up.scss */
+  /* line 428, ../scss/_768up.scss */
   .nav li a {
     padding: 12px 0px 6px 0px;
     margin: 0;
@@ -3344,12 +3331,12 @@ you can add resource intensive styles.
     has the possibility of being a mobile device.
     */
   }
-  /* line 443, ../scss/_768up.scss */
+  /* line 438, ../scss/_768up.scss */
   .nav li a:hover, .nav li a:focus {
     color: white;
     text-decoration: underline;
   }
-  /* line 457, ../scss/_768up.scss */
+  /* line 452, ../scss/_768up.scss */
   .nav li ul.sub-menu,
   .nav li ul.children {
     margin-top: 0;
@@ -3360,7 +3347,7 @@ you can add resource intensive styles.
     z-index: 8999;
     /* highlight sub-menu current page */
   }
-  /* line 465, ../scss/_768up.scss */
+  /* line 460, ../scss/_768up.scss */
   .nav li ul.sub-menu li,
   .nav li ul.children li {
     /*
@@ -3369,7 +3356,7 @@ you can add resource intensive styles.
     for usability. k, bai.
     */
   }
-  /* line 467, ../scss/_768up.scss */
+  /* line 462, ../scss/_768up.scss */
   .nav li ul.sub-menu li a,
   .nav li ul.children li a {
     padding-left: 10px;
@@ -3378,19 +3365,19 @@ you can add resource intensive styles.
     width: 180px;
     border-bottom: 1px solid #ccc;
   }
-  /* line 484, ../scss/_768up.scss */
+  /* line 479, ../scss/_768up.scss */
   .nav li ul.sub-menu li:last-child a,
   .nav li ul.children li:last-child a {
     border-bottom: 0;
   }
-  /* line 506, ../scss/_768up.scss */
+  /* line 501, ../scss/_768up.scss */
   .nav li:hover ul {
     top: auto;
     display: block;
   }
 
   /* end .nav */
-  /* line 523, ../scss/_768up.scss */
+  /* line 518, ../scss/_768up.scss */
   .log-in-out a {
     /*padding: 3px 15px!important;
     margin-top: 8px !important;
@@ -3398,18 +3385,18 @@ you can add resource intensive styles.
     border:1px solid $white !important;*/
   }
 
-  /* line 531, ../scss/_768up.scss */
+  /* line 526, ../scss/_768up.scss */
   .logged-in .sign-up {
     left: 1px;
   }
 
-  /* line 535, ../scss/_768up.scss */
+  /* line 530, ../scss/_768up.scss */
   .sign-up {
     font-size: 30px;
     font-size: 1.875rem;
     left: -7px;
   }
-  /* line 542, ../scss/_768up.scss */
+  /* line 537, ../scss/_768up.scss */
   .sign-up a {
     box-sizing: border-box;
     display: block;
@@ -3421,7 +3408,7 @@ you can add resource intensive styles.
     color: #de5f02 !important;
     text-decoration: none;
   }
-  /* line 556, ../scss/_768up.scss */
+  /* line 551, ../scss/_768up.scss */
   .sign-up a:after {
     position: absolute;
     display: block;
@@ -3433,41 +3420,41 @@ you can add resource intensive styles.
     content: "";
     background: url("../images/nav-bar-decor-white.png") center right 1px repeat-x;
   }
-  /* line 569, ../scss/_768up.scss */
+  /* line 564, ../scss/_768up.scss */
   .sign-up a:hover {
     color: #de5f02;
     text-decoration: underline;
   }
 
-  /* line 581, ../scss/_768up.scss */
+  /* line 576, ../scss/_768up.scss */
   html > body .sign-up a:after, x:-moz-any-link a:after, x:default a:after {
     background-position: center right 4px;
   }
 
-  /* line 587, ../scss/_768up.scss */
+  /* line 582, ../scss/_768up.scss */
   .wooden {
     background: url("../images/wooden-sign-529x433.gif") center center no-repeat;
     min-height: 433px;
     background-size: contain;
   }
 
-  /* line 593, ../scss/_768up.scss */
+  /* line 588, ../scss/_768up.scss */
   .vid-wooden {
     background: url("../images/vid-wooden-board-468x333.gif") center no-repeat;
     background-size: contain;
   }
 
-  /* line 598, ../scss/_768up.scss */
+  /* line 593, ../scss/_768up.scss */
   .vid-wooden .video-container {
     bottom: 30px;
   }
 
-  /* line 602, ../scss/_768up.scss */
+  /* line 597, ../scss/_768up.scss */
   .pic-wooden {
     background: url("../images/pic-wooden-339x294.gif") center no-repeat;
     background-size: cover;
   }
-  /* line 606, ../scss/_768up.scss */
+  /* line 601, ../scss/_768up.scss */
   .pic-wooden img {
     display: block;
     padding: 10%;
@@ -3478,28 +3465,28 @@ you can add resource intensive styles.
   /*********************
   SIDEBARS & ASIDES
   *********************/
-  /* line 620, ../scss/_768up.scss */
+  /* line 615, ../scss/_768up.scss */
   .sidebar {
     margin-top: 2.2em;
   }
 
-  /* line 624, ../scss/_768up.scss */
+  /* line 619, ../scss/_768up.scss */
   .widgettitle {
     border-bottom: 2px solid #444;
     margin-bottom: 0.75em;
   }
 
-  /* line 629, ../scss/_768up.scss */
+  /* line 624, ../scss/_768up.scss */
   .widget {
     padding: 0 10px;
     margin: 2.2em 0;
   }
-  /* line 634, ../scss/_768up.scss */
+  /* line 629, ../scss/_768up.scss */
   .widget ul li {
     margin-bottom: 0.75em;
     /* deep nesting */
   }
-  /* line 642, ../scss/_768up.scss */
+  /* line 637, ../scss/_768up.scss */
   .widget ul li ul {
     margin-top: 0.75em;
     padding-left: 1em;
@@ -3524,12 +3511,12 @@ you can add resource intensive styles.
   of overriding here if you styled them for
   mobile. Make sure to double check these!
   */
-  /* line 748, ../scss/_768up.scss */
+  /* line 743, ../scss/_768up.scss */
   .footer {
     background: url("../images/footer-bg.jpg") center repeat-x;
   }
 
-  /* line 753, ../scss/_768up.scss */
+  /* line 748, ../scss/_768up.scss */
   .footer-links ul li {
     /*
     be careful with the depth of your menus.
@@ -3542,22 +3529,22 @@ you can add resource intensive styles.
   /**********************
    *Active Race Profile
    **********************/
-  /* line 771, ../scss/_768up.scss */
+  /* line 766, ../scss/_768up.scss */
   .active-race {
     text-align: left;
     padding-top: 0;
     padding-bottom: 0;
   }
-  /* line 776, ../scss/_768up.scss */
+  /* line 771, ../scss/_768up.scss */
   .active-race .btn {
     bottom: 30px;
   }
 
-  /* line 781, ../scss/_768up.scss */
+  /* line 776, ../scss/_768up.scss */
   .active-race.last-on-page, .create-race.last-on-page {
     padding-bottom: 80px;
   }
-  /* line 784, ../scss/_768up.scss */
+  /* line 779, ../scss/_768up.scss */
   .active-race.last-on-page .btn, .create-race.last-on-page .btn {
     bottom: 110px;
   }
@@ -3565,12 +3552,18 @@ you can add resource intensive styles.
   /*************************
    *Active Race Page
    *************************/
-  /* line 798, ../scss/_768up.scss */
+  /* line 792, ../scss/_768up.scss */
+  #active-race-header #other-search {
+    display: block;
+    margin: 0 auto;
+    float: none;
+  }
+
+  /* line 799, ../scss/_768up.scss */
   #active-race-header, #complete-race-header {
     display: block;
     box-sizing: border-box;
     max-width: 1027px;
-    max-height: 578px;
     padding: 0;
     margin: 0 auto;
     /*&:before {
