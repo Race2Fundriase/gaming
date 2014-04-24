@@ -25,11 +25,16 @@ jQuery(document).ready
 					//<div class="result-3-col"><p class="highlight">XYZ</p><p class="highlight">08/08/13</p><p class="highlight">08/08/13</p></div>
 					r = rowHtml;
 					r = r.replace(/{charityName}/g, data.rows[i].data.charityName);
+					r = r.replace(/{index}/g, i);
 					row += r;
 					
 
 				}
 				jQuery("#charityResults").html(row);
+				
+				for(i=1;i<data.rows.length;i++) {
+					jQuery("#fund_"+i).addClass("top-bg-alt");
+				}
 			}
 		});
 	}
