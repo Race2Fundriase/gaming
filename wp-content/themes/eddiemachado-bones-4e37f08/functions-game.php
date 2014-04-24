@@ -931,6 +931,7 @@ function r2f_action_upsert_race()
 	$justGivingCharityId = $_POST["justGivingCharityId"];
 	$raceStatus = $_POST["raceStatus"];
 	if ($raceStatus == "") $raceStatus = 0;
+	$private = $_POST["private"];
 		
 	// Init results
 	$result["message"] = "";
@@ -954,13 +955,15 @@ function r2f_action_upsert_race()
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
-					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s )
+					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
+					private)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %s, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
-				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId
+				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId,
+				$private
 				) 
 		) );
 		
@@ -983,14 +986,14 @@ function r2f_action_upsert_race()
 				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
-				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d
+				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
-				$paymentMethodEmail, $justGivingCharityId, $raceStatus,
+				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private,
 				$id
 				) 
 		) );
@@ -1312,6 +1315,7 @@ function r2f_action_get_races()
 	$raceStatus = $_POST['raceStatus'];
 	$q = $_POST['q'];
 	$createdBy = $_POST['createdBy'];
+	$private = $_POST['private'];
 	
 	if(!$sidx) $sidx =1;
 	if(!$page) $page = 1;
@@ -1331,6 +1335,8 @@ function r2f_action_get_races()
 		$where .= " AND raceName LIKE '%$q%'";
 	if (isset($createdBy))
 		$where .= " AND createdBy = $createdBy";
+	if (isset($private))
+		$where .= " AND private = $private";
 	
 	
 	$queryResult = $wpdb->get_results("select `id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
@@ -1476,7 +1482,7 @@ function r2f_action_get_race()
 			select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
-				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays from `r2f_races` 
+				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays, private from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
 		", 

@@ -116,7 +116,15 @@
                                                     <input id="entryPrice" name="entryprice" type="text" value="" tabindex="3"/> 
                                                     </div>
                                                 </div>
-												
+												<div>
+                                                    <label for="nameofrace"><span>Private?:</span></label>
+                                                    <div>
+                                                    <select id="private" name="private">
+														<option value="0">No</option>
+														<option value="1">Yes</option>
+													</select>
+                                                    </div>
+                                                </div>
 												
 												<div>
 													<label for="raceTokens"><span>Select Tokens</span></label>

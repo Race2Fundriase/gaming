@@ -13,7 +13,8 @@ jQuery(document).ready
 				page: 0,
 				rows: 100,
 				raceStatus: 0,
-				q: q
+				q: q,
+				private: 0
 			},
 			dataType: "JSON",
 			success: function (data) {
@@ -66,7 +67,8 @@ jQuery(document).ready
 				page: 0,
 				rows: 100,
 				raceStatus: 1,
-				q: q
+				q: q,
+				private: 0
 			},
 			dataType: "JSON",
 			success: function (data) {

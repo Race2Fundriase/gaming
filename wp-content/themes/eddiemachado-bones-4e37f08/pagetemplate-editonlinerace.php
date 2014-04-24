@@ -156,7 +156,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    <input id="entryPrice" name=entryPrice"" type="text" tabindex="13"/>
 					    </div>
 					</div>
-
+					<div>
+						<label for="nameofrace"><span>Private?:</span></label>
+						<div>
+						<select id="private" name="private">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+						</div>
+					</div>
 					<div>
 					    <label for="raceStatus"><span>Race Status</span></label>
 					    <div>

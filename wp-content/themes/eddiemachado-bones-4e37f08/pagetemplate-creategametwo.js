@@ -50,6 +50,7 @@ jQuery(document).ready
 							jQuery("#curDay").val(data.rows[0].curDay);
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
+							jQuery("#private").val(data.rows[0].private);
 						}
 					});
 				}
@@ -159,7 +160,8 @@ jQuery(document).ready
 					curHour: 0,
 					paymentMethodEmail: jQuery("#paymentMethodEmail").val(),
 					justGivingCharityId: jQuery("#justGivingCharityId").val(),
-					createdBy: current_user_id
+					createdBy: current_user_id,
+					private: jQuery("#private").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
