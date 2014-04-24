@@ -61,7 +61,7 @@
                         <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
 			<div class="dates"><time class="highlight">08/08/13</time><time class="highlight">08/08/13</time></div>
                         <div class="profile-view"><a class="btn small center" href="#">View More</a></div>
-                    </aside>
+		    </aside>
                 </div>
             </div>	
         </section>
