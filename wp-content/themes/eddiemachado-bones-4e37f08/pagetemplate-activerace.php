@@ -107,8 +107,8 @@ Template Name: Active Race
                             
                             <div class="leaderboard clearfix">
                                 <div><h3 class="highlight">Leaderboard</h3></div>
-								<div><span class="highlight">Day:</span><select name="day" id="day"></select></div>
-								<div><span class="highlight">Hour:</span>
+								<div style="display:none"><span class="highlight">Day:</span><select name="day" id="day"></select></div>
+								<div style="display:none"><span class="highlight">Hour:</span>
 								<select name="hour" id="hour">
 									<option value="0">1</option>
 									<option value="1">2</option>

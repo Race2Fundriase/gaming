@@ -2068,7 +2068,7 @@ function r2f_action_upsert_racecharactersScore()
 	}
 	
 	// Get Params
-	$id = $_POST["id"];
+	$id = get_param("id");
 			
 	// Init results
 	$result["message"] = "";
@@ -2083,6 +2083,8 @@ function r2f_action_upsert_racecharactersScore()
 		echo json_encode($result);
 		die();
 	}
+	
+	updateRaceCurDayHour($id);
 	
 	$lengthInDays = updateScores($id);
 	
@@ -2116,14 +2118,14 @@ function updateScores($raceId) {
 
 	for($rci=0;$rci<count($raceCharacters);$rci++) {
 	
-		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays);
+		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
 	
 	}
 	
 	return $lengthInDays;
 }
 
-function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays) {
+function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $start) {
 
 	global $wpdb;
 
@@ -2155,13 +2157,13 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays) {
 		insert_racecharacterstepscore($raceCharacter, $i, $ticks, $x, $y, $explain);
 	}
 	
-	update_racecharacterscores($raceId, $raceCharacter, $lengthInDays);
+	update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start);
 	
 	return $r;
 
 }
 
-function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays) {
+function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start) {
 	global $wpdb;
 	
 	// Calculate ticks per hour
@@ -2174,7 +2176,9 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays) {
 	$scores = get_racecharacterstepsscores($raceCharacter);
 	$ticks = 0;
 	$day = 0;
-	$hour = 0;
+	
+	$hour = date("G", $start);
+	
 	for($i=0;$i<count($scores);$i++) {
 		$score = $scores[$i];
 		
@@ -2486,6 +2490,36 @@ function get_race($raceId)
 	
 	// Return result
 	return $result;
+}
+
+function updateRaceCurDayHour($raceId) {
+
+	global $wpdb;
+
+	date_default_timezone_set("Europe/London");
+	
+	$race = get_race($raceId);
+
+	// day is the difference in days from race start to now
+	$now = time();
+	
+    $startDate = strtotime($race["rows"][0]->startDate);
+    $datediff = $now - $startDate;
+	
+    $day = floor($datediff/(60*60*24));
+	
+	$hour = date("G", $now);
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET curDay = %d, curHour = %d
+			WHERE id = %d
+		", 
+			array(
+			$day, $hour, $raceId
+			) 
+	) );
 }
 
 function r2f_action_get_leaderboard()
