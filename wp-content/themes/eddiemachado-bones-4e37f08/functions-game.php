@@ -3205,6 +3205,27 @@ function user_can_edit_race() {
 	
 }
 
+function user_can_enter_race() {
+	$user = wp_get_current_user();
+	$raceId = $_GET["raceId"];
+	
+	// Race is 'Active'  - raceStatus == 0
+	// Race has not yet started startDate + startTime > now
+	// Race max limit has not been exceeded
+		
+	$race = get_race($raceId);
+	
+	if ($race["rows"][0]->raceStatus != 0) return false;
+	$rt = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
+	$now = time();
+	if ($rt < $now) return false;
+	
+	return true;
+	
+	
+	
+}
+
 /**
  * Redirect user after successful login.
  *
