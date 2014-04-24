@@ -41,7 +41,9 @@ Template Name: Enter Race Part 1
 													</select>
                                                     </div>
                                                 </div>
-												
+												<div class="clearfix" id="raceTokenResults">
+													
+												</div>
 												<h3><span>Part 2</span></h3>
 												
 												<div>
@@ -66,7 +68,14 @@ Template Name: Enter Race Part 1
                         </form><!--End Form-->
                 </div><!--End Inner Container-->
             </div><!--End Container-->
-	
+	<div id="templateDiv" style="display: none">
+		<div class="fourcol token" id="wrapper_{index}">
+			<a href="#" class="optionselect" data-selection="{tokenId}" id="token_{tokenId}">
+				<img src="{imageUrl}"/>
+			</a>
+			<div class="text-center"><p class="highlight">{tokenName}</p></div>
+		</div>
+	</div>
 <?php get_footer(); ?>
 
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>
