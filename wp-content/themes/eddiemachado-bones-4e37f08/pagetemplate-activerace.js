@@ -201,9 +201,23 @@ jQuery(document).ready
 							r = rowHtml;
 							r = r.replace(/{image}/g, site_url+'/'+data.rows[i].tokenImageUrl);
 							r = r.replace(/{tokenName}/g, data.rows[i].tokenName);
+							r = r.replace(/{index}/g, i);
 							row += r;
 						}
 						jQuery("#charactersResults").html(row);
+						
+						for (i=0;i<data.rows.length;i++){
+					
+							jQuery("#token_"+i).click(function() { 
+
+								return false;
+							} );
+							
+							if ((i % 3) == 0)
+								jQuery("#wrapper_"+i).addClass("first");
+							if ((i % 3) == 2)
+								jQuery("#wrapper_"+i).addClass("last");										
+						}
 					}
 				});
 				
