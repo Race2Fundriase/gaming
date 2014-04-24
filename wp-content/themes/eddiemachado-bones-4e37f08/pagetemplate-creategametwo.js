@@ -85,7 +85,7 @@ jQuery(document).ready
 				for (i=0;i<data.records;i++){
 					
 					jQuery("#token_"+i).click(function() { 
-						alert();
+
 						return false;
 					} );
 					
