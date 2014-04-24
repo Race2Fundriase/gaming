@@ -1,11 +1,62 @@
+var paper;
+var scale = 1.0;
+var mapWidth = 3506;
+var mapHeight = 4440;
+var cellWidth = 75;
+var cellHeight = 75;
+var gridWidth = 47;
+var gridHeight = 60;
+var xoff = 0;
+var yoff = 0;
 
+var selectedCell;
+
+var mapImageUrl = "";
+var mapImage;
+
+function drawGrid() {
+
+	if (paper) paper.remove();
+
+	paper = Raphael("paperParentAR", mapWidth*scale, mapHeight*scale);
+	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
+	
+	//console.log(scale);
+	
+	/*var x, y;
+	var w = cellWidth * scale;
+	var h = cellHeight * scale;
+
+	for (x=0;x<gridWidth;x++) {
+		var curx = x * w;
+		for (y=0;y<gridHeight;y++) {
+			var cury = y * h;
+			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
+			
+		}
+	}*/
+	
+	selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
+	
+	selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
+
+}
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
 }
 
+var startGridX = 0;
+var startGridY = 0;
+var finishGridX = 0;
+var finishGridY = 0;
+
+
 window.onload = function () {
+	scale = 0.2;
+	xoff = 400;
+	yoff = 100;
 
 
 	var raceId = qs("raceId");
@@ -19,6 +70,40 @@ window.onload = function () {
 		dataType: "JSON",
 		success: function (data) {
 			console.log(data);
+			startGridX = data.rows[0].startGridX;
+			startGridY = data.rows[0].startGridY;
+			finishGridX = data.rows[0].finishGridX;
+			finishGridY = data.rows[0].finishGridY;
+			
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_get_map',
+					id: data.rows[0].mapId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					jQuery("#result").text(data.message + " " + data.error);
+					if (data.error == "") {
+						
+						mapName = data.result.mapName;
+						mapImageUrl = data.result.mapImageUrl;
+						mapWidth = data.result.mapWidth;
+						mapHeight = data.result.mapHeight;
+						gridWidth = data.result.gridWidth;
+						gridHeight = data.result.gridHeight;
+						cellWidth = data.result.cellWidth;
+						cellHeight = data.result.cellHeight;
+						scale = data.result.mapWidth / 12521.0;
+						jQuery("#mapScale").val(scale);
+						drawGrid();
+					}
+					
+				}
+			});
+			
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
 				type: "POST",
@@ -72,6 +157,36 @@ window.onload = function () {
 				}
 			});
 			
+			var row = "";
+			lengthInDays = data.rows[0].lengthInDays;
+			rowHtml = jQuery("#templateDiv2").html();
+			for(i=0;i<lengthInDays;i++) {
+				r = rowHtml;
+				r = r.replace(/{day}/g, i+1);
+				row += r;	
+			}
+			jQuery("#weatherResults").append(row);
+			
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_get_raceweather',
+					raceId: raceId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					var option = '';
+					for (i=0;i<data.rows.length;i++){
+					    jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+					}
+					
+					
+				}
+			});
+			jQuery('#enterRaceForm select').attr('disabled', 'true');
+			
 		}
 	});
 	
@@ -83,5 +198,29 @@ window.onload = function () {
 			+"&noOfPitstops="+jQuery("#noOfPitstops").val();
 		return false;
 	} );
+	
+	jQuery('#frame').on('mousedown', function(e) {
+			jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			md = true;
+		}).on('mouseup', function(e) {
+			md = false;
+		}).on('mousemove', function(e) {
+			if (md) {
+				var p0 = jQuery(this).data('p0');
+				var curX = parseInt(jQuery('#paperParentAR').css('left'), 10);
+				var curY = parseInt(jQuery('#paperParentAR').css('top'), 10);
+				
+				jQuery('#paperParentAR').css('left', curX + e.pageX - p0.x);
+				jQuery('#paperParentAR').css('top', curY + e.pageY - p0.y);
+				
+				jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			}
+		});
+		
+		jQuery("#mapScale").change(function(e) {
+			scale = jQuery("#mapScale").val();
+			drawGrid();
+			
+		});
 };
 

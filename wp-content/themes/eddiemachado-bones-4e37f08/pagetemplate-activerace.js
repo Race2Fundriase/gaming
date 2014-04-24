@@ -26,7 +26,7 @@ function drawGrid() {
 	paper = Raphael("paperParentAR", mapWidth*scale, mapHeight*scale);
 	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
 	
-	console.log(scale);
+	//console.log(scale);
 	
 	/*var x, y;
 	var w = cellWidth * scale;

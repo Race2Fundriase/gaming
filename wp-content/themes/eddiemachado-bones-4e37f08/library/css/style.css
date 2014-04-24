@@ -2351,17 +2351,17 @@ select:focus {
  *Active Race Page / Complete Race
  *********************************/
 /* line 1355, ../scss/_base.scss */
-#active-race-header, #complete-race-header {
+#active-race-header, #complete-race-header, #create-race-header {
   position: relative;
 }
 /* line 1359, ../scss/_base.scss */
-#active-race-header img, #complete-race-header img {
+#active-race-header img, #complete-race-header img, #create-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
 /* line 1366, ../scss/_base.scss */
-#active-race-header div.stretchy, #complete-race-header div.stretchy {
+#active-race-header div.stretchy, #complete-race-header div.stretchy, #create-race-header div.stretchy {
   display: inline-block;
   position: relative;
   width: 100%;
@@ -2369,7 +2369,7 @@ select:focus {
   overflow: hidden;
 }
 /* line 1375, ../scss/_base.scss */
-#active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame {
+#active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame, #create-race-header div.stretchy div#frame {
   position: absolute;
   z-index: 10;
   top: 0;
@@ -2380,11 +2380,11 @@ select:focus {
   background-size: 100% 100%;
 }
 /* line 1382, ../scss/_base.scss */
-#active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover {
+#active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover, #create-race-header div.stretchy div#frame:hover {
   cursor: move;
 }
 /* line 1387, ../scss/_base.scss */
-#active-race-header #other-search, #complete-race-header #other-search {
+#active-race-header #other-search, #complete-race-header #other-search, #create-race-header #other-search {
   position: relative;
   width: 90%;
   margin: 0 auto;
@@ -2393,22 +2393,22 @@ select:focus {
   z-index: 20;
 }
 /* line 1395, ../scss/_base.scss */
-#active-race-header #other-search input, #complete-race-header #other-search input {
+#active-race-header #other-search input, #complete-race-header #other-search input, #create-race-header #other-search input {
   width: 86%;
 }
 /* line 1398, ../scss/_base.scss */
-#active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
+#active-race-header #other-search input:focus, #complete-race-header #other-search input:focus, #create-race-header #other-search input:focus {
   width: 86%;
 }
 /* line 1411, ../scss/_base.scss */
-#active-race-header .btn, #complete-race-header .btn {
+#active-race-header .btn, #complete-race-header .btn, #create-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
 /* line 1418, ../scss/_base.scss */
-#active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
+#active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #create-race-header .headings, #create-race-header .dates {
   display: block;
   z-index: 20;
   bottom: 15px;
@@ -2421,25 +2421,25 @@ select:focus {
   font-size: 80%;
 }
 /* line 1430, ../scss/_base.scss */
-#active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
+#active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type, #create-race-header .headings p:first-of-type, #create-race-header .headings time:first-of-type, #create-race-header .dates p:first-of-type, #create-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
 /* line 1437, ../scss/_base.scss */
-#active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
+#active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type, #create-race-header .headings p:last-of-type, #create-race-header .headings time:last-of-type, #create-race-header .dates p:last-of-type, #create-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
 /* line 1445, ../scss/_base.scss */
-#active-race-header .headings, #complete-race-header .headings {
+#active-race-header .headings, #complete-race-header .headings, #create-race-header .headings {
   margin-top: 0.8rem;
 }
 /* line 1449, ../scss/_base.scss */
-#active-race-header .dates, #complete-race-header .dates {
+#active-race-header .dates, #complete-race-header .dates, #create-race-header .dates {
   margin-top: 2px;
 }
 

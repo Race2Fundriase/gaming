@@ -13,15 +13,37 @@ Template Name: Enter Race Part 1
                             </div>
                             <div id="create-race-header">
                                 <div class="text-center"><h1 class="highlight">Enter Race</h1></div>
-                        </div>
-                                        
+								<div class="stretchy">
+									<div id="frame"></div>
+									<div id="paperParentAR"></div>
+								</div>  
+								<div class="info">
+									<div id="scaleSlider" style="padding-left: 200px">
+										<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
+										<div class="status">
+											<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
+										 </div>
+									</div>
+								</div>
+							</div>
+                                      
                 </div>
         </div>
-		<div class="fences wrap"></div>
+		
 <div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
                 <div class="inner-container wrap">
 						<form id="enterRaceForm">
 								<div class="form-elements">
+												<h3><span>The Race</span></h3>
+												<div>
+													<div>
+													<div style="width: 50%; float: left; color: white">Forecast</div>
+													</div>
+
+												</div>	
+												<div id="weatherResults">
+
+												</div>	
 							
                                                 <h3><span>Part 1</span></h3>
                                                 
@@ -75,6 +97,26 @@ Template Name: Enter Race Part 1
 			</a>
 			<div class="text-center"><p class="highlight">{tokenName}</p></div>
 		</div>
+	</div>
+	<div id="templateDiv2" style="display: none">
+		
+	<label for="weatherDay{day}" style="padding: 12px 12px 12px 12px"><span>Weather Day {day}</span></label>
+		<div>
+			<div style="width: 50%; float: left;">
+			<select id="weatherForecastDay{day}">
+			<option value="1">Icy</option>
+				<option value="2">Snow</option>
+				<option value="3">Thunderstorm</option>
+				<option value="4">Heavy Rain</option>
+				<option value="5">Rain</option>
+				<option value="6">Overcast</option>
+				<option value="7">Light cloud</option>
+				<option value="8">Clear skies</option>
+				<option value="9">Sunny</option>
+				<option value="10">Heat wave</option>
+			</select></div>
+		</div>
+	
 	</div>
 <?php get_footer(); ?>
 
