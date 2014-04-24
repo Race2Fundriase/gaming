@@ -2085,6 +2085,8 @@ function r2f_action_upsert_racecharacters()
 	$result["error"] = "";
 	$result["id"] = $id;
 	
+	if ($route = "random") $route = get_randomRoute($raceId);
+	
 	// Validate params
 	if ($raceId == "" || $tokenId == "" || $playerId == "") $result["error"] .= "You must enter a race id, token id and player id.";
 		
@@ -2147,6 +2149,40 @@ function r2f_action_upsert_racecharacters()
 	echo json_encode($result);
 	
 	die();
+}
+
+function get_randomRoute($raceId) {
+
+	global $wpdb;
+
+	$race = get_race($raceId);
+	$race = $race["rows"][0];
+	
+	$startX = $race->startGridX;
+	$startY = $race->startGridY;
+	$finishX = $race->finishGridX;
+	$finishY = $race->finishGridY;
+
+	$distance = sqrt(abs((($finishX - $startX)*($finishX - $startX))+(($finishY - $startY)*($finishY - $startY))));
+	
+	$distPerStep = 5;
+	$noOfSteps = intval($distance / $distPerStep);
+	$distanceX = ($finishX - $startX) / $noOfSteps;
+	$distanceY = ($finishY - $startY) / $noOfSteps;
+		
+	$route = "$startX,$startY|";
+	for ($i=1;$i<$noOfSteps-1;$i++) {
+		$distX1 = $noOfSteps*$distanceX;
+		$distX2 = $distX1+$distanceX;
+		$x = rand($startX+$distX1, $startX+$distX2);
+		$distY1 = $noOfSteps*$distanceY;
+		$distY2 = $distY1+$distanceY;
+		$y = rand($startY+$distY1, $startY+$distY2);
+		$route .= "$x,$y|";
+	}
+	$route .= "$finishX,$finishY|";
+	
+	return $route;
 }
 
 function r2f_action_upsert_raceweather()

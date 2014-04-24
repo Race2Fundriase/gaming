@@ -211,7 +211,7 @@ window.onload = function () {
 				data: {
 					action: 'r2f_action_update_race_raceStatus',
 					id: raceId,
-					raceStatus: 1
+					raceStatus: 0
 				},
 				dataType: "JSON",
 				success: function (data) {
