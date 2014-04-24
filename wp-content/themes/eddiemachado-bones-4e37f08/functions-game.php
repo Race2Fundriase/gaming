@@ -420,7 +420,7 @@ function r2f_action_get_mapgrid()
 	$result["id"] = "";
 	
 	// Validate params
-	if ($mapId == "" && $gridX = "" && $gridY = "") $result["error"] .= "You must supply a mapId, gridX and gridY.";
+	if ($mapId == "" && $gridX == "" && $gridY == "") $result["error"] .= "You must supply a mapId, gridX and gridY.";
 		
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
@@ -483,7 +483,7 @@ function r2f_action_upsert_mapgrid()
 	$result["id"] = $id;
 	
 	// Validate params
-	if ($mapId == "" && $gridX == "" && $gridY = "") $result["error"] .= "You must enter a map id, grid x and grid y.";
+	if ($mapId == "" && $gridX == "" && $gridY == "") $result["error"] .= "You must enter a map id, grid x and grid y.";
 	
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
@@ -543,6 +543,79 @@ function r2f_action_upsert_mapgrid()
 	
 	die();
 }
+
+function upsert_mapgrid($mapId, $gridX, $gridY, $inPlay)
+{
+	global $wpdb;
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($mapId == "" && $gridX == "" && $gridY == "") $result["error"] .= "You must enter a map id, grid x and grid y.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	$row = get_mapgrid($mapId, $gridX, $gridY);
+	
+	if ($row) $id = $row->id; else $id = "";
+	
+	// Insert or Update
+	if ($id == "") {
+
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_mapgrids
+				( id, mapId, gridX, gridY, inPlay )
+				VALUES ( %d, %d, %d, %d, %d )
+			", 
+				array(
+				$id, $mapId, $gridX, $gridY, $inPlay
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$id = $wpdb->insert_id;
+			$result["id"] = $id;
+			$result["error"] = "";
+			$result["message"] = "A new MapGrid with $gridX, $gridY was created.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem creating the mapgrid.";
+		}
+		
+	} else {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_mapgrids
+				SET mapId = %d, gridX = %d, gridY = %d, 
+				inPlay = %d
+				WHERE id = %d
+			", 
+				array(
+				$mapId, $gridX, $gridY, $inPlay, $id
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$result["error"] = "";
+			$result["message"] = "Map Grid $gridX, $gridY was updated.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem updating the map grid.";
+		}
+	}
+	
+	return $id;
+}
+
 
 function r2f_action_get_mapgridtokenoffsets()
 {
@@ -759,6 +832,79 @@ function r2f_action_upsert_mapgridtokenoffset()
 	die();
 }
 
+function upsert_mapgridtokenoffset($mapgridId, $tokenId, $value, $inPlayToken)
+{
+	global $wpdb;
+	
+
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	$result["i"] = $i;
+	
+	// Validate params
+	if ($mapgridId == "" && $tokenId == "") $result["error"] .= "You must enter a mapgrid id and token id.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	$mapgridtokenoffset = get_mapgridtokenoffset_bymapgridId($mapgridId, $x, $y, $raceCharacter->tokenId);
+	
+	if ($mapgridtokenoffset) $id = $mapgridtokenoffset->id; else $id = "";
+	
+	// Insert or Update
+	if ($id == "" || $id == 0) {
+
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_mapgridtokenoffsets
+				( id, mapgridId, tokenId, value, inPlayToken )
+				VALUES ( %d, %d, %d, %d, %d )
+			", 
+				array(
+				$id, $mapgridId, $tokenId, $value, $inPlayToken
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$id = $wpdb->insert_id;
+			$result["id"] = $id;
+			$result["error"] = "";
+			$result["message"] = "A new MapGridTokenOffset with $tokenId was created.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem creating the mapgridtokenoffset.";
+		}
+		
+	} else {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_mapgridtokenoffsets
+				SET value = %d, inPlayToken = %d
+				WHERE mapgridId = %d AND tokenId = %d
+			", 
+				array(
+				$value, $inPlayToken, $mapgridId, $tokenId
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$result["error"] = "";
+			$result["message"] = "Map Grid Token Offset $tokenId was updated.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem updating the map grid token offset. $mapgridId, $tokenId";
+		}
+	}
+	
+	
+}
+
 function r2f_action_bulk_upsert_mapgridtokenoffset()
 {
 	global $wpdb;
@@ -773,6 +919,7 @@ function r2f_action_bulk_upsert_mapgridtokenoffset()
 	}
 	
 	// Get Params
+	$mapId = get_param("mapId");
 	$fromGridX = get_param("fromGridX");
 	$fromGridY = get_param("fromGridY");
 	$toGridX = get_param("toGridX");
@@ -787,7 +934,7 @@ function r2f_action_bulk_upsert_mapgridtokenoffset()
 	$result["id"] = "";
 	
 	// Validate params
-	if ($fromGridX == "" || $fromGridY == "" || $toGridX == "" || $toGridY == "" || $tokenId == "") $result["error"] .= "You must enter a mapgrid id and token id.";
+	if ($mapId == "" || $fromGridX == "" || $fromGridY == "" || $toGridX == "" || $toGridY == "" || $tokenId == "") $result["error"] .= "You must enter a map id .";
 	
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
@@ -800,8 +947,9 @@ function r2f_action_bulk_upsert_mapgridtokenoffset()
 	
 		for ($y=$fromGridY;$y<=$toGridY;$y++) {
 
-			// Is there a r2f_mapgrids record?
-		
+			$mapgridId = upsert_mapgrid($mapId, $x, $y, 1);
+			
+			upsert_mapgridtokenoffset($mapgridId, $tokenId, $value, $inPlayToken);
 		}
 		
 	}
@@ -2217,7 +2365,6 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 	
 	$token = get_token($raceCharacter->tokenId);
 	
-
 	for($i=0;$i<count($routes)-1;$i++) {
 		
 		$explain = "";
@@ -2457,6 +2604,47 @@ function get_mapgridtokenoffset($raceId, $x, $y, $tokenId)
 	
 }
 
+function get_mapgridtokenoffset_bymapgridId($mapgridId, $x, $y, $tokenId)
+{
+	global $wpdb;
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_mapgridtokenoffsets.id, mapgridId, tokenId, value
+			FROM r2f_mapgridtokenoffsets
+			WHERE mapgridId = %d AND tokenId = %d
+		", 
+			array(
+				$x, $y,
+				$mapgridId, $tokenId
+			) 
+	) );
+	
+	return $rows[0];
+	
+}
+
+
+function get_mapgrid($mapId, $x, $y)
+{
+	global $wpdb;
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_mapgrids
+			WHERE gridX = %d AND gridY = %d 
+			AND mapId = %d
+		", 
+			array(
+				$x, $y,
+				$mapId
+			) 
+	) );
+	
+	if ($rows)
+		return $rows[0];
+}
 
 
 function get_racetoken($raceTokenId)
@@ -3160,6 +3348,11 @@ add_action('wp_ajax_nopriv_r2f_action_get_raceweather', 'r2f_action_get_raceweat
 
 add_action('wp_ajax_r2f_action_update_race_raceStatus', 'r2f_action_update_race_raceStatus');
 add_action('wp_ajax_nopriv_r2f_action_update_race_raceStatus', 'r2f_action_update_race_raceStatus');
+
+add_action('wp_ajax_r2f_action_bulk_upsert_mapgridtokenoffset', 'r2f_action_bulk_upsert_mapgridtokenoffset');
+add_action('wp_ajax_nopriv_r2f_action_bulk_upsert_mapgridtokenoffset', 'r2f_action_bulk_upsert_mapgridtokenoffset');
+
+
 
 
 
