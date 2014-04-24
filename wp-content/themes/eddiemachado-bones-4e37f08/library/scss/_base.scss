@@ -1376,6 +1376,10 @@ select:focus {
 		top:0; right:0; bottom:0; left:0;
 		background: url('../images/active-race-image-frame.png') center no-repeat;
 		background-size: 100% 100%;
+		
+		&:hover {
+			cursor: move;
+		}
 		}
 	}
 	#other-search {

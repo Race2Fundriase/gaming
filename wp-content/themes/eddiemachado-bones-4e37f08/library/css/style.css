@@ -1564,7 +1564,7 @@ and more scalable.
 }
 /* line 477, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px!important;
+  padding: 3px 15px !important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -2380,36 +2380,40 @@ select:focus {
   background: url("../images/active-race-image-frame.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1381, ../scss/_base.scss */
+/* line 1380, ../scss/_base.scss */
+#active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover {
+  cursor: move;
+}
+/* line 1385, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search {
   position: absolute;
   width: 90%;
   top: 20px;
   z-index: 20;
 }
-/* line 1387, ../scss/_base.scss */
+/* line 1391, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input {
   width: 86%;
 }
-/* line 1390, ../scss/_base.scss */
+/* line 1394, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1396, ../scss/_base.scss */
+/* line 1400, ../scss/_base.scss */
 #active-race-header .info, #complete-race-header .info {
   position: absolute;
   width: 100%;
   z-index: 20;
   bottom: 0;
 }
-/* line 1403, ../scss/_base.scss */
+/* line 1407, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1410, ../scss/_base.scss */
+/* line 1414, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   display: block;
   z-index: 20;
@@ -2422,34 +2426,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1422, ../scss/_base.scss */
+/* line 1426, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1429, ../scss/_base.scss */
+/* line 1433, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1437, ../scss/_base.scss */
+/* line 1441, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1441, ../scss/_base.scss */
+/* line 1445, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1448, ../scss/_base.scss */
+/* line 1452, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1452, ../scss/_base.scss */
+/* line 1456, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2457,56 +2461,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1460, ../scss/_base.scss */
+/* line 1464, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1464, ../scss/_base.scss */
+/* line 1468, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1468, ../scss/_base.scss */
+/* line 1472, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1474, ../scss/_base.scss */
+/* line 1478, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1478, ../scss/_base.scss */
+/* line 1482, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1481, ../scss/_base.scss */
+/* line 1485, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1487, ../scss/_base.scss */
+/* line 1491, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1493, ../scss/_base.scss */
+/* line 1497, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1498, ../scss/_base.scss */
+/* line 1502, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1503, ../scss/_base.scss */
+/* line 1507, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1506, ../scss/_base.scss */
+/* line 1510, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2514,16 +2518,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1516, ../scss/_base.scss */
+/* line 1520, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1519, ../scss/_base.scss */
+/* line 1523, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1527, ../scss/_base.scss */
+/* line 1531, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2542,11 +2546,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1546, ../scss/_base.scss */
+/* line 1550, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1548, ../scss/_base.scss */
+/* line 1552, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2556,7 +2560,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1557, ../scss/_base.scss */
+/* line 1561, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2567,7 +2571,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1570, ../scss/_base.scss */
+/* line 1574, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2575,7 +2579,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1588, ../scss/_base.scss */
+/* line 1592, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2583,7 +2587,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1609, ../scss/_base.scss */
+/* line 1613, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2600,7 +2604,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1635, ../scss/_base.scss */
+/* line 1639, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;
@@ -2610,34 +2614,34 @@ view.
 }
 
 /* css for timepicker */
-/* line 1644, ../scss/_base.scss */
+/* line 1648, ../scss/_base.scss */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
 
-/* line 1645, ../scss/_base.scss */
+/* line 1649, ../scss/_base.scss */
 .ui-timepicker-div dl {
   text-align: left;
 }
 
-/* line 1646, ../scss/_base.scss */
+/* line 1650, ../scss/_base.scss */
 .ui-timepicker-div dl dt {
   float: left;
   clear: left;
   padding: 0 0 0 5px;
 }
 
-/* line 1647, ../scss/_base.scss */
+/* line 1651, ../scss/_base.scss */
 .ui-timepicker-div dl dd {
   margin: 0 10px 10px 45%;
 }
 
-/* line 1648, ../scss/_base.scss */
+/* line 1652, ../scss/_base.scss */
 .ui-timepicker-div td {
   font-size: 90%;
 }
 
-/* line 1649, ../scss/_base.scss */
+/* line 1653, ../scss/_base.scss */
 .ui-tpicker-grid-label {
   background: none;
   border: none;
@@ -2645,24 +2649,24 @@ view.
   padding: 0;
 }
 
-/* line 1651, ../scss/_base.scss */
+/* line 1655, ../scss/_base.scss */
 .ui-timepicker-rtl {
   direction: rtl;
 }
 
-/* line 1652, ../scss/_base.scss */
+/* line 1656, ../scss/_base.scss */
 .ui-timepicker-rtl dl {
   text-align: right;
   padding: 0 5px 0 0;
 }
 
-/* line 1653, ../scss/_base.scss */
+/* line 1657, ../scss/_base.scss */
 .ui-timepicker-rtl dl dt {
   float: right;
   clear: right;
 }
 
-/* line 1654, ../scss/_base.scss */
+/* line 1658, ../scss/_base.scss */
 .ui-timepicker-rtl dl dd {
   margin: 0 45% 10px 10px;
 }
