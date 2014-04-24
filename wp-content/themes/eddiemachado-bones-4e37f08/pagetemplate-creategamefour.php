@@ -6,17 +6,24 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 ?>
 
 <?php get_header(); ?>
-
-<link rel="stylesheet" type="text/css" media="screen" href="<?=get_template_directory_uri()?>/library/jquery.jqGrid-4.6.0/css/ui.jqgrid.css" />
-<section>
-<div id="content" class="container grit bot-bg bot-bg-alt clearfix">
-	<div class="inner-container wrap">
-	<br/>
-	<br/>
-	<h1 class="highlight">Create Game</h1>
-	<form id="create-game" action=""><!--start form-->
-					<div class="form-elements">
-							<h3><span>Part 4</span></h3>
+<div class="container sand bot-bg clearfix nav-margin">
+                    <div class="inner-container wrap">
+                            <div id="logo" class="secondary">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+                            </div>
+                            <div id="create-race-header">
+                                <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
+                                
+                        </div>
+                                        
+                </div>
+        </div>
+        
+        <div class="fences wrap"></div>
+		<div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
+                <div class="inner-container wrap">
+                        <div class="form-elements">
+                                                <h3><span>Part 4</span></h3>
 						 
 							<div>
 								<label for="startGridX"><span>Start Grid X</span></label>
@@ -42,12 +49,24 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								<input id="finishGridY" name="finishGridY" type="text" value="" tabindex="12"/>
 								</div>
 							</div>
-								
-						   
-					   
-					</div>
-	</form>
-	<div id="viewOptions" class="boxShadow" style="display: none;">
+         	<div id="paperParentSF" class="boxShadow">
+	</div>
+    <div class="text-left signup"><div id="result" class=""></div></div>
+	<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+	<div class="text-center signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
+		
+
+	
+                                </div><!--End Form Elements-->
+                        </form><!--End Form-->
+                </div><!--End Inner Container-->
+            </div><!--End Container-->
+
+	
+
+	
+	
+		<div id="viewOptions" class="boxShadow" style="display: none;">
 		<h2 class="highlight">View Options</h2>
 		<label for="scale" id="scaleLabel">Scale:<input type="text" id="scale" value="0.2"/></label>
 		<input type="button" value="Apply" onclick="scale = jQuery('#scale').val(); drawGrid();"/>
@@ -93,18 +112,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	</div>
 	
 	
-	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-	<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
-	<div class="text-left signup"><div id="feedback" class=""></div></div>
-	<div id="paperParentSF" class="boxShadow">
-	</div>
-	
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-	<div class="text-left signup"><div id="result" class=""></div></div>
-    </div>
-</div>
-</section>
+
 <?php get_footer(); ?>
 
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

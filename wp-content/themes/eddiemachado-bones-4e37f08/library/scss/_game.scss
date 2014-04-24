@@ -99,12 +99,12 @@ body.logged-in .nav li.logged-in-nav {
 }
 
 #paperParentSF {
-	position: absolute;
-	left: 400px;
-	top: 420px;
+	position: relative;
 	width: 800px;
 	height: 800px;
 	overflow:scroll;
+	display: block;
+	margin: auto;
 }
 
 #paperParentSF2 {
@@ -114,6 +114,7 @@ body.logged-in .nav li.logged-in-nav {
 	width: 800px;
 	height: 800px;
 	overflow:scroll;
+	
 }
 
 
