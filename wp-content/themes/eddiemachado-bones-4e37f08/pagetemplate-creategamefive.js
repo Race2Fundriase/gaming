@@ -71,6 +71,7 @@ window.onload = function () {
 	yoff = 100;
 	
 	jQuery('#create-game input').attr('readonly', 'readonly');
+	
 
 	//drawGrid();
 	jQuery("#startGridX,#startGridY,#finishGridX,#finishGridY").change(function(e) {
@@ -198,6 +199,7 @@ window.onload = function () {
 					
 				}
 			});
+			jQuery('#create-game select').attr('disabled', 'true');
 		}
 	});
 	
