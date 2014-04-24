@@ -10,7 +10,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div class="wide-fence why wrap"></div>
 <br/>
         <section>
-	    <div class="container pad-top sand bot-bg-grass">
+	    <div class="container pad-top sand bot-bg">
 		<div class="inner-container wrap clearfix">
             <div>
 		    <h1 class="highlight"><?php the_title(); ?></h1>
