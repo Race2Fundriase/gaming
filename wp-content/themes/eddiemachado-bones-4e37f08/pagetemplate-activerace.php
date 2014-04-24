@@ -50,6 +50,9 @@ Template Name: Active Race
 			</div>
 			
                         <div class="info">
+							<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
+							<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a>
+							<?php } ?>
                             <?php if(get_current_user_id() <> 0 && user_can_enter_race()) { ?>
 							<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
 							<?php } ?>

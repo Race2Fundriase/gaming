@@ -2151,6 +2151,97 @@ function r2f_action_upsert_racecharacters()
 	die();
 }
 
+function r2f_action_bulk_import()
+{
+	global $wpdb;
+	
+	// Get Params
+	$raceId = get_param("raceId");
+	$playersCSV = get_param("playersCSV");
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($raceId == "" || $playersCSV == "") $result["error"] .= "You must enter a race id and players CSV.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	
+	
+	$rows = explode("\n", $playersCSV);
+
+	$inserts = 0;
+	$updates = 0;
+	
+	for($i=0;$i<count($rows);$i++) {
+	
+		$data = explode(",",$rows[$i]);
+	
+		
+
+		$rc = get_racecharacter_byname($raceId, $data[0]);
+		$token = get_token_byname($data[1]);
+		$tokenId = $token->id;
+		$playerId = 0;
+		$joinDate = date("Y-m-d");
+		$route = get_randomRoute($raceId);
+		$drivingStyleWeight = $data[2];
+		$noOfPitStops = $data[3];
+		$playerName = $data[0];
+		
+		if ($rc) $id = $rc[0]->id; else $id = "";
+		
+		// Insert or Update
+		if ($id == "") {
+
+			$rows2 = $wpdb->query( $wpdb->prepare( 
+				"
+					INSERT INTO r2f_racecharacters
+					( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName
+						 )
+					VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s )
+				", 
+					array(
+					$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
+					) 
+			) );
+			$inserts++;
+			
+		} else {
+		
+			$rows2 = $wpdb->query( $wpdb->prepare( 
+				"
+					UPDATE r2f_racecharacters
+					SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
+					route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
+					WHERE id = %d
+				", 
+					array(
+					$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
+					$id
+					) 
+			) );
+			$updates++;
+		}
+		
+		
+	}
+	
+	// Return result
+	$result["message"] = "Bulk Import Complete - $inserts inserts, $updates updates";
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_test() {
 	get_randomRoute(6);
 }
@@ -2627,6 +2718,27 @@ function get_racecharacters($raceId)
 	return $rows;
 }
 
+function get_racecharacter_byname($raceId, $playerName)
+{
+	global $wpdb;
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacters.*
+			FROM r2f_racecharacters 
+			WHERE r2f_racecharacters.raceId = %d AND playerName = %s
+		", 
+			array(
+				$raceId, $playerName
+			) 
+	) );
+	
+	// Return result
+	return $rows;
+}
+
 
 function get_mapgridtokenoffset($raceId, $x, $y, $tokenId)
 {
@@ -2775,6 +2887,27 @@ function get_token($tokenId)
 	
 	return $rows[0];
 }
+
+function get_token_byname($tokenName)
+{
+	global $wpdb;
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops
+			FROM r2f_tokens
+			WHERE tokenName = %s
+		", 
+			array(
+				$tokenName
+			) 
+	) );
+	
+	return $rows[0];
+}
+
 
 function get_race($raceId)
 {
@@ -3417,6 +3550,8 @@ add_action('wp_ajax_nopriv_r2f_action_bulk_upsert_mapgridtokenoffset', 'r2f_acti
 add_action('wp_ajax_r2f_action_test', 'r2f_action_test');
 add_action('wp_ajax_nopriv_r2f_action_test', 'r2f_action_test');
 
+add_action('wp_ajax_r2f_action_bulk_import', 'r2f_action_bulk_import');
+add_action('wp_ajax_nopriv_r2f_action_bulk_import', 'r2f_action_bulk_import');
 
 
 
@@ -3496,6 +3631,25 @@ function user_can_edit_race() {
 	// need also to do sec check on createdBy
 	return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
 	
+}
+
+function user_can_bulk_import_race() {
+
+	$user = wp_get_current_user();
+	$raceId = $_GET["raceId"];
+	
+	$race = get_race($raceId);
+	$createdBy = $race["rows"][0]->createdBy;
+		
+	if ($race["rows"][0]->offline != 1) return false;
+	if (appthemes_check_user_role("administrator")) return true;
+	
+	if ($createdBy != $user->ID) return false;
+	
+	// need also to do sec check on createdBy
+	return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+
+
 }
 
 function user_can_enter_race() {
@@ -3602,6 +3756,9 @@ function check_security($pageName) {
         break;
 	case "pagetemplate-token-admin":
         return appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-bulkimport":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
         break;		
 	}
 	return true;
