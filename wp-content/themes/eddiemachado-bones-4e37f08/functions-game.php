@@ -3505,9 +3505,11 @@ function user_can_enter_race() {
 	// Race is 'Active'  - raceStatus == 0
 	// Race has not yet started startDate + startTime > now
 	// Race max limit has not been exceeded
+	// Race is not offline and user not the person who created the game
 		
 	$race = get_race($raceId);
 	
+	if ($race["rows"][0]->offline == 1 && $race["rows"][0]->createdBy != $user->ID) return false;
 	if ($race["rows"][0]->raceStatus != 0) return false;
 	$rt = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
 	$now = time();
