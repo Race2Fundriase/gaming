@@ -1564,7 +1564,7 @@ and more scalable.
 }
 /* line 477, ../scss/_base.scss */
 .log-in-out a {
-  padding: 3px 15px!important;
+  padding: 3px 15px !important;
   margin-top: 8px !important;
   border-radius: 1em;
   border: 1px solid white !important;
@@ -2365,7 +2365,7 @@ select:focus {
   display: inline-block;
   position: relative;
   width: 100%;
-  padding-bottom: 96.62803%;
+  padding-bottom: 63.224447%;
   overflow: hidden;
 }
 /* line 1375, ../scss/_base.scss */
