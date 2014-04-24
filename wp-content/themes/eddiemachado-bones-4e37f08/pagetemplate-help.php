@@ -158,7 +158,14 @@ Template Name: Help
 	    
 	    
 	    <?php endwhile; ?>
-	   
+	    
+	    <?php else : ?>
+			<div class="faq container sand top-bg bot-bg">
+			  <div class="inner-container wrap clearfix">
+			    <h2 class="highlight"><?php _e('No Results!', 'bonestheme'); ?></h2><br/>
+			    <p class="highlight"><?php _e('Your search term turned up no results, try something else.', 'bonestheme'); ?></p>
+			  </div>
+			</div>				
 	    
 	    <?php endif; ?>
 	    <?php wp_reset_query(); ?>
