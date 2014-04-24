@@ -2151,6 +2151,10 @@ function r2f_action_upsert_racecharacters()
 	die();
 }
 
+function r2f_action_test() {
+	get_randomRoute(6);
+}
+
 function get_randomRoute($raceId) {
 
 	global $wpdb;
@@ -2163,29 +2167,42 @@ function get_randomRoute($raceId) {
 	$finishX = $race->finishGridX;
 	$finishY = $race->finishGridY;
 
-	$distance = sqrt(abs((($finishX - $startX)*($finishX - $startX))+(($finishY - $startY)*($finishY - $startY))));
+		
+	$route = "";
 	
-	$distPerStep = 5;
-	$noOfSteps = intval($distance / $distPerStep);
-	$distanceX = ($finishX - $startX) / $noOfSteps;
-	$distanceY = ($finishY - $startY) / $noOfSteps;
+	$x = $startX;
+	$y = $startY;
+	
+	while ($x != $finishX || $y != $finishY) {
+	
+		if ($x != $finishX) {
+			if (rand(1,10) > 3)
+				if ($finishX > $x) $x++; else $x--;
+			else
+				if ($finishX > $x) $x--; else $x++;
+		} else {
+			if (rand(1,10) > 3) $x++; 
+			if (rand(1,10) > 5) $x--; 
+		}
 		
-	$route = "$startX,$startY|";
-	$prevstep = $route;
-	for ($i=1;$i<$noOfSteps-1;$i++) {
-		$distX1 = $noOfSteps*$distanceX;
-		$distX2 = $distX1+$distanceX;
-		$x = rand($startX+$distX1, $startX+$distX2);
-		$distY1 = $noOfSteps*$distanceY;
-		$distY2 = $distY1+$distanceY;
-		$y = rand($startY+$distY1, $startY+$distY2);
+		if ($y != $finishY) {
+			if (rand(1,10) > 3)
+				if ($finishY > $y) $y++; else $y--;
+			else
+				if ($finishY > $y) $y--; else $y++;
+		} else {
 		
-		$nextstep = "$x,$y|";
+			if (rand(1,10) > 3) $y++; 
+			if (rand(1,10) > 5) $y--; 
+		}
 		
-		// extrapolate between $prevstep and $nextstep
-		
-	}
-	$route .= "$finishX,$finishY|";
+		if ($x != $finishX || $y != $finishY)
+			$route .= "$x,$y|";
+
+
+			
+		}
+	
 	
 	return $route;
 }
@@ -3397,6 +3414,8 @@ add_action('wp_ajax_nopriv_r2f_action_update_race_raceStatus', 'r2f_action_updat
 add_action('wp_ajax_r2f_action_bulk_upsert_mapgridtokenoffset', 'r2f_action_bulk_upsert_mapgridtokenoffset');
 add_action('wp_ajax_nopriv_r2f_action_bulk_upsert_mapgridtokenoffset', 'r2f_action_bulk_upsert_mapgridtokenoffset');
 
+add_action('wp_ajax_r2f_action_test', 'r2f_action_test');
+add_action('wp_ajax_nopriv_r2f_action_test', 'r2f_action_test');
 
 
 
