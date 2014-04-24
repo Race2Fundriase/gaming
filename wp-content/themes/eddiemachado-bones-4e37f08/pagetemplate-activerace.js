@@ -140,6 +140,8 @@ jQuery(document).ready
 				jQuery("#weather").html(data.rows[0].weather);
 				jQuery("#terrain").html(data.rows[0].terrain);
 				jQuery("#featured").prop("checked", (data.rows[0].featured == 1));
+				if (data.rows[0].prizeDesc)
+					jQuery("#prize").html("Prize: "+data.rows[0].prizeDesc);
 				
 				startGridX = data.rows[0].startGridX;
 				startGridY = data.rows[0].startGridY;
