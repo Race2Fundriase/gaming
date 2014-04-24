@@ -1081,6 +1081,9 @@ function r2f_action_upsert_race()
 	if ($raceStatus == "") $raceStatus = -1;
 	$private = $_POST["private"];
 	$prizeDesc = $_POST["prizeDesc"];
+	$offline = $_POST["offline"];
+	
+	if (!$offline || $offline == "") $offline = 0;
 		
 	// Init results
 	$result["message"] = "";
@@ -1105,14 +1108,14 @@ function r2f_action_upsert_race()
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
-					private, prizeDesc)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s )
+					private, prizeDesc, offline)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId,
-				$private, $prizeDesc
+				$private, $prizeDesc, $offline
 				) 
 		) );
 		
@@ -1135,14 +1138,15 @@ function r2f_action_upsert_race()
 				startDate = %s, startTime = %s, finishDate = %s, finishTime = %s, entryPrice = %f,
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
-				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s
+				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s,
+				offline = %d
 				WHERE id = %d
 			", 
 				array(
 				$maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
-				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc,
+				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc, $offline,
 				$id
 				) 
 		) );
@@ -3505,6 +3509,21 @@ function check_security($pageName) {
         return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
         break;
 	case "pagetemplate-creategameone":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-createofflinegamefive":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+    case "pagetemplate-createofflinegamefour":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-createofflinegamethree":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-createofflinegametwo":
+        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        break;
+	case "pagetemplate-createofflinegameone":
         return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
         break;
 	case "pagetemplate-editonlinerace":

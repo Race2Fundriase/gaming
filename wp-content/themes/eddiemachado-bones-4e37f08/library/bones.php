@@ -207,7 +207,8 @@ function bones_scripts_and_styles() {
 		}
 		*/
 		
-		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')) {
+		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')
+			|| is_page_template('pagetemplate-createofflinegametwo.php')) {
 
 			wp_enqueue_script('create-race');
 			wp_enqueue_script('timepicker');
