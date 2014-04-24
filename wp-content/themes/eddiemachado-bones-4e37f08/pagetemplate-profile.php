@@ -1,7 +1,7 @@
 <?php
 /*
- Template Name: Profile
- */
+Template Name: Profile
+*/
 ?>
 
 <?php get_header(); ?>
