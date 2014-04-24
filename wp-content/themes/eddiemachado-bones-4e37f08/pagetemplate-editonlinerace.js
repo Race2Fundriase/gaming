@@ -123,8 +123,14 @@ jQuery(document).ready
 			}
 		});
 		
+
 	
 		jQuery("#continue").click(function() { 
+			jQuery(document).ajaxStop(function() {
+				// place code to be executed on completion of last outstanding ajax call here
+				var n = noty({text: "Race Updated. Please wait..."});
+				location.href = site_url+"/active-race/?raceId="+raceId;
+			});
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
 				type: "POST",
@@ -158,30 +164,31 @@ jQuery(document).ready
 					console.log(data);
 					//jQuery("#result").text(data.message + " " + data.error);
 					//options(data.id);
-					var n = noty({text: data.message + " " + data.error});
+					//var n = noty({text: data.message + " " + data.error});
+					var i;
+					for (i=0;i<lengthInDays;i++) {
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_upsert_raceweather',
+								raceId: raceId,
+								day: i,
+								weather: jQuery("#weatherDay"+(i+1)).val(),
+								weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
+							},
+							dataType: "JSON",
+							success: function (data) {
+								console.log(data);
+								//jQuery("#result").text(data.message + " " + data.error);
+								//options(data.id);
+								//var n = noty({text: data.message + " " + data.error});
+							}
+						});
+					}
 				}
 			});
-			var i;
-			for (i=0;i<lengthInDays;i++) {
-				jQuery.ajax({
-					url: site_url+"/wp-admin/admin-ajax.php",
-					type: "POST",
-					data: {
-						action: 'r2f_action_upsert_raceweather',
-						raceId: raceId,
-						day: i,
-						weather: jQuery("#weatherDay"+(i+1)).val(),
-						weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
-					},
-					dataType: "JSON",
-					success: function (data) {
-						console.log(data);
-						//jQuery("#result").text(data.message + " " + data.error);
-						//options(data.id);
-						//var n = noty({text: data.message + " " + data.error});
-					}
-				});
-			}
+			
 			return false;
 		} );
 		
