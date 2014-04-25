@@ -221,28 +221,9 @@ jQuery(document).ready
 					}
 				});
 				
-				jQuery.ajax({
-					url: site_url+"/wp-admin/admin-ajax.php",
-					type: "POST",
-					data: {
-						action: 'r2f_action_upsert_racecharactersScore',
-						id: raceId
-					},
-					dataType: "JSON",
-					success: function (data) {
-						console.log(data);
-						jQuery("#result").text(data.message + " " + data.error);
-						var li = '';
-						for (i=0;i<data.lengthInDays;i++){
-						   li += '<option value="'+(i)+'">'+ (i + 1) + '</option>';
-						}
-						jQuery('#day').append(li);
-						jQuery("#day").val(curDay);
-						jQuery("#hour").val(curHour);
-						
-						getLeaderBoard(raceId, curDay, curHour, raceStatus);
-					}
-				});
+				
+				
+				getLeaderBoard(raceId, curDay, curHour, raceStatus);
 				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",

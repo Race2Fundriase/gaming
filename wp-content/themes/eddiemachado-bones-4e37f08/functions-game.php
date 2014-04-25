@@ -2479,7 +2479,8 @@ function updateScores($raceId) {
 	$raceCharacters = get_racecharacters($raceId);
 
 	for($rci=0;$rci<count($raceCharacters);$rci++) {
-	
+		
+		
 		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
 	
 	}
@@ -2515,7 +2516,7 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 	$routes = explode("|",$raceCharacter->route);
 	
 	clearScoresForRaceCharacter($raceCharacter);
-	
+	print_r("cleared scores");
 	$token = get_token($raceCharacter->tokenId);
 	
 	for($i=0;$i<count($routes)-1;$i++) {
@@ -3029,7 +3030,13 @@ function r2f_action_get_leaderboard()
 	$raceId = get_param("raceId");
 	$day = get_param("day");
 	$hour = get_param("hour");
-		
+	
+	$page = get_param("page");
+	$limit = get_param("limit");
+	
+	if (!$page) $page = 0;
+	if (!$limit) $limit = 10;
+	
 	// Init results
 	$result["message"] = "";
 	$result["error"] = "";
@@ -3050,7 +3057,6 @@ function r2f_action_get_leaderboard()
 		die();
 	}
 	
-	// Select
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
@@ -3071,6 +3077,38 @@ function r2f_action_get_leaderboard()
 			) 
 	) );
 	
+	$count = count($rows);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+	if ($start < 0) $start = 0;
+	
+	// Select
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacterscores.id, playerId, playerName,
+				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
+			FROM r2f_racecharacterscores
+			JOIN r2f_racecharacters 
+			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
+			JOIN r2f_races
+			ON r2f_racecharacters.raceId = r2f_races.id
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
+			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
+			LIMIT %d, %d
+		", 
+			array(
+				$raceId, $day, $hour, $start, $limit
+			) 
+	) );
+	
 	if ($rows) {
 		$result["error"] = "";
 		$result["message"] = "race leaderboard found.";
@@ -3083,6 +3121,8 @@ function r2f_action_get_leaderboard()
 		}
 		
 		$result["rows"] = $rows;
+		$result["total_pages"] = $total_pages;
+		
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem getting the leaderboard";
