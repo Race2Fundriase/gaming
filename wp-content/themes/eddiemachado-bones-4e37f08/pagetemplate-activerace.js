@@ -49,6 +49,8 @@ function drawGrid() {
 
 var players;
 
+var selPlayer;
+
 function drawPlayers() {
 
 	for (i=0;i<players.length;i++){
@@ -271,7 +273,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			players = new Array();
 			
 			for (i=0;i<data.rows.length;i++){
-			   li += '<li id="lbli'+data.rows[i].playerId+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
+			   li += '<li id="lbli'+data.rows[i].playerId+'" data-index="'+i+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 			   players[i] = data.rows[i];
 			   //var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
@@ -302,6 +304,14 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			}
 			drawPlayers();
 			jQuery('#leaderboard').append(li);
+			
+			for (i=0;i<data.rows.length;i++){
+				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {
+					j = jQuery(this).attr("data-index");
+					if (selPlayer) selPlayer.remove();
+					selPlayer = paper.circle(players[j].gridX * cellWidth * scale + ((cellWidth * scale) / 2), players[j].gridY * cellWidth * scale + ((cellWidth * scale) / 2), (cellWidth * scale) - 2).attr("stroke", "#0f0");
+				});
+			}
 			
 			if (raceStatus == 1) {
 				jQuery("#winnerName").html(data.rows[0].name);
