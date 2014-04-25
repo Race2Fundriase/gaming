@@ -1188,10 +1188,35 @@ select:focus {
 }
 
 /*********************
- *WP_members forms!
+ *WP_members Pages
  *********************/
-
-#wpmem-reg, #wpmem_login {
+/*
+.page-template-pagetemplate-fullwidth_wp-mem-php #main-content {
+	
+	*, p { color:$orange;}
+	
+	a {
+		color:$orange;
+		text-decoration:none;
+	}
+	
+	ul li a {
+		font-family:'Headline One';
+		text-transform: uppercase;
+		text-decoration:none;
+		color:$white;
+		background:$orange;
+		padding:5px 20px 4px 20px;
+		border-radius:15px;
+		font-size:30px;
+		font-size:1.875rem;
+  
+		&:hover {
+		  color:$white;
+		}
+	}
+	
+	/*
 	label, legend {
 		width: 35%;
 		float: left;
@@ -1205,8 +1230,10 @@ select:focus {
 		color:$orange;
 		padding: 0 0.2em;
 	}
-    }	
+	
+   
 }
+*/
 /*********************
  Tabbed Content Form
 *********************/
