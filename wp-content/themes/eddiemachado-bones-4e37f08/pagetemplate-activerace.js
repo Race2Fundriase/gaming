@@ -54,6 +54,8 @@ function drawPlayers() {
 	for (i=0;i<players.length;i++){
 		rcImageUrl = site_url+players[i].tokenImageUrl;
 	    paper.image(rcImageUrl, players[i].gridX * cellWidth * scale, players[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+		if (players[i].playerId == current_user_id)
+			paper.circle(players[i].gridX * cellWidth * scale + ((cellWidth * scale) / 2), players[i].gridY * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
 	}
 }
 
@@ -272,7 +274,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			   li += '<li id="lbli'+data.rows[i].playerId+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 			   players[i] = data.rows[i];
-			   var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+			   //var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 				/*jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
 					type: "POST",
@@ -298,6 +300,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 					}
 				});*/
 			}
+			drawPlayers();
 			jQuery('#leaderboard').append(li);
 			
 			if (raceStatus == 1) {
