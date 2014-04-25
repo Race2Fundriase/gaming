@@ -24,7 +24,7 @@
 			<li><a href="#" class="btn large">Fundraisers</a></li>
 		    </ul>
 		    
-		    <p class="text-center"><span class="highlight">Register online below, or with just giving</span> <a href="#" class="btn small">Register with Justgiving</a></p>
+		    <p class="text-center"><span class="highlight">Register online below, or with just giving</span></p>
 		</div>
 	    </div>
 	</section>
