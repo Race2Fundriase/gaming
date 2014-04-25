@@ -1109,7 +1109,7 @@ select {
 	text-overflow:'';
 }
 
-input[type=submit] {
+input[type=submit], input[type=reset] {
 	background-color: $orange;
 	border:none;
 }
@@ -1190,10 +1190,14 @@ select:focus {
 /*********************
  *WP_members Pages
  *********************/
-/*
+
 .page-template-pagetemplate-fullwidth_wp-mem-php #main-content {
 	
-	*, p { color:$orange;}
+	.form-elements > div {
+		top:0;
+	}
+	
+	 p { color:$white;}
 	
 	a {
 		color:$orange;
@@ -1216,24 +1220,21 @@ select:focus {
 		}
 	}
 	
-	/*
-	label, legend {
-		width: 35%;
-		float: left;
-		clear:left;
-		padding: 10px;
-		padding-right: 30px;
-	
-	&::first-line{
-		display:block;
-		background:$white;
-		color:$orange;
-		padding: 0 0.2em;
+	.noinput {
+		margin-top:0.4em;
+		padding:0 0.2em;
 	}
 	
-   
+	.button_div {
+		text-align:center;
+		margin-top:20px;
+	}
+	
+	.req-text, legend {
+		color:$orange;
+	}
 }
-*/
+
 /*********************
  Tabbed Content Form
 *********************/
