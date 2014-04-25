@@ -2178,33 +2178,61 @@ select:focus {
   }
 }
 /*********************
- *WP_members forms!
+ *WP_members Pages
  *********************/
-/* line 1195, ../scss/_base.scss */
-#wpmem-reg label, #wpmem-reg legend, #wpmem_login label, #wpmem_login legend {
-  width: 35%;
-  float: left;
-  clear: left;
-  padding: 10px;
-  padding-right: 30px;
+	/*
+.page-template-pagetemplate-fullwidth_wp-mem-php #main-content {
+	
+	*, p { color:$orange;}
+	
+	a {
+		color:$orange;
+		text-decoration:none;
+	}
+	
+	ul li a {
+		font-family:'Headline One';
+		text-transform: uppercase;
+		text-decoration:none;
+		color:$white;
+		background:$orange;
+		padding:5px 20px 4px 20px;
+		border-radius:15px;
+		font-size:30px;
+		font-size:1.875rem;
+  
+		&:hover {
+		  color:$white;
+		}
+	}
+	
+	/*
+	label, legend {
+		width: 35%;
+		float: left;
+		clear:left;
+		padding: 10px;
+		padding-right: 30px;
+	
+	&::first-line{
+		display:block;
+		background:$white;
+		color:$orange;
+		padding: 0 0.2em;
+	}
+	
+   
 }
-/* line 1202, ../scss/_base.scss */
-#wpmem-reg label::first-line, #wpmem-reg legend::first-line, #wpmem_login label::first-line, #wpmem_login legend::first-line {
-  display: block;
-  background: white;
-  color: #de5f02;
-  padding: 0 0.2em;
-}
-
+*/
 /*********************
  Tabbed Content Form
 *********************/
-/* line 1214, ../scss/_base.scss */
+/* line 1241, ../scss/_base.scss */
 .tabbed_content {
   display: none;
 }
 
-/* line 1218, ../scss/_base.scss */
+/* line 1245, ../scss/_base.scss */
 .tabbed_content.active {
   display: block;
 }
@@ -2212,12 +2240,12 @@ select:focus {
 /*********************************************
  *charities, active race, fundraisers info/active races
  *********************************************/
-/* line 1225, ../scss/_base.scss */
+/* line 1252, ../scss/_base.scss */
 #info-header {
   width: 90%;
   margin: 0 auto;
 }
-/* line 1228, ../scss/_base.scss */
+/* line 1255, ../scss/_base.scss */
 #info-header #other-search {
   text-align: center;
   margin-left: 0;
@@ -2226,90 +2254,90 @@ select:focus {
   padding-bottom: 30px;
   z-index: 20;
 }
-/* line 1236, ../scss/_base.scss */
+/* line 1263, ../scss/_base.scss */
 #info-header #other-search input {
   width: 86%;
 }
-/* line 1239, ../scss/_base.scss */
+/* line 1266, ../scss/_base.scss */
 #info-header #other-search input:focus {
   width: 86%;
 }
 
-/* line 1246, ../scss/_base.scss */
+/* line 1273, ../scss/_base.scss */
 .active-race, .charities-info {
   padding-top: 20px;
   padding-bottom: 50px;
 }
-/* line 1250, ../scss/_base.scss */
+/* line 1277, ../scss/_base.scss */
 .active-race h2, .charities-info h2 {
   margin-bottom: 3px;
 }
-/* line 1254, ../scss/_base.scss */
+/* line 1281, ../scss/_base.scss */
 .active-race h3, .charities-info h3 {
   margin-top: 3px;
   margin-bottom: 10px;
 }
-/* line 1258, ../scss/_base.scss */
+/* line 1285, ../scss/_base.scss */
 .active-race ol, .charities-info ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1263, ../scss/_base.scss */
+/* line 1290, ../scss/_base.scss */
 .active-race ol li, .charities-info ol li {
   width: 100%;
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1270, ../scss/_base.scss */
+/* line 1297, ../scss/_base.scss */
 .active-race .headings, .active-race .dates, .charities-info .headings, .charities-info .dates {
   display: block;
   height: 24px;
   position: relative;
   background-color: #fff;
 }
-/* line 1276, ../scss/_base.scss */
+/* line 1303, ../scss/_base.scss */
 .active-race .headings p:first-of-type, .active-race .headings time:first-of-type, .active-race .dates p:first-of-type, .active-race .dates time:first-of-type, .charities-info .headings p:first-of-type, .charities-info .headings time:first-of-type, .charities-info .dates p:first-of-type, .charities-info .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1283, ../scss/_base.scss */
+/* line 1310, ../scss/_base.scss */
 .active-race .headings p:last-of-type, .active-race .headings time:last-of-type, .active-race .dates p:last-of-type, .active-race .dates time:last-of-type, .charities-info .headings p:last-of-type, .charities-info .headings time:last-of-type, .charities-info .dates p:last-of-type, .charities-info .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1291, ../scss/_base.scss */
+/* line 1318, ../scss/_base.scss */
 .active-race .headings, .active-race .headings-3-col, .charities-info .headings, .charities-info .headings-3-col {
   margin-top: 0.8rem;
 }
-/* line 1295, ../scss/_base.scss */
+/* line 1322, ../scss/_base.scss */
 .active-race .dates, .charities-info .dates {
   margin-top: 2px;
   font-size: 0.8em;
 }
-/* line 1300, ../scss/_base.scss */
+/* line 1327, ../scss/_base.scss */
 .active-race:after, .charities-info:after {
   content: " ";
   display: table;
   clear: both;
 }
-/* line 1306, ../scss/_base.scss */
+/* line 1333, ../scss/_base.scss */
 .active-race .btn, .charities-info .btn {
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-/* line 1313, ../scss/_base.scss */
+/* line 1340, ../scss/_base.scss */
 .active-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 1316, ../scss/_base.scss */
+/* line 1343, ../scss/_base.scss */
 .active-race.last-on-page .btn {
   bottom: 30px;
 }
@@ -2317,51 +2345,51 @@ select:focus {
 /*****************************************
  *headings & results with 3 colums
 /*****************************************/
-/* line 1324, ../scss/_base.scss */
+/* line 1351, ../scss/_base.scss */
 .headings-3-col, .result-3-col {
   margin-bottom: 2px;
   overflow: hidden;
 }
 
-/* line 1328, ../scss/_base.scss */
+/* line 1355, ../scss/_base.scss */
 .headings-3-col p, .result-3-col p {
   width: 33.3333333%;
   float: left;
   text-align: center;
   margin: 0;
 }
-/* line 1334, ../scss/_base.scss */
+/* line 1361, ../scss/_base.scss */
 .headings-3-col p:first-of-type, .result-3-col p:first-of-type {
   text-align: left;
   padding-left: 1em;
 }
-/* line 1339, ../scss/_base.scss */
+/* line 1366, ../scss/_base.scss */
 .headings-3-col p:last-of-type, .result-3-col p:last-of-type {
   text-align: right;
   padding-right: 1em;
 }
 
-/* line 1346, ../scss/_base.scss */
+/* line 1373, ../scss/_base.scss */
 .faq {
   border-bottom: 2px dashed #b39c7d !important;
   padding-bottom: 10px;
 }
-/* line 1347, ../scss/_base.scss */
+/* line 1374, ../scss/_base.scss */
 .faq h2 {
   margin-top: 30px;
 }
-/* line 1354, ../scss/_base.scss */
+/* line 1381, ../scss/_base.scss */
 .faq p {
   margin-bottom: 0;
   margin-top: 0.2em;
 }
 
-/* line 1359, ../scss/_base.scss */
+/* line 1386, ../scss/_base.scss */
 .question, .answer {
   margin-bottom: 0;
 }
 
-/* line 1366, ../scss/_base.scss */
+/* line 1393, ../scss/_base.scss */
 .pic-wooden img {
   max-height: 400px;
 }
@@ -2369,17 +2397,17 @@ select:focus {
 /*********************************
  *Active Race Page / Complete Race
  *********************************/
-/* line 1375, ../scss/_base.scss */
+/* line 1402, ../scss/_base.scss */
 #active-race-header, #complete-race-header, #create-race-header {
   position: relative;
 }
-/* line 1379, ../scss/_base.scss */
+/* line 1406, ../scss/_base.scss */
 #active-race-header img, #complete-race-header img, #create-race-header img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1386, ../scss/_base.scss */
+/* line 1413, ../scss/_base.scss */
 #active-race-header div.stretchy, #complete-race-header div.stretchy, #create-race-header div.stretchy {
   display: inline-block;
   position: relative;
@@ -2387,7 +2415,7 @@ select:focus {
   padding-bottom: 63.224447%;
   overflow: hidden;
 }
-/* line 1395, ../scss/_base.scss */
+/* line 1422, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame, #create-race-header div.stretchy div#frame {
   position: absolute;
   z-index: 10;
@@ -2398,11 +2426,11 @@ select:focus {
   background: url("../images/squareframe.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1402, ../scss/_base.scss */
+/* line 1429, ../scss/_base.scss */
 #active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover, #create-race-header div.stretchy div#frame:hover {
   cursor: move;
 }
-/* line 1407, ../scss/_base.scss */
+/* line 1434, ../scss/_base.scss */
 #active-race-header #other-search, #complete-race-header #other-search, #create-race-header #other-search {
   position: relative;
   width: 90%;
@@ -2411,22 +2439,22 @@ select:focus {
   top: 20px;
   z-index: 20;
 }
-/* line 1415, ../scss/_base.scss */
+/* line 1442, ../scss/_base.scss */
 #active-race-header #other-search input, #complete-race-header #other-search input, #create-race-header #other-search input {
   width: 86%;
 }
-/* line 1418, ../scss/_base.scss */
+/* line 1445, ../scss/_base.scss */
 #active-race-header #other-search input:focus, #complete-race-header #other-search input:focus, #create-race-header #other-search input:focus {
   width: 86%;
 }
-/* line 1431, ../scss/_base.scss */
+/* line 1458, ../scss/_base.scss */
 #active-race-header .btn, #complete-race-header .btn, #create-race-header .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1438, ../scss/_base.scss */
+/* line 1465, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #create-race-header .headings, #create-race-header .dates {
   display: block;
   z-index: 20;
@@ -2439,34 +2467,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1450, ../scss/_base.scss */
+/* line 1477, ../scss/_base.scss */
 #active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type, #create-race-header .headings p:first-of-type, #create-race-header .headings time:first-of-type, #create-race-header .dates p:first-of-type, #create-race-header .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1457, ../scss/_base.scss */
+/* line 1484, ../scss/_base.scss */
 #active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type, #create-race-header .headings p:last-of-type, #create-race-header .headings time:last-of-type, #create-race-header .dates p:last-of-type, #create-race-header .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1465, ../scss/_base.scss */
+/* line 1492, ../scss/_base.scss */
 #active-race-header .headings, #complete-race-header .headings, #create-race-header .headings {
   margin-top: 0.8rem;
 }
-/* line 1469, ../scss/_base.scss */
+/* line 1496, ../scss/_base.scss */
 #active-race-header .dates, #complete-race-header .dates, #create-race-header .dates {
   margin-top: 2px;
 }
 
-/* line 1476, ../scss/_base.scss */
+/* line 1503, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1480, ../scss/_base.scss */
+/* line 1507, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2474,56 +2502,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1488, ../scss/_base.scss */
+/* line 1515, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1492, ../scss/_base.scss */
+/* line 1519, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1496, ../scss/_base.scss */
+/* line 1523, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1502, ../scss/_base.scss */
+/* line 1529, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1506, ../scss/_base.scss */
+/* line 1533, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1509, ../scss/_base.scss */
+/* line 1536, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1515, ../scss/_base.scss */
+/* line 1542, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1521, ../scss/_base.scss */
+/* line 1548, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1526, ../scss/_base.scss */
+/* line 1553, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1531, ../scss/_base.scss */
+/* line 1558, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1534, ../scss/_base.scss */
+/* line 1561, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2531,16 +2559,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1544, ../scss/_base.scss */
+/* line 1571, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1547, ../scss/_base.scss */
+/* line 1574, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1555, ../scss/_base.scss */
+/* line 1582, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2559,11 +2587,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1574, ../scss/_base.scss */
+/* line 1601, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1576, ../scss/_base.scss */
+/* line 1603, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2573,7 +2601,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1585, ../scss/_base.scss */
+/* line 1612, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2584,7 +2612,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1598, ../scss/_base.scss */
+/* line 1625, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2592,7 +2620,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1616, ../scss/_base.scss */
+/* line 1643, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2600,7 +2628,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1637, ../scss/_base.scss */
+/* line 1664, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2617,7 +2645,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1663, ../scss/_base.scss */
+/* line 1690, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;
@@ -2627,34 +2655,34 @@ view.
 }
 
 /* css for timepicker */
-/* line 1672, ../scss/_base.scss */
+/* line 1699, ../scss/_base.scss */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
 
-/* line 1673, ../scss/_base.scss */
+/* line 1700, ../scss/_base.scss */
 .ui-timepicker-div dl {
   text-align: left;
 }
 
-/* line 1674, ../scss/_base.scss */
+/* line 1701, ../scss/_base.scss */
 .ui-timepicker-div dl dt {
   float: left;
   clear: left;
   padding: 0 0 0 5px;
 }
 
-/* line 1675, ../scss/_base.scss */
+/* line 1702, ../scss/_base.scss */
 .ui-timepicker-div dl dd {
   margin: 0 10px 10px 45%;
 }
 
-/* line 1676, ../scss/_base.scss */
+/* line 1703, ../scss/_base.scss */
 .ui-timepicker-div td {
   font-size: 90%;
 }
 
-/* line 1677, ../scss/_base.scss */
+/* line 1704, ../scss/_base.scss */
 .ui-tpicker-grid-label {
   background: none;
   border: none;
@@ -2662,24 +2690,24 @@ view.
   padding: 0;
 }
 
-/* line 1679, ../scss/_base.scss */
+/* line 1706, ../scss/_base.scss */
 .ui-timepicker-rtl {
   direction: rtl;
 }
 
-/* line 1680, ../scss/_base.scss */
+/* line 1707, ../scss/_base.scss */
 .ui-timepicker-rtl dl {
   text-align: right;
   padding: 0 5px 0 0;
 }
 
-/* line 1681, ../scss/_base.scss */
+/* line 1708, ../scss/_base.scss */
 .ui-timepicker-rtl dl dt {
   float: right;
   clear: right;
 }
 
-/* line 1682, ../scss/_base.scss */
+/* line 1709, ../scss/_base.scss */
 .ui-timepicker-rtl dl dd {
   margin: 0 45% 10px 10px;
 }

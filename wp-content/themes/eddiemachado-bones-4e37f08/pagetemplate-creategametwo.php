@@ -124,7 +124,7 @@
                                                     </div>
                                                 </div>
 												<div>
-                                                    <label for="nameofrace"><span>Private?:</span></label>
+                                                    <label for="nameofrace"><span>Private Race?:</span></label>
                                                     <div>
                                                     <select id="private" name="private">
 														<option value="0">No</option>
