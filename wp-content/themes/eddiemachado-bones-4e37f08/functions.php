@@ -292,8 +292,11 @@ function getFeaturedVideo($post_id, $width = 680, $height = 360) {
 
 require_once( 'functions-game.php' );
 
+//Wordpress Login Page
+
 function custom_login() {
 	echo'<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/library/css/custom-login.css"/>';
+	echo'<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/library/css/style.css"/>';
 }
 
 add_action('login_head', 'custom_login');
@@ -307,4 +310,24 @@ function change_title_on_logo() {
 	return 'R2F - Join The Race To Fundraise';
 }
 add_filter('login_headertitle', 'change_title_on_logo');
+
+
+function my_added_login_field(){
+    //Output your HTML
+?>
+  
+	<div class="inner-container wrap">
+		<div class="sixcol first text-center">
+		<a href="http://race2fundraise.com/join/" class="btn medium">Register Charity or Fundraiser</a>
+		</div>
+		
+		<div class="sixcol first text-center">
+		<a href="#" class="btn medium">Register As Individual</a>
+		</div>
+	</div>
+   
+<?php
+}
+
+add_action('login_footer','my_added_login_field');
 ?>

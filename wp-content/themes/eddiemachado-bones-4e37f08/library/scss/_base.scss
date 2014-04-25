@@ -1188,6 +1188,26 @@ select:focus {
 }
 
 /*********************
+ *WP_members forms!
+ *********************/
+
+#wpmem-reg, #wpmem_login {
+	label, legend {
+		width: 35%;
+		float: left;
+		clear:left;
+		padding: 10px;
+		padding-right: 30px;
+	
+	&::first-line{
+		display:block;
+		background:$white;
+		color:$orange;
+		padding: 0 0.2em;
+	}
+    }	
+}
+/*********************
  Tabbed Content Form
 *********************/
 
