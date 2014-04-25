@@ -178,7 +178,7 @@ jQuery(document).ready
 							scale = jQuery("#mapScale").val();
 							updateMapOptions();
 							drawGrid();
-							
+							getLeaderBoard(raceId, curDay, curHour, raceStatus);
 							
 							
 						}
@@ -223,7 +223,7 @@ jQuery(document).ready
 				
 				
 				
-				getLeaderBoard(raceId, curDay, curHour, raceStatus);
+				
 				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
