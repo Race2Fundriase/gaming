@@ -2243,7 +2243,7 @@ function r2f_action_bulk_import()
 
 
 function r2f_action_test() {
-	get_randomRoute(6);
+	updateRaceCurDayHour(6);
 }
 
 function get_randomRoute($raceId) {
@@ -2975,8 +2975,7 @@ function updateRaceCurDayHour($raceId) {
 	$hour = date("G", $now);
 	
 	// check limits
-	
-	
+
 	if ($day == $race["rows"][0]->lengthInDays-1) {
 		$finishDate = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
 		$maxhour = date("G", $finishDate);

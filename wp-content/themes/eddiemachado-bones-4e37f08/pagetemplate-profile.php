@@ -25,11 +25,11 @@ Template Name: Profile
 	    <div class="container pad-top sand bot-bg-grass">
 		<div class="inner-container wrap clearfix">
                     <div>
-		    <h1 class="highlight">Chauncy Maples Malawi Trust</h1>
+		    <h1 class="highlight" id="charityProfileName"></h1>
                     </div>
                     
                     <div class="fivecol first">
-                        <h3 class="highlight">Please Join Our Race and Support Our Cause Slogan...</h3>
+                        <h3 class="highlight" id="charityProfileWebsite"></h3>
                     </div>
                 </div> 
 	    </div>
@@ -39,9 +39,9 @@ Template Name: Profile
             <div class="container grit bot-bg">
                 <div class="inner-container wrap clearfix">
                     <div class="fivecol first">
-                        <h2 class="highlight">Chauncy Maples Malawi Trust</h3>
+                        <h2 class="highlight"  id="charityProfileName2"></h3>
                         
-                        <p>Stuff about the charity goes here!</p>
+                        <p id="charityProfileDesc"></p>
                         
                         <h2 class="highlight">Active Races</h2>
                         
@@ -65,3 +65,5 @@ Template Name: Profile
                 </div>
             </div>	
         </section>
+		<?php get_footer(); ?>
+		<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>
