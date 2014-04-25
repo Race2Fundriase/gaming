@@ -50,14 +50,19 @@ function drawGrid() {
 var players;
 
 var selPlayer;
+var raceStatus;
 
 function drawPlayers() {
 
 	for (i=0;i<players.length;i++){
 		rcImageUrl = site_url+players[i].tokenImageUrl;
-	    paper.image(rcImageUrl, players[i].gridX * cellWidth * scale, players[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+		
+		if (raceStatus == -1) x = startGridX; else x = players[i].gridX;
+		if (raceStatus == -1) y = startGridY; else y = players[i].gridY;
+		
+	    paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 		if (players[i].playerId == current_user_id)
-			paper.circle(players[i].gridX * cellWidth * scale + ((cellWidth * scale) / 2), players[i].gridY * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
+			paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
 	}
 }
 
@@ -68,7 +73,7 @@ jQuery(document).ready
 	{
 		var raceId = qs("raceId");
 		var md = false;
-		var raceStatus;
+		;
 		
 		jQuery("#featured").change( function(e) {
 			var f = jQuery(this).prop('checked') ? 1 : 0;

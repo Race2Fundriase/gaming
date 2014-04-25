@@ -2988,7 +2988,7 @@ function updateRaceCurDayHour($raceId) {
 		$finishDate = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
 		$hour = date("G", $finishDate);
 	}
-
+	
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			UPDATE r2f_races
@@ -3047,6 +3047,10 @@ function r2f_action_get_leaderboard()
 		$day = $race["rows"][0]->curDay;
 		$hour = $race["rows"][0]->curHour;
 	}
+
+	if (intval($day) < 0) $day = "0"; 
+	
+	
 	
 	// Validate params
 	if ($raceId == "" || $day == "" || $hour == "") $result["error"] .= "You must supply a race id and a day and an hour.";
