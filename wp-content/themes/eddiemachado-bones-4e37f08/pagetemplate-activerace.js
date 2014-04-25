@@ -51,14 +51,16 @@ var players;
 
 var selPlayer;
 var raceStatus;
+var curDay;
+var curHour;
 
 function drawPlayers() {
 
 	for (i=0;i<players.length;i++){
 		rcImageUrl = site_url+players[i].tokenImageUrl;
 		
-		if (raceStatus == -1) x = startGridX; else x = players[i].gridX;
-		if (raceStatus == -1) y = startGridY; else y = players[i].gridY;
+		if (curDay < 0) x = startGridX; else x = players[i].gridX;
+		if (curDay < 0) y = startGridY; else y = players[i].gridY;
 		
 	    paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 		if (players[i].playerId == current_user_id)
@@ -157,8 +159,8 @@ jQuery(document).ready
 				finishGridX = data.rows[0].finishGridX;
 				finishGridY = data.rows[0].finishGridY;
 				
-				var curDay = data.rows[0].curDay;
-				var curHour = data.rows[0].curHour;
+				curDay = data.rows[0].curDay;
+				curHour = data.rows[0].curHour;
 				raceStatus = data.rows[0].raceStatus;
 				var createdBy = data.rows[0].createdBy;
 				

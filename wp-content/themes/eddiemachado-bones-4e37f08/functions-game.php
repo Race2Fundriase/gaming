@@ -2204,9 +2204,9 @@ function r2f_action_bulk_import()
 			$rows2 = $wpdb->query( $wpdb->prepare( 
 				"
 					INSERT INTO r2f_racecharacters
-					( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName
+					( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName, status
 						 )
-					VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s )
+					VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s, 1 )
 				", 
 					array(
 					$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
