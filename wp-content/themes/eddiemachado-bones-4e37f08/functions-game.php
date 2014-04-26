@@ -1082,6 +1082,7 @@ function r2f_action_upsert_race()
 	$private = $_POST["private"];
 	$prizeDesc = $_POST["prizeDesc"];
 	$offline = $_POST["offline"];
+	$refreshScores = $_POST["refreshScores"];
 	
 	if (!$offline || $offline == "") $offline = 0;
 		
@@ -1139,7 +1140,7 @@ function r2f_action_upsert_race()
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
 				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s,
-				offline = %d
+				offline = %d, refreshScores = %d
 				WHERE id = %d
 			", 
 				array(
@@ -1147,6 +1148,7 @@ function r2f_action_upsert_race()
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
 				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc, $offline,
+				$refreshScores,
 				$id
 				) 
 		) );
@@ -2420,14 +2422,10 @@ function r2f_action_upsert_racecharactersScore()
 {
 	global $wpdb;
 	
-	// Check security
-	if (!is_admin()) { 
-		$result["message"] = "You must have admin rights to change scores";
-		$result["error"] = "";
-		$result["id"] = ""; 
-		echo json_encode($result);
-		die();
-	}
+	set_time_limit ( 1200 );
+	
+	echo("It begins");
+	ob_flush();
 	
 	// Get Params
 	$id = get_param("id");
@@ -2465,25 +2463,32 @@ function updateScores($raceId) {
 	// rebuild all hourly step scores- obliterate and rebuild for now
 	$race = get_race($raceId);
 	
-	$start = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
-	$finish = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+	$start = strtotime($race["rows"][0]->startDate);
+	$finish = strtotime($race["rows"][0]->finishDate);
 	
 	if ($date < $start) $date = $start;
 	if ($date > $finish) $date = $finish;
 	
-	$lengthInDays = ceil(abs($finish - $start) / 86400);
+	$lengthInDays = ceil(abs($finish - $start) / 86400) + 1;
 
 	updateRaceLengthInDays($raceId, $lengthInDays);
 	
 	// for each racecharacter
-	$raceCharacters = get_racecharacters($raceId);
+	// If refreshScores == 0 then do them all
+	// else only do new
+	if ($race["rows"][0]->refreshScores == 0)
+		$raceCharacters = get_racecharacters($raceId);
+	else
+		$raceCharacters = get_newracecharacters($raceId);
 
 	for($rci=0;$rci<count($raceCharacters);$rci++) {
-		
-		
+		echo("$rci\n");
+		ob_flush();
 		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
 	
 	}
+	
+	updaterefreshScores($raceId, 1);
 	
 	return $lengthInDays;
 }
@@ -2495,13 +2500,13 @@ function update_LengthInDays($raceId) {
 	// rebuild all hourly step scores- obliterate and rebuild for now
 	$race = get_race($raceId);
 	
-	$start = strtotime($race["rows"][0]->startDate." ".$race["rows"][0]->startTime);
-	$finish = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
+	$start = strtotime($race["rows"][0]->startDate);
+	$finish = strtotime($race["rows"][0]->finishDate);
 	
 	if ($date < $start) $date = $start;
 	if ($date > $finish) $date = $finish;
 	
-	$lengthInDays = ceil(abs($finish - $start) / 86400);
+	$lengthInDays = ceil(abs($finish - $start) / 86400) + 1;
 
 	updateRaceLengthInDays($raceId, $lengthInDays);
 	
@@ -2516,11 +2521,12 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 	$routes = explode("|",$raceCharacter->route);
 	
 	clearScoresForRaceCharacter($raceCharacter);
-	print_r("cleared scores");
+	//print_r("cleared scores");
 	$token = get_token($raceCharacter->tokenId);
 	
 	for($i=0;$i<count($routes)-1;$i++) {
-		
+		echo(".");
+		ob_flush();
 		$explain = "";
 		
 		$ticks = 10 - $token->speed;
@@ -2529,7 +2535,8 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		$xy = explode(",", $routes[$i]);
 		$x = $xy[0];
 		$y = $xy[1];
-		$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $raceCharacter->tokenId);
+		//$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $raceCharacter->tokenId);
+		$mapgridtokenoffset = 0;
 		$ticks += $mapgridtokenoffset->value * $raceCharacter->drivingStyleWeight;
 		$explain .= "Grid Offset: $mapgridtokenoffset->value; Weight: $raceCharacter->drivingStyleWeight ($ticks); ";
 				
@@ -2547,7 +2554,8 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 
 function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start) {
 	global $wpdb;
-	
+	echo("\n");
+	ob_flush();
 	// Calculate ticks per hour
 	// Winner ticks (least number of ticks to finish)
 	$winner = get_winner($raceId);
@@ -2562,6 +2570,8 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $sta
 	$hour = date("G", $start);
 	
 	for($i=0;$i<count($scores);$i++) {
+		echo(".");
+		ob_flush();
 		$score = $scores[$i];
 		
 		while($ticks < $score->ticks) {
@@ -2588,11 +2598,11 @@ function insert_racecharacterscores($score, $day, $hour, $explain) {
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			INSERT INTO r2f_racecharacterscores
-			( id, racecharacterId, day, hour, gridX, gridY, explaination )
-			VALUES ( %d, %d, %d, %d, %d, %d, %s )
+			( id, racecharacterId, day, hour, gridX, gridY )
+			VALUES ( %d, %d, %d, %d, %d, %d )
 		", 
 			array(
-			0, $score->racecharacterId, $day, $hour, $score->gridX, $score->gridY, $explain
+			0, $score->racecharacterId, $day, $hour, $score->gridX, $score->gridY
 			) 
 	) );
 	
@@ -2645,12 +2655,11 @@ function insert_racecharacterstepscore($raceCharacter, $step, $ticks, $x, $y, $e
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			INSERT INTO r2f_racecharacterstepscores
-			( id, racecharacterId, step, ticks, gridX, gridY, 
-				explaination )
-			VALUES ( %d, %d, %d, %f, %d, %d, %s )
+			( id, racecharacterId, step, ticks, gridX, gridY )
+			VALUES ( %d, %d, %d, %f, %d, %d )
 		", 
 			array(
-			0, $raceCharacter->id, $step, $ticks, $x, $y, $explain
+			0, $raceCharacter->id, $step, $ticks, $x, $y
 			) 
 	) );
 
@@ -2698,6 +2707,23 @@ function updateRaceLengthInDays($raceId, $lengthInDays) {
 	) );
 }
 
+function updaterefreshScores($raceId, $refreshScores) {
+
+	global $wpdb;
+
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET refreshScores = %d
+			WHERE id = %d
+		", 
+			array(
+			$refreshScores, $raceId
+			) 
+	) );
+}
+
+
 function get_racecharacters($raceId)
 {
 	global $wpdb;
@@ -2709,6 +2735,30 @@ function get_racecharacters($raceId)
 			SELECT r2f_racecharacters.*
 			FROM r2f_racecharacters 
 			WHERE r2f_racecharacters.raceId = %d AND r2f_racecharacters.status = 1
+		", 
+			array(
+				$raceId
+			) 
+	) );
+	
+	// Return result
+	return $rows;
+}
+
+function get_newracecharacters($raceId)
+{
+	global $wpdb;
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT DISTINCT r2f_racecharacters.*
+			FROM r2f_racecharacters 
+			LEFT JOIN r2f_rachcharacterscores
+			ON id = racecharacterId
+			WHERE r2f_rachcharacterscores.id IS NULL
+			AND r2f_racecharacters.raceId = %d AND r2f_racecharacters.status = 1
 		", 
 			array(
 				$raceId

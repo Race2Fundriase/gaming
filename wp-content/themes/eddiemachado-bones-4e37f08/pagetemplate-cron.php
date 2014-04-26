@@ -4,8 +4,11 @@ Template Name: CRON
 */
 ?>
 
-<?php get_header(); ?>
+
 
         CRON Jobs
-		<?php get_footer(); ?>
+		<?php 
+			r2f_action_upsert_racecharactersScore();
+		?>
+
 		<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

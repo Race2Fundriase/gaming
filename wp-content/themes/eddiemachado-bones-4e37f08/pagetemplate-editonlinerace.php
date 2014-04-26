@@ -182,6 +182,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    </div>
 					</div>
 					<div>
+					    <label for="refreshScores"><span>Force Refresh?</span></label>
+					    <div>
+					    <select id="refreshScores">
+							<option value="1">No</option>
+							<option value="0">Yes</option>
+						</select>
+					    </div>
+					</div>
+					<div>
 					    <label for="raceTokens"><span>Select Tokens</span></label>
 					    <div>
 							<select multiple id="raceTokens" name="raceTokens">
