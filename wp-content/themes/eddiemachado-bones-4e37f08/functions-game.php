@@ -2418,17 +2418,20 @@ function r2f_action_activate_racecharacter()
 }
 
 
-function r2f_action_upsert_racecharactersScore()
+function r2f_action_upsert_racecharactersScore($raceId)
 {
 	global $wpdb;
 	
 	set_time_limit ( 1200 );
 	
-	echo("It begins");
+	
 	ob_flush();
 	
 	// Get Params
-	$id = get_param("id");
+	if (!isset($raceId))
+		$id = get_param("id");
+	else 
+		$id = $raceId;
 			
 	// Init results
 	$result["message"] = "";
@@ -2453,7 +2456,7 @@ function r2f_action_upsert_racecharactersScore()
 	// Return result
 	echo json_encode($result);
 	
-	die();
+	//die();
 }
 
 function updateScores($raceId) {
@@ -2482,10 +2485,10 @@ function updateScores($raceId) {
 		$raceCharacters = get_newracecharacters($raceId);
 
 	for($rci=0;$rci<count($raceCharacters);$rci++) {
-		echo("$rci\n");
+		echo("$rci");
 		ob_flush();
 		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
-	
+		echo("<br/>");
 	}
 	
 	updaterefreshScores($raceId, 1);
@@ -2535,8 +2538,8 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		$xy = explode(",", $routes[$i]);
 		$x = $xy[0];
 		$y = $xy[1];
-		//$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $raceCharacter->tokenId);
-		$mapgridtokenoffset = 0;
+		$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $raceCharacter->tokenId);
+		//$mapgridtokenoffset = 0;
 		$ticks += $mapgridtokenoffset->value * $raceCharacter->drivingStyleWeight;
 		$explain .= "Grid Offset: $mapgridtokenoffset->value; Weight: $raceCharacter->drivingStyleWeight ($ticks); ";
 				
@@ -2545,7 +2548,7 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 
 		insert_racecharacterstepscore($raceCharacter, $i, $ticks, $x, $y, $explain);
 	}
-	
+	echo("<br/>");
 	update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start);
 	
 	return $r;
@@ -2554,7 +2557,7 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 
 function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start) {
 	global $wpdb;
-	echo("\n");
+	echo("<br/>");
 	ob_flush();
 	// Calculate ticks per hour
 	// Winner ticks (least number of ticks to finish)
@@ -2620,6 +2623,21 @@ function get_racecharacterstepsscores($raceCharacter) {
 			array(
 				$raceCharacter->id
 			) 
+	) );
+	
+	return $rows;
+	
+}
+
+function get_racesToCRON() {
+	global $wpdb;
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_races
+			
+		"
 	) );
 	
 	return $rows;

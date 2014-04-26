@@ -15,6 +15,8 @@ var selectedCell;
 var mapImageUrl = "";
 var mapImage;
 
+var lastInPlay;
+
 function drawGrid() {
 
 	if (paper) paper.clear();
@@ -82,6 +84,7 @@ function selectGrid(x, y) {
 				if (data.result) {
 					jQuery("#mapgridId").val(data.result.id);
 					jQuery("#inPlay").val(data.result.inPlay);
+					paper.rect(curx * cellWidth * scale, cury * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("stroke", "#0ff");
 					getMapGridTokenOffsets();
 				} else {
 					jQuery("#mapgridId").val("");
@@ -108,9 +111,10 @@ function getMapGridTokenOffsets() {
 			console.log(data);
 			jQuery("#result").text(data.message + " " + data.error);
 			var row = '<input type="hidden" id="cellTokenOffsetCount" value="'+data.rows.length+'"/><tr><th>Token</th><th>Value</th><th>In Play</th></tr>';
-			
+			var ip;
 			for(i=0;i<data.rows.length;i++) {
-				row += '<tr><td>'+data.rows[i].tokenName+'</td><td><input type="hidden" id="mapgridtokenoffsetId_'+i+'" value="'+data.rows[i].id+'"/><input type="hidden" id="tokenId_'+i+'" value="'+data.rows[i].tokenId+'"/><input id="value_'+i+'" type="text" value="'+data.rows[i].value+'"/></td><td><input id="inPlayToken_'+i+'" type="text" value="'+data.rows[i].inPlayToken+'"/></td></tr>';
+				if (lastInPlay && lastInPlay[i]) ip = lastInPlay[i]; else ip = data.rows[i].inPlayToken;
+				row += '<tr><td>'+data.rows[i].tokenName+'</td><td><input type="hidden" id="mapgridtokenoffsetId_'+i+'" value="'+data.rows[i].id+'"/><input type="hidden" id="tokenId_'+i+'" value="'+data.rows[i].tokenId+'"/><input id="value_'+i+'" type="text" value="'+data.rows[i].value+'"/></td><td><input id="inPlayToken_'+i+'" type="text" value="'+ip+'"/></td></tr>';
 			}
 			jQuery("#tokenOffsetResults").html(row);
 		}
@@ -271,12 +275,14 @@ jQuery(document).ready
 			jQuery("#mapGridTokenOffsetDataForm").validate();
 			if (!jQuery("#mapGridTokenOffsetDataForm").valid()) return false;
 			var c = jQuery("#cellTokenOffsetCount").val();
+			lastInPlay = new Array();
 			for(i=0;i<c;i++) {
 				var mapgridtokenoffsetId = jQuery("#mapgridtokenoffsetId_"+i).val();
 				var mapgridId = jQuery("#mapgridId").val();
 				var tokenId = jQuery("#tokenId_"+i).val();
 				var value = jQuery("#value_"+i).val();
 				var inPlayToken = jQuery("#inPlayToken_"+i).val();
+				lastInPlay[i] = inPlayToken;
 				//console.log(mapgridId+","+tokenId);
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",

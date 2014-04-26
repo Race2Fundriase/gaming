@@ -62,6 +62,7 @@ function drawPlayers() {
 		if (curDay < 0) x = startGridX; else x = players[i].gridX;
 		if (curDay < 0) y = startGridY; else y = players[i].gridY;
 		
+			
 	    paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 		if (players[i].playerId == current_user_id)
 			paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
@@ -324,6 +325,8 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 				jQuery("#winnerName").html(data.rows[0].name);
 				jQuery("#winnerTokenName").html(data.rows[0].tokenName);
 				jQuery("#winbanner").css("display", "block");
+				data.rows[0].gridX = finishGridX;
+				data.rows[0].gridY = finishGridY;
 			}
 
 		}
