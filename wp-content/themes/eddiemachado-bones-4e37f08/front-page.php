@@ -12,7 +12,7 @@
 						</div>
 					</div>
 					<div class="enter-race">
-						<a class="btn large" href="<?=site_url()?>/races">Sign Up</a>
+						<a class="btn large" href="<?=site_url()?>/join/">Sign Up</a>
 					</div>
 					<div class="fences wrap"></div>
 				</div>
