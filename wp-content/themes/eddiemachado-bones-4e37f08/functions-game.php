@@ -3167,13 +3167,63 @@ function updateRaceCurDayHour($raceId) {
 			"
 				UPDATE r2f_races
 				SET raceStatus = %d
-				WHERE id = %d
+				WHERE id = %d AND raceStatus != 1
 			", 
 				array(
 				1, $raceId
 				) 
 		) );
 		
+		// If anything is updated
+		if ($rows == 1) {
+			$race = $race["rows"][0];
+			$name = get_user_meta( $race->createdBy, "main_contact_name", true );
+			$join_type = get_user_meta( $race->createdBy, "join_type", true);
+			$data["name"] = $name;
+			$data["insertracename"] = $race->raceName;
+			
+			$rows2 = $wpdb->get_results( $wpdb->prepare( 
+				"
+					SELECT r2f_racecharacterscores.id, playerId, playerName,
+						((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
+						gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
+					FROM r2f_racecharacterscores
+					JOIN r2f_racecharacters 
+					ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
+					JOIN r2f_races
+					ON r2f_racecharacters.raceId = r2f_races.id
+					JOIN r2f_tokens
+					ON r2f_racecharacters.tokenId = r2f_tokens.id
+					WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
+					ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
+					LIMIT 1
+				", 
+					array(
+						$raceId, $day, $hour, $start, $limit
+					) 
+			) );
+			
+			$data["insertwinnersname"] = $rows2[0]->playerName;
+			$data["insertaddress"] = get_user_meta( $rows2[0]->playerId, "building_no_or_name", true );
+			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "road_name", true );
+			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "town_city", true );
+			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "county", true );
+			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "postcode", true );
+			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "country", true );
+			
+			$data["insertcontactnumber"] = get_user_meta( $rows2[0]->playerId, "telephone_number", true );
+			$data["insertemailaddress"] = get_user_meta( $rows2[0]->playerId, "user_email", true );
+			
+			$data["insertprizeifany"] = $race->prizeDesc;
+			
+			$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=$raceId";
+			
+			if ($join_type == "charity")
+				send_html_email($user_email, "Race2Fundraise Race Created", "CharityRaceCompleted", $data);
+			else
+				send_html_email($user_email, "Race2Fundraise Race Created", "FundraiserRaceCompleted", $data);
+		//bookmark
+		}
 	}
 }
 
