@@ -26,6 +26,7 @@ jQuery(document).ready
 					r = rowHtml;
 					r = r.replace(/{charityName}/g, data.rows[i].data.charityName);
 					r = r.replace(/{index}/g, i);
+					r = r.replace(/{profileUrl}/g, site_url+"/fundraiser-profile/?charityId="+data.rows[i].data.ID);
 					row += r;
 					
 

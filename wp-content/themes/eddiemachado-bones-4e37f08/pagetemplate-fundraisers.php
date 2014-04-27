@@ -70,7 +70,7 @@ Template Name: Fundraisers
 							</div>
                         </div>
                        
-                       <a class="btn small right" href="#">View More</a>
+                       <a class="btn small right" href="{profileUrl}">View More</a>
                     </div>
                 </div>
             </div>

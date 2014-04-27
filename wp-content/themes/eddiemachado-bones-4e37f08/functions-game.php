@@ -1923,6 +1923,48 @@ function r2f_action_get_charity()
 	die();
 }
 
+function r2f_action_get_fundraiser()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$id = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must supply a user id.";
+	
+	// Select
+	$user = get_userdata( $id );
+
+	if ($user) {
+		$result["error"] = "";
+		$result["message"] = "charity user found.";
+		
+		$user->charityName = get_user_meta( $id, "main_contact_name", true );
+		$user->website = get_user_meta( $id, "website_address", true );
+		$user->description = get_the_author_meta('description', $id);
+		
+		$result["user"] = $user;
+		
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting fundraiser user";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_get_fundraisers()
 {
@@ -3788,6 +3830,9 @@ add_action('wp_ajax_nopriv_r2f_action_get_fundraisers', 'r2f_action_get_fundrais
 
 add_action('wp_ajax_r2f_action_get_charity', 'r2f_action_get_charity');
 add_action('wp_ajax_nopriv_r2f_action_get_charity', 'r2f_action_get_charity');
+
+add_action('wp_ajax_r2f_action_get_fundraiser', 'r2f_action_get_fundraiser');
+add_action('wp_ajax_nopriv_r2f_action_get_fundraiser', 'r2f_action_get_fundraiser');
 
 add_action('wp_ajax_r2f_action_upsert_raceweather', 'r2f_action_upsert_raceweather');
 add_action('wp_ajax_nopriv_r2f_action_upsert_raceweather', 'r2f_action_upsert_raceweather');
