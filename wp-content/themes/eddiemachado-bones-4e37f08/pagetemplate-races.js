@@ -24,6 +24,7 @@ jQuery(document).ready
 				for(i=0;i<data.records;i++) {
 					r = rowHtml;
 					r = r.replace(/{id}/g, data.rows[i].cell[0]);
+					r = r.replace(/{index}/g, i);
 					r = r.replace(/{raceName}/g, data.rows[i].cell[1]);
 					r = r.replace(/{mapName}/g, data.rows[i].cell[2]);
 					r = r.replace(/{charityName}/g, data.rows[i].cell[5]);
@@ -56,6 +57,10 @@ jQuery(document).ready
 					
 				}
 				jQuery("#raceResultsActive").html(row);
+				
+				for(i=1;i<data.records;i++) {
+					jQuery("#race_"+i).addClass("top-bg-alt");
+				}
 			}
 		});
 

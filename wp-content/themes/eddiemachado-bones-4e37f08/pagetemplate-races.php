@@ -68,7 +68,7 @@ Template Name: Races
         </div><!--End Tabs-->
 		
 		<div id="templateDiv" style="display:none">
-		<div class="container grit bot-bg bot-bg-alt clearfix">
+		<div class="container grit bot-bg bot-bg-alt clearfix" id="race_{index}">
 			<div class="inner-container wrap clearfix">
 				<div class="active-race">
 					<div class="fourcol first pic-wooden">
