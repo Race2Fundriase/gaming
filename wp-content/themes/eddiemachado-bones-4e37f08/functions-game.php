@@ -2251,6 +2251,13 @@ function r2f_action_bulk_import()
 	$result["error"] = "";
 	$result["id"] = $id;
 	
+	$race = get_race($raceId);
+	$race = $race["rows"][0];
+	
+	$rows = explode("\n", $playersCSV);
+	
+	if (count($rows) > $race->maxNoOfPlayers) $result["error"] .= "The number of players exceeds the maximum for this race (".$race->maxNoOfPlayers.")";
+	
 	// Validate params
 	if ($raceId == "" || $playersCSV == "") $result["error"] .= "You must enter a race id and players CSV.";
 		
@@ -2260,10 +2267,6 @@ function r2f_action_bulk_import()
 		die();
 	}
 	
-	
-	
-	$rows = explode("\n", $playersCSV);
-
 	$inserts = 0;
 	$updates = 0;
 	
