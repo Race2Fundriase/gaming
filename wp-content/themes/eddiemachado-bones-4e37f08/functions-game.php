@@ -1034,8 +1034,6 @@ function r2f_action_join()
 		add_user_meta( $user_id, 'website_address', $website_address);
 		
 		// Send email
-		$headers = 'From: Race2Fundraise <noreply@race2fundraise.com>' . "\r\n";
-		wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password", $header ); 
 		$data["name"] = $main_contact_name;
 		$data["insertusername"] = $user_login;
 		$data["insertpassword"] = $password;
@@ -1394,6 +1392,10 @@ function r2f_action_update_race_raceStatus()
 		die();
 	}
 	
+	$race = get_race($id);
+	$race = $race["rows"][0];
+	$oldstatus = $race->raceStatus;
+	
 	// Insert or Update
 		
 	$rows = $wpdb->query( $wpdb->prepare( 
@@ -1414,6 +1416,21 @@ function r2f_action_update_race_raceStatus()
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem updating the race $id. $rows";
+	}
+	
+	if ($raceStatus == 0 && $oldStatus == -1) {
+		$user = wp_get_current_user();
+		$name = get_user_meta( $user->ID, "main_contact_name", true );
+		$join_type = get_user_meta( $user->ID, "join_type", true);
+		$data["name"] = $name;
+		$data["insertracename"] = $race->raceName;
+		$data["inserttokenlimit"] = $race->maxNoOfPlayers;
+		$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=$id";
+		
+		if ($join_type == "charity")
+			send_html_email($user_email, "Race2Fundraise Race Created", "CharityRaceCreated", $data);
+		else
+			send_html_email($user_email, "Race2Fundraise Race Created", "FundraiserRaceCreated", $data);
 	}
 	
 	// Return result
@@ -2438,10 +2455,29 @@ function r2f_action_activate_racecharacter()
 	if ($rows == 1) {
 		$result["error"] = "";
 		$result["message"] = "Race Character $id was updated.";
+		
+		$racecharacter = get_racecharacter($id);
+		$race = get_race($racecharacter->raceId);
+		$race = $race["rows"][0];
+		
+		$data["name"] = $racecharacter->playerName;
+		$data["insertracename"] = $race->raceName;
+		$data["insertstartdateandtime"] =  $race->startDate." ".$race->startTime;
+		$data["insertenddateandtime"] = $race->finishDate." ".$race->finishTime;
+		$token = get_token($raceCharacter->tokenId);
+		$data["inserttokenname"] = $token->tokenName;
+		$data["insertprizeifany"] = $race->PrizeDesc;
+		$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=".$racecharacter->raceId;
+		
+		send_html_email($user_email, "Race2Fundraise Race Entered", "PlayerRaceEntered", $data);
+
+		
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem updating the race character.";
 	}
+	
+
 
 	
 	// Return result
@@ -2789,6 +2825,27 @@ function get_racecharacters($raceId)
 		", 
 			array(
 				$raceId
+			) 
+	) );
+	
+	// Return result
+	return $rows;
+}
+
+function get_racecharacter($id)
+{
+	global $wpdb;
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacters.*
+			FROM r2f_racecharacters 
+			WHERE id = %d
+		", 
+			array(
+				$id
 			) 
 	) );
 	
@@ -3504,10 +3561,13 @@ function r2f_action_token_register()
 			$creds['remember'] = true;
 			$user = wp_signon( $creds, false );
 			
-			$headers = 'From: Race2Fundraise <noreply@race2fundraise.com>' . "\r\n";
-			wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password", $header ); 
-		}
-		
+			// Send email
+			$data["name"] = $name;
+			$data["insertusername"] = $user_login;
+			$data["insertpassword"] = $password;
+			
+			send_html_email($user_email, "Welcome to Race2Fundraise", "PlayerRegEmail", $data);
+		}	
 	} else {
 		$result["error"] = 'User already exists.';
 		$result["message"] = 'User already exists.';

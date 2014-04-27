@@ -49,20 +49,22 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		</fieldset>
 		</form>
 	</div>
+	<div id="result" class="boxShadow" style="width: 250px; float: left;"></div>
 	<div id="cellTokenOptions" class="boxShadow">
 		<form id="mapGridTokenOffsetDataForm">
+		<input type="button" value="Apply" id="upsertMapGridTokenOffset"/>
 		<h2 class="highlight">Cell Token Offsets</h2>
 		<fieldset class="myfields">
 		<table id="tokenOffsetResults">
 		
 		</table>
-		<input type="button" value="Apply" id="upsertMapGridTokenOffset"/>
+		
 		</fieldset>
 		</form>
 	</div>
 	<div id="paperParent" class="boxShadow">
 	</div>
-	<div id="result" class="boxShadow"></div>
+	
 </div>
 </section>
 <?php get_footer(); ?>
