@@ -38,9 +38,10 @@ jQuery(document).ready
 				console.log(data);
 				var li = "";
 				for(i=0;i<data.rows.length;i++) {
-					li += '<li class="highlight" id="lbli'+data.rows[i].cell[0]+'" data-index="'+i+'"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] + ' (' + data.rows[i].cell[2] + ')</a></li>';
+					li += '<div class="headings-3-col"><p class="highlight"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] +'</a></p><p class="highlight">'+ data.rows[i].cell[6] +'</p><p class="highlight">'+data.rows[i].cell[8]+'</p></div>'
+					
 				}
-				jQuery("#activeRaceResults").append(li);
+				jQuery("#activeRaces").append(li);
 			}
 		});
 		
@@ -57,7 +58,7 @@ jQuery(document).ready
 				console.log(data);
 				var li = "";
 				for(i=0;i<data.rows.length;i++) {
-					li += '<li class="highlight" id="lbli'+data.rows[i].cell[0]+'" data-index="'+i+'"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] + ' (' + data.rows[i].cell[2] + ')</a></li>';
+					li += '<div class="headings-3-col"><p class="highlight"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] +'</a></p><p class="highlight">'+ data.rows[i].cell[6] +'</p><p class="highlight">'+data.rows[i].cell[8]+'</p></div>'
 				}
 				jQuery("#completeRaceResults").append(li);
 			}

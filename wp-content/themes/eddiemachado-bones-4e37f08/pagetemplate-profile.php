@@ -45,13 +45,19 @@ Template Name: Profile
                         
                         <h2 class="highlight">Active Races</h2>
                         
-                        <ol id="activeRaceResults">
-						</ol>
+                        <div class="headings-3-col"><p class="highlight">Name</p><p class="highlight">Start</p><p class="highlight">Finish</p></div> 
+						<div class="activeRaces" id="activeRaces">
+							
+						
+						</div>
                         
                         <h2 class="highlight">Completed Races</h2>
                         
-						<ol id="completeRaceResults">
-						</ol>
+						 <div class="headings-3-col"><p class="highlight">Name</p><p class="highlight">Start</p><p class="highlight">Finish</p></div> 
+						<div class="activeRaces" id="completeRaces">
+							
+						
+						</div>
                     </div>
                     
                     
