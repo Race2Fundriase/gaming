@@ -61,7 +61,6 @@ function drawPlayers() {
 		
 		if (curDay < 0) x = startGridX; else x = players[i].gridX;
 		if (curDay < 0) y = startGridY; else y = players[i].gridY;
-		
 			
 	    paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
 		if (players[i].playerId == current_user_id)
@@ -310,7 +309,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 					}
 				});*/
 			}
-			drawPlayers();
+			
 			jQuery('#leaderboard').append(li);
 			
 			for (i=0;i<data.rows.length;i++){
@@ -327,8 +326,9 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 				jQuery("#winbanner").css("display", "block");
 				data.rows[0].gridX = finishGridX;
 				data.rows[0].gridY = finishGridY;
+				jQuery("#pageTitle").html("Completed Race");
 			}
-
+			drawPlayers();
 		}
 	});
 }

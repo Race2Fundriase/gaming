@@ -24,7 +24,7 @@ Template Name: Active Race
 	    <div class="container pad-top sand bot-bg-grass">
 		<div class="inner-container wrap clearfix">
                     <div>
-		    <h1 class="highlight">Active Race</h1>
+		    <h1 class="highlight" id="pageTitle">Active Race</h1>
                     </div>
                     
                     <div id="active-race-header">
