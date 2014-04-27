@@ -1002,7 +1002,8 @@ function r2f_action_join()
 	
 	$user_login = $profile_name;
 	$user_email = $email;
-	$errors = register_new_user($user_login, $user_email);
+	$password = wp_generate_password();
+	$errors = wp_create_user( $user_login, $password, $user_email );//register_new_user($user_login, $user_email);
 	if ( is_wp_error($errors) ) {
 		$result["message"] = "There was an error registering the user $profile_name with email $email.";
 		$result["error"] = $errors->get_error_message();
@@ -1032,12 +1033,37 @@ function r2f_action_join()
 		add_user_meta( $user_id, 'gift_aid', $gift_aid);
 		add_user_meta( $user_id, 'website_address', $website_address);
 		
+		// Send email
+		$headers = 'From: Race2Fundraise <noreply@race2fundraise.com>' . "\r\n";
+		wp_mail( $user_email, "Welcome to Race2Fundraise", "Your username is $user_login and your password is $password", $header ); 
+		$data["name"] = $main_contact_name;
+		$data["insertusername"] = $user_login;
+		$data["insertpassword"] = $password;
+		
+		if ($join_type == "charity")
+			send_html_email($user_email, "Welcome to Race2Fundraise", "CharityRegEmail", $data);
+		else
+			send_html_email($user_email, "Welcome to Race2Fundraise", "FundraiserRegEmail", $data);
 	}
 		
 	// Return result
 	echo json_encode($result);
 	
 	die();
+}
+
+function send_html_email($email, $subject, $email_type, $data) {
+	$headers[] = 'From: Race2Fundraise <noreply@race2fundraise.com>';
+	$headers[] = 'Content-type: text/html';
+
+	$html = file_get_contents($_SERVER['DOCUMENT_ROOT']."/email/$email_type.html");
+	
+	foreach($data as $key => $value) {
+		$html = str_replace("[$key]", $value, $html);
+	}
+
+	return wp_mail( $email, $subject, $html, $headers ); 
+
 }
 
 function r2f_action_upsert_race()
@@ -2245,7 +2271,14 @@ function r2f_action_bulk_import()
 
 
 function r2f_action_test() {
-	updateRaceCurDayHour(6);
+	$data["name"] = "Adrian";
+	$data["insertusername"] = "discobeat";
+	$data["insertpassword"] = "password";
+	
+	if (send_html_email("adge@discobeatsoftware.com", "Test Email", "CharityRegEmail", $data))
+			echo("email sent ok");
+	else
+		echo($GLOBALS['phpmailer']->ErrorInfo);
 }
 
 function get_randomRoute($raceId) {
