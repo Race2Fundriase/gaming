@@ -26,14 +26,14 @@
 						<span class="circle-image start-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Start a race"/></span>
 						<h2 class="highlight">Create A Race</h2><br/>
 						<a/>
-						<p class="highlight">You can create your own unique race using our easy to use interface. You can set your own start and end points and select characters that your supporters will use, if you wish you can make it relevant to your own cause and it can be sensible or crazy as you chose. Race2Fundraise is a great unique FUNdraising idea!</p>
+						<p class="highlight">Create your own race using our easy to use system. It can be as relevant or crazy as you choose</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/join/">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 						<h2 class="highlight">Enter A Race</h2><br/>
 						</a>
-						<p class="highlight">By entering a race you get to have great fun whilst supporting your chosen fundraising cause. You will have to choose a character to take account of the race conditions, and set your driving style, you may even have to plot your course. Be warned, the weather can affect the way your character will perform and the crazy race administrators control the weather so be you'll need to keep your wits about you.</p>
+						<p class="highlight">Support a great cause and have fun at the same time.</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/charities/">
