@@ -18,12 +18,50 @@ jQuery(document).ready
 				console.log(data);
 				jQuery("#result").text(data.message + " " + data.error);
 				jQuery("#charityProfileName").html(data.user.data.charityName);
+				jQuery("#charityProfileName2").html(data.user.data.charityName);
 				jQuery("#charityProfileWebsite").html(data.user.data.website);
 				jQuery("#charityProfileDesc").html(data.user.data.description);
 				
 			}
 		});
 		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_get_races',
+				createdBy: charityId,
+				raceStatus: 0
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				var li = "";
+				for(i=0;i<data.rows.length;i++) {
+					li += '<li class="highlight" id="lbli'+data.rows[i].cell[0]+'" data-index="'+i+'"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] + ' (' + data.rows[i].cell[2] + ')</a></li>';
+				}
+				jQuery("#activeRaceResults").append(li);
+			}
+		});
+		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_get_races',
+				createdBy: charityId,
+				raceStatus: 1
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				var li = "";
+				for(i=0;i<data.rows.length;i++) {
+					li += '<li class="highlight" id="lbli'+data.rows[i].cell[0]+'" data-index="'+i+'"><a href="'+site_url+'/active-race/?raceId='+data.rows[i].cell[0]+'">'+ data.rows[i].cell[1] + ' (' + data.rows[i].cell[2] + ')</a></li>';
+				}
+				jQuery("#completeRaceResults").append(li);
+			}
+		});
 
 	}
 );

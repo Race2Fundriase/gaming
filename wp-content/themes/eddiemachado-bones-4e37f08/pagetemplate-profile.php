@@ -45,23 +45,16 @@ Template Name: Profile
                         
                         <h2 class="highlight">Active Races</h2>
                         
-                        <p>Table of active races</p>
+                        <ol id="activeRaceResults">
+						</ol>
                         
                         <h2 class="highlight">Completed Races</h2>
                         
-                        <p>Table of completed races</p>
+						<ol id="completeRaceResults">
+						</ol>
                     </div>
                     
-                    <aside id="race-excerpt" class="fivecol last">
-                        <div><h3 class="highlight">Enter Our Race</h3></div>
-                        <div><p class="highlight">Race to the North Pole</p></div>
-                        <div><p class="highlight">North Pole</p></div>
-                        <div><p class="highlight">Terrain: Icy, Rough</a></p></div>
-                        <div><p class="highlight">Weather: Cold, Snowy</p></div>
-                        <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-			<div class="dates"><time class="highlight">08/08/13</time><time class="highlight">08/08/13</time></div>
-                        <div class="profile-view"><a class="btn small center" href="#">View More</a></div>
-		    </aside>
+                    
                 </div>
             </div>	
         </section>
