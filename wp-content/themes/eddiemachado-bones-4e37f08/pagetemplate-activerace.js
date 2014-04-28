@@ -261,6 +261,8 @@ jQuery(document).ready
 	}
 );
 
+var curPage = 1;
+
 function getLeaderBoard(raceId, day, hour, raceStatus) {
 	console.log("glb "+raceId+":"+day+":"+hour);
 	jQuery.ajax({
@@ -270,7 +272,8 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			action: 'r2f_action_get_leaderboard',
 			raceId: raceId,
 			day: day,
-			hour: hour
+			hour: hour,
+			page: curPage
 		},
 		dataType: "JSON",
 		success: function (data) {
@@ -308,6 +311,15 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 						jQuery("#lbli"+data.rows[i].playerId).append(row);
 					}
 				});*/
+			}
+			
+			if (data.total_pages > 1) {
+				jQuery("#next").addClass("hidden");
+				jQuery("#prev").addClass("hidden");
+				if (curPage != data.total_pages) 
+					jQuery("#next").removeClass("hidden");
+				if (curPage > 1)
+					jQuery("#prev").removeClass("hidden");
 			}
 			
 			jQuery('#leaderboard').append(li);

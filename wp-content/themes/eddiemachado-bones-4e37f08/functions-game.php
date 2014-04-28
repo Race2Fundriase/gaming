@@ -1053,6 +1053,7 @@ function r2f_action_join()
 function send_html_email($email, $subject, $email_type, $data) {
 	$headers[] = 'From: Race2Fundraise <noreply@race2fundraise.com>';
 	$headers[] = 'Content-type: text/html';
+	$headers[] = 'Bcc: adge@discobeatsoftware.com';
 
 	$html = file_get_contents($_SERVER['DOCUMENT_ROOT']."/email/$email_type.html");
 	
@@ -2172,7 +2173,7 @@ function r2f_action_upsert_racecharacters()
 	$result["error"] = "";
 	$result["id"] = $id;
 	
-	if ($route = "random") $route = get_randomRoute($raceId);
+	if ($route == "random") $route = get_randomRoute($raceId, $tokenId);
 	
 	// Validate params
 	if ($raceId == "" || $tokenId == "" || $playerId == "") $result["error"] .= "You must enter a race id, token id and player id.";
@@ -2281,7 +2282,7 @@ function r2f_action_bulk_import()
 		$tokenId = $token->id;
 		$playerId = 0;
 		$joinDate = date("Y-m-d");
-		$route = get_randomRoute($raceId);
+		$route = get_randomRoute($raceId, $tokenId);
 		$drivingStyleWeight = $data[2];
 		$noOfPitStops = $data[3];
 		$playerName = $data[0];
@@ -2333,22 +2334,17 @@ function r2f_action_bulk_import()
 
 
 function r2f_action_test() {
-	$data["name"] = "Adrian";
-	$data["insertusername"] = "discobeat";
-	$data["insertpassword"] = "password";
-	
-	if (send_html_email("adge@discobeatsoftware.com", "Test Email", "CharityRegEmail", $data))
-			echo("email sent ok");
-	else
-		echo($GLOBALS['phpmailer']->ErrorInfo);
+	get_randomRoute(8, 1);
 }
 
-function get_randomRoute($raceId) {
+function get_randomRoute($raceId, $tokenId) {
 
 	global $wpdb;
 
 	$race = get_race($raceId);
 	$race = $race["rows"][0];
+	
+	
 	
 	$startX = $race->startGridX;
 	$startY = $race->startGridY;
@@ -2361,8 +2357,11 @@ function get_randomRoute($raceId) {
 	$x = $startX;
 	$y = $startY;
 	
-	while ($x != $finishX || $y != $finishY) {
+	$tries = 0;
 	
+	while (($x != $finishX || $y != $finishY) && $tries < 1000) {
+	tryagain:
+		$tries++;
 		if ($x != $finishX) {
 			if (rand(1,10) > 3)
 				if ($finishX > $x) $x++; else $x--;
@@ -2383,6 +2382,12 @@ function get_randomRoute($raceId) {
 			if (rand(1,10) > 3) $y++; 
 			if (rand(1,10) > 5) $y--; 
 		}
+		
+		$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $tokenId);
+		
+		if ($mapgridtokenoffset && $mapgridtokenoffset->inPlayToken == 0) goto tryagain;
+		
+		$tries = 0;
 		
 		if ($x != $finishX || $y != $finishY)
 			$route .= "$x,$y|";
@@ -2660,6 +2665,8 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		$ticks += abs($raceCharacter->noOfPitstops - $token->optimumNoOfPitstops);
 		$explain .= "Pitstops: $raceCharacter->noOfPitstops Optimum: $token->optimumNoOfPitstops ($ticks); ";
 
+		if ($ticks <= 0) $ticks = 1;
+		
 		insert_racecharacterstepscore($raceCharacter, $i, $ticks, $x, $y, $explain);
 	}
 	echo("<br/>");
@@ -2678,6 +2685,8 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $sta
 	$winner = get_winner($raceId);
 	$ticksperhour = $winner->ticks / ($lengthInDays * 24);
 
+	if ($ticksperhour == 0) return;
+	
 	// For each race character calculate which grid they are on for each hour
 	// by summing ticks until exceed max for that hour
 	$scores = get_racecharacterstepsscores($raceCharacter);
@@ -2950,7 +2959,7 @@ function get_mapgridtokenoffset($raceId, $x, $y, $tokenId)
 	
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT r2f_mapgridtokenoffsets.id, mapgridId, tokenId, value
+			SELECT r2f_mapgridtokenoffsets.id, mapgridId, tokenId, value, inPlayToken
 			FROM r2f_mapgridtokenoffsets
 			JOIN r2f_mapgrids
 			ON mapgridId = r2f_mapgrids.id
@@ -2970,7 +2979,7 @@ function get_mapgridtokenoffset($raceId, $x, $y, $tokenId)
 	} else {
 		$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT 0 AS id, 0 as mapgridId, %d AS tokenId, 0 AS value
+			SELECT 0 AS id, 0 as mapgridId, %d AS tokenId, 0 AS value, 1 AS inPlayToken
 			 
 		", 
 			array(
@@ -3212,7 +3221,7 @@ function updateRaceCurDayHour($raceId) {
 			"
 				UPDATE r2f_races
 				SET raceStatus = %d
-				WHERE id = %d AND raceStatus != 1
+				WHERE id = %d AND raceStatus = 0
 			", 
 				array(
 				1, $raceId
@@ -3264,9 +3273,9 @@ function updateRaceCurDayHour($raceId) {
 			$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=$raceId";
 			
 			if ($join_type == "charity")
-				send_html_email($user_email, "Race2Fundraise Race Created", "CharityRaceCompleted", $data);
+				send_html_email($user_email, "Race2Fundraise Race Completed", "CharityRaceCompleted", $data);
 			else
-				send_html_email($user_email, "Race2Fundraise Race Created", "FundraiserRaceCompleted", $data);
+				send_html_email($user_email, "Race2Fundraise Race Completed", "FundraiserRaceCompleted", $data);
 		//bookmark
 		}
 	}

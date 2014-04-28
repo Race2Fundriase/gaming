@@ -8,9 +8,10 @@ Template Name: CRON
 
         CRON Jobs
 		<?php 
+			echo(date());
 			$races = get_racesToCRON();
 			for($i=0;$i<count($races);$i++) {
-				echo("<br/>Race $i<br/>");
+				echo("<br/>Race $i<br/> ");
 				r2f_action_upsert_racecharactersScore($races[$i]->id);
 			}
 		?>

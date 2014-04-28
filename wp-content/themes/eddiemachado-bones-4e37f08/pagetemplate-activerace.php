@@ -145,7 +145,8 @@ Template Name: Active Race
 								</select></div>
                                 <ol class="highlight" id="leaderboard">
 								</ol>
-                            
+								<input type="submit" id="prev" class="btn small myhidden" value="PREVIOUS" readonly="readonly" >
+								<input type="submit" id="next" class="btn small myhidden" value="NEXT" readonly="readonly" >
                             </div>
                         </div>
                     </div>

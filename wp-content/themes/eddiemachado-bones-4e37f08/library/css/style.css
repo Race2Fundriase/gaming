@@ -4126,6 +4126,11 @@ body.logged-in .nav li.logged-in-nav {
   margin-top: 30px;
 }
 
+/* line 156, ../scss/_game.scss */
+.myhidden {
+  display: none;
+}
+
 /* jqModal base Styling courtesy of;
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,
