@@ -97,6 +97,7 @@ function selectGrid(x, y) {
 	});
 }
 
+
 function getMapGridTokenOffsets() {
 	var mapgridId = jQuery("#mapgridId").val();
 	jQuery.ajax({
@@ -196,6 +197,24 @@ window.onload = function () {
 				jQuery("#cellHeight").val(data.result.cellHeight);
 				updateMapOptions();
 				drawGrid();
+				jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_get_mapgrids',
+						mapId: mapId
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						jQuery("#result").text(data.message + " " + data.error);
+						for(i=0;i<data.rows.length;i++) {
+							curx = data.rows[i].gridX;
+							cury = data.rows[i].gridY;
+							paper.rect(curx * cellWidth * scale, cury * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("stroke", "#0f0");
+						}
+					}
+				});
 			}
 			
 		}
@@ -307,6 +326,8 @@ jQuery(document).ready
 			}
 			return false;
 		} );
+		
+		
 	}
 );
 
