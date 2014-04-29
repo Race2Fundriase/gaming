@@ -24,7 +24,7 @@
 			<li><a href="#" class="btn large">Fundraisers</a></li>
 		    </ul>
 		    
-		    <p class="text-center"><span class="highlight">Register online below, or with just giving</span></p>
+		    <p class="text-center"><span class="highlight">Want to enter a race? <a href="http://race2fundraise.com/races/">Click here</a> to find a race and enter now.</span></p>
 		</div>
 	    </div>
 	</section>
@@ -368,9 +368,12 @@
 					<div>
 					    <label for="website_address"><span>Website Address</span></label>
 					    <div>
-					    <input name="website_address" id="website_address" type="url" tabindex="13"/>
+					    <input name="website_address" id="website_address" type="url" tabindex="13" value="http://"/>
 					    </div>
 					</div>
+<div>
+<p style="text-align:center; color:#ffffff;">By clicking sign up/register you agree to our electronic <a href="http://race2fundraise.com/terms-and-conditions/" style="color:#de5f02">terms and conditions</a></p>
+</div>
 					
 					<div class="text-center signup"><input type="submit" value="SIGNUP" id="register_charity" class="btn large"/></div>
 				  </div> 
@@ -674,7 +677,7 @@
 						<option value="Uganda">Uganda</option>
 						<option value="Ukraine">Ukraine</option>
 						<option value="United Arab Erimates">United Arab Emirates</option>
-						<option value="United Kingdom">United Kingdom</option>
+						<option selected="selected" value="United Kingdom">United Kingdom</option>
 						<option value="United States of America">United States of America</option>
 						<option value="Uraguay">Uruguay</option>
 						<option value="Uzbekistan">Uzbekistan</option>
@@ -705,9 +708,12 @@
 					<div>
 					    <label for="website_address_fund"><span>Website Address</span></label>
 					    <div>
-					    <input name="website_address_fund" id="website_address_fund" type="url" tabindex="13"/>
+					    <input name="website_address_fund" id="website_address_fund" type="url" tabindex="13" value="http://"/>
 					    </div>
 					</div>
+<div>
+<p style="text-align:center; color:#ffffff;">By clicking sign up/register you agree to our electronic <a href="http://race2fundraise.com/terms-and-conditions/" style="color:#de5f02">terms and conditions</a></p>
+</div>
 					
 					<div class="text-center signup"><input type="submit" value="SIGNUP" id="register_fund" class="btn large"/></div>
 				</div>
@@ -718,52 +724,61 @@
 	    </div>
 	</section>
 	
-	<section>
-		<div class="container bot-bg sand">
-			<div class="inner-container wrap clearfix">
-				<div class="twelvecol first last">
-					<h2 class="highlight">6 Facts About R2F</h2>
+			<section>
+			<div class="container top-bg bot-bg sand">
+				<div class="inner-container wrap clearfix">
+					<div class="twelvecol first last">
+						<h2 class="highlight">6 Facts About R2F</h2>
+					</div>
+					<div class="row clearfix">
+					<div class="fourcol first clearfix">
+						<span class="num-bullet">1</span>
+						
+						<p><span class="highlight">Fun</span><br/>The race2fundraise is fun to play, depending on how you choose to setup your race, players decide which character they want to race, select their racing colours, create their own route and determine their racing style enabling your supporters to become part of the fundraising event.</p>
+					</div>
+					
+					<div class="fourcol clearfix">
+						<span class="num-bullet">2</span>
+						<p><span class="highlight">A Truly Unique fundraising opportunity</span><br/>
+							You can tailor each race to your cause or project needs.
+							You decide if the race is open to everyone (worldwide) or a closed list of invited people. 
+							You choose the race duration, start and end times.
+							You choose the race location, start and end points.
+							You set the character choice.
+							You set the player price.
+							You even control the weather.
+							You choose if there are prizes for finishing positions.</p>
+					</div>
+					
+					<div class="fourcol last clearfix">
+						<span class="num-bullet">3</span>
+						<p><span class="highlight">Easy to setup and administer</span><br/>
+Our game engine has been designed to make it simple to setup a new race, all the game settings and reporting is available online.  Players can see their current positions online 24 hours a day.</p>
+					</div>
+					</div>
+					
+					<div class="row clearfix">
+					<div class="fourcol first clearfix">
+						<span class="num-bullet">4</span>
+						<p><span class="highlight">Cost effective fundraising idea</span><br/>
+Race2fundraise offers excellent value for money with options to reflect different supporter levels and budgets; you could even choose to buy a small race and then add extra players as you need them. You can use your own website and email system to invite people to race and fundraise.</p>
+					</div>
+					
+					<div class="fourcol clearfix">
+						<span class="num-bullet">5</span>
+						<p><span class="highlight">Inclusive to all</span><br/> 
+Irrespective of age, location and agility all players can compete fairly against one another.  You can choose to make the game open to anyone online.</p>
+					</div>
+					
+					<div class="fourcol last clearfix">
+						<span class="num-bullet">6</span>
+						<p><span class="highlight">Value and Entertainment for your supporters</span><br/>
+During the race the players can see their position on the race map and compare it with their friends and family so your supporters receive entertainment for the full race duration.</p>
+					</div>
+					</div>
 				</div>
-				
-				<div class="fourcol first clearfix">
-					<span class="num-bullet">1</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
-				<div class="fourcol clearfix">
-					<span class="num-bullet">2</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
-				<div class="fourcol last clearfix">
-					<span class="num-bullet">3</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
-				<div class="fourcol first clearfix">
-					<span class="num-bullet">4</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
-				<div class="fourcol clearfix">
-					<span class="num-bullet clearfix">5</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
-				<div class="fourcol last clearfix">
-					<span class="num-bullet">6</span>
-					<p>Lorem ipsum dolar sit amet, malores omare ac fermentum, imperdiet ut viamus a, nam lectus at nunc. Quam euismod sem, semper
-					 ut potenti pellentesque quisque.</p>
-				</div>
-				
 			</div>
-		</div>
-	</section>
+			</section>
 	
 <?php get_footer(); ?>
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

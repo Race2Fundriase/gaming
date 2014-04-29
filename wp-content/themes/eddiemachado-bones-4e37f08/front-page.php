@@ -11,9 +11,6 @@
 							<img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
 						</div>
 					</div>
-					<div class="enter-race">
-						<a class="btn large" href="<?=site_url()?>/join/">Sign Up</a>
-					</div>
 					<div class="fences wrap"></div>
 				</div>
 			</section>
@@ -22,25 +19,25 @@
 			<div class="container bot-bg pad-top sand">
 				<div class="inner-container wrap clearfix">
 					<div class="fourcol first text-center">
-						<a href="#">
+						<a href="http://race2fundraise.com/races/">
 						<span class="circle-image start-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Start a race"/></span>
-						<h2 class="highlight">Create A Race</h2><br/>
-						<a/>
-						<p class="highlight">Create your own race using our easy to use system. It can be as relevant or crazy as you choose</p>
-					</div>
-					<div class="fourcol text-center">
-						<a href="http://race2fundraise.com/join/">
-						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 						<h2 class="highlight">Enter A Race</h2><br/>
-						</a>
-						<p class="highlight">Support a great cause and have fun at the same time.</p>
+						<a/>
+						<p class="highlight">Enter a race today and help raise money for a good cause whilst enjoying the thrill of the Race to Fundraise!</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="http://race2fundraise.com/charities/">
-						<span class="circle-image our-members"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Our members"/></span>
-						<h2 class="highlight">Our Members</h2><br/>
+						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
+						<h2 class="highlight">Become A Charity</h2><br/>
 						</a>
-						<p class="highlight">Charities, clubs, societies, places of education and fundraisers raising money for their chosen cause are all eligible to run setup a race2fundraise account.</p>
+						<p class="highlight">Sign up as a charity and create races to excite and engage your followers whilst raising money.</p>
+					</div>
+					<div class="fourcol text-center">
+						<a href="http://race2fundraise.com/fundraisers/">
+						<span class="circle-image our-members"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Our members"/></span>
+						<h2 class="highlight">Become a Fundraiser</h2><br/>
+						</a>
+						<p class="highlight">Are you a club, society, places of education or individual raising money for a good cause? Sign up today and start running races to raise money for your cause.</p>
 					</div>
 				</div>
 			</div>
@@ -98,9 +95,9 @@
 						    ?>
 					</div>
 					<div class="sixcol wooden text-center">
-						<!--<h2 class="highlight">Video Placeholder</h2>-->
+						<h2 class="highlight">About R2F</h2>
 						<div class="video-container">
-						   <?php echo getFeaturedVideo($post->ID); ?>
+<iframe width="680" height="360" src="http://www.youtube.com/embed/9p35aveHZuA?rel=0&amp;showinfo=0&amp;controls=0&amp;autoplay=0&amp;modestbranding=1" frameborder="0" allowfullscreen=""></iframe>
 						</div>
 					</div>
 				</div>
@@ -179,7 +176,7 @@
 						<div class="featured-game" style="overflow: hidden">
 							<img src="{mapImageUrl}" alt="{raceName}" />
 							<p class="title highlight">{raceName}</p>
-							<p class="charity highlight">{charityName}</p>
+							<p class="charity highlight" style="white-space:nowrap; overflow:hidden; width:197px;">{charityName}</p>
 						</div>
 						<a class="btn medium" href="{enterRaceUrl}">Enter Race</a>
 					</div>

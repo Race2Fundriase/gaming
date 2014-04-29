@@ -6,7 +6,7 @@
 							<?php bones_footer_links(); ?>
 					</nav>
 					
-					<p class="copyright">Copyright Race2LTD - 08911930 2014</p>
+					<p class="copyright">Copyright 2013-14 Race2 Limited all rights reserved, company registration 08911930</p>
 
 				</div>
 

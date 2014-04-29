@@ -19,21 +19,21 @@ Template Name: User Dashboard
 						<span class="circle-image start-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Start a race"/></span>
 						<h2 class="highlight">Enter A Race</h2><br/>
 						<a/>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">Enter a race and begin helping good causes to raise money whilst having fun.</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="<?=site_url();?>/charities">
 						<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 						<h2 class="highlight">Charities</h2><br/>
 						</a>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">Search and view charities on Race to Fundraise, learn more about their work and join an active race to raise money.</p>
 					</div>
 					<div class="fourcol text-center">
 						<a href="<?=site_url();?>/fundraisers">
 						<span class="circle-image our-members"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Our members"/></span>
 						<h2 class="highlight">Fundraisers</h2><br/>
 						</a>
-						<p class="highlight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+						<p class="highlight">Check out our fundraisers, learn more about their cause and join an active race to raise money.</p>
 					</div>
 				</div>
 			<div id="racesDataGrid" class="boxShadow">
