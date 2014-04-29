@@ -288,6 +288,7 @@ window.onload = function () {
 									var x = p[0];
 									var y = p[1];
 									selectedCell = paper.rect(x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#00f");
+									paper.text((x * cellWidth * scale)+((cellWidth * scale)/2), (y * cellWidth * scale)+((cellWidth*scale)/2), i);
 								}
 							}
 						}
@@ -320,6 +321,14 @@ window.onload = function () {
 		
 		return false;
 	} );
+	
+	jQuery("#startagain").click(function(e) { 
+		
+		location.href = site_url+"/enter-race-part-1/?raceId="+raceId;
+		
+		return false;
+	} );
+
 };
 
 function updateMapOptions() {

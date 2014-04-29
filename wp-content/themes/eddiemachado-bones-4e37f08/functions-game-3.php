@@ -324,12 +324,22 @@ function get_randomRoute($raceId, $tokenId) {
 	$oldy = -1;
 	
 	$tries = 0;
+	$tries2 = 0;
 	
-	while (($x != $finishX || $y != $finishY) && $tries < 1000) {
+	while (($x != $finishX || $y != $finishY) && $tries2 < 1000) {
 	tryagain:
 		$tries++;
-		if ($tries > 1000) break;
-		if ($x != $finishX) {
+		if ($tries > 10) {
+			$tries2++;
+			$route = "";
+			$x = $startX;
+			$y = $startY;
+			$oldx = -1;
+			$oldy = -1;
+			$tries = 0;
+			
+		}
+		/*if ($x != $finishX) {
 			if (rand(1,10) > 3)
 				if ($finishX > $x) $x++; else $x--;
 			else
@@ -350,23 +360,43 @@ function get_randomRoute($raceId, $tokenId) {
 			if (rand(1,10) > 5) $y--; 
 		}
 		
-
 		
+		
+		if ($x != $oldx && $y != $oldy)
+			if (rand(1,2) == 1) $x = $oldx; else $y = $oldy;
+			
+		*/
+			
+		$c = rand(1,4);
+		if ($c == 1) $y--;
+		if ($c == 2) $y++;
+		if ($c == 3) $x++;
+		if ($c == 4) $x--;
+			
 		if ($x < 0) $x = 0;
 		if ($y < 0) $y = 0;
 		
 		if ($x >= $map->gridWidth) $x = $map->gridWidth;
 		if ($y >= $map->gridHeight) $y = $map->gridHeight;
 		
-	
-		if ($x != $oldx && $y != $oldy)
-			if (rand(1,2) == 1) $x = $oldx; else $y = $oldy;
-		
-		if (strpos($route, "$x,$y|")) goto tryagain;
-		
+		//echo("$x,$y|");
+
+		if (strpos($route, "$x,$y|") !== FALSE) {
+			//echo("going back on yourself");
+			$x = $oldx;
+			$y = $oldy;
+			goto tryagain;
+		}
+			
 		$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $tokenId);
 		
-		if ($mapgridtokenoffset && $mapgridtokenoffset->inPlayToken == 0) goto tryagain;
+		if ($mapgridtokenoffset && $mapgridtokenoffset->inPlayToken == 0) {
+			//echo("mapgridtokenoffset issue");
+			$x = $oldx;
+			$y = $oldy;
+			goto tryagain;
+		}
+		
 		
 		$tries = 0;
 		
@@ -377,7 +407,7 @@ function get_randomRoute($raceId, $tokenId) {
 		$oldy = $y;
 			
 	}
-	
+	//echo($route);
 	
 	return $route;
 }
