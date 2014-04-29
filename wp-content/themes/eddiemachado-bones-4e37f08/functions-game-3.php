@@ -304,6 +304,8 @@ function r2f_action_test() {
 function get_randomRoute($raceId, $tokenId) {
 
 	global $wpdb;
+	
+	return "";
 
 	$race = get_race($raceId);
 	$race = $race["rows"][0];
