@@ -393,7 +393,7 @@
 					<div>
 					    <label for="main_contact_name_fund"><span>Main Contact Name:</span></label>
 					    <div>
-					    <input name="main_contact_name_fund" type="text" value="" size="8" tabindex="3"/>
+					    <input name="main_contact_name_fund" id="main_contact_name_fund" type="text" value="" size="8" tabindex="3"/>
 					    </div>
 					</div>
 					<div>
