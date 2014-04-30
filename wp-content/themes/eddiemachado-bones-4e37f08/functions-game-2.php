@@ -703,7 +703,7 @@ function r2f_action_get_user_races()
 	}
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
-
+	if ($start < 0) $start = 0;
 	$queryResult = $wpdb->get_results("select `r2f_races`.`id`, `maxNoOfPlayers`, `paymentMethod`, `paymentMethodEmail`, `paymentMethodAdminEmail`, 
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, 
@@ -860,7 +860,7 @@ function r2f_action_get_charities()
 	// Public
 	
 	// Get Params
-	$q = $_POST["q"];
+	$q = get_param("q");
 	
 	// Init results
 	$result["message"] = "";
@@ -889,7 +889,7 @@ function r2f_action_get_charities()
 				'compare' => '='
 			),
 			array(
-				'key' => 'main_contact_name',
+				'key' => 'official_charity_name',
 				'value' => $q,
 				'compare' => 'LIKE'
 			)
@@ -900,16 +900,21 @@ function r2f_action_get_charities()
 		$result["message"] = "charity users found.";
 		
 		$i=0;
+		$prev = 0;
 		foreach($rows as $row) {
 			
 			$charityName = get_user_meta( $row->data->ID, "official_charity_name", true );
 			$row->data->charityName = $charityName;
-			$result["rows"][$i] = $row;
 			
-			$i++;
+			if ($row->data->ID != $prev) {
+				$result["rows"][$i] = $row;
+				$i++;
+			}
+			
+			$prev = $row->data->ID;
 		}    
 		
-		
+				
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem getting charity users";
