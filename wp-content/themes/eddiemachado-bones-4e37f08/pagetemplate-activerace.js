@@ -154,11 +154,13 @@ jQuery(document).ready
 				jQuery("#result").text(data.message + " " + data.error);
 				var dateParts = data.rows[0].startDate.split("-");
 				var d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
-				jQuery("#startDate").html(d.toLocaleDateString());
+				//jQuery("#startDate").html(d.toLocaleDateString());
+				jQuery("#startDate").html(d.ddmmyyyy());
 				jQuery("#startTime").html(data.rows[0].startTime);
 				dateParts = data.rows[0].finishDate.split("-");
 				d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
-				jQuery("#finishDate").html(d.toLocaleDateString());
+				//jQuery("#finishDate").html(d.toLocaleDateString());
+				jQuery("#finishDate").html(d.ddmmyyyy());
 				jQuery("#finishTime").html(data.rows[0].finishTime);
 				jQuery("#raceName").html(data.rows[0].raceName);
 				jQuery("#raceDescription").html(data.rows[0].raceName);
@@ -201,6 +203,10 @@ jQuery(document).ready
 							jQuery("#cellWidth").val(data.result.cellWidth);
 							jQuery("#cellHeight").val(data.result.cellHeight);
 							jQuery("#mapScale").val(data.result.mapWidth / 12521.0);
+							if (data.result.id == 3) {
+								jQuery("#mapScale").val(0.1);
+								
+							}
 							scale = jQuery("#mapScale").val();
 							updateMapOptions();
 							drawGrid();
@@ -402,3 +408,16 @@ function updateMapOptions() {
 	cellHeight = jQuery("#cellHeight").val();
 }
 
+Date.prototype.yyyymmdd = function() {
+   var yyyy = this.getFullYear().toString();
+   var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+   var dd  = this.getDate().toString();
+   return yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]); // padding
+  };
+  
+Date.prototype.ddmmyyyy = function() {
+   var yyyy = this.getFullYear().toString();
+   var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+   var dd  = this.getDate().toString();
+   return (dd[1]?dd:"0"+dd[0]) + "/" + (mm[1]?mm:"0"+mm[0]) + "/" + yyyy; // padding
+  };
