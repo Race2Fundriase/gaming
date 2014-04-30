@@ -184,7 +184,7 @@ function bones_scripts_and_styles() {
 			wp_enqueue_script('why');
 		}
 		
-		if (is_page("join") || is_page("races") || is_page_template('pagetemplate-help.php') || is_page_template("pagetemplate-tokenjoin.php")) {
+		if (is_page_template("pagetemplate-creategamefour.php") || is_page("join") || is_page("races") || is_page_template('pagetemplate-help.php') || is_page_template("pagetemplate-tokenjoin.php")) {
 			wp_enqueue_script('join');
 		}
 		
