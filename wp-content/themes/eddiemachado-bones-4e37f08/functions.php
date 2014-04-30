@@ -352,7 +352,7 @@ function my_added_login_field(){
 		</div>
 		
 		<div class="sixcol first text-center">
-		<a href="#" class="btn medium">Register As Individual</a>
+		<a href="http://race2fundraise.com/token-join/" class="btn medium">Register As Player</a>
 		</div>
 	</div>
    
