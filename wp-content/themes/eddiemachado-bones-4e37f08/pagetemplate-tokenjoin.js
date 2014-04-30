@@ -3,6 +3,7 @@ jQuery(document).ready
 	function(jQuery)
 	{
 		
+		var raceId = qs("raceId");
 			
 		jQuery("#login").click(function() { 
 
@@ -20,8 +21,12 @@ jQuery(document).ready
 				success: function (data) {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
-					if (data.error == "")
-						location.href = "/";
+					if (data.error == "") {
+						if (raceId == "")
+							location.href = "/";
+						else
+							location.href = "/active-race/?raceId="+raceId;
+					}
 				}
 			});
 			return false;
@@ -54,10 +59,19 @@ jQuery(document).ready
 					jQuery("#result").text(data.message + " " + data.error);
 					var n = noty({text: data.message + " " + data.error});
 					if (data.error == "")
-						setTimeout(function(){location.href = "/"},5000);
+						setTimeout(function(){if (raceId == "")
+							location.href = "/";
+						else
+							location.href = "/active-race/?raceId="+raceId;},5000);
 				}
 			});
 			return false;
 		} );
 	}
 );
+
+function qs(key) {
+    key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
+    var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
+    return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}

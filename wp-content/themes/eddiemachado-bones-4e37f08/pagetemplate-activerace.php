@@ -57,7 +57,7 @@ Template Name: Active Race
 							<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
 							<?php } ?>
 							<?php if(get_current_user_id() == 0 && user_can_enter_race()) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/token-join">Enter Now</a>
+							<a class="btn large blue" href="<?=site_url()?>/token-join/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
 							<?php } ?>
 							<?php if(user_can_edit_race()) { ?>
 							<br/><a class="btn large blue" href="<?=site_url()?>/edit-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
