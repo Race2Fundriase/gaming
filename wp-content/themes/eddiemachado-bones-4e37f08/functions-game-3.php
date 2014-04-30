@@ -1377,7 +1377,7 @@ function updateRaceCurDayHour($raceId) {
 			
 			$data["insertprizeifany"] = $race->prizeDesc;
 			
-			$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=$raceId";
+			$data["linktocompletedrace"] = "http://race2fundraise.com/active-race/?raceId=$raceId";
 			
 			if ($join_type == "charity")
 				send_html_email($user_email, "Race2Fundraise Race Completed", "CharityRaceCompleted", $data);

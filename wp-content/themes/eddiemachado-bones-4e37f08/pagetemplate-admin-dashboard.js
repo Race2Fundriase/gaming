@@ -33,7 +33,7 @@ jQuery(document).ready
 					r = r.replace(/{maxNoOfPlayers}/g, data.rows[i].cell[11]);
 					r = r.replace(/{raceStatus}/g, data.rows[i].cell[3] ? 'Active' : 'Complete');
 					r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
-					r = r.replace(/{inviteUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
+					r = r.replace(/{tweetUrl}/g,'https://twitter.com/intent/tweet?text='+encodeURIComponent('Come and join the Race!')+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+data.rows[i].cell[0]));
 					r = r.replace(/{createUrl}/g,site_url+'/enter-race/?raceId='+data.rows[i].cell[0]);
 					r = r.replace(/{stopActivateUrl}/g,site_url+'/edit-online-race/?raceId='+data.rows[i].cell[0]);
 					row += r;

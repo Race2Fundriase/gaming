@@ -12,6 +12,7 @@ function add_jQuery_libraries() {
 	wp_register_script('raphael', get_template_directory_uri().'/library/js/raphael-min.js', array('jquery'));
 	wp_register_script('noty', get_template_directory_uri().'/library/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'));
 	wp_register_script('qtip', get_template_directory_uri().'/library/js/libs/jquery.qtip.min.js', array('jquery'));
+	wp_register_script('twitter', '//platform.twitter.com/widgets.js', array('jquery'));
 	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
@@ -20,6 +21,7 @@ function add_jQuery_libraries() {
 	wp_enqueue_script('raphael');
 	wp_enqueue_script('noty');
 	wp_enqueue_script('qtip');
+	wp_enqueue_script('twitter');
 	
 }
  
