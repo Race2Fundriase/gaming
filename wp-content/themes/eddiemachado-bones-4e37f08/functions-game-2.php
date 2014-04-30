@@ -623,7 +623,7 @@ function r2f_action_get_races()
 		$where .= " AND raceStatus = $raceStatus";
 	if (isset($q) && $q != "")
 		$where .= " AND raceName LIKE '%$q%'";
-	if (isset($createdBy))
+	if (isset($createdBy) && $createdBy != "")
 		$where .= " AND createdBy = $createdBy";
 	if (isset($private))
 		$where .= " AND private = $private";

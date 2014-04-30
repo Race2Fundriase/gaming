@@ -502,36 +502,25 @@ body.login {
   background: url("../images/grit-bg.jpg") !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* line 8, ../scss/custom-login.scss */
-body.login:after {
-  position: absolute;
-  display: block;
-  content: " ";
-  width: 100%;
-  height: 170px;
-  left: 0;
-  bottom: 0;
-  background: url("../images/container-bottom-1920x170.gif") repeat-x;
-}
 
-/* line 20, ../scss/custom-login.scss */
+/* line 10, ../scss/custom-login.scss */
 #login {
   padding-top: 0;
   width: 320px;
 }
-/* line 24, ../scss/custom-login.scss */
+/* line 14, ../scss/custom-login.scss */
 #login h1 {
   width: 320px;
   height: 265px;
 }
-/* line 27, ../scss/custom-login.scss */
+/* line 17, ../scss/custom-login.scss */
 #login h1 a {
   background: url("../images/r2fhomelogo.png") no-repeat;
   background-size: 320px 265px;
   width: 100%;
   height: 265px;
 }
-/* line 35, ../scss/custom-login.scss */
+/* line 25, ../scss/custom-login.scss */
 #login form {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -539,7 +528,7 @@ body.login:after {
   background: none;
   /* line 1132, ../scss/_base.scss */
 }
-/* line 46, ../scss/custom-login.scss */
+/* line 36, ../scss/custom-login.scss */
 #login form input[type=text],
 #login form input[type=tel],
 #login form input[type=email],
@@ -549,7 +538,7 @@ body.login:after {
   width: 100%;
   padding: 10px;
 }
-/* line 58, ../scss/custom-login.scss */
+/* line 48, ../scss/custom-login.scss */
 #login form input[type=text]:focus,
 #login form input[type=email]:focus,
 #login form input[type=tel]:focus,
@@ -560,7 +549,7 @@ body.login:after {
   outline: 0;
   border-color: #de5f02;
 }
-/* line 63, ../scss/custom-login.scss */
+/* line 53, ../scss/custom-login.scss */
 #login form .button {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 1px solid #9c4301;
@@ -585,7 +574,7 @@ body.login:after {
   background-image: linear-gradient(to bottom, #de5f02, #c55402);
 }
 
-/* line 86, ../scss/custom-login.scss */
+/* line 76, ../scss/custom-login.scss */
 body.login div#login p#nav a, body.login div#login p#backtoblog a {
   color: #de5f02 !important;
   text-shadow: none;
