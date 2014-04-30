@@ -808,6 +808,10 @@ function check_security($pageName) {
 	return true;
 }
  
-
+add_action('wp_logout','go_home');
+function go_home(){
+  wp_redirect( home_url() );
+  exit();
+}
   
 ?>

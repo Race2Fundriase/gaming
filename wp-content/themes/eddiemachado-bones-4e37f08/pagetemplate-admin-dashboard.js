@@ -43,5 +43,11 @@ jQuery(document).ready
 				jQuery("#raceResultsActive").html(row);
 			}
 		});
+		
+		jQuery("#comingsoon").click(function(e) {
+			e.preventDefault;
+			alert ("This feature is coming soon!");
+			return false;
+		});
 	}
 );
