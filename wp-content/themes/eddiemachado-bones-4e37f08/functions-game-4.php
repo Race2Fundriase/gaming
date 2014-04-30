@@ -586,6 +586,8 @@ add_action('wp_ajax_nopriv_r2f_action_test', 'r2f_action_test');
 add_action('wp_ajax_r2f_action_bulk_import', 'r2f_action_bulk_import');
 add_action('wp_ajax_nopriv_r2f_action_bulk_import', 'r2f_action_bulk_import');
 
+add_action('wp_ajax_r2f_action_delete_race', 'r2f_action_delete_race');
+add_action('wp_ajax_nopriv_r2f_action_delete_race', 'r2f_action_delete_race');
 
 
 

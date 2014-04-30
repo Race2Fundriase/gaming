@@ -203,6 +203,96 @@ function r2f_action_upsert_racecharacters()
 	die();
 }
 
+function r2f_action_delete_race()
+{
+	global $wpdb;
+	
+		
+	// Get Params
+	$id = get_param("id");
+			
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Delete
+	$raceCharacters = get_racecharacters($id);
+	
+	for($i=0;$i<count($raceCharacters);$i++) {
+		
+		clearScoresForRaceCharacter($raceCharacters[$i]);
+	
+	}
+
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_racecharacters
+			WHERE raceId = %d
+		", 
+			array(
+			$id
+			) 
+	) );
+
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_racetokens
+			WHERE raceId = %d
+		", 
+			array(
+			$id
+			) 
+	) );
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_raceweather
+			WHERE raceId = %d
+		", 
+			array(
+			$id
+			) 
+	) );
+	
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_races
+			WHERE id = %d
+		", 
+			array(
+			$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$id = $wpdb->insert_id;
+		$result["id"] = $id;
+		$result["error"] = "";
+		$result["message"] = "A new Race Character $id was created.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem creating the race character.";
+	}
+		
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 function r2f_action_bulk_import()
 {
 	global $wpdb;

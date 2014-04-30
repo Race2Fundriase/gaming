@@ -48,7 +48,11 @@ Template Name: Fundraisers
 	    </div>
 	</section>
         
-     
+      <div id="pagerDiv" style="width: 500px; margin: auto">
+		<input type="submit" id="prev" class="btn small" value="PREVIOUS"  >
+		<div id="pager" style="width: 200px; margin:auto; display: inline;" class="highlight"></div>
+		<input type="submit" id="next" class="btn small" value="NEXT" >
+		</div>
         <section id="charityResults">
             
         </section>

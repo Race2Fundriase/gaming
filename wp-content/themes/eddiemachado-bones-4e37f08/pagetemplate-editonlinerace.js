@@ -198,6 +198,29 @@ jQuery(document).ready
 			// Build weather grid (and populate if it's already got data)
 			
 		});
+
+		jQuery("#delete").click(function(e) { 
+			e.preventDefault();
+			yn = confirm("Are you sure you want to delete this race?");
+			if (!yn) return false;
+			
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_delete_race',
+					id: raceId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					var n = noty({text: data.message + " " + data.error});
+					location.href = site_url + "/admin-dashboard";
+				}
+			});
+			
+		});
+
 	}
 );
 

@@ -198,7 +198,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    </div>
 					</div>
 					
-					<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+					<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/><input type="submit" value="DELETE" class="btn large" id="delete"/></div>
 					<P>TESTING ONLY TESTING ONLY</P>
                                                 <div>
 												<label for="curDay"><span>Current Day</span></label>

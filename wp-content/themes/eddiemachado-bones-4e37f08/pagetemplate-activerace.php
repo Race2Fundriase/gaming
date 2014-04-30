@@ -106,12 +106,7 @@ Template Name: Active Race
                             </dl>
                             <p class="highlight" id="prize">Prize:</p>
                             
-                            <div class="characters clearfix">
-                                
-                            <div><h3 class="highlight">Characters Available</h3></div>
-								<div id="charactersResults">
-								</div>
-                            </div>
+                           
                             
                             <div class="leaderboard clearfix">
                                 <div><h3 class="highlight">Leaderboard</h3></div>
@@ -149,6 +144,12 @@ Template Name: Active Race
 								<input type="submit" id="prev" class="btn small" value="PREVIOUS"  >
 								<div id="pager" style="width: 200px; margin:auto; display: inline;" class="highlight"></div>
 								<input type="submit" id="next" class="btn small" value="NEXT" >
+								</div>
+                            </div>
+							 <div class="characters clearfix">
+                                
+                            <div><h3 class="highlight">Characters Available</h3></div>
+								<div id="charactersResults">
 								</div>
                             </div>
                         </div>

@@ -1049,7 +1049,12 @@ function r2f_action_get_fundraisers()
 	// Public
 	
 	// Get Params
-	$q = $_POST["q"];
+	$q = get_param("q");
+	$page = get_param('page'); // get the requested page
+	$limit = get_param('rows'); // get how many rows we want to have into the grid	
+	
+	if (!isset($page)) $page = 1;
+	if (!isset($limit)) $limit = 100;
 	
 	// Init results
 	$result["message"] = "";
@@ -1088,14 +1093,43 @@ function r2f_action_get_fundraisers()
 		$result["message"] = "fundraiser users found.";
 		
 		$i=0;
+		$prev = 0;
 		foreach($rows as $row) {
 			
 			$charityName = get_user_meta( $row->data->ID, "main_contact_name", true );
 			$row->data->charityName = $charityName;
-			$result["rows"][$i] = $row;
 			
-			$i++;
+			if ($row->data->ID != $prev) {
+				$charities[$i] = $row;
+				$i++;
+			}
+			
+			$prev = $row->data->ID;
 		}    
+
+		$count = count($charities);
+		if( $count >0 ) {
+			$total_pages = ceil($count/$limit);
+		} else {
+			$total_pages = 0;
+		}
+		if ($page > $total_pages) $page=$total_pages;
+		$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+		if ($start < 0) $start = 0;
+		
+		$i = 0;
+		$j = 0;
+		foreach($charities as $row) {
+			
+			if ($j >= $start && $i < $limit) {
+				$result["rows"][$i] = $row;
+				$i++;
+			}
+			
+			$j++;
+		}    
+		
+		$result["total_pages"] = $total_pages;
 		
 		
 	} else {
