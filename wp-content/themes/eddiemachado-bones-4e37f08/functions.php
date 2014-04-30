@@ -194,6 +194,7 @@ function add_login_out_item_to_menu( $items, $args ){
 		'classes' => 'menu-item sign-up'
 		      );
 	} else { */
+	if( !is_user_logged_in( ) ) {
 	 $item = array(
 		'title' => 'Enter Now',
 		'menu_item_parent' => 0,
@@ -202,6 +203,35 @@ function add_login_out_item_to_menu( $items, $args ){
 		'url' => '/races',
 		'classes' => 'menu-item sign-up'
 		      );
+	} else {
+		if (appthemes_check_user_role("administrator"))
+			$item = array(
+			'title' => 'Dashboard',
+			'menu_item_parent' => 0,
+			'ID' => 'signup',
+			'db_id' => '',
+			'url' => '/master-admin-dashboard',
+			'classes' => 'menu-item sign-up'
+				  );	
+		if (appthemes_check_user_role("contributor"))
+			$item = array(
+			'title' => 'Dashboard',
+			'menu_item_parent' => 0,
+			'ID' => 'signup',
+			'db_id' => '',
+			'url' => '/admin-dashboard',
+			'classes' => 'menu-item sign-up'
+				  );
+		if (appthemes_check_user_role("subscriber"))
+			$item = array(
+			'title' => 'Dashboard',
+			'menu_item_parent' => 0,
+			'ID' => 'signup',
+			'db_id' => '',
+			'url' => '/user-dashboard',
+			'classes' => 'menu-item sign-up'
+				  );
+	}
 	// }
 	$new_links[] = (object) $item;
 	unset ($item);

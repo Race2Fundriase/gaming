@@ -47,6 +47,7 @@ ga('send', 'pageview');
 </script>
 		
 		<script>site_url='<?=site_url()?>';</script>
+		<script>theme_url='<?=get_template_directory_uri()?>';</script>
 		<script>current_user_id = <?=get_current_user_id();?>;</script>
 	</head>
 
