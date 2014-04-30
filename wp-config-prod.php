@@ -19,10 +19,10 @@
 define('DB_NAME', 'cl52-a-wordp-61i');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'cl52-a-wordp-61i');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'XXq2G/Rbe');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

@@ -35,6 +35,7 @@ jQuery(document).ready
 					r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
 					r = r.replace(/{tweetUrl}/g,'https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[i].cell[1])+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+data.rows[i].cell[0]));
 					r = r.replace(/{fbUrl}/g,'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(site_url+'/enter-race/?raceId='+data.rows[i].cell[0])+'&t='+encodeURIComponent(data.rows[i].cell[1]));
+					r = r.replace(/{mailtoUrl}/g,'mailto:?subject='+encodeURIComponent(data.rows[i].cell[1])+'&body=Join the fun! '+encodeURIComponent(site_url+'/enter-race/?raceId='+data.rows[i].cell[0]));
 					r = r.replace(/{createUrl}/g,site_url+'/enter-race/?raceId='+data.rows[i].cell[0]);
 					r = r.replace(/{stopActivateUrl}/g,site_url+'/edit-online-race/?raceId='+data.rows[i].cell[0]);
 					row += r;
