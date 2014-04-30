@@ -47,6 +47,10 @@ LAYOUT & GRID STYLES
 	padding-top: 70px;
 }
 
+.pad-bot {
+	padding-bottom:70px;
+}
+
 .top-bg {
 	padding-top:70px;
 	
@@ -594,7 +598,7 @@ html>/**/body .sign-up, x:-moz-any-link, x:default {
 	bottom:30px;
 }
 
-.pic-wooden {
+.pic-wooden, .picture-wooden {
 	background: url('../images/pic-wooden-339x294.gif') center no-repeat;
 	background-size:cover;
 	
@@ -604,6 +608,10 @@ html>/**/body .sign-up, x:-moz-any-link, x:default {
 		max-height: 294px;
 		margin:0 auto;
 	}
+}
+
+.picture-wooden {
+	background-size:contain;
 }
 
 
@@ -742,6 +750,7 @@ mobile. Make sure to double check these!
 */
 .footer {
 	background: url('../images/footer-bg.jpg') center repeat-x;
+	padding-bottom:0;
 }
 .footer-links {
 	ul {

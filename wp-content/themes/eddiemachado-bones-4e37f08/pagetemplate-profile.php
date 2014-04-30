@@ -13,7 +13,7 @@ Template Name: Profile
                     
                     <div class="inner-slider wrap">
                             <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/Logo-Wooden.gif" alt="" />
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                     </div>
                     
@@ -25,23 +25,29 @@ Template Name: Profile
 	    <div class="container pad-top sand bot-bg-grass">
 		<div class="inner-container wrap clearfix">
                     <div>
-		    <h1 class="highlight" id="charityProfileName"></h1>
+		    <h1 class="highlight" id="charityProfileName">Charity/Fundraiser Profile Name</h1>
                     </div>
                     
                     <div class="fivecol first">
-                        <h3 class="highlight" id="charityProfileWebsite"></h3>
+                        <h3 class="highlight" id="charityProfileWebsite">Charity/Fundraiser Website</h3>
+                    </div>
+		    
+		    <div class="sixcol last picture-wooden">
+			
+			    <img src="<?php echo get_template_directory_uri(); ?>/library/images/enter-a-race.jpg" alt="" />
+			
                     </div>
                 </div> 
 	    </div>
 	</section>
         
         <section>
-            <div class="container grit bot-bg">
+            <div class="container grit bot-bg-alt pad-bot">
                 <div class="inner-container wrap clearfix">
-                    <div class="fivecol first">
-                        <h2 class="highlight"  id="charityProfileName2"></h3>
+                    <div class="sevencol first">
+                        <h2 class="highlight"  id="charityProfileName2">Name of charity or funraiser goes here</h3>
                         
-                        <p id="charityProfileDesc"></p>
+                        <p id="charityProfileDesc">A description of the race goes here!</p>
                         
                         <h2 class="highlight">Active Races</h2>
                         
@@ -60,6 +66,16 @@ Template Name: Profile
 						</div>
                     </div>
                     
+		    <aside id="profile-excerpt" class="fivecol last charities-info">
+                        <div><h3 class="highlight">Enter Our Race</h3></div>
+                        <p class="highlight">Race To The North Pole</p><br/>
+			<p class="highlight">Terrain: Icy</p><br/>
+			<p class="highlight">Data!</p><br/>
+						
+                        <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
+			<div class="dates"><time class="highlight" id="startTime">Start Date</time><time class="highlight" id="finishTime">Finish Date</time></div>
+                        <div><br/><p class="highlight">Website:<a href="#" id="charityProfileWebsite"></a></p></div>
+                    </aside>
                     
                 </div>
             </div>	

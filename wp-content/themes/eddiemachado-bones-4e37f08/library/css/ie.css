@@ -758,10 +758,15 @@ LAYOUT & GRID STYLES
 }
 
 /* line 50, ../scss/_768up.scss */
+.pad-bot {
+  padding-bottom: 70px;
+}
+
+/* line 54, ../scss/_768up.scss */
 .top-bg {
   padding-top: 70px;
 }
-/* line 53, ../scss/_768up.scss */
+/* line 57, ../scss/_768up.scss */
 .top-bg:before {
   display: block;
   width: 100%;
@@ -773,11 +778,11 @@ LAYOUT & GRID STYLES
   height: 92px;
 }
 
-/* line 65, ../scss/_768up.scss */
+/* line 69, ../scss/_768up.scss */
 .top-bg-alt {
   padding-top: 70px;
 }
-/* line 68, ../scss/_768up.scss */
+/* line 72, ../scss/_768up.scss */
 .top-bg-alt:before {
   display: block;
   width: 100%;
@@ -789,11 +794,11 @@ LAYOUT & GRID STYLES
   height: 92px;
 }
 
-/* line 80, ../scss/_768up.scss */
+/* line 84, ../scss/_768up.scss */
 .top-bg-grass {
   padding-top: 100px;
 }
-/* line 83, ../scss/_768up.scss */
+/* line 87, ../scss/_768up.scss */
 .top-bg-grass:before {
   display: block;
   width: 100%;
@@ -805,11 +810,11 @@ LAYOUT & GRID STYLES
   height: 92px;
 }
 
-/* line 94, ../scss/_768up.scss */
+/* line 98, ../scss/_768up.scss */
 .bot-bg {
   padding-bottom: 70px;
 }
-/* line 96, ../scss/_768up.scss */
+/* line 100, ../scss/_768up.scss */
 .bot-bg:after {
   display: block;
   width: 100%;
@@ -821,11 +826,11 @@ LAYOUT & GRID STYLES
   height: 170px;
 }
 
-/* line 109, ../scss/_768up.scss */
+/* line 113, ../scss/_768up.scss */
 .bot-bg-alt {
   padding-bottom: 70px;
 }
-/* line 111, ../scss/_768up.scss */
+/* line 115, ../scss/_768up.scss */
 .bot-bg-alt:after {
   display: block;
   width: 100%;
@@ -837,11 +842,11 @@ LAYOUT & GRID STYLES
   height: 170px;
 }
 
-/* line 123, ../scss/_768up.scss */
+/* line 127, ../scss/_768up.scss */
 .bot-bg-grass {
   padding-bottom: 70px;
 }
-/* line 125, ../scss/_768up.scss */
+/* line 129, ../scss/_768up.scss */
 .bot-bg-grass:after {
   display: block;
   width: 100%;
@@ -853,45 +858,45 @@ LAYOUT & GRID STYLES
   height: 170px;
 }
 
-/* line 137, ../scss/_768up.scss */
+/* line 141, ../scss/_768up.scss */
 .bot-dash {
   border-bottom: 2px dashed #b39c7d;
 }
 
-/* line 141, ../scss/_768up.scss */
+/* line 145, ../scss/_768up.scss */
 .nav-margin {
   margin-top: 78px;
 }
 
-/* line 146, ../scss/_768up.scss */
+/* line 150, ../scss/_768up.scss */
 #scrolling-slides.bot-bg:after {
   z-index: 4;
 }
 
-/* line 151, ../scss/_768up.scss */
+/* line 155, ../scss/_768up.scss */
 #scrolling-slides.top-bg {
   padding-top: 70px;
 }
-/* line 153, ../scss/_768up.scss */
+/* line 157, ../scss/_768up.scss */
 #scrolling-slides.top-bg:before {
   background: url("../images/why-r2f/slides-top-bg-1590x54.gif") center center repeat-x;
   top: 51px;
   z-index: 5;
 }
 
-/* line 160, ../scss/_768up.scss */
+/* line 164, ../scss/_768up.scss */
 #scrolling-slides {
   position: relative;
   z-index: 3;
   background: url("../images/sand-bg.gif");
 }
 
-/* line 166, ../scss/_768up.scss */
+/* line 170, ../scss/_768up.scss */
 .slide-container {
   min-height: 400px;
 }
 
-/* line 171, ../scss/_768up.scss */
+/* line 175, ../scss/_768up.scss */
 #logo.secondary {
   margin: 0 0 0 40px;
 }
@@ -899,12 +904,12 @@ LAYOUT & GRID STYLES
 /*********************
 HEADER STYLES
 *********************/
-/* line 180, ../scss/_768up.scss */
+/* line 184, ../scss/_768up.scss */
 .header {
   position: fixed;
 }
 
-/* line 189, ../scss/_768up.scss */
+/* line 193, ../scss/_768up.scss */
 #logo {
   width: 40%;
 }
@@ -912,52 +917,52 @@ HEADER STYLES
 /***************************************
  *Search used in header and other pages
  ***************************************/
-/* line 197, ../scss/_768up.scss */
+/* line 201, ../scss/_768up.scss */
 #nobtn-search, #other-search {
   position: absolute;
   bottom: -70px;
   right: 0;
 }
-/* line 202, ../scss/_768up.scss */
+/* line 206, ../scss/_768up.scss */
 #nobtn-search input, #other-search input {
   width: 150px;
 }
-/* line 206, ../scss/_768up.scss */
+/* line 210, ../scss/_768up.scss */
 #nobtn-search input:focus, #other-search input:focus {
   width: 250px;
 }
 
-/* line 213, ../scss/_768up.scss */
+/* line 217, ../scss/_768up.scss */
 #other-search {
   position: relative;
   top: 4px;
   display: inline-block;
   float: left;
 }
-/* line 218, ../scss/_768up.scss */
+/* line 222, ../scss/_768up.scss */
 #other-search input {
   width: 200px;
 }
-/* line 221, ../scss/_768up.scss */
+/* line 225, ../scss/_768up.scss */
 #other-search input:focus {
   width: 300px;
 }
 
-/* line 227, ../scss/_768up.scss */
+/* line 231, ../scss/_768up.scss */
 .enter-race {
   bottom: 112px;
 }
-/* line 229, ../scss/_768up.scss */
+/* line 233, ../scss/_768up.scss */
 .enter-race .btn {
   font-size: 36px;
 }
 
-/* line 234, ../scss/_768up.scss */
+/* line 238, ../scss/_768up.scss */
 .fences {
   position: relative;
   height: 0px;
 }
-/* line 237, ../scss/_768up.scss */
+/* line 241, ../scss/_768up.scss */
 .fences:before, .fences:after {
   display: block;
   content: "";
@@ -966,26 +971,26 @@ HEADER STYLES
   height: 151px;
   z-index: 2000;
 }
-/* line 247, ../scss/_768up.scss */
+/* line 251, ../scss/_768up.scss */
 .fences:before {
   bottom: 0;
   left: -187px;
   background: url("../images/left-fence.gif");
 }
-/* line 253, ../scss/_768up.scss */
+/* line 257, ../scss/_768up.scss */
 .fences:after {
   bottom: 0;
   right: -187px;
   background: url("../images/right-fence.gif");
 }
 
-/* line 260, ../scss/_768up.scss */
+/* line 264, ../scss/_768up.scss */
 .wide-fence {
   position: relative;
   bottom: 0;
   height: 0;
 }
-/* line 264, ../scss/_768up.scss */
+/* line 268, ../scss/_768up.scss */
 .wide-fence:after {
   position: absolute;
   display: block;
@@ -998,7 +1003,7 @@ HEADER STYLES
   top: -190px;
 }
 
-/* line 277, ../scss/_768up.scss */
+/* line 281, ../scss/_768up.scss */
 .wide-fence.why {
   bottom: -70px;
 }
@@ -1006,14 +1011,14 @@ HEADER STYLES
 /*********************
 Slider STYLES
 *********************/
-/* line 284, ../scss/_768up.scss */
+/* line 288, ../scss/_768up.scss */
 .slider {
   margin-top: 63px;
   background: #4dd2fd;
   position: relative;
   max-height: 600px;
 }
-/* line 290, ../scss/_768up.scss */
+/* line 294, ../scss/_768up.scss */
 .slider:before {
   display: block;
   content: "";
@@ -1025,7 +1030,7 @@ Slider STYLES
   z-index: 3;
 }
 
-/* line 305, ../scss/_768up.scss */
+/* line 309, ../scss/_768up.scss */
 .centered-btns_tabs,
 .transparent-btns_tabs,
 .large-btns_tabs {
@@ -1045,17 +1050,17 @@ Slider STYLES
 /*********************
 NAVIGATION STYLES
 *********************/
-/* line 324, ../scss/_768up.scss */
+/* line 328, ../scss/_768up.scss */
 #scrolling-nav.scrolling {
   top: 500px;
 }
 
-/* line 328, ../scss/_768up.scss */
+/* line 332, ../scss/_768up.scss */
 #scrolling-nav.stopped {
   top: 3420px;
 }
 
-/* line 332, ../scss/_768up.scss */
+/* line 336, ../scss/_768up.scss */
 .scrolling-nav-inner {
   display: block;
   height: 243px;
@@ -1064,7 +1069,7 @@ NAVIGATION STYLES
   z-index: 100;
   font-size: 70%;
 }
-/* line 340, ../scss/_768up.scss */
+/* line 344, ../scss/_768up.scss */
 .scrolling-nav-inner ul {
   font-family: 'Headline One';
   display: block;
@@ -1072,7 +1077,7 @@ NAVIGATION STYLES
   width: 320px;
   height: 333px;
 }
-/* line 347, ../scss/_768up.scss */
+/* line 351, ../scss/_768up.scss */
 .scrolling-nav-inner ul li {
   font-size: 26px;
   font-size: 1.625em;
@@ -1081,7 +1086,7 @@ NAVIGATION STYLES
   padding-left: 15px;
   display: block;
 }
-/* line 355, ../scss/_768up.scss */
+/* line 359, ../scss/_768up.scss */
 .scrolling-nav-inner ul li .bullet {
   margin-top: 0;
   text-align: center;
@@ -1099,23 +1104,23 @@ NAVIGATION STYLES
   text-shadow: none;
   display: none;
 }
-/* line 373, ../scss/_768up.scss */
+/* line 377, ../scss/_768up.scss */
 .scrolling-nav-inner ul li a {
   color: white;
   text-shadow: 3px 3px 3px #444;
   text-decoration: none;
 }
-/* line 382, ../scss/_768up.scss */
+/* line 386, ../scss/_768up.scss */
 .scrolling-nav-inner ul li.highlight .bullet {
   display: block;
 }
-/* line 385, ../scss/_768up.scss */
+/* line 389, ../scss/_768up.scss */
 .scrolling-nav-inner ul li.highlight a {
   text-shadow: none;
   color: #de5f02;
 }
 
-/* line 393, ../scss/_768up.scss */
+/* line 397, ../scss/_768up.scss */
 footer .nav {
   display: block;
   margin: 0;
@@ -1123,7 +1128,7 @@ footer .nav {
   text-shadow: 1px 2px 5px #444;
 }
 
-/* line 399, ../scss/_768up.scss */
+/* line 403, ../scss/_768up.scss */
 .nav {
   font-size: 25px;
   font-size: 1.5625rem;
@@ -1136,15 +1141,15 @@ footer .nav {
   /* highlight current page */
   /* end current highlighters */
 }
-/* line 411, ../scss/_768up.scss */
+/* line 415, ../scss/_768up.scss */
 .nav li:first-of-type {
   margin-left: 0px;
 }
-/* line 418, ../scss/_768up.scss */
+/* line 422, ../scss/_768up.scss */
 .nav li:last-of-type {
   margin-right: 0px;
 }
-/* line 422, ../scss/_768up.scss */
+/* line 426, ../scss/_768up.scss */
 .nav li {
   float: left;
   position: relative;
@@ -1155,7 +1160,7 @@ footer .nav {
   */
   /* showing sub-menus */
 }
-/* line 428, ../scss/_768up.scss */
+/* line 432, ../scss/_768up.scss */
 .nav li a {
   padding: 12px 0px 6px 0px;
   margin: 0;
@@ -1166,12 +1171,12 @@ footer .nav {
   has the possibility of being a mobile device.
   */
 }
-/* line 438, ../scss/_768up.scss */
+/* line 442, ../scss/_768up.scss */
 .nav li a:hover, .nav li a:focus {
   color: white;
   text-decoration: underline;
 }
-/* line 452, ../scss/_768up.scss */
+/* line 456, ../scss/_768up.scss */
 .nav li ul.sub-menu,
 .nav li ul.children {
   margin-top: 0;
@@ -1182,7 +1187,7 @@ footer .nav {
   z-index: 8999;
   /* highlight sub-menu current page */
 }
-/* line 460, ../scss/_768up.scss */
+/* line 464, ../scss/_768up.scss */
 .nav li ul.sub-menu li,
 .nav li ul.children li {
   /*
@@ -1191,7 +1196,7 @@ footer .nav {
   for usability. k, bai.
   */
 }
-/* line 462, ../scss/_768up.scss */
+/* line 466, ../scss/_768up.scss */
 .nav li ul.sub-menu li a,
 .nav li ul.children li a {
   padding-left: 10px;
@@ -1200,19 +1205,19 @@ footer .nav {
   width: 180px;
   border-bottom: 1px solid #ccc;
 }
-/* line 479, ../scss/_768up.scss */
+/* line 483, ../scss/_768up.scss */
 .nav li ul.sub-menu li:last-child a,
 .nav li ul.children li:last-child a {
   border-bottom: 0;
 }
-/* line 501, ../scss/_768up.scss */
+/* line 505, ../scss/_768up.scss */
 .nav li:hover ul {
   top: auto;
   display: block;
 }
 
 /* end .nav */
-/* line 518, ../scss/_768up.scss */
+/* line 522, ../scss/_768up.scss */
 .log-in-out a {
   /*padding: 3px 15px!important;
   margin-top: 8px !important;
@@ -1220,18 +1225,18 @@ footer .nav {
   border:1px solid $white !important;*/
 }
 
-/* line 526, ../scss/_768up.scss */
+/* line 530, ../scss/_768up.scss */
 .logged-in .sign-up {
   left: 1px;
 }
 
-/* line 530, ../scss/_768up.scss */
+/* line 534, ../scss/_768up.scss */
 .sign-up {
   font-size: 30px;
   font-size: 1.875rem;
   left: -7px;
 }
-/* line 537, ../scss/_768up.scss */
+/* line 541, ../scss/_768up.scss */
 .sign-up a {
   box-sizing: border-box;
   display: block;
@@ -1243,7 +1248,7 @@ footer .nav {
   color: #de5f02 !important;
   text-decoration: none;
 }
-/* line 551, ../scss/_768up.scss */
+/* line 555, ../scss/_768up.scss */
 .sign-up a:after {
   position: absolute;
   display: block;
@@ -1255,73 +1260,78 @@ footer .nav {
   content: "";
   background: url("../images/nav-bar-decor-white.png") center right 1px repeat-x;
 }
-/* line 564, ../scss/_768up.scss */
+/* line 568, ../scss/_768up.scss */
 .sign-up a:hover {
   color: #de5f02;
   text-decoration: underline;
 }
 
-/* line 576, ../scss/_768up.scss */
+/* line 580, ../scss/_768up.scss */
 html > body .sign-up a:after, x:-moz-any-link a:after, x:default a:after {
   background-position: center right 4px;
 }
 
-/* line 582, ../scss/_768up.scss */
+/* line 586, ../scss/_768up.scss */
 .wooden {
   background: url("../images/wooden-sign-529x433.gif") center center no-repeat;
   min-height: 433px;
   background-size: contain;
 }
 
-/* line 588, ../scss/_768up.scss */
+/* line 592, ../scss/_768up.scss */
 .vid-wooden {
   background: url("../images/vid-wooden-board-468x333.gif") center no-repeat;
   background-size: contain;
 }
 
-/* line 593, ../scss/_768up.scss */
+/* line 597, ../scss/_768up.scss */
 .vid-wooden .video-container {
   bottom: 30px;
 }
 
-/* line 597, ../scss/_768up.scss */
-.pic-wooden {
+/* line 601, ../scss/_768up.scss */
+.pic-wooden, .picture-wooden {
   background: url("../images/pic-wooden-339x294.gif") center no-repeat;
   background-size: cover;
 }
-/* line 601, ../scss/_768up.scss */
-.pic-wooden img {
+/* line 605, ../scss/_768up.scss */
+.pic-wooden img, .picture-wooden img {
   display: block;
   padding: 10%;
   max-height: 294px;
   margin: 0 auto;
 }
 
+/* line 613, ../scss/_768up.scss */
+.picture-wooden {
+  background-size: contain;
+}
+
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 615, ../scss/_768up.scss */
+/* line 623, ../scss/_768up.scss */
 .sidebar {
   margin-top: 2.2em;
 }
 
-/* line 619, ../scss/_768up.scss */
+/* line 627, ../scss/_768up.scss */
 .widgettitle {
   border-bottom: 2px solid #444;
   margin-bottom: 0.75em;
 }
 
-/* line 624, ../scss/_768up.scss */
+/* line 632, ../scss/_768up.scss */
 .widget {
   padding: 0 10px;
   margin: 2.2em 0;
 }
-/* line 629, ../scss/_768up.scss */
+/* line 637, ../scss/_768up.scss */
 .widget ul li {
   margin-bottom: 0.75em;
   /* deep nesting */
 }
-/* line 637, ../scss/_768up.scss */
+/* line 645, ../scss/_768up.scss */
 .widget ul li ul {
   margin-top: 0.75em;
   padding-left: 1em;
@@ -1346,12 +1356,13 @@ you'll probably need to do quite a bit
 of overriding here if you styled them for
 mobile. Make sure to double check these!
 */
-/* line 743, ../scss/_768up.scss */
+/* line 751, ../scss/_768up.scss */
 .footer {
   background: url("../images/footer-bg.jpg") center repeat-x;
+  padding-bottom: 0;
 }
 
-/* line 748, ../scss/_768up.scss */
+/* line 757, ../scss/_768up.scss */
 .footer-links ul li {
   /*
   be careful with the depth of your menus.
@@ -1364,22 +1375,22 @@ mobile. Make sure to double check these!
 /**********************
  *Active Race Profile
  **********************/
-/* line 766, ../scss/_768up.scss */
+/* line 775, ../scss/_768up.scss */
 .active-race {
   text-align: left;
   padding-top: 0;
   padding-bottom: 0;
 }
-/* line 771, ../scss/_768up.scss */
+/* line 780, ../scss/_768up.scss */
 .active-race .btn {
   bottom: 30px;
 }
 
-/* line 776, ../scss/_768up.scss */
+/* line 785, ../scss/_768up.scss */
 .active-race.last-on-page, .create-race.last-on-page {
   padding-bottom: 80px;
 }
-/* line 779, ../scss/_768up.scss */
+/* line 788, ../scss/_768up.scss */
 .active-race.last-on-page .btn, .create-race.last-on-page .btn {
   bottom: 110px;
 }
@@ -1387,14 +1398,14 @@ mobile. Make sure to double check these!
 /*************************
  *Active Race Page
  *************************/
-/* line 792, ../scss/_768up.scss */
+/* line 801, ../scss/_768up.scss */
 #active-race-header #other-search {
   display: block;
   margin: 0 auto;
   float: none;
 }
 
-/* line 799, ../scss/_768up.scss */
+/* line 808, ../scss/_768up.scss */
 #active-race-header, #complete-race-header {
   display: block;
   box-sizing: border-box;
@@ -1402,14 +1413,14 @@ mobile. Make sure to double check these!
   padding: 0;
   margin: 0 auto;
 }
-/* line 811, ../scss/_768up.scss */
+/* line 820, ../scss/_768up.scss */
 #active-race-header .btn, #complete-race-header .btn {
   font-size: 36px;
   font-size: 2.25rem;
   left: 100px;
   bottom: -50px;
 }
-/* line 818, ../scss/_768up.scss */
+/* line 827, ../scss/_768up.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
   width: 200px;
   height: 24px;
@@ -1418,17 +1429,17 @@ mobile. Make sure to double check these!
   left: 280px;
 }
 
-/* line 828, ../scss/_768up.scss */
+/* line 837, ../scss/_768up.scss */
 #complete-race-header .headings, #complete-race-header .dates {
   left: 100px;
 }
 
-/* line 833, ../scss/_768up.scss */
+/* line 842, ../scss/_768up.scss */
 #race-data .leaderboard {
   margin-bottom: 100px;
 }
 
-/* line 837, ../scss/_768up.scss */
+/* line 846, ../scss/_768up.scss */
 #profile-excerpt {
   position: relative;
   font-size: 80%;
@@ -1437,12 +1448,12 @@ mobile. Make sure to double check these!
   background: url("../images/profile-excerpt-board-371x453.gif") center top no-repeat;
   background-size: contain;
 }
-/* line 845, ../scss/_768up.scss */
+/* line 854, ../scss/_768up.scss */
 #profile-excerpt .profile-view {
   text-align: center;
 }
 
-/* line 852, ../scss/_768up.scss */
+/* line 861, ../scss/_768up.scss */
 .winner {
   top: -80px;
 }
@@ -1450,36 +1461,36 @@ mobile. Make sure to double check these!
 /*************************
  *Create Race Page
  *************************/
-/* line 860, ../scss/_768up.scss */
+/* line 869, ../scss/_768up.scss */
 #create-race-header {
   margin-top: -80px;
 }
-/* line 863, ../scss/_768up.scss */
+/* line 872, ../scss/_768up.scss */
 #create-race-header h1 {
   margin-bottom: 60px;
 }
-/* line 867, ../scss/_768up.scss */
+/* line 876, ../scss/_768up.scss */
 #create-race-header #tab_control {
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-/* line 873, ../scss/_768up.scss */
+/* line 882, ../scss/_768up.scss */
 .token {
   text-align: centre;
 }
 
-/* line 877, ../scss/_768up.scss */
+/* line 886, ../scss/_768up.scss */
 .continue {
   margin-top: 30px;
   margin-bottom: 120px !important;
 }
 
-/* line 884, ../scss/_768up.scss */
+/* line 893, ../scss/_768up.scss */
 .faq {
   padding-bottom: 30px;
 }
-/* line 887, ../scss/_768up.scss */
+/* line 896, ../scss/_768up.scss */
 .faq:last-child {
   border-bottom: none !important;
   padding-bottom: 70px;
