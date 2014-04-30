@@ -314,7 +314,7 @@ function getFeaturedVideo($post_id, $width = 680, $height = 360) {
     if ($youTubeMatch[1])
         return '<iframe width="'.$width.'" height="'.$height.'" src="http://ww'.
                'w.youtube.com/embed/'.$youTubeMatch[1].'?rel=0&showinfo=0&cont'.
-               'rols=0&autoplay=0&modestbranding=1" frameborder="0" allowfulls'.
+               'rols=1&autoplay=0&modestbranding=1" frameborder="0" allowfulls'.
                'creen ></iframe>';
     else
         return null;
