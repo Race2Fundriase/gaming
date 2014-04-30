@@ -66,7 +66,17 @@ function drawPlayers() {
 		if (curDay < 0) x = startGridX; else x = players[i].gridX;
 		if (curDay < 0) y = startGridY; else y = players[i].gridY;
 			
-	    paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+	    var playercell = paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+		
+		jQuery(playercell.node).qtip({ // Grab some elements to apply the tooltip to
+			content: {
+				text: 'My common piece of text here'
+			},
+			position: {
+				target: 'mouse'
+			}
+		});
+
 		if (players[i].playerId == current_user_id)
 			paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
 	}
@@ -99,6 +109,7 @@ jQuery(document).ready
 				}
 			});
 		});
+		
 		
 		jQuery('#frame').on('mousedown', function(e) {
 			jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
@@ -260,12 +271,25 @@ jQuery(document).ready
 			}
 		});
 		
+		jQuery("#next").click(function (e) {
+			if (!n) return;
+			curPage++;
+			getLeaderBoard(raceId, curDay, curHour, raceStatus);
+		});
+		jQuery("#prev").click(function (e) {
+			if (!p) return;
+			curPage--;
+			getLeaderBoard(raceId, curDay, curHour, raceStatus);
+		});
 		
+		getActiveRaces();
 
 	}
 );
 
 var curPage = 1;
+var n, p;
+var limit = 10;
 
 function getLeaderBoard(raceId, day, hour, raceStatus) {
 	console.log("glb "+raceId+":"+day+":"+hour);
@@ -277,7 +301,8 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			raceId: raceId,
 			day: day,
 			hour: hour,
-			page: curPage
+			page: curPage,
+			rows: limit
 		},
 		dataType: "JSON",
 		success: function (data) {
@@ -285,9 +310,10 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			jQuery("#result").text(data.message + " " + data.error);
 			var li = '';
 			players = new Array();
-			
+			start = limit*curPage - limit;
 			for (i=0;i<data.rows.length;i++){
-			   li += '<li id="lbli'+data.rows[i].playerId+'" data-index="'+i+'">'+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
+				
+			   li += '<li id="lbli'+data.rows[i].playerId+'" data-index="'+i+'">'+ (start+i+1) + '. '+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 			   players[i] = data.rows[i];
 			   //var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
@@ -318,15 +344,25 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			}
 			
 			if (data.total_pages > 1) {
-				jQuery("#next").addClass("hidden");
+				/*jQuery("#next").addClass("hidden");
 				jQuery("#prev").addClass("hidden");
 				if (curPage != data.total_pages) 
 					jQuery("#next").removeClass("hidden");
 				if (curPage > 1)
-					jQuery("#prev").removeClass("hidden");
+					jQuery("#prev").removeClass("hidden");*/
+				if (curPage != data.total) 
+						n = true;
+					else
+						n = false;
+					if (curPage > 1)
+						p = true;
+					else
+						p = false;
 			}
 			
-			jQuery('#leaderboard').append(li);
+			jQuery('#leaderboard').html(li);
+			
+			jQuery("#pager").html("Page "+curPage+" of " +data.total_pages);
 			
 			for (i=0;i<data.rows.length;i++){
 				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {

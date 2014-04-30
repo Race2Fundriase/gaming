@@ -13,9 +13,9 @@ function r2f_action_get_leaderboard()
 	$hour = get_param("hour");
 	
 	$page = get_param("page");
-	$limit = get_param("limit");
+	$limit = get_param("rows");
 	
-	if (!$page) $page = 0;
+	if (!$page) $page = 1;
 	if (!$limit) $limit = 10;
 	
 	// Init results
@@ -686,15 +686,22 @@ function user_can_bulk_import_race() {
 }
 
 function user_can_enter_race() {
-	$user = wp_get_current_user();
+	
 	$raceId = $_GET["raceId"];
+	$race = get_race($raceId);
+	return user_can_enter_race_id($race);
+	
+}
+
+function user_can_enter_race_id($race) {
+	$user = wp_get_current_user();
 	
 	// Race is 'Active'  - raceStatus == 0
 	// Race has not yet started startDate + startTime > now
 	// Race max limit has not been exceeded
 	// Race is not offline and user not the person who created the game
 		
-	$race = get_race($raceId);
+	
 	
 	if ($race["rows"][0]->offline == 1 && $race["rows"][0]->createdBy != $user->ID) return false;
 	if ($race["rows"][0]->raceStatus != 0) return false;
@@ -705,6 +712,8 @@ function user_can_enter_race() {
 	return true;
 	
 }
+
+
 
 /**
  * Redirect user after successful login.

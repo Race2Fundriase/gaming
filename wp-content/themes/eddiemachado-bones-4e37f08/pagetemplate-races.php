@@ -51,7 +51,12 @@ Template Name: Races
         <!--Tabbed Content-->
         <div id="tabs">
         <div class="tabbed_content active">
- 		<div id="result" class="boxShadow"></div>
+ 		
+		<div id="pagerDiv" style="width: 500px; margin: auto">
+		<input type="submit" id="prev" class="btn small" value="PREVIOUS"  >
+		<div id="pager" style="width: 200px; margin:auto; display: inline;" class="highlight"></div>
+		<input type="submit" id="next" class="btn small" value="NEXT" >
+		</div>
         <section id="raceResultsActive"><!--Active Races-->
             
             
@@ -59,7 +64,7 @@ Template Name: Races
         </div><!--End of tab-->
         
         <div class="tabbed_content">
-            
+        
         <section id="raceResultsFinished"><!--Active Races-->
             
             
@@ -92,9 +97,11 @@ Template Name: Races
 						<div class="dates"><time class="highlight">{stime}</time><time class="highlight">{ftime}</time></div>
 					</div>
 				  <a class="btn small right" href="{viewMoreUrl}">View More</a>
+				  <a class="btn small right" href="{joinRaceUrl}">Join Race</a>
 				</div>
 			</div>
 		</div>
 		</div>
+		<div id="result" class="boxShadow myhidden"></div>
 <?php get_footer(); ?>
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

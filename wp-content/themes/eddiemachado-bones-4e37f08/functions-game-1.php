@@ -3,12 +3,15 @@
 // R2F Game Engine Code
 function add_jQuery_libraries() {
  
+	wp_enqueue_style('qtip', get_template_directory_uri()+'/library/css/jquery.qtip.min.css', null, false, false);
+ 
     // Registering Scripts
     wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('jquery'));
 	wp_register_script('jquery-grid-lang-plugin', get_template_directory_uri().'/library/jquery.jqGrid-4.6.0/js/grid.locale-en.js', array('jquery'));
 	wp_register_script('jquery-grid-plugin', get_template_directory_uri().'/library/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js', array('jquery-grid-lang-plugin'));
 	wp_register_script('raphael', get_template_directory_uri().'/library/js/raphael-min.js', array('jquery'));
 	wp_register_script('noty', get_template_directory_uri().'/library/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'));
+	wp_register_script('qtip', get_template_directory_uri().'/library/js/libs/jquery.qtip.min.js', array('jquery'));
 	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
@@ -16,6 +19,7 @@ function add_jQuery_libraries() {
 	wp_enqueue_script('jquery-grid-plugin');
 	wp_enqueue_script('raphael');
 	wp_enqueue_script('noty');
+	wp_enqueue_script('qtip');
 	
 }
  

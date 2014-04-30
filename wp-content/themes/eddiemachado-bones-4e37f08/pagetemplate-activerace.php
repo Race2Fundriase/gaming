@@ -143,10 +143,13 @@ Template Name: Active Race
 									<option value="22">23</option>
 									<option value="23">24</option>
 								</select></div>
-                                <ol class="highlight" id="leaderboard">
-								</ol>
-								<input type="submit" id="prev" class="btn small myhidden" value="PREVIOUS" readonly="readonly" >
-								<input type="submit" id="next" class="btn small myhidden" value="NEXT" readonly="readonly" >
+                                <ul class="highlight" id="leaderboard">
+								</ul>
+								<div id="pagerDiv" style="width: 500px; margin: auto">
+								<input type="submit" id="prev" class="btn small" value="PREVIOUS"  >
+								<div id="pager" style="width: 200px; margin:auto; display: inline;" class="highlight"></div>
+								<input type="submit" id="next" class="btn small" value="NEXT" >
+								</div>
                             </div>
                         </div>
                     </div>

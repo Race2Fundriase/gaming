@@ -34,6 +34,8 @@
 		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
+		
+		<link type="text/css" rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/library/css/jquery.qtip.min.css" />
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
