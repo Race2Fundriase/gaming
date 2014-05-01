@@ -139,7 +139,7 @@
 					
 					<?php
 						$images =& get_children( array (
-							'post_parent' => $query->ID,
+							'post' => 'pagename=about-r2f',
 							'post_type' => 'attachment',
 							'post_mime_type' => 'image'
 						));
@@ -161,7 +161,7 @@
 								else {
 									echo '<div class="sixcol thumb text-center"';
 								}
-								echo '<span class="shadow"><img src="'.wp_get_attachment_thumb_url( $attachment_id).'"/></span>';
+								echo '<span class="shadow"><img src="'.wp_get_attachment_thumb_url($attachment_id).'"/></span>';
 								echo '</div>';
 								$i++;
 							}
