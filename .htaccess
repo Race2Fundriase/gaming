@@ -9,10 +9,16 @@ DirectoryIndex index.cgi index.php
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteBase /
+
+
+
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+
+RewriteRule /active-race/(.*)/(.*)/$ active-race/?raceId=$2
+
 </IfModule>
 
 # END WordPress

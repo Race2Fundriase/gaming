@@ -15,7 +15,7 @@ jQuery(document).ready
 				
 			],
 			rowNum:10,
-			rowList:[10,20,30],
+			rowList:[10,20,30,150],
 			pager: '#pager2',
 			sortname: 'id',
 			viewrecords: true,

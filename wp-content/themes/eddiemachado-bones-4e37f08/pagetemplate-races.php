@@ -97,7 +97,7 @@ Template Name: Races
 						<div class="dates"><time class="highlight">{stime}</time><time class="highlight">{ftime}</time></div>
 					</div>
 				  <a class="btn small right" href="{viewMoreUrl}">View More</a>
-				  <a class="btn small right" href="{joinRaceUrl}">Join Race</a>
+				  <!--<a class="btn small right" href="{joinRaceUrl}">Join Race</a>-->
 				</div>
 			</div>
 		</div>

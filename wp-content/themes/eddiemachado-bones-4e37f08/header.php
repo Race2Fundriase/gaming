@@ -58,7 +58,7 @@ ga('send', 'pageview');
 		<div id="container">
 
 			<header class="header" role="banner">
-
+<?php $C = get_defined_constants(); if ($C["DB_NAME"] == "cl52-r2f-accp") echo("<p class=\"highlight\">ACCEPTANCE</p>"); ?>
 				<div id="inner-header" class="wrap clearfix">
 
 					<nav role="navigation">

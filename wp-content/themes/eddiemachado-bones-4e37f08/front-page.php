@@ -1,6 +1,8 @@
 <?php get_header(); ?>
+
 			<section>
 				<div class="slider clearfix">
+				
 					<ul class="rslides">
 						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide1.jpg" alt=""/></li>
 						<li><img src="<?php echo get_template_directory_uri(); ?>/library/images/slide2.jpg" alt=""/></li>

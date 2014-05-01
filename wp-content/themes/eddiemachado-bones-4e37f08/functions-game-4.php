@@ -15,6 +15,8 @@ function r2f_action_get_leaderboard()
 	$page = get_param("page");
 	$limit = get_param("rows");
 	
+	$q = get_param("q");
+	
 	if (!$page) $page = 1;
 	if (!$limit) $limit = 10;
 	
@@ -42,6 +44,11 @@ function r2f_action_get_leaderboard()
 		die();
 	}
 	
+	$where = "";
+	if (isset($q) && $q != "") {
+		$where = " AND playerName LIKE '%$q%'";
+	}
+	
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
@@ -54,7 +61,7 @@ function r2f_action_get_leaderboard()
 			ON r2f_racecharacters.raceId = r2f_races.id
 			JOIN r2f_tokens
 			ON r2f_racecharacters.tokenId = r2f_tokens.id
-			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1$where
 			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
 		", 
 			array(
@@ -85,7 +92,7 @@ function r2f_action_get_leaderboard()
 			ON r2f_racecharacters.raceId = r2f_races.id
 			JOIN r2f_tokens
 			ON r2f_racecharacters.tokenId = r2f_tokens.id
-			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1$where
 			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
 			LIMIT %d, %d
 		", 
