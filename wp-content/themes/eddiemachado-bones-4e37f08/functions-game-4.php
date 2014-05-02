@@ -179,6 +179,32 @@ function r2f_action_get_products()
 	die();
 }
 
+function get_raceweather($raceId, $day)
+{
+	global $wpdb;
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_raceweather
+			WHERE raceId = %d AND day = %d
+			ORDER BY day
+		", 
+			array(
+				$raceId, $day
+			) 
+	) );
+	
+	if ($rows)
+		return $rows[0];
+	else {
+		$row["weather"] = 0;
+		$row["weatherForecast"] = 0;
+		return $row;
+	}
+}
+
+
 function r2f_action_get_raceweather()
 {
 	global $wpdb;

@@ -818,6 +818,17 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 				
 		$ticks += abs($raceCharacter->noOfPitstops - $token->optimumNoOfPitstops);
 		$explain .= "Pitstops: $raceCharacter->noOfPitstops Optimum: $token->optimumNoOfPitstops ($ticks); ";
+		
+		// Weather - estimate the length of race in ticks - max ticks per day * length in days (20 * lid)
+		$lengthInTicks = 20 * $lengthInDays;
+		$day = intval($ticks / $lengthInTicks;)
+		// Get weather for 'today'
+		$weather = get_raceweather($raceId, $day);
+		
+		$tol = 10 - $token->weatherTolerance; // 10 max 1 min
+		$tol = $tol / 10.0; // brings to 0-1 range (0 if maximum tolerance)
+		
+		$ticks += (10 - $weather) * $tol;
 
 		if ($ticks <= 0) $ticks = 1;
 		
@@ -1245,7 +1256,7 @@ function get_token($tokenId)
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops
+			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance
 			FROM r2f_tokens
 			WHERE id = %d
 		", 
