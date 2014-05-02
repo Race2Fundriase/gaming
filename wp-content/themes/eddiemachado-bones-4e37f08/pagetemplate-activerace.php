@@ -24,9 +24,9 @@ Template Name: Active Race
 	    <div class="container pad-top sand bot-bg-grass">
 		<div class="inner-container wrap clearfix">
                     <div>
-						<h1 class="highlight" id="pageTitle">Active Race</h1>
-				
-						<div class="sponser myhidden" id="sponserDiv"><img src="" id="sponserLogoUrl"/></div>
+						<h1 class="highlight" id="pageTitle">Active Race</h1><br/>
+						
+						<div class="sponser myhidden" id="sponserDiv"><p class="highlight" id="">Sponsored By:</p><img src="" id="sponserLogoUrl"/></div>
                     </div>
                     
                     <div id="active-race-header">

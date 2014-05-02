@@ -821,7 +821,7 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		
 		// Weather - estimate the length of race in ticks - max ticks per day * length in days (20 * lid)
 		$lengthInTicks = 20 * $lengthInDays;
-		$day = intval($ticks / $lengthInTicks;)
+		$day = intval($ticks / $lengthInTicks);
 		// Get weather for 'today'
 		$weather = get_raceweather($raceId, $day);
 		
