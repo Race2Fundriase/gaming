@@ -4150,6 +4150,13 @@ body.logged-in .nav li.logged-in-nav {
   padding: 0 1em;
 }
 
+/* line 165, ../scss/_game.scss */
+.sponser {
+  width: 50%;
+  height: auto;
+  margin: auto;
+}
+
 /* jqModal base Styling courtesy of;
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,

@@ -24,7 +24,9 @@ Template Name: Active Race
 	    <div class="container pad-top sand bot-bg-grass">
 		<div class="inner-container wrap clearfix">
                     <div>
-		    <h1 class="highlight" id="pageTitle">Active Race</h1>
+						<h1 class="highlight" id="pageTitle">Active Race</h1>
+				
+						<div class="sponser myhidden" id="sponserDiv"><img src="" id="sponserLogoUrl"/></div>
                     </div>
                     
                     <div id="active-race-header">
@@ -162,10 +164,7 @@ Template Name: Active Race
                         <div><br/><p class="highlight">Website:<a href="#" id="charityProfileWebsite"></a></p></div>
 					</aside>
 					
-					<aside class="fivecol last">
-						<p class="highlight">Sponser</p>
-						<div class="sponser"><img src="" id="sponserLogoUrl"/></div>
-                    </aside>
+
 					<?php if (appthemes_check_user_role("administrator")) {?>
 					<div id="featureracediv">
 						Featured Race? <input type="checkbox" name="featured" id="featured"/>

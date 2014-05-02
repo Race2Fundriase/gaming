@@ -182,6 +182,8 @@ jQuery(document).ready
 				var createdBy = data.rows[0].createdBy;
 				
 				jQuery("#sponserLogoUrl").attr("src", data.rows[0].sponserLogoUrl);
+				if (data.rows[0].sponserLogoUrl != "")
+					jQuery("#sponserDiv").removeClass("myhidden");
 				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
