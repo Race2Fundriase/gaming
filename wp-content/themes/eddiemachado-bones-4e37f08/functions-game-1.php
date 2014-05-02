@@ -99,6 +99,7 @@ function r2f_action_upsert_token()
 	$tokenImageUrl = $_POST["tokenImageUrl"];
 	$speed = $_POST["speed"];
 	$optimumNoOfPitstops = $_POST["optimumNoOfPitstops"];
+	$weatherTolerance = $_POST["weatherTolerance"];
 	
 	// Init results
 	$result["message"] = "";
@@ -122,11 +123,11 @@ function r2f_action_upsert_token()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_tokens
-				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops )
-				VALUES ( %d, %s, %s, %s, %d, %d )
+				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance )
+				VALUES ( %d, %s, %s, %s, %d, %d, %d )
 			", 
 				array(
-				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops
+				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance
 				) 
 		) );
 		
@@ -146,11 +147,12 @@ function r2f_action_upsert_token()
 			"
 				UPDATE r2f_tokens
 				SET tokenName = %s, tokenDescription = %s, tokenImageUrl = %s,
-				speed = %d, optimumNoOfPitstops = %d
+				speed = %d, optimumNoOfPitstops = %d, weatherTolerance = %d
 				WHERE id = %d
 			", 
 				array(
-				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $id
+				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance,
+				$id
 				) 
 		) );
 		
@@ -197,7 +199,7 @@ function r2f_action_get_token()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops
+			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance
 			FROM r2f_tokens
 			WHERE id = %d
 		", 

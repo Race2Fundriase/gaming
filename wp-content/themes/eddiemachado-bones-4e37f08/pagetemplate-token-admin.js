@@ -41,6 +41,7 @@ jQuery(document).ready
 							jQuery("#tokenImageUrl").val(data.result.tokenImageUrl);
 							jQuery("#speed").val(data.result.speed);
 							jQuery("#optimumNoOfPitstops").val(data.result.optimumNoOfPitstops);
+							jQuery("#weatherTolerance").val(data.result.weatherTolerance);
 						}
 						
 					}
@@ -64,7 +65,8 @@ jQuery(document).ready
 					tokenDescription: jQuery("#tokenDescription").val(),
 					tokenImageUrl: jQuery("#tokenImageUrl").val(),
 					speed: jQuery("#speed").val(),
-					optimumNoOfPitstops: jQuery("#optimumNoOfPitstops").val()
+					optimumNoOfPitstops: jQuery("#optimumNoOfPitstops").val(),
+					weatherTolerance: jQuery("#weatherTolerance").val()
 				},
 				dataType: "JSON",
 				success: function (data) {

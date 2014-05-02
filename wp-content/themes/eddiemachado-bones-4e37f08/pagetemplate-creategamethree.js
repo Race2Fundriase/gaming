@@ -114,38 +114,38 @@ jQuery(document).ready
 			var i;
 			
 			jQuery.ajax({
-					url: site_url+"/wp-admin/admin-ajax.php",
-					type: "POST",
-					data: {
-						action: 'r2f_action_update_racesponserLogo',
-						raceId: raceId,
-						sponserLogoUrl: jQuery("#sponserLogoUrl").val()
-					},
-					dataType: "JSON",
-					success: function (data) {
-						console.log(data);
-						for (i=0;i<lengthInDays;i++) {
-							jQuery.ajax({
-								url: site_url+"/wp-admin/admin-ajax.php",
-								type: "POST",
-								data: {
-									action: 'r2f_action_upsert_raceweather',
-									raceId: raceId,
-									day: i,
-									weather: jQuery("#weatherDay"+(i+1)).val(),
-									weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
-								},
-								dataType: "JSON",
-								success: function (data) {
-									console.log(data);
-									location.href = site_url+"/create-online-race-4/?raceId="+raceId;
-								}
-							});
-							
-							
-						}			
-					}
-				});
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_update_racesponserLogo',
+					raceId: raceId,
+					sponserLogoUrl: jQuery("#sponserLogoUrl").val()
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					for (i=0;i<lengthInDays;i++) {
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_upsert_raceweather',
+								raceId: raceId,
+								day: i,
+								weather: jQuery("#weatherDay"+(i+1)).val(),
+								weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
+							},
+							dataType: "JSON",
+							success: function (data) {
+								console.log(data);
+								location.href = site_url+"/create-online-race-4/?raceId="+raceId;
+							}
+						});
+						
+						
+					}			
+				}
+			});
 			
 			
 			return false;
