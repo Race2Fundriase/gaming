@@ -2,6 +2,14 @@
 /*
  Template Name: Create Game Three
  */
+
+// Add to the top of our data-update-link page
+if (isset($_REQUEST['file'])) { 
+    //check_admin_referer("create-online-race-3_options");
+ 
+        // Process and save the image id
+    print_r($_REQUEST['file']);
+}
  
  if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
 ?>
@@ -37,7 +45,7 @@
                                                 
                                                 <div>
 													<div>
-													<div style="width: 50%; float: left; color: white">Weather</div><div style="width: 50%; float: right; color: white">Forecast</div>
+													<div style="width: 50%; float: left; color: white">Weather:</div><div style="width: 50%; float: right; color: white">Forecast</div>
 													</div>
 
 												</div>	
@@ -47,7 +55,24 @@
                                                 
 
                                             <input name="token" type="hidden" value="a2"/>
-                                            
+                                            <h3><span>Part 4</span></h3>
+											<div>
+												<label for="sponserLogo"><span>Sponser Logo (optional):</span></label>
+												<div>
+																											 
+													<p>
+													<a id="choose-from-library-link" href="#" class="btn small"
+														data-update-link="#"
+														data-input="sponserLogo"
+														data-choose="<?php esc_attr_e( 'Choose a Sponser Image' ); ?>"
+														data-update="<?php esc_attr_e( 'Set as sponser image' ); ?>"><?php _e( 'Set sponser image' ); ?>
+													</a>
+													<input id="sponserLogo" name="sponserLogo" type="hidden" value="" tabindex="12"/>
+													<input id="sponserLogoUrl" name="sponserLogoUrl" type="hidden" value="" tabindex="12"/>
+													<img src="" style="width: 100px; height: auto" id="sponserLogoImg">
+													</p>
+												</div>
+											</div>
                                            
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
 												

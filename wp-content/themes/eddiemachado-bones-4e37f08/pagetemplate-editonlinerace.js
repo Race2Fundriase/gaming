@@ -54,7 +54,8 @@ jQuery(document).ready
 							jQuery("#private").val(data.rows[0].private);
 							jQuery("#prizeDesc").val(data.rows[0].prizeDesc);
 							jQuery("#refreshScores").val(data.rows[0].refreshScores);
-							
+							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
+							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
@@ -188,6 +189,21 @@ jQuery(document).ready
 							}
 						});
 					}
+					
+					jQuery.ajax({
+						url: site_url+"/wp-admin/admin-ajax.php",
+						type: "POST",
+						data: {
+							action: 'r2f_action_update_racesponserLogo',
+							raceId: raceId,
+							sponserLogoUrl: jQuery("#sponserLogoUrl").val()
+						},
+						dataType: "JSON",
+						success: function (data) {
+							console.log(data);
+								
+						}
+					});
 				}
 			});
 			

@@ -181,6 +181,8 @@ jQuery(document).ready
 				raceStatus = data.rows[0].raceStatus;
 				var createdBy = data.rows[0].createdBy;
 				
+				jQuery("#sponserLogoUrl").attr("src", data.rows[0].sponserLogoUrl);
+				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
 					type: "POST",

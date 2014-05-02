@@ -596,6 +596,11 @@ add_action('wp_ajax_nopriv_r2f_action_bulk_import', 'r2f_action_bulk_import');
 add_action('wp_ajax_r2f_action_delete_race', 'r2f_action_delete_race');
 add_action('wp_ajax_nopriv_r2f_action_delete_race', 'r2f_action_delete_race');
 
+add_action('wp_ajax_r2f_action_get_image_url', 'r2f_action_get_image_url');
+add_action('wp_ajax_nopriv_r2f_action_get_image_url', 'r2f_action_get_image_url');
+
+add_action('wp_ajax_r2f_action_update_racesponserLogo', 'r2f_action_update_racesponserLogo');
+add_action('wp_ajax_nopriv_r2f_action_update_racesponserLogo', 'r2f_action_update_racesponserLogo');
 
 
 function modify_contact_methods($profile_fields) {

@@ -570,6 +570,55 @@ function r2f_action_upsert_raceweather()
 	die();
 }
 
+function r2f_action_update_racesponserLogo()
+{
+	global $wpdb;
+	
+	
+	// Get Params
+	$raceId = $_POST["raceId"];
+	$sponserLogoUrl = $_POST["sponserLogoUrl"];
+
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($raceId == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+
+	
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET sponserLogoUrl = %s
+			WHERE id = %d
+		", 
+			array(
+			$sponserLogoUrl, $raceId
+			) 
+	) );
+		
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Logo updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updateing the logo.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_activate_racecharacter()
 {

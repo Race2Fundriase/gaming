@@ -6,6 +6,24 @@ jQuery(document).ready
 		var raceId = qs("raceId");
 		var rowHtml = jQuery("#templateDiv2").html();
 		
+		jQuery("#sponserLogo").change(function(e) {
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_get_image_url',
+					file: jQuery("#sponserLogo").val()
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					jQuery("#sponserLogoUrl").val(data.url);
+					jQuery("#sponserLogoImg").attr("src", data.url);
+					
+				}
+			});
+		});
+		
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
 			type: "POST",
@@ -52,6 +70,8 @@ jQuery(document).ready
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
 							jQuery("#private").val(data.rows[0].private);
+							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
+							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
@@ -92,24 +112,42 @@ jQuery(document).ready
 		jQuery("#continue").click(function() { 
 			
 			var i;
-			for (i=0;i<lengthInDays;i++) {
-				jQuery.ajax({
+			
+			jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",
 					type: "POST",
 					data: {
-						action: 'r2f_action_upsert_raceweather',
+						action: 'r2f_action_update_racesponserLogo',
 						raceId: raceId,
-						day: i,
-						weather: jQuery("#weatherDay"+(i+1)).val(),
-						weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
+						sponserLogoUrl: jQuery("#sponserLogoUrl").val()
 					},
 					dataType: "JSON",
 					success: function (data) {
 						console.log(data);
-						location.href = site_url+"/create-online-race-4/?raceId="+raceId;
+						for (i=0;i<lengthInDays;i++) {
+							jQuery.ajax({
+								url: site_url+"/wp-admin/admin-ajax.php",
+								type: "POST",
+								data: {
+									action: 'r2f_action_upsert_raceweather',
+									raceId: raceId,
+									day: i,
+									weather: jQuery("#weatherDay"+(i+1)).val(),
+									weatherForecast: jQuery("#weatherForecastDay"+(i+1)).val()
+								},
+								dataType: "JSON",
+								success: function (data) {
+									console.log(data);
+									location.href = site_url+"/create-online-race-4/?raceId="+raceId;
+								}
+							});
+							
+							
+						}			
 					}
 				});
-			}
+			
+			
 			return false;
 		} );
 		

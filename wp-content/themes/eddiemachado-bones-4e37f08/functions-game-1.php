@@ -13,6 +13,7 @@ function add_jQuery_libraries() {
 	wp_register_script('noty', get_template_directory_uri().'/library/js/noty/packaged/jquery.noty.packaged.min.js', array('jquery'));
 	wp_register_script('qtip', get_template_directory_uri().'/library/js/libs/jquery.qtip.min.js', array('jquery'));
 	wp_register_script('twitter', '//platform.twitter.com/widgets.js', array('jquery'));
+	wp_register_script('custom-header', get_stylesheet_directory_uri() . '/library/js/custom-header.js', array('jquery'), '', true);
 	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
@@ -22,7 +23,9 @@ function add_jQuery_libraries() {
 	wp_enqueue_script('noty');
 	wp_enqueue_script('qtip');
 	wp_enqueue_script('twitter');
+	wp_enqueue_media();
 	
+	wp_enqueue_script( 'custom-header' );
 }
  
 // Wordpress action that says, hey wait! lets add the scripts mentioned in the function as well.
@@ -986,6 +989,20 @@ function upsert_mapgridtokenoffset($mapgridId, $tokenId, $value, $inPlayToken)
 	}
 	
 	
+}
+
+function r2f_action_get_image_url() {
+
+	$file = get_param("file");
+	
+	$url = wp_get_attachment_url( $file );
+	
+	$result["url"] = $url;
+	
+	echo json_encode($result);
+	
+	die();
+
 }
 
 function r2f_action_bulk_upsert_mapgridtokenoffset()

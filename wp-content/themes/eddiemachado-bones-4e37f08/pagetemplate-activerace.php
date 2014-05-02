@@ -160,6 +160,11 @@ Template Name: Active Race
                         <p class="highlight" id="charityProfileDesc"></p>
                         <div><br/><p class="highlight">Find out more:</p></div>
                         <div><br/><p class="highlight">Website:<a href="#" id="charityProfileWebsite"></a></p></div>
+					</aside>
+					
+					<aside class="fivecol last">
+						<p class="highlight">Sponser</p>
+						<div class="sponser"><img src="" id="sponserLogoUrl"/></div>
                     </aside>
 					<?php if (appthemes_check_user_role("administrator")) {?>
 					<div id="featureracediv">
