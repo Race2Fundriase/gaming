@@ -26,7 +26,7 @@ Template Name: Active Race
                     <div>
 						<h1 class="highlight" id="pageTitle">Active Race</h1><br/>
 						
-						<div class="sponser myhidden" id="sponserDiv"><p class="highlight" id="">Sponsored By:</p><img src="" id="sponserLogoUrl"/></div>
+						<div class="sponser myhidden" id="sponserDiv"><p class="highlight" id="">Sponsored By:</p><a target="_blank" href="" id="sponserUrl"><img border="0" src="" id="sponserLogoUrl"/></a></div>
                     </div>
                     
                     <div id="active-race-header">

@@ -773,7 +773,7 @@ function r2f_action_get_race()
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
 				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays, private, 
-				prizeDesc, sponserLogoUrl
+				prizeDesc, sponserLogoUrl, sponserUrl
 				from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d

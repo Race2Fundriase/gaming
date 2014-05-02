@@ -578,6 +578,7 @@ function r2f_action_update_racesponserLogo()
 	// Get Params
 	$raceId = $_POST["raceId"];
 	$sponserLogoUrl = $_POST["sponserLogoUrl"];
+	$sponserUrl = $_POST["sponserUrl"];
 
 	// Init results
 	$result["message"] = "";
@@ -597,11 +598,11 @@ function r2f_action_update_racesponserLogo()
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			UPDATE r2f_races
-			SET sponserLogoUrl = %s
+			SET sponserLogoUrl = %s, sponserUrl = %s
 			WHERE id = %d
 		", 
 			array(
-			$sponserLogoUrl, $raceId
+			$sponserLogoUrl, $sponserUrl, $raceId
 			) 
 	) );
 		

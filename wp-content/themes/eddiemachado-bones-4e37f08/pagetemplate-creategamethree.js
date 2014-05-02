@@ -72,6 +72,7 @@ jQuery(document).ready
 							jQuery("#private").val(data.rows[0].private);
 							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
 							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
+							jQuery("#sponserUrl").val(data.rows[0].sponserUrl);
 							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
@@ -119,7 +120,8 @@ jQuery(document).ready
 				data: {
 					action: 'r2f_action_update_racesponserLogo',
 					raceId: raceId,
-					sponserLogoUrl: jQuery("#sponserLogoUrl").val()
+					sponserLogoUrl: jQuery("#sponserLogoUrl").val(),
+					sponserUrl: jQuery("#sponserUrl").val()
 				},
 				dataType: "JSON",
 				success: function (data) {

@@ -182,6 +182,7 @@ jQuery(document).ready
 				var createdBy = data.rows[0].createdBy;
 				
 				jQuery("#sponserLogoUrl").attr("src", data.rows[0].sponserLogoUrl);
+				jQuery("#sponserUrl").attr("href", data.rows[0].sponserUrl);
 				if (data.rows[0].sponserLogoUrl != "")
 					jQuery("#sponserDiv").removeClass("myhidden");
 				

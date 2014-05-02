@@ -57,10 +57,10 @@ if (isset($_REQUEST['file'])) {
                                             <input name="token" type="hidden" value="a2"/>
                                             <h3><span>Part 4</span></h3>
 											<div>
-												<label for="sponserLogo"><span>Sponser Logo (optional):</span></label>
+												<label for="sponserLogo"><span>Sponsor Logo (optional):</span></label>
 												<div>
 																											 
-													<p>
+													
 													<a id="choose-from-library-link" href="#" class="btn small"
 														data-update-link="#"
 														data-input="sponserLogo"
@@ -70,9 +70,16 @@ if (isset($_REQUEST['file'])) {
 													<input id="sponserLogo" name="sponserLogo" type="hidden" value="" tabindex="12"/>
 													<input id="sponserLogoUrl" name="sponserLogoUrl" type="hidden" value="" tabindex="12"/>
 													<img src="" style="width: 100px; height: auto" id="sponserLogoImg">
-													</p>
+													
 												</div>
 											</div>
+											<div>
+												<label for="sponserUrl"><span>Sponsor Url:</span></label>
+												<div>
+												<input id="sponserUrl" name="sponserUrl" type="text" value="" tabindex="12"/>
+												</div>
+											</div>
+										
                                            
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
 												
