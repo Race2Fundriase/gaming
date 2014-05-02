@@ -16,10 +16,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
                             
 	    <div id="create-race-header">
                 <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
-                    <ul id="tab_control" class="tab_control center">
-			<li><a href="#" class="btn btn-blue large active">Start</a></li>
-			<li><a href="#" class="btn large">Finish</a></li>
-		    </ul>
+                    
             </div>                                
 	</div>
     </div>
@@ -30,10 +27,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
     <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
             <div class="inner-container wrap">		 
 			   <div id="tabs">
+			   <ul id="tab_control" class="tab_control center">
+			<li><a href="#" id="startA" class="btn btn-blue large active">Start</a></li>
+			<li><a href="#" id="finishA" class="btn large">Finish</a></li>
+		    </ul>
 					<div class="tabbed_content active">
 					   
 						<div class="form-elements">
 						    <h3><span>Part 4</span></h3>
+							
 							<div>
 								<label for="startGridX"><span>Start Grid X</span></label>
 								<div>

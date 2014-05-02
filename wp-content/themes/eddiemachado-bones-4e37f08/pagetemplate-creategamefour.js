@@ -70,6 +70,33 @@ window.onload = function () {
 	xoff = 400;
 	yoff = 100;
 	
+	jQuery("#paperParentSF").click(function(e) { 
+	
+		curx = e.pageX - jQuery("#paperParentSF").offset().left + jQuery("#paperParentSF").scrollLeft();
+		curx = curx / (cellWidth * scale);
+		
+		cury = e.pageY - jQuery("#paperParentSF").offset().top + jQuery("#paperParentSF").scrollTop();
+		cury = cury / (cellHeight * scale);
+		
+		curx = Math.floor(curx);
+		cury = Math.floor(cury);
+	
+		if (jQuery("#startA").hasClass("btn-blue")) {
+			startGridX = curx;
+			startGridY = cury;
+		} else {
+			finishGridX = curx;
+			finishGridY = cury;
+		}
+		jQuery("#startGridX").val(startGridX);
+		jQuery("#startGridY").val(startGridY);
+		jQuery("#finishGridX").val(finishGridX);
+		jQuery("#finishGridY").val(finishGridY);
+
+		drawGrid();
+		
+	} );
+	
 	//drawGrid();
 	jQuery("#startGridX,#startGridY,#finishGridX,#finishGridY").change(function(e) {
 		startGridX = jQuery("#startGridX").val();
