@@ -141,7 +141,17 @@ window.onload = function () {
 						if ((i % 3) == 0)
 							jQuery("#wrapper_"+i).addClass("first");
 						if ((i % 3) == 2)
-							jQuery("#wrapper_"+i).addClass("last");										
+							jQuery("#wrapper_"+i).addClass("last");		
+
+						jQuery("#wrapper_"+i).qtip({
+						   content: data.rows[i].tokenTip,
+						   show: 'mouseover',
+						   hide: 'mouseout',
+						   position: {
+							my: 'bottom center',
+							at: 'top center'
+						   }
+						});							
 					}
 					
 					jQuery(".optionselect").bind("click", function(e) {

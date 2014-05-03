@@ -98,7 +98,18 @@ jQuery(document).ready
 					if ((i % 3) == 0)
 						jQuery("#wrapper_"+i).addClass("first");
 					if ((i % 3) == 2)
-						jQuery("#wrapper_"+i).addClass("last");										
+						jQuery("#wrapper_"+i).addClass("last");	
+
+					//jQuery("#token_"+data.rows[i].cell[0]).qtip({
+					jQuery("#wrapper_"+i).qtip({
+					   content: data.rows[i].cell[4],
+					   show: 'mouseover',
+					   hide: 'mouseout',
+					   position: {
+						my: 'bottom center',
+						at: 'top center'
+					   }
+					});
 				}
 				
 				

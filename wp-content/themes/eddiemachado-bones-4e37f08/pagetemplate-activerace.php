@@ -175,7 +175,7 @@ Template Name: Active Race
 			
         </section>
 		<div id="templateDiv" style="display: none">
-			<div class="fourcol" id="token_{index}">
+			<div class="fourcol" id="wrapper_{index}" >
 				<img src="{image}" alt="" />
 				<br/>
 				<p class="highlight">{tokenName}</p>

@@ -60,7 +60,7 @@ function r2f_action_get_tokens()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops from `r2f_tokens` LIMIT $start, $limit");
+	$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` LIMIT $start, $limit");
 	
 	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
 	//$result["message"] = count($result["results"])." records returned.";
@@ -72,7 +72,7 @@ function r2f_action_get_tokens()
 	foreach($queryResult as $row) {
 	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 		$responce->rows[$i]['id']=$row->id;
-		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription,$row->tokenImageUrl);
+		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription,$row->tokenImageUrl,$row->tokenTip);
 		$i++;
 	}        
 	echo json_encode($responce);

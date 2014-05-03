@@ -826,7 +826,7 @@ function r2f_action_get_racetokens()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT r2f_racetokens.id, tokenId, tokenName, tokenDescription, tokenImageUrl
+			SELECT r2f_racetokens.id, tokenId, tokenName, tokenDescription, tokenImageUrl, tokenTip
 			FROM r2f_racetokens
 			JOIN r2f_tokens
 			ON r2f_racetokens.tokenId = r2f_tokens.id
