@@ -51,7 +51,7 @@ jQuery(document).ready
 						dataType: "JSON",
 						success: function (data) {
 							console.log(data);
-							jQuery("#maxNoOfPlayers").val(data.rows[0].maxNoOfPlayers);
+							/*jQuery("#maxNoOfPlayers").val(data.rows[0].maxNoOfPlayers);
 							jQuery("#raceName").val(data.rows[0].raceName);
 							jQuery("#raceDescription").val(data.rows[0].raceDescription);
 							jQuery("#mapId").val(data.rows[0].mapId);
@@ -69,7 +69,7 @@ jQuery(document).ready
 							jQuery("#curDay").val(data.rows[0].curDay);
 							jQuery("#paymentMethodEmail").val(data.rows[0].paymentMethodEmail);
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
-							jQuery("#private").val(data.rows[0].private);
+							jQuery("#private").val(data.rows[0].private);*/
 							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
 							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							jQuery("#sponserUrl").val(data.rows[0].sponserUrl);

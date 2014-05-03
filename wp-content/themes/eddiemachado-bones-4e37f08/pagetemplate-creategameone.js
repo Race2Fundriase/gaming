@@ -65,11 +65,14 @@ jQuery(document).ready
 		} );
 		
 		jQuery("#continue_sub").click(function() { 
-			jQuery("#item_name").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
+		
+			jQuery("#item_name_sub").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
 			return_url = site_url+"/create-online-race-2/?productType=sub&qty="+jQuery("#tokenamount_sub").val();
 			jQuery("#return").val(return_url);
-			jQuery("#amount").val(jQuery("#tokenprice_sub").val());
-			jQuery("#paypal_form").submit();
+			jQuery("#a3").val(jQuery("#tokenprice_sub").val());
+			jQuery("#t3").val("Y");
+			jQuery("#p3").val("1");
+			jQuery("#paypal_form_sub").submit();
 			return false;
 		} );
 		
