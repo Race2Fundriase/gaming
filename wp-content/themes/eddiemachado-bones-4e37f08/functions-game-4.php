@@ -751,6 +751,9 @@ function user_can_enter_race_id($race) {
 	$now = time();
 	if ($rt < $now) return false;
 	
+	$playerCount = get_race_player_count($race["rows"][0]->id);
+	if ($playerCount >= $race["rows"][0]->maxNoOfPlayers) return false;
+	
 	return true;
 	
 }
