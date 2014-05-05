@@ -2,6 +2,7 @@ jQuery(document).ready
 (
 	function(jQuery)
 	{
+		
 		var q = qs('race-s');
 		var p, n, curPage = 1;
 		var rowHtml = jQuery("#templateDiv").html();
@@ -19,9 +20,13 @@ jQuery(document).ready
 				},
 				dataType: "JSON",
 				success: function (data) {
-					console.log(data);
+					
+					try {console.log(data);} catch(err) { alert(err.message); }
+					
 					jQuery("#result").text(data.message + " " + data.error);
+					
 					var row = "";
+					
 					for(i=0;i<data.records;i++) {
 						r = rowHtml;
 						r = r.replace(/{id}/g, data.rows[i].cell[0]);

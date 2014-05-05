@@ -131,6 +131,8 @@ function r2f_action_upsert_racecharacters()
 	$drivingStyleWeight = get_param("drivingStyleWeight");
 	$noOfPitStops = get_param("noOfPitStops");
 	$playerName = get_param("playerName");
+	$transactionId = get_param("transactionId");
+	if ($transactionId == "") $transactionId = 0;
 		
 	// Init results
 	$result["message"] = "";
@@ -154,12 +156,12 @@ function r2f_action_upsert_racecharacters()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_racecharacters
-				( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName
+				( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName, transactionId
 					 )
-				VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s )
+				VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s, %d )
 			", 
 				array(
-				$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
+				$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName, $transactionId
 				) 
 		) );
 		
@@ -179,11 +181,11 @@ function r2f_action_upsert_racecharacters()
 			"
 				UPDATE r2f_racecharacters
 				SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
-				route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
+				route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s, transactionId = %d
 				WHERE id = %d
 			", 
 				array(
-				$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
+				$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName, $transactionId, 
 				$id
 				) 
 		) );
@@ -644,7 +646,22 @@ function r2f_action_activate_racecharacter()
 	}
 	
 	// Insert or Update
+
 		
+	$racecharacter = get_racecharacter($id);
+	$racecharacter = $racecharacter[0];
+	
+	$rows2 = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_transactions
+			SET used = 1
+			WHERE id = %d
+		", 
+			array(
+				$racecharacter->transactionId
+			) 
+	) );
+	
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			UPDATE r2f_racecharacters
@@ -660,7 +677,7 @@ function r2f_action_activate_racecharacter()
 		$result["error"] = "";
 		$result["message"] = "Race Character $id was updated.";
 		
-		$racecharacter = get_racecharacter($id);
+		
 		$race = get_race($racecharacter->raceId);
 		$race = $race["rows"][0];
 		
@@ -673,7 +690,9 @@ function r2f_action_activate_racecharacter()
 		$data["insertprizeifany"] = $race->PrizeDesc;
 		$data["linktorace"] = "http://race2fundraise.com/active-race/?raceId=".$racecharacter->raceId;
 		
-		send_html_email($user_email, "Race2Fundraise Race Entered", "PlayerRaceEntered", $data);
+		$user = get_userdata($race->playerId);
+		if ($user) 		
+			send_html_email($user->user_email, "Race2Fundraise Race Entered", "PlayerRaceEntered", $data);
 
 		
 	} else {

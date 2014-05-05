@@ -226,6 +226,7 @@ window.onload = function () {
 	var tokenId = qs("tokenId");
 	var drivingStyleWeight = qs("drivingStyleWeight");
 	var noOfPitstops = qs("noOfPitstops");
+	var transactionId = qs("transactionId");
 	
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
@@ -345,25 +346,46 @@ window.onload = function () {
 				url: site_url+"/wp-admin/admin-ajax.php",
 				type: "POST",
 				data: {
-					action: 'r2f_action_upsert_racecharacters',
-					id: "",
+					action: 'r2f_action_purchase_check',
 					raceId: raceId,
-					tokenId: tokenId,
-					playerId: playerId,
-					joinDate: joinDate,
-					route: route,
-					drivingStyleWeight: drivingStyleWeight,
-					noOfPitstops: noOfPitstops,
-					playerName: playerName
+					playerId: current_user_id
 				},
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
-					jQuery("#result").text(data.message + " " + data.error);
-					if (data.error == "")
-						location.href = site_url+"/enter-race-part-3/?raceId="+raceId+"&racecharacterId="+data.id;
+					
+					jQuery.ajax({
+						url: site_url+"/wp-admin/admin-ajax.php",
+						type: "POST",
+						data: {
+							action: 'r2f_action_upsert_racecharacters',
+							id: "",
+							raceId: raceId,
+							tokenId: tokenId,
+							playerId: playerId,
+							joinDate: joinDate,
+							route: route,
+							drivingStyleWeight: drivingStyleWeight,
+							noOfPitstops: noOfPitstops,
+							playerName: playerName,
+							transactionId: data.id
+						},
+						dataType: "JSON",
+						success: function (data) {
+							console.log(data);
+							jQuery("#result").text(data.message + " " + data.error);
+							if (data.error == "")
+								location.href = site_url+"/enter-race-part-3/?raceId="+raceId+"&racecharacterId="+data.id;
+						}
+					});
+					
+					
+					
+					
 				}
 			});
+				
+			
 			
 		}
 		jQuery("#feedback").text("You must choose a route.");
@@ -388,7 +410,8 @@ window.onload = function () {
 				route: route,
 				drivingStyleWeight: drivingStyleWeight,
 				noOfPitstops: noOfPitstops,
-				playerName: playerName
+				playerName: playerName,
+				transactionId: transactionId
 			},
 			dataType: "JSON",
 			success: function (data) {

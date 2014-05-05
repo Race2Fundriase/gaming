@@ -663,6 +663,8 @@ function r2f_action_get_races()
 			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->maxNoOfPlayers);
 		$i++;
 	}        
+	$responce->records = count($responce->rows);
+	
 	echo json_encode($responce);
 	die();
 }

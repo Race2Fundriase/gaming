@@ -4,6 +4,7 @@
 function add_jQuery_libraries() {
  
 	wp_enqueue_style('qtip', get_template_directory_uri()+'/library/css/jquery.qtip.min.css', null, false, false);
+	wp_enqueue_style('leaflet', 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css', null, false, false);
  
     // Registering Scripts
     wp_register_script('jquery-validation-plugin', 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js', array('jquery'));
@@ -14,6 +15,7 @@ function add_jQuery_libraries() {
 	wp_register_script('qtip', get_template_directory_uri().'/library/js/libs/jquery.qtip.min.js', array('jquery'));
 	wp_register_script('twitter', '//platform.twitter.com/widgets.js', array('jquery'));
 	wp_register_script('custom-header', get_stylesheet_directory_uri() . '/library/js/custom-header.js', array('jquery'), '', true);
+	wp_register_script('leaflet', 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js', array('jquery'));
 	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
@@ -23,6 +25,7 @@ function add_jQuery_libraries() {
 	wp_enqueue_script('noty');
 	wp_enqueue_script('qtip');
 	wp_enqueue_script('twitter');
+	wp_enqueue_script('leaflet');
 	wp_enqueue_media();
 	
 	wp_enqueue_script( 'custom-header' );
@@ -76,6 +79,46 @@ function r2f_action_get_tokens()
 		$i++;
 	}        
 	echo json_encode($responce);
+	die();
+}
+
+function r2f_action_purchase_check()
+{
+	global $wpdb;
+	
+	$raceId = get_param("raceId");
+	$playerId = get_param("playerId");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["result"] = "";
+
+	$item_number = "TOKEN:$raceId-$playerId";
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE item_number = %s AND used = 0
+		", 
+			array(
+				$item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$result["error"] = "";
+		$result["message"] = "Purchase '$item_number' found.";
+		$result["result"] = $rows[0];
+		$result["id"] = $rows[0]->id;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the purchase.";
+	}
+	
+	echo json_encode($result);
 	die();
 }
 

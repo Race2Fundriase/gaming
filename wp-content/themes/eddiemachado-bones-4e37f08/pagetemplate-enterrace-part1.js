@@ -61,6 +61,8 @@ window.onload = function () {
 
 
 	var raceId = qs("raceId");
+	var transactionId = qs("transactionId");
+	
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "POST",
@@ -206,7 +208,7 @@ window.onload = function () {
 		if (jQuery("#playerName").val() == "") { alert("You must enter a player name"); return false; }
 		location.href = site_url+"/enter-race-part-2/?raceId="+raceId+"&playerName="+jQuery("#playerName").val()
 			+"&tokenId="+jQuery("#tokenId").val()+"&drivingStyleWeight="+jQuery("#drivingStyleWeight").val()
-			+"&noOfPitstops="+jQuery("#noOfPitstops").val();
+			+"&noOfPitstops="+jQuery("#noOfPitstops").val()+"&transactionId="+transactionId;
 		return false;
 	} );
 	

@@ -303,7 +303,7 @@ jQuery(document).ready
 			getLeaderBoard(raceId, curDay, curHour, raceStatus);
 		});
 		
-		getActiveRaces();
+		//getActiveRaces();
 
 	}
 );
@@ -389,7 +389,9 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {
 					j = jQuery(this).attr("data-index");
 					if (selPlayer) selPlayer.remove();
-					selPlayer = paper.circle(players[j].gridX * cellWidth * scale + ((cellWidth * scale) / 2), players[j].gridY * cellWidth * scale + ((cellWidth * scale) / 2), (cellWidth * scale) - 2).attr("stroke", "#0f0");
+					if (curDay < 0) x = startGridX; else x = players[j].gridX;
+					if (curDay < 0) y = startGridY; else y = players[j].gridY;			
+					selPlayer = paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), (cellWidth * scale) - 2).attr("stroke", "#0f0");
 				});
 			}
 			
@@ -413,6 +415,7 @@ function qs(key) {
 }
 
 function updateMapOptions() {
+
 	mapName = jQuery("#mapName").val();
 	mapImageUrl = jQuery("#mapImageUrl").val();
 	mapWidth = jQuery("#mapWidth").val();
@@ -421,6 +424,7 @@ function updateMapOptions() {
 	gridHeight = jQuery("#gridHeight").val();
 	cellWidth = jQuery("#cellHeight").val();
 	cellHeight = jQuery("#cellHeight").val();
+
 }
 
 Date.prototype.yyyymmdd = function() {

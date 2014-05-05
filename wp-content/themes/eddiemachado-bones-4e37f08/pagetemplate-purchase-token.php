@@ -28,6 +28,8 @@ Template Name: Purchase Token
                     </div>
                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypalForm">
 					<input type="hidden" name="cmd" value="_xclick">
+					<input type="hidden" name="rm" value="2">
+					<input type="hidden" name="cbt" value="Return to Race2Fundraise!">
 					<input type="hidden" name="business" value="" id="business">
 					<input type="hidden" name="item_name"
 					value="Race2Fundraise Race Token">

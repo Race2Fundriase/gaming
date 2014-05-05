@@ -5,9 +5,9 @@ jQuery(document).ready
 	{
 		var raceId = qs("raceId");
 		
-		jQuery("#return").val(site_url+"/enter-race/?raceId="+raceId);
+		jQuery("#return").val(site_url+"/enter-race-part-1/?raceId="+raceId);
 		jQuery("#cancel_return").val(site_url+"/purchase-token/?raceId="+raceId);
-		jQuery("#notify_url").val(site_url+"/wp-admin/admin-ajax.php?action=r2f_action_notify");
+		jQuery("#notify_url").val(site_url+"/ipn");
 		jQuery("#item_number").val("TOKEN:"+raceId+"-"+current_user_id);
 		
 		jQuery.ajax({
@@ -34,6 +34,24 @@ jQuery(document).ready
 					jQuery("#justGivingLink").attr("href","http://www.justgiving.com/donation/direct/charity/"
 						+data.rows[0].justGivingCharityId+"?amount="+data.rows[0].entryPrice
 						+"&frequency=single&exitUrl="+site_url+"/enter-race/?raceId="+raceId);
+			}
+		});
+		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_purchase_check',
+				raceId: raceId,
+				playerId: current_user_id
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				if (data.id != "")
+					location.href = site_url+"/enter-race/?raceId="+raceId+"&transactionId="+data.id;
+				
+				
 			}
 		});
 		

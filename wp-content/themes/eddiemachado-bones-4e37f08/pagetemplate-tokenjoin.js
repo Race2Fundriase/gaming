@@ -22,7 +22,7 @@ jQuery(document).ready
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					if (data.error == "") {
-						if (raceId == "")
+						if (!raceId || raceId == "")
 							location.href = "/";
 						else
 							location.href = "/active-race/?raceId="+raceId;
