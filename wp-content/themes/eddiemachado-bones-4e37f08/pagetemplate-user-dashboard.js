@@ -26,11 +26,11 @@ jQuery(document).ready
 					r = r.replace(/{raceName}/g, data.rows[i].cell[1]);
 					r = r.replace(/{mapName}/g, data.rows[i].cell[2]);
 					r = r.replace(/{charityName}/g, data.rows[i].cell[5]);
-					r = r.replace(/{start}/g, data.rows[i].cell[6]);
-					r = r.replace(/{finish}/g, data.rows[i].cell[7]);
-					r = r.replace(/{image}/g, data.rows[i].cell[8]);
+					r = r.replace(/{start}/g, data.rows[i].cell[6] + " " + data.rows[i].cell[7]);
+					r = r.replace(/{finish}/g, data.rows[i].cell[8] + " " + data.rows[i].cell[9]);
+					r = r.replace(/{image}/g, data.rows[i].cell[10]);
 					
-					r = r.replace(/{characterType}/g, data.rows[i].cell[9]);
+					r = r.replace(/{characterType}/g, data.rows[i].cell[11]);
 					if(data.rows[i].cell[3] == 0) {
 						r = r.replace(/{raceStatus}/g, "Active");
 						r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
@@ -38,7 +38,7 @@ jQuery(document).ready
 						r = r.replace(/{raceStatus}/g, "Complete");
 						r = r.replace(/{viewMoreUrl}/g,site_url+'/complete-race/?raceId='+data.rows[i].cell[0]);
 					}
-					r = r.replace(/{leaderboardPos}/g, data.rows[i].cell[10]);
+					r = r.replace(/{leaderboardPos}/g, data.rows[i].cell[12]);
 					row += r;
 					
 					
