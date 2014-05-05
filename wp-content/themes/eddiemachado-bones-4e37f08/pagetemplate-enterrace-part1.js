@@ -192,7 +192,7 @@ window.onload = function () {
 					console.log(data);
 					var option = '';
 					for (i=0;i<data.rows.length;i++){
-					    jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+					    jQuery("#weatherForecastDay"+(i+1)).val(data.rows[i].weatherForecast);
 					}
 					
 					
