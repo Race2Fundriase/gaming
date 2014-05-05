@@ -656,17 +656,46 @@ function r2f_action_get_races()
 	$i=0;
 	foreach($queryResult as $row) {
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
-	
+		$playerCount = get_race_player_count($row->id);
 		$responce->rows[$i]['id']=$row->id;
 		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/create-online-race/?raceId='.$row->id.'">Edit</a>',
-			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->maxNoOfPlayers);
+			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->maxNoOfPlayers, $playerCount);
 		$i++;
 	}        
 	$responce->records = count($responce->rows);
 	
 	echo json_encode($responce);
 	die();
+}
+
+function get_race_player_count($raceId)
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT COUNT(*) AS playerCount
+			FROM r2f_racecharacters
+			WHERE raceId = %d AND status = 1
+			GROUP BY raceId
+		", 
+			array(
+				$raceId
+			) 
+	) );
+	
+	if ($rows) {
+		return $rows[0]->playerCount;
+	} else {
+		return 0;
+	}
 }
 
 function r2f_action_get_user_races()
@@ -728,9 +757,22 @@ function r2f_action_get_user_races()
 		$pos = get_leaderboard_pos($row->id, $userid);
 		
 		$responce->rows[$i]['id']=$row->id;
-		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
-			'<a href="'.site_url().'/active-race/?raceId='.$row->id.'">View</a>',
-			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->tokenName, $pos);
+		$responce->rows[$i]['cell']=
+			array(
+				$row->id,
+				$row->raceName,
+				$row->mapName,
+				$row->raceStatus,
+				'<a href="'.site_url().'/active-race/?raceId='.$row->id.'">View</a>',
+				$charityName, 
+				$row->startDate, 
+				$row->startTime, 
+				$row->finishDate, 
+				$row->finishTime, 
+				$row->mapImageUrl, 
+				$row->tokenName, 
+				$pos
+			);
 		$i++;
 	}        
 	echo json_encode($responce);

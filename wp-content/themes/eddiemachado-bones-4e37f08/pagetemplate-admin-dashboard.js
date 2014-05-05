@@ -30,7 +30,7 @@ jQuery(document).ready
 					r = r.replace(/{stime}/g, data.rows[i].cell[7]);
 					r = r.replace(/{finish}/g, data.rows[i].cell[8]);
 					r = r.replace(/{ftime}/g, data.rows[i].cell[9]);
-					r = r.replace(/{maxNoOfPlayers}/g, data.rows[i].cell[11]);
+					r = r.replace(/{maxNoOfPlayers}/g, data.rows[i].cell[12]+" of "+data.rows[i].cell[11]);
 					r = r.replace(/{raceStatus}/g, data.rows[i].cell[3] ? 'Active' : 'Complete');
 					r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
 					r = r.replace(/{tweetUrl}/g,'https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[i].cell[1])+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+data.rows[i].cell[0]));
