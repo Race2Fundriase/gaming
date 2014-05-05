@@ -44,7 +44,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 			<div id="racesDataGrid" class="boxShadow">
 				<table>
 				<thead>
-				<tr><th>Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Characters</th><th>Game Status</th><th>Invite Characters</th><th>Create Characters</th><th>Stop/Activate Game</th></tr>
+				<tr><th>Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Players</th><th>Game Status</th><th>Invite Players</th><th>Create Players</th><th>Stop/Activate Game</th></tr>
 				</thead>
 				<tbody id="raceResultsActive"></tbody>
 				</table>
