@@ -66,7 +66,7 @@
                                                     </div>
 													<label for="tokenprice_race"><span>Price (&pound;):</span></label>
                                                     <div>
-                                                    <input name="tokenprice_race" id="tokenprice_race" type="text" value="" tabindex="1" readonly/> 
+                                                    <input name="tokenprice_race" id="tokenprice_race" type="text" value="" tabindex="1"  readonly="readonly"/> 
                                                     </div>
                                                 </div>
          
@@ -109,11 +109,11 @@
                                                 <div >
                                                     <label for="tokenamount"><span>Max Players:</span></label>
                                                     <div>
-                                                    <input name="tokenamount_sub" id="tokenamount_sub" type="text" value="" tabindex="1" readonly/> 
+                                                    <input name="tokenamount_sub" id="tokenamount_sub" type="text" value="" tabindex="1"  readonly="readonly"/> 
 													</div>
 													<label for="tokenamount"><span>Price (&pound;):</span></label>
 													<div>
-													<input name="tokenprice_sub" id="tokenprice_sub" type="text" value="" tabindex="1" readonly/> 
+													<input name="tokenprice_sub" id="tokenprice_sub" type="text" value="" tabindex="1"  readonly="readonly"/> 
                                                     </div>
                                                 </div>
          
