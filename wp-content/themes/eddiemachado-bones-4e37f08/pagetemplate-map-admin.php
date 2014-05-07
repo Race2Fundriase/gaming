@@ -33,6 +33,11 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		<div><label for="gridHeight" id="gridHeightLabel">Map Grid Height:</label><input type="text" id="gridHeight" value=""/></div>
 		<div><label for="cellWidth" id="cellWidthLabel">Map Cell Width:</label><input type="text" id="cellWidth" value=""/></div>
 		<div><label for="cellHeight" id="cellHeightLabel">Map Cell Height:</label><input type="text" id="cellHeight" value=""/></div>
+		<div><label for="mapImageUrl" id="mapTilesUrlLabel">Map Tiles URL:</label><input type="text" id="mapTilesUrl" value=""/></div>
+		<div><label for="minZoom" id="minZoomLabel">Min Zoom:</label><input type="text" id="minZoom" value=""/></div>
+		<div><label for="maxZoom" id="maxZoomLabel">Max Zoom:</label><input type="text" id="maxZoom" value=""/></div>
+		<div><label for="boundaryX" id="boundaryXLabel">Boundary X:</label><input type="text" id="boundaryX" value=""/></div>
+		<div><label for="boundaryY" id="boundaryYLabel">Boundary Y:</label><input type="text" id="boundaryY" value=""/></div>
 		<input type="button" value="Apply" id="upsertMap"/>
 		</fieldset>
 		</form>

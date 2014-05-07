@@ -2395,29 +2395,36 @@ select:focus {
   max-height: 400px;
 }
 
+/* line 1401, ../scss/_base.scss */
+#raceMap {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
 /*********************************
  *Active Race Page / Complete Race
  *********************************/
-/* line 1405, ../scss/_base.scss */
-#active-race-header, #complete-race-header, #create-race-header {
+/* line 1418, ../scss/_base.scss */
+#active-race-header, #complete-race-header, #create-race-header, #raceMap, #active-race-header2 {
   position: relative;
 }
-/* line 1409, ../scss/_base.scss */
-#active-race-header img, #complete-race-header img, #create-race-header img {
+/* line 1422, ../scss/_base.scss */
+#active-race-header img, #complete-race-header img, #create-race-header img, #raceMap img, #active-race-header2 img {
   position: relative;
   top: 0;
   left: 0;
 }
-/* line 1416, ../scss/_base.scss */
-#active-race-header div.stretchy, #complete-race-header div.stretchy, #create-race-header div.stretchy {
+/* line 1429, ../scss/_base.scss */
+#active-race-header div.stretchy, #complete-race-header div.stretchy, #create-race-header div.stretchy, #raceMap div.stretchy, #active-race-header2 div.stretchy {
   display: inline-block;
   position: relative;
   width: 100%;
   padding-bottom: 63.224447%;
   overflow: hidden;
 }
-/* line 1425, ../scss/_base.scss */
-#active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame, #create-race-header div.stretchy div#frame {
+/* line 1438, ../scss/_base.scss */
+#active-race-header div.stretchy div#frame, #complete-race-header div.stretchy div#frame, #create-race-header div.stretchy div#frame, #raceMap div.stretchy div#frame, #active-race-header2 div.stretchy div#frame {
   position: absolute;
   z-index: 10;
   top: 0;
@@ -2427,12 +2434,12 @@ select:focus {
   background: url("../images/squareframe.png") center no-repeat;
   background-size: 100% 100%;
 }
-/* line 1432, ../scss/_base.scss */
-#active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover, #create-race-header div.stretchy div#frame:hover {
+/* line 1445, ../scss/_base.scss */
+#active-race-header div.stretchy div#frame:hover, #complete-race-header div.stretchy div#frame:hover, #create-race-header div.stretchy div#frame:hover, #raceMap div.stretchy div#frame:hover, #active-race-header2 div.stretchy div#frame:hover {
   cursor: move;
 }
-/* line 1437, ../scss/_base.scss */
-#active-race-header #other-search, #complete-race-header #other-search, #create-race-header #other-search {
+/* line 1450, ../scss/_base.scss */
+#active-race-header #other-search, #complete-race-header #other-search, #create-race-header #other-search, #raceMap #other-search, #active-race-header2 #other-search {
   position: relative;
   width: 90%;
   margin: 0 auto;
@@ -2440,23 +2447,23 @@ select:focus {
   top: 20px;
   z-index: 20;
 }
-/* line 1445, ../scss/_base.scss */
-#active-race-header #other-search input, #complete-race-header #other-search input, #create-race-header #other-search input {
-  width: 86%;
-}
-/* line 1448, ../scss/_base.scss */
-#active-race-header #other-search input:focus, #complete-race-header #other-search input:focus, #create-race-header #other-search input:focus {
+/* line 1458, ../scss/_base.scss */
+#active-race-header #other-search input, #complete-race-header #other-search input, #create-race-header #other-search input, #raceMap #other-search input, #active-race-header2 #other-search input {
   width: 86%;
 }
 /* line 1461, ../scss/_base.scss */
-#active-race-header .btn, #complete-race-header .btn, #create-race-header .btn {
+#active-race-header #other-search input:focus, #complete-race-header #other-search input:focus, #create-race-header #other-search input:focus, #raceMap #other-search input:focus, #active-race-header2 #other-search input:focus {
+  width: 86%;
+}
+/* line 1474, ../scss/_base.scss */
+#active-race-header .btn, #complete-race-header .btn, #create-race-header .btn, #raceMap .btn, #active-race-header2 .btn {
   position: relative;
   font-size: 28px;
   left: 10px;
   bottom: -40px;
 }
-/* line 1468, ../scss/_base.scss */
-#active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #create-race-header .headings, #create-race-header .dates {
+/* line 1481, ../scss/_base.scss */
+#active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #create-race-header .headings, #create-race-header .dates, #raceMap .headings, #raceMap .dates, #active-race-header2 .headings, #active-race-header2 .dates {
   display: block;
   z-index: 20;
   bottom: 15px;
@@ -2468,34 +2475,34 @@ select:focus {
   background-color: #fff;
   font-size: 80%;
 }
-/* line 1480, ../scss/_base.scss */
-#active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type, #create-race-header .headings p:first-of-type, #create-race-header .headings time:first-of-type, #create-race-header .dates p:first-of-type, #create-race-header .dates time:first-of-type {
+/* line 1493, ../scss/_base.scss */
+#active-race-header .headings p:first-of-type, #active-race-header .headings time:first-of-type, #active-race-header .dates p:first-of-type, #active-race-header .dates time:first-of-type, #complete-race-header .headings p:first-of-type, #complete-race-header .headings time:first-of-type, #complete-race-header .dates p:first-of-type, #complete-race-header .dates time:first-of-type, #create-race-header .headings p:first-of-type, #create-race-header .headings time:first-of-type, #create-race-header .dates p:first-of-type, #create-race-header .dates time:first-of-type, #raceMap .headings p:first-of-type, #raceMap .headings time:first-of-type, #raceMap .dates p:first-of-type, #raceMap .dates time:first-of-type, #active-race-header2 .headings p:first-of-type, #active-race-header2 .headings time:first-of-type, #active-race-header2 .dates p:first-of-type, #active-race-header2 .dates time:first-of-type {
   position: absolute;
   margin: 0;
   left: 1em;
   top: 0;
 }
-/* line 1487, ../scss/_base.scss */
-#active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type, #create-race-header .headings p:last-of-type, #create-race-header .headings time:last-of-type, #create-race-header .dates p:last-of-type, #create-race-header .dates time:last-of-type {
+/* line 1500, ../scss/_base.scss */
+#active-race-header .headings p:last-of-type, #active-race-header .headings time:last-of-type, #active-race-header .dates p:last-of-type, #active-race-header .dates time:last-of-type, #complete-race-header .headings p:last-of-type, #complete-race-header .headings time:last-of-type, #complete-race-header .dates p:last-of-type, #complete-race-header .dates time:last-of-type, #create-race-header .headings p:last-of-type, #create-race-header .headings time:last-of-type, #create-race-header .dates p:last-of-type, #create-race-header .dates time:last-of-type, #raceMap .headings p:last-of-type, #raceMap .headings time:last-of-type, #raceMap .dates p:last-of-type, #raceMap .dates time:last-of-type, #active-race-header2 .headings p:last-of-type, #active-race-header2 .headings time:last-of-type, #active-race-header2 .dates p:last-of-type, #active-race-header2 .dates time:last-of-type {
   position: absolute;
   margin: 0;
   top: 0;
   right: 1em;
 }
-/* line 1495, ../scss/_base.scss */
-#active-race-header .headings, #complete-race-header .headings, #create-race-header .headings {
+/* line 1508, ../scss/_base.scss */
+#active-race-header .headings, #complete-race-header .headings, #create-race-header .headings, #raceMap .headings, #active-race-header2 .headings {
   margin-top: 0.8rem;
 }
-/* line 1499, ../scss/_base.scss */
-#active-race-header .dates, #complete-race-header .dates, #create-race-header .dates {
+/* line 1512, ../scss/_base.scss */
+#active-race-header .dates, #complete-race-header .dates, #create-race-header .dates, #raceMap .dates, #active-race-header2 .dates {
   margin-top: 2px;
 }
 
-/* line 1506, ../scss/_base.scss */
+/* line 1519, ../scss/_base.scss */
 #race-data p {
   padding: 0.1em 0.3em;
 }
-/* line 1510, ../scss/_base.scss */
+/* line 1523, ../scss/_base.scss */
 #race-data dd, #race-data dt {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
@@ -2503,56 +2510,56 @@ select:focus {
   background-color: #fff;
   color: #de5f02;
 }
-/* line 1518, ../scss/_base.scss */
+/* line 1531, ../scss/_base.scss */
 #race-data dt {
   padding-left: 0.3em;
 }
-/* line 1522, ../scss/_base.scss */
+/* line 1535, ../scss/_base.scss */
 #race-data dd {
   padding-right: 0.3em;
 }
-/* line 1526, ../scss/_base.scss */
+/* line 1539, ../scss/_base.scss */
 #race-data dd:after {
   content: "\a";
   white-space: pre;
 }
 
-/* line 1532, ../scss/_base.scss */
+/* line 1545, ../scss/_base.scss */
 #race-data .characters {
   margin-top: 30px;
 }
 
-/* line 1536, ../scss/_base.scss */
+/* line 1549, ../scss/_base.scss */
 #race-data .leaderboard {
   width: 200px;
   margin-top: 30px;
 }
-/* line 1539, ../scss/_base.scss */
+/* line 1552, ../scss/_base.scss */
 #race-data .leaderboard ol {
   text-align: left;
   list-style-type: decimal;
   list-style-position: inside;
   margin-top: 2px;
 }
-/* line 1545, ../scss/_base.scss */
+/* line 1558, ../scss/_base.scss */
 #race-data .leaderboard ol li {
   border-bottom: 2px solid black;
   padding: 0 1em 0 1em;
 }
-/* line 1551, ../scss/_base.scss */
+/* line 1564, ../scss/_base.scss */
 #race-data .leaderboard table {
   width: 612px;
 }
-/* line 1556, ../scss/_base.scss */
+/* line 1569, ../scss/_base.scss */
 #race-data .leaderboard th {
   font-weight: normal;
   border-bottom: 8px solid #000;
 }
-/* line 1561, ../scss/_base.scss */
+/* line 1574, ../scss/_base.scss */
 #race-data .leaderboard td {
   border-bottom: 2px solid #000;
 }
-/* line 1564, ../scss/_base.scss */
+/* line 1577, ../scss/_base.scss */
 #race-data .leaderboard td, #race-data .leaderboard th {
   padding: 0 0.3em;
   background-color: #fff;
@@ -2560,16 +2567,16 @@ select:focus {
   text-align: left;
 }
 
-/* line 1574, ../scss/_base.scss */
+/* line 1587, ../scss/_base.scss */
 #profile-excerpt .profile-view {
   margin-top: 10px;
 }
-/* line 1577, ../scss/_base.scss */
+/* line 1590, ../scss/_base.scss */
 #profile-excerpt p a {
   color: #de5f02;
 }
 
-/* line 1585, ../scss/_base.scss */
+/* line 1598, ../scss/_base.scss */
 .winner {
   font-family: "Headline One";
   font-size: 40px;
@@ -2588,11 +2595,11 @@ select:focus {
 /*************************
  *Create Race Page
  *************************/
-/* line 1604, ../scss/_base.scss */
+/* line 1617, ../scss/_base.scss */
 .token {
   margin-bottom: 20px;
 }
-/* line 1606, ../scss/_base.scss */
+/* line 1619, ../scss/_base.scss */
 .token a {
   position: relative;
   display: block;
@@ -2602,7 +2609,7 @@ select:focus {
   max-width: 218px;
   max-height: 218px;
 }
-/* line 1615, ../scss/_base.scss */
+/* line 1628, ../scss/_base.scss */
 .token a:after {
   display: block;
   content: " ";
@@ -2613,7 +2620,7 @@ select:focus {
   left: 0;
   background: url("../images/token-overlay.gif");
 }
-/* line 1628, ../scss/_base.scss */
+/* line 1641, ../scss/_base.scss */
 .token a.active:after {
   background: url("../images/token-selected.gif");
 }
@@ -2621,7 +2628,7 @@ select:focus {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-/* line 1646, ../scss/_base.scss */
+/* line 1659, ../scss/_base.scss */
 .widget ul li {
   /* deep nesting */
 }
@@ -2629,7 +2636,7 @@ SIDEBARS & ASIDES
 /*********************
 FOOTER STYLES
 *********************/
-/* line 1667, ../scss/_base.scss */
+/* line 1680, ../scss/_base.scss */
 .footer {
   position: relative;
   clear: both;
@@ -2647,7 +2654,7 @@ override these styles for the desktop
 view.
 */
 /* end .footer-links */
-/* line 1694, ../scss/_base.scss */
+/* line 1707, ../scss/_base.scss */
 .copyright {
   font-size: 0.8em;
   color: #fff;
@@ -2657,34 +2664,34 @@ view.
 }
 
 /* css for timepicker */
-/* line 1703, ../scss/_base.scss */
+/* line 1716, ../scss/_base.scss */
 .ui-timepicker-div .ui-widget-header {
   margin-bottom: 8px;
 }
 
-/* line 1704, ../scss/_base.scss */
+/* line 1717, ../scss/_base.scss */
 .ui-timepicker-div dl {
   text-align: left;
 }
 
-/* line 1705, ../scss/_base.scss */
+/* line 1718, ../scss/_base.scss */
 .ui-timepicker-div dl dt {
   float: left;
   clear: left;
   padding: 0 0 0 5px;
 }
 
-/* line 1706, ../scss/_base.scss */
+/* line 1719, ../scss/_base.scss */
 .ui-timepicker-div dl dd {
   margin: 0 10px 10px 45%;
 }
 
-/* line 1707, ../scss/_base.scss */
+/* line 1720, ../scss/_base.scss */
 .ui-timepicker-div td {
   font-size: 90%;
 }
 
-/* line 1708, ../scss/_base.scss */
+/* line 1721, ../scss/_base.scss */
 .ui-tpicker-grid-label {
   background: none;
   border: none;
@@ -2692,24 +2699,24 @@ view.
   padding: 0;
 }
 
-/* line 1710, ../scss/_base.scss */
+/* line 1723, ../scss/_base.scss */
 .ui-timepicker-rtl {
   direction: rtl;
 }
 
-/* line 1711, ../scss/_base.scss */
+/* line 1724, ../scss/_base.scss */
 .ui-timepicker-rtl dl {
   text-align: right;
   padding: 0 5px 0 0;
 }
 
-/* line 1712, ../scss/_base.scss */
+/* line 1725, ../scss/_base.scss */
 .ui-timepicker-rtl dl dt {
   float: right;
   clear: right;
 }
 
-/* line 1713, ../scss/_base.scss */
+/* line 1726, ../scss/_base.scss */
 .ui-timepicker-rtl dl dd {
   margin: 0 45% 10px 10px;
 }
@@ -3620,7 +3627,7 @@ you can add resource intensive styles.
   }
 
   /* line 808, ../scss/_768up.scss */
-  #active-race-header, #complete-race-header {
+  #active-race-header, #complete-race-header, #active-race-header2 {
     display: block;
     box-sizing: border-box;
     max-width: 1027px;
@@ -3628,14 +3635,14 @@ you can add resource intensive styles.
     margin: 0 auto;
   }
   /* line 820, ../scss/_768up.scss */
-  #active-race-header .btn, #complete-race-header .btn {
+  #active-race-header .btn, #complete-race-header .btn, #active-race-header2 .btn {
     font-size: 36px;
     font-size: 2.25rem;
     left: 100px;
     bottom: -50px;
   }
   /* line 827, ../scss/_768up.scss */
-  #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates {
+  #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #active-race-header2 .headings, #active-race-header2 .dates {
     width: 200px;
     height: 24px;
     font-size: 100%;
@@ -4038,10 +4045,32 @@ label {
   right: 0;
   bottom: 0;
   left: 0;
-  overflow: hidden;
 }
 
-/* line 72, ../scss/_game.scss */
+/* line 73, ../scss/_game.scss */
+#paperParentAR2 {
+  position: relative;
+  top: 50px;
+  width: 90%;
+  height: 0;
+  padding-bottom: 60%;
+  margin: auto;
+  overflow: hidden;
+}
+/* line 83, ../scss/_game.scss */
+#paperParentAR2 div#frame {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("../images/squareframe.png") center no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
+}
+
+/* line 93, ../scss/_game.scss */
 #mapDataGrid {
   position: relative;
   width: 800px;
@@ -4050,27 +4079,27 @@ label {
   margin-right: auto;
 }
 
-/* line 80, ../scss/_game.scss */
+/* line 101, ../scss/_game.scss */
 #tokenOffsetResults {
   text-align: center;
 }
 
-/* line 83, ../scss/_game.scss */
+/* line 104, ../scss/_game.scss */
 #wpadminbar {
   display: none;
 }
 
-/* line 87, ../scss/_game.scss */
+/* line 108, ../scss/_game.scss */
 .nav li.logged-in-nav {
   display: none;
 }
 
-/* line 91, ../scss/_game.scss */
+/* line 112, ../scss/_game.scss */
 body.logged-in .nav li.logged-in-nav {
   display: list-item;
 }
 
-/* line 95, ../scss/_game.scss */
+/* line 116, ../scss/_game.scss */
 #paperParent1 {
   position: relative;
   width: 800px;
@@ -4080,7 +4109,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 104, ../scss/_game.scss */
+/* line 125, ../scss/_game.scss */
 #paperParentSF {
   position: relative;
   width: 800px;
@@ -4090,7 +4119,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 113, ../scss/_game.scss */
+/* line 134, ../scss/_game.scss */
 #paperParentSF2 {
   position: relative;
   width: 800px;
@@ -4100,57 +4129,57 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 123, ../scss/_game.scss */
+/* line 144, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 129, ../scss/_game.scss */
+/* line 150, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 135, ../scss/_game.scss */
+/* line 156, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 140, ../scss/_game.scss */
+/* line 161, ../scss/_game.scss */
 #racesDataGrid th {
   background-color: green;
   color: white;
 }
 
-/* line 145, ../scss/_game.scss */
+/* line 166, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 150, ../scss/_game.scss */
+/* line 171, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 156, ../scss/_game.scss */
+/* line 177, ../scss/_game.scss */
 .myhidden {
   display: none;
 }
 
-/* line 160, ../scss/_game.scss */
+/* line 181, ../scss/_game.scss */
 .leaderboard ul li {
   border-bottom: 2px solid #000000;
   padding: 0 1em;
 }
 
-/* line 165, ../scss/_game.scss */
+/* line 186, ../scss/_game.scss */
 .sponser {
   width: 50%;
   height: auto;

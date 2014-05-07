@@ -1398,11 +1398,24 @@ select:focus {
 	}
 }
 
+#raceMap {
+	position:relative;
+	width: 500px;
+	height: 500px;
+	
+
+	
+	
+}
+
+
+
+
 /*********************************
  *Active Race Page / Complete Race
  *********************************/
 
-#active-race-header, #complete-race-header, #create-race-header {
+#active-race-header, #complete-race-header, #create-race-header, #raceMap, #active-race-header2 {
 	position:relative;
 	
 	

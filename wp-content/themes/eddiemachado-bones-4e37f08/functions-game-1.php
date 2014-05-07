@@ -339,7 +339,7 @@ function r2f_action_get_map()
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT id, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, 
-					cellWidth, cellHeight
+					cellWidth, cellHeight, mapTilesUrl, minZoom, maxZoom, boundaryX, boundaryY
 			FROM r2f_maps
 			WHERE id = %d
 		", 
@@ -373,7 +373,7 @@ function get_map($id)
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT id, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, 
-					cellWidth, cellHeight
+					cellWidth, cellHeight, mapTilesUrl, minZoom, maxZoom, boundaryX, boundaryY
 			FROM r2f_maps
 			WHERE id = %d
 		", 
@@ -409,6 +409,11 @@ function r2f_action_upsert_map()
 	$gridHeight = $_POST["gridHeight"];
 	$cellWidth = $_POST["cellWidth"];
 	$cellHeight = $_POST["cellHeight"];
+	$mapTilesUrl = $_POST["mapTilesUrl"];
+	$minZoom = $_POST["minZoom"];
+	$maxZoom = $_POST["maxZoom"];
+	$boundaryX = $_POST["boundaryX"];
+	$boundaryY = $_POST["boundaryY"];
 	
 	// Init results
 	$result["message"] = "";
@@ -431,11 +436,12 @@ function r2f_action_upsert_map()
 			"
 				INSERT INTO r2f_maps
 				( id, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, 
-					cellWidth, cellHeight )
-				VALUES ( %d, %s, %s, %d, %d, %d, %d, %d, %d )
+					cellWidth, cellHeight, mapTilesUrl, minZoom, maxZoom, boundaryX, boundaryY)
+				VALUES ( %d, %s, %s, %d, %d, %d, %d, %d, %d, %s, %d, %d, %d, %d )
 			", 
 				array(
-				$id, $mapName, $mapImageUrl, $mapWidth, $mapHeight, $gridWidth, $gridHeight, $cellWidth, $cellHeight 
+				$id, $mapName, $mapImageUrl, $mapWidth, $mapHeight, $gridWidth, $gridHeight, $cellWidth, $cellHeight, $mapTilesUrl,
+				$minZoom, $maxZoom, $boundaryX, $boundaryY
 				) 
 		) );
 		
@@ -456,11 +462,15 @@ function r2f_action_upsert_map()
 				UPDATE r2f_maps
 				SET mapName = %s, mapImageUrl = %s, mapWidth = %d, mapHeight = %d, 
 				gridWidth = %d, gridHeight = %d,
-				cellWidth = %d, cellHeight = %d
+				cellWidth = %d, cellHeight = %d,
+				mapTilesUrl = %s,
+				minZoom = %d, maxZoom = %d, boundaryX = %d, boundaryY = %d
 				WHERE id = %d
 			", 
 				array(
-					$mapName, $mapImageUrl, $mapWidth, $mapHeight, $gridWidth, $gridHeight, $cellWidth, $cellHeight, $id
+					$mapName, $mapImageUrl, $mapWidth, $mapHeight, $gridWidth, $gridHeight, $cellWidth, $cellHeight, $mapTilesUrl,
+					$minZoom, $maxZoom, $boundaryX, $boundaryY,
+					$id
 				) 
 		) );
 		

@@ -195,6 +195,11 @@ window.onload = function () {
 				jQuery("#gridHeight").val(data.result.gridHeight);
 				jQuery("#cellWidth").val(data.result.cellWidth);
 				jQuery("#cellHeight").val(data.result.cellHeight);
+				jQuery("#mapTilesUrl").val(data.result.mapTilesUrl);
+				jQuery("#minZoom").val(data.result.minZoom);
+				jQuery("#maxZoom").val(data.result.maxZoom);
+				jQuery("#boundaryX").val(data.result.boundaryX);
+				jQuery("#boundaryY").val(data.result.boundaryY);
 				updateMapOptions();
 				drawGrid();
 				jQuery.ajax({
@@ -250,7 +255,12 @@ jQuery(document).ready
 					gridWidth: jQuery("#gridWidth").val(),
 					gridHeight: jQuery("#gridHeight").val(),
 					cellWidth: jQuery("#cellWidth").val(),
-					cellHeight: jQuery("#cellHeight").val()
+					cellHeight: jQuery("#cellHeight").val(),
+					mapTilesUrl: jQuery("#mapTilesUrl").val(),
+					minZoom: jQuery("#minZoom").val(),
+					maxZoom: jQuery("#maxZoom").val(),
+					boundaryX: jQuery("#boundaryX").val(),
+					boundaryY: jQuery("#boundaryY").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
