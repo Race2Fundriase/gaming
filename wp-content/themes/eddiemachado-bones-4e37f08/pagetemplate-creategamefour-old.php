@@ -6,7 +6,6 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 ?>
 
 <?php get_header(); ?>
-
     <section>
     <div class="container sand bot-bg clearfix nav-margin">
         <div class="inner-container wrap">

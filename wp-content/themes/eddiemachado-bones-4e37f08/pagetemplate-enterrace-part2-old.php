@@ -1,92 +1,45 @@
 <?php
 /*
-Template Name: Create Game Four
+Template Name: Enter Race Part 2
 */
-if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
 ?>
 
 <?php get_header(); ?>
+<div class="container sand bot-bg clearfix nav-margin">
+                    <div class="inner-container wrap">
+                            <div id="logo" class="secondary">
+                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+                            </div>
+                            <div id="create-race-header">
+                                <div class="text-center"><h1 class="highlight">Choose a Route</h1>
+								<p style="width: 400px; margin: auto">Click on the map to highlight the route you will take. You must start at the green starting grid position and finish at the red finish grid position</p>                                            
+								</div>
 
-    <section>
-    <div class="container sand bot-bg clearfix nav-margin">
-        <div class="inner-container wrap">
-            
-	    <div id="logo" class="secondary">
-                <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
-            </div>
-                            
-	    <div id="create-race-header">
-                <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
-                    
-            </div>                                
-	</div>
-    </div>
-    </section>  
-    
-    <div class="fences wrap"></div>
-	
-    <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
-            <div class="inner-container wrap">		 
-			   <div id="tabs">
-			   <ul id="tab_control" class="tab_control center">
-			<li><a href="#" id="startA" class="btn btn-blue large active">Start</a></li>
-			<li><a href="#" id="finishA" class="btn large">Finish</a></li>
-		    </ul>
-					<div class="tabbed_content active">
-					   
-						<div class="form-elements">
-						    <h3><span>Part 4</span></h3>
+                        </div>
+                                        
+                </div>
+        </div>
+		<div class="fences wrap"></div>
+		
+<div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
+                <div class="inner-container wrap">
+						<form id="enterRaceForm">
+								<div class="form-elements">
 							
-							<div>
-								<label for="startGridX"><span>Start Grid X</span></label>
-								<div>
-								<input id="startGridX" name="startGridX" type="text" value="" tabindex="12"/>
-								</div>
-							</div>
-							<div>
-								<label for="startGridY"><span>Start Grid Y</span></label>
-								<div>
-								<input id="startGridY" name="startGridY" type="text" value="" tabindex="12"/>
-								</div>
-							</div>
-						</div>
-					</div><!--End of tab-->
-			
-					<div class="tabbed_content">
-						 <div class="form-elements">
-						    <h3><span>Part 4</span></h3>
-							<div>
-								<label for="finishGridX"><span>Finish Grid X</span></label>
-								<div>
-								<input id="finishGridX" name="finishGridX" type="text" value="" tabindex="12"/>
-								</div>
-							</div>
-							<div>
-								<label for="finishGridY"><span>Finish Grid Y</span></label>
-								<div>
-								<input id="finishGridY" name="finishGridY" type="text" value="" tabindex="12"/>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div><!--End Inner Container -->
-			
-         	<div id="paperParentSF" class="boxShadow"></div>
-			
-		<div class="text-left signup"><div id="result" class=""></div></div>
-		<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-		<div class="text-center signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
-				
+                                                <h3><span>Part 3</span></h3>
+												<div class="text-center continue myhidden"><input type="submit" value="RANDOM ROUTE" class="btn large" id="random"/></div>
+                                                <input name="token" type="hidden" value="a"/>
+                                                          <div class="text-left signup"><div id="feedback" class=""></div></div>                              
+														<div id="paperParent1">
+														</div>                                                
+         
+                                            <div class="text-center continue"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+                                </div><!--End Form Elements-->
+                        </form><!--End Form-->
+                </div><!--End Inner Container-->
+            </div><!--End Container-->
 
-	
-		</div><!--End Form Elements-->
-
-
-
-	
-	
-		<div id="viewOptions" class="boxShadow" style="display: none;">
+	<div id="viewOptions" class="boxShadow" style="display: none;">
 		<h2 class="highlight">View Options</h2>
 		<label for="scale" id="scaleLabel">Scale:<input type="text" id="scale" value="0.2"/></label>
 		<input type="button" value="Apply" onclick="scale = jQuery('#scale').val(); drawGrid();"/>
@@ -130,9 +83,6 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		</fieldset>
 		</form>
 	</div>
-	
-	
-
 <?php get_footer(); ?>
 
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

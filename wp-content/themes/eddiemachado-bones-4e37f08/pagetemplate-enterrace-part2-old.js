@@ -1,17 +1,71 @@
+var paper;
+var scale = 1.0;
+var mapWidth = 3506;
+var mapHeight = 4440;
+var cellWidth = 75;
+var cellHeight = 75;
+var gridWidth = 47;
+var gridHeight = 60;
+var xoff = 0;
+var yoff = 0;
 
 var selectedCell;
 
+var mapImageUrl = "";
+var mapImage;
+
 var inPlays;
+
+function drawGrid() {
+
+	if (paper) paper.clear();
+
+	paper = Raphael("paperParent1", mapWidth*scale, mapHeight*scale);
+	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
+
+	var x, y;
+	var w = cellWidth * scale;
+	var h = cellHeight * scale;
+
+	for (x=0;x<gridWidth;x++) {
+		var curx = x * w;
+		for (y=0;y<gridHeight;y++) {
+			var cury = y * h;
+			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
+			
+		}
+	}
+	
+	//selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
+	//selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
+
+	selectedCell = paper.image(theme_url+"/library/images/flag_green.png", startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+	selectedCell = paper.image(theme_url+"/library/images/flag_red.png", finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+	
+}
 
 var selectedCells = [];
 
 function selectGrid(x, y) {
 
 	
+	// bring back to origin of paper
+	//x = (x - xoff);
+	//y = (y - yoff);
+	
+	// add the scroll of the div
+	
+
 	curx = x;
+	curx = curx / (cellWidth * scale);
+	
 	cury = y;
-		
-	if (inPlays && inPlays[curx] && inPlays[curx][cury] && inPlays[curx][cury] == "0") return;
+	cury = cury / (cellHeight * scale);
+	
+	curx = Math.floor(curx);
+	cury = Math.floor(cury);
+	
+	if (inPlays[curx][cury] == "0") return;
 	
 //	if (selectedCell) selectedCell.remove();
 	
@@ -23,8 +77,7 @@ function selectGrid(x, y) {
 	
 		if (selectedCells[i].x == curx && selectedCells[i].y == cury) {
 			if (i == selectedCells.length - 1) {
-				//selectedCells[i].cell.remove();
-				map.removeLayer(selectedCells[i].cell);
+				selectedCells[i].cell.remove();
 				selectedCells.splice(i, 1);
 				console.log("removed");
 			}
@@ -40,8 +93,7 @@ function selectGrid(x, y) {
 		
 	}
 
-	//var aCell = paper.rect(curx * cellWidth * scale, cury * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#00f");
-	var aCell = drawCell(curx, cury);
+	var aCell = paper.rect(curx * cellWidth * scale, cury * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#00f");
 
 	sCell = { cell: aCell, x: curx, y: cury };
 	
@@ -163,7 +215,12 @@ window.onload = function () {
 	
 	//drawGrid();
 	
+	jQuery("#paperParent1").click(function(e) { 
 	
+		selectGrid(e.pageX - jQuery("#paperParent1").offset().left + jQuery("#paperParent1").scrollLeft(), 
+			e.pageY - jQuery("#paperParent1").offset().top + jQuery("#paperParent1").scrollTop()); 
+		
+	} );
 	var raceId = qs("raceId");
 	var playerName = qs("playerName");
 	var tokenId = qs("tokenId");
@@ -198,28 +255,17 @@ window.onload = function () {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					if (data.error == "") {
-						mapId = data.result.id;
-						mapName = data.result.mapName;
-						mapImageUrl = data.result.mapImageUrl;
-						mapWidth = data.result.mapWidth;
-						mapHeight = data.result.mapHeight;
-						gridWidth = data.result.gridWidth;
-						gridHeight = data.result.gridHeight;
-						cellWidth = data.result.cellWidth;
-						cellHeight = data.result.cellHeight;
-						mapTilesUrl = data.result.mapTilesUrl;
-						minZoom = data.result.minZoom;
-						maxZoom = data.result.maxZoom;
-						boundaryX = data.result.boundaryX;
-						boundaryY = data.result.boundaryY;
-
-						drawMap('paperParent1', true);
-						
-						map.on('click', function(e) {
-		
-							var p = getPoint(e.latlng);
-							selectGrid(p.x, p.y);
-						});
+						jQuery("#mapId").val(data.result.id);
+						jQuery("#mapName").val(data.result.mapName);
+						jQuery("#mapImageUrl").val(data.result.mapImageUrl);
+						jQuery("#mapWidth").val(data.result.mapWidth);
+						jQuery("#mapHeight").val(data.result.mapHeight);
+						jQuery("#gridWidth").val(data.result.gridWidth);
+						jQuery("#gridHeight").val(data.result.gridHeight);
+						jQuery("#cellWidth").val(data.result.cellWidth);
+						jQuery("#cellHeight").val(data.result.cellHeight);
+						updateMapOptions();
+						drawGrid();
 						
 						jQuery.ajax({
 							url: site_url+"/wp-admin/admin-ajax.php",

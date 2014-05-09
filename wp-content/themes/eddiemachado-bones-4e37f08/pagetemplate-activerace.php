@@ -5,6 +5,7 @@ Template Name: Active Race
 ?>
 
 <?php get_header(); ?>
+
         <section>
             <div class="slider secondary clearfix">
                     
@@ -18,70 +19,78 @@ Template Name: Active Race
                     
             </div>
 	</section>
+	
 	<div class="wide-fence why wrap"></div>
         
-        <section>
+    <section>
 	    <div class="container pad-top sand bot-bg-grass">
-		<div class="inner-container wrap clearfix">
-                    <div>
-						<h1 class="highlight" id="pageTitle">Active Race</h1><br/>
+		
+			<div class="inner-container wrap clearfix">
+				
+				<div>
+					<h1 class="highlight" id="pageTitle">Active Race</h1><br/>
+					<div class="sponser myhidden" id="sponserDiv">
+						<p class="highlight" id="">Sponsored By:</p>
+						<a target="_blank" href="" id="sponserUrl"><img border="0" src="" id="sponserLogoUrl"/></a>
+					</div>
+				</div>
 						
-						<div class="sponser myhidden" id="sponserDiv"><p class="highlight" id="">Sponsored By:</p><a target="_blank" href="" id="sponserUrl"><img border="0" src="" id="sponserLogoUrl"/></a></div>
-                    </div>
-                    
-                    <div id="active-race-header">
+				<div id="active-race-header">
 			
-                        <div id="other-search">
-                            <?php $search_text = "Search Races"; ?> 
-                            <form method="get" id="racesearch"  action=""> 
-                                
-                                <input type="text" value="<?php echo $search_text; ?>"  
-                                name="race-s" id="race-s"  
-                                onblur="if (this.value == '')  
-                                {this.value = '<?php echo $search_text; ?>';}"  
-                                onfocus="if (this.value == '<?php echo $search_text; ?>')  
-                                {this.value = '';}" /> 
-                                
-                                <input type="hidden" id="racesearchsubmit" /> 
-                            </form>
-			</div>
-			
-			<div class="stretchy">
-			    <div id="frame"></div>
-			    <div id="paperParentAR"></div>
-			</div>
-			
-                        <div class="info">
-							<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a>
-							<?php } ?>
-                            <?php if(get_current_user_id() <> 0 && user_can_enter_race()) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
-							<?php } ?>
-							<?php if(get_current_user_id() == 0 && user_can_enter_race()) { ?>
-							<a class="btn large blue" href="<?=site_url()?>/token-join/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
-							<?php } ?>
-							<?php if(user_can_edit_race()) { ?>
-							<br/><a class="btn large blue" href="<?=site_url()?>/edit-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
-							<?php } ?>
-                            <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p>
-							<div id="scaleSlider" style="padding-left: 200px">
-								<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
-								<div class="status">
-									<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
-								 </div>
-							</div>
+					<div id="other-search">
+						<?php $search_text = "Search Races"; ?> 
+						<form method="get" id="racesearch"  action=""> 
+							
+							<input type="text" value="<?php echo $search_text; ?>"  
+							name="race-s" id="race-s"  
+							onblur="if (this.value == '')  
+							{this.value = '<?php echo $search_text; ?>';}"  
+							onfocus="if (this.value == '<?php echo $search_text; ?>')  
+							{this.value = '';}" /> 
+							
+							<input type="hidden" id="racesearchsubmit" /> 
+						</form>
+					</div>
 
-							</div>
-                            <div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
-							<div class="dates"><time class="highlight" id="startTime"></time><time class="highlight" id="finishTime"></time></div>
+					
+				</div>
+					
+				
+				<div id="paperParentAR2">
+				<div id="frame"></div>
+				</div>	
+				<div id="active-race-header2">
+					<div class="info">
+						<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
+						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a>
+						<?php } ?>
+						<?php if(get_current_user_id() <> 0 && user_can_enter_race()) { ?>
+						<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
+						<?php } ?>
+						<?php if(get_current_user_id() == 0 && user_can_enter_race()) { ?>
+						<a class="btn large blue" href="<?=site_url()?>/token-join/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
+						<?php } ?>
+						<?php if(user_can_edit_race()) { ?>
+						<br/><a class="btn large blue" href="<?=site_url()?>/edit-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
+						<?php } ?>
+						<div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p>
+						<!--<div id="scaleSlider" style="padding-left: 200px">
+							<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
+							<div class="status">
+								<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
+							 </div>
+						</div>-->
 
-							</div>
-                        <!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
-						
-                    </div>
+						</div>
+						<div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
+						<div class="dates"><time class="highlight" id="startTime"></time><time class="highlight" id="finishTime"></time></div>
 
-                </div> 
+					</div>
+					<!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
+					
+				</div>
+
+			</div> 
 	    </div>
 	</section>
         

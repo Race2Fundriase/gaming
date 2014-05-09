@@ -1,8 +1,86 @@
-var startGridX, startGridY, finishGridX, finishGridY;
-var curDay, curHour, raceStatus;
-var mapId, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, cellWidth, cellHeight;
-var mapTilesUrl;
-var minZoom, maxZoom, boundaryX, boundaryY;
+var paper;
+var scale = 0.2;
+var mapWidth = 3506;
+var mapHeight = 4440;
+var cellWidth = 75;
+var cellHeight = 75;
+var gridWidth = 47;
+var gridHeight = 60;
+var xoff = 0;
+var yoff = 0;
+
+var selectedCell;
+
+var mapImageUrl = "";
+var mapImage;
+
+var startGridX = 0;
+var startGridY = 0;
+var finishGridX = 0;
+var finishGridY = 0;
+
+function drawGrid() {
+
+	if (paper) paper.remove();
+
+	paper = Raphael("paperParentAR", mapWidth*scale, mapHeight*scale);
+	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
+	
+	//console.log(scale);
+	
+	/*var x, y;
+	var w = cellWidth * scale;
+	var h = cellHeight * scale;
+
+	for (x=0;x<gridWidth;x++) {
+		var curx = x * w;
+		for (y=0;y<gridHeight;y++) {
+			var cury = y * h;
+			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
+			
+		}
+	}*/
+	
+	//selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
+	
+	
+	//selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
+
+	selectedCell = paper.image(theme_url+"/library/images/flag_green.png", startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+	selectedCell = paper.image(theme_url+"/library/images/flag_red.png", finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+
+}
+
+var players;
+
+var selPlayer;
+var raceStatus;
+var curDay;
+var curHour;
+
+function drawPlayers() {
+
+	for (i=0;i<players.length;i++){
+		rcImageUrl = site_url+players[i].tokenImageUrl;
+		
+		if (curDay < 0) x = startGridX; else x = players[i].gridX;
+		if (curDay < 0) y = startGridY; else y = players[i].gridY;
+			
+	    var playercell = paper.image(rcImageUrl,x * cellWidth * scale, y * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+		
+		jQuery(playercell.node).qtip({ // Grab some elements to apply the tooltip to
+			content: {
+				text: 'My common piece of text here'
+			},
+			position: {
+				target: 'mouse'
+			}
+		});
+
+		if (players[i].playerId == current_user_id)
+			paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), cellWidth * scale).attr("stroke", "#f00");
+	}
+}
 
 jQuery(document).ready
 (
@@ -32,6 +110,37 @@ jQuery(document).ready
 			});
 		});
 		
+		
+		jQuery('#frame').on('mousedown', function(e) {
+			jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			md = true;
+		}).on('mouseup', function(e) {
+			md = false;
+		}).on('mousemove', function(e) {
+			if (md) {
+				var p0 = jQuery(this).data('p0');
+				var curX = parseInt(jQuery('#paperParentAR').css('left'), 10);
+				var curY = parseInt(jQuery('#paperParentAR').css('top'), 10);
+				
+				jQuery('#paperParentAR').css('left', curX + e.pageX - p0.x);
+				jQuery('#paperParentAR').css('top', curY + e.pageY - p0.y);
+				
+				jQuery(this).data('p0', { x: e.pageX, y: e.pageY });
+			}
+		});
+		
+		jQuery("#mapScale").change(function(e) {
+			scale = jQuery("#mapScale").val();
+			drawGrid();
+			drawPlayers();
+		});
+		
+		jQuery("#day, #hour").change(function(e) {
+				
+			getLeaderBoard(raceId, jQuery("#day").val(), jQuery("#hour").val(), raceStatus);
+		
+		});
+		
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
 			type: "POST",
@@ -45,13 +154,14 @@ jQuery(document).ready
 				jQuery("#result").text(data.message + " " + data.error);
 				var dateParts = data.rows[0].startDate.split("-");
 				var d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
+				//jQuery("#startDate").html(d.toLocaleDateString());
 				jQuery("#startDate").html(d.ddmmyyyy());
 				jQuery("#startTime").html(data.rows[0].startTime);
 				dateParts = data.rows[0].finishDate.split("-");
 				d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
+				//jQuery("#finishDate").html(d.toLocaleDateString());
 				jQuery("#finishDate").html(d.ddmmyyyy());
 				jQuery("#finishTime").html(data.rows[0].finishTime);
-
 				jQuery("#raceName").html(data.rows[0].raceName);
 				jQuery("#raceDescription").html(data.rows[0].raceName);
 				jQuery("#mapName").html(data.rows[0].mapName);
@@ -88,24 +198,26 @@ jQuery(document).ready
 						console.log(data);
 						jQuery("#result").text(data.message + " " + data.error);
 						if (data.error == "") {
-							mapId = data.result.id;
-							mapName = data.result.mapName;
-							mapImageUrl = data.result.mapImageUrl;
-							mapWidth = data.result.mapWidth;
-							mapHeight = data.result.mapHeight;
-							gridWidth = data.result.gridWidth;
-							gridHeight = data.result.gridHeight;
-							cellWidth = data.result.cellWidth;
-							cellHeight = data.result.cellHeight;
-							mapTilesUrl = data.result.mapTilesUrl;
-							minZoom = data.result.minZoom;
-							maxZoom = data.result.maxZoom;
-							boundaryX = data.result.boundaryX;
-							boundaryY = data.result.boundaryY;
-							
+							jQuery("#mapId").val(data.result.id);
+							jQuery("#mapName").val(data.result.mapName);
+							jQuery("#mapImageUrl").val(data.result.mapImageUrl);
+							jQuery("#mapWidth").val(data.result.mapWidth);
+							jQuery("#mapHeight").val(data.result.mapHeight);
+							jQuery("#gridWidth").val(data.result.gridWidth);
+							jQuery("#gridHeight").val(data.result.gridHeight);
+							jQuery("#cellWidth").val(data.result.cellWidth);
+							jQuery("#cellHeight").val(data.result.cellHeight);
+							jQuery("#mapScale").val(data.result.mapWidth / 12521.0);
+							if (data.result.id == 3) {
+								jQuery("#mapScale").val(0.1);
+								
+							}
+							scale = jQuery("#mapScale").val();
+							updateMapOptions();
+							drawGrid();
 							getLeaderBoard(raceId, curDay, curHour, raceStatus);
 							
-							drawMap();
+							
 						}
 					}
 				});
@@ -225,18 +337,40 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			   li += '<li id="lbli'+data.rows[i].playerId+'" data-index="'+i+'">'+ (start+i+1) + '. '+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
 			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 			   players[i] = data.rows[i];
-			   if (curDay < 0) players[i].gridX = startGridX;
-			   if (curDay < 0) players[i].gridY = startGridY;	
-			   
-			}
-			
-			if (raceStatus == 1) {
-				players[0].gridX = finishGridX;
-				players[0].gridY = finishGridY;
+			   //var aImage = paper.image(rcImageUrl, data.rows[i].gridX * cellWidth * scale, data.rows[i].gridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
+				/*jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_get_leaderboard_history',
+						raceId: raceId,
+						playerId, data.rows[i].playerId,
+						day: 0
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						jQuery("#result").text(data.message + " " + data.error);
+						var row = "";
+						
+						for(i=0;i<data.rows.length;i++) {
+							r = '<div style="width: 10px">';
+							r += data.rows[i].position;
+							r += '</div>';
+							row += r;
+						}
+						jQuery("#lbli"+data.rows[i].playerId).append(row);
+					}
+				});*/
 			}
 			
 			if (data.total_pages > 1) {
-				
+				/*jQuery("#next").addClass("hidden");
+				jQuery("#prev").addClass("hidden");
+				if (curPage != data.total_pages) 
+					jQuery("#next").removeClass("hidden");
+				if (curPage > 1)
+					jQuery("#prev").removeClass("hidden");*/
 				if (curPage != data.total) 
 						n = true;
 					else
@@ -254,7 +388,10 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			for (i=0;i<data.rows.length;i++){
 				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {
 					j = jQuery(this).attr("data-index");
-					drawPlayerHighlight(data.rows[i]);
+					if (selPlayer) selPlayer.remove();
+					if (curDay < 0) x = startGridX; else x = players[j].gridX;
+					if (curDay < 0) y = startGridY; else y = players[j].gridY;			
+					selPlayer = paper.circle(x * cellWidth * scale + ((cellWidth * scale) / 2), y * cellWidth * scale + ((cellWidth * scale) / 2), (cellWidth * scale) - 2).attr("stroke", "#0f0");
 				});
 			}
 			
@@ -270,123 +407,24 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 		}
 	});
 }
-var map;
-
-function drawMap() {
-
-	var mapMinZoom = minZoom;
-	var mapMaxZoom = maxZoom;
-	map = L.map('paperParentAR2', {
-	  maxZoom: mapMaxZoom,
-	  minZoom: mapMinZoom,
-	  crs: L.CRS.Simple
-	}).setView([0, 0], mapMinZoom);
-	
-	
-	var mapBounds = new L.LatLngBounds(
-		map.unproject([0, boundaryY], mapMaxZoom),
-		map.unproject([boundaryX, 0], mapMaxZoom));
-	
-	map.fitBounds(mapBounds);	
-	L.tileLayer(mapTilesUrl+'/{z}/{x}/{y}.png', {
-	  minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-	  bounds: mapBounds,
-	  attribution: '',
-	  noWrap: true          
-	}).addTo(map);
-	
-	drawStart();
-	drawFinish();
-}
-
-
-function getLatLng(gridX, gridY) {
-
-	var scale = 4096 / Math.max(mapWidth, mapHeight);
-	
-	var x = (cellWidth * scale) * gridX;
-	var y = (cellHeight * scale) * gridY;
-	x+=(cellWidth/2);
-	y+=(cellHeight/2);
-	var point = L.point(x, y);
-	var ll = map.unproject(point, 4);
-	return ll;
-}
-
-function drawStart() {
-
-	var startIcon = L.icon({
-		iconUrl: theme_url+"/library/images/flag_green.png",
-
-		iconSize:     [30, 30], // size of the icon
-		iconAnchor:   [0, 30], // point of the icon which will correspond to marker's location
-		popupAnchor:  [-3, -33] // point from which the popup should open relative to the iconAnchor
-	});
-	
-	var ll = getLatLng(startGridX, startGridY);
-
-	var startMarker = L.marker(ll, {icon: startIcon}).addTo(map);
-	
-}
-
-
-function drawFinish() {
-
-	var finishIcon = L.icon({
-		iconUrl: theme_url+"/library/images/flag_red.png",
-
-		iconSize:     [30, 30], // size of the icon
-		iconAnchor:   [0, 30], // point of the icon which will correspond to marker's location
-		popupAnchor:  [-3, -33] // point from which the popup should open relative to the iconAnchor
-	});
-
-	var ll = getLatLng(finishGridX, finishGridY);
-
-	var finishMarker = L.marker(ll, {icon: finishIcon}).addTo(map);
-	
-}
-
-var icons;
-
-function drawPlayers() {
-	
-	// remove existing ?
-	icons = new Array();
-	
-	for (i=0;i<players.length;i++){
-
-		icons[i] = L.icon({
-			iconUrl: players[i].tokenImageUrl,
-
-			iconSize:     [30, 30], // size of the icon
-			iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-			popupAnchor:  [-3, -33] // point from which the popup should open relative to the iconAnchor
-		});
-		
-		players[i].icon = icons[i];
-
-		drawPlayer(players[i]);
-	}
-}
-
-
-
-function drawPlayer(p) {
-	
-	var ll = getLatLng(p.gridX, p.gridY);
-
-	p.marker = L.marker(ll, {icon: p.icon}).addTo(map);
-	//p.marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-
-}
-
-function drawPlayerHighlight(p) {
-}
 
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars
     var match = location.search.match(new RegExp("[?&]"+key+"=([^&]+)(&|$)"));
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
+}
+
+function updateMapOptions() {
+
+	mapName = jQuery("#mapName").val();
+	mapImageUrl = jQuery("#mapImageUrl").val();
+	mapWidth = jQuery("#mapWidth").val();
+	mapHeight = jQuery("#mapHeight").val();
+	gridWidth = jQuery("#gridWidth").val();
+	gridHeight = jQuery("#gridHeight").val();
+	cellWidth = jQuery("#cellHeight").val();
+	cellHeight = jQuery("#cellHeight").val();
+
 }
 
 Date.prototype.yyyymmdd = function() {

@@ -16,6 +16,8 @@ function add_jQuery_libraries() {
 	wp_register_script('twitter', '//platform.twitter.com/widgets.js', array('jquery'));
 	wp_register_script('custom-header', get_stylesheet_directory_uri() . '/library/js/custom-header.js', array('jquery'), '', true);
 	wp_register_script('leaflet', 'http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js', array('jquery'));
+	wp_register_script('map', get_stylesheet_directory_uri() . '/library/js/map.js', array('leaflet'));
+	
 	
     // Enqueueing Scripts to the head section
     wp_enqueue_script('jquery-validation-plugin');
@@ -26,6 +28,8 @@ function add_jQuery_libraries() {
 	wp_enqueue_script('qtip');
 	wp_enqueue_script('twitter');
 	wp_enqueue_script('leaflet');
+	wp_enqueue_script('map');
+	
 	wp_enqueue_media();
 	
 	wp_enqueue_script( 'custom-header' );
