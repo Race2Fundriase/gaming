@@ -343,7 +343,7 @@ function r2f_action_get_map()
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT id, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, 
-					cellWidth, cellHeight, mapTilesUrl, minZoom, maxZoom, boundaryX, boundaryY
+					cellWidth, cellHeight, mapTilesUrl, minZoom, maxZoom, boundaryX, boundaryY, mapOverlayUrl
 			FROM r2f_maps
 			WHERE id = %d
 		", 

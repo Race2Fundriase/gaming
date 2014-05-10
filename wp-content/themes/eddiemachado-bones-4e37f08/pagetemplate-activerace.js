@@ -97,6 +97,7 @@ jQuery(document).ready
 							maxZoom = data.result.maxZoom;
 							boundaryX = data.result.boundaryX;
 							boundaryY = data.result.boundaryY;
+							mapOverlayUrl = data.result.mapOverlayUrl;
 							
 							getLeaderBoard(raceId, curDay, curHour, raceStatus);
 							

@@ -3,16 +3,58 @@ var startGridX, startGridY, finishGridX, finishGridY;
 var mapId, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, cellWidth, cellHeight;
 var mapTilesUrl;
 var minZoom, maxZoom, boundaryX, boundaryY;
+var mapOverlayUrl;
+var overlay, tiles;
 
 function drawMap(id, grid) {
 
 	var mapMinZoom = minZoom;
 	var mapMaxZoom = maxZoom;
-	map = L.map(id, {
-	  maxZoom: mapMaxZoom,
-	  minZoom: mapMinZoom,
-	  crs: L.CRS.Simple
-	}).setView([0, 0], mapMinZoom);
+	
+	
+	
+	
+	tiles = L.tileLayer(mapTilesUrl+'/{z}/{x}/{y}.png', {
+	  minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+	  bounds: mapBounds,
+	  attribution: '',
+	  noWrap: true          
+	});
+	
+	if (mapOverlayUrl != "") {
+		overlay = L.tileLayer(mapOverlayUrl+'/{z}/{x}/{y}.png', {
+		  minZoom: mapMinZoom, maxZoom: mapMaxZoom,
+		  bounds: mapBounds,
+		  attribution: '',
+		  noWrap: true          
+		});
+		
+		map = L.map(id, {
+		  maxZoom: mapMaxZoom,
+		  minZoom: mapMinZoom,
+		  crs: L.CRS.Simple,
+		  layers: [overlay, tiles]
+		}).setView([0, 0], mapMinZoom);
+		
+		var baseMaps = {
+			
+			"Overlay": overlay,
+			"Standard": tiles
+		};
+		
+		L.control.layers(baseMaps, null, { position: 'topleft' }).addTo(map);
+
+		
+	} else {
+	
+		map = L.map(id, {
+		  maxZoom: mapMaxZoom,
+		  minZoom: mapMinZoom,
+		  crs: L.CRS.Simple,
+		  layers: [tiles]
+		}).setView([0, 0], mapMinZoom);
+	}
+	
 	
 	
 	var mapBounds = new L.LatLngBounds(
@@ -20,12 +62,6 @@ function drawMap(id, grid) {
 		map.unproject([boundaryX, 0], mapMaxZoom));
 	
 	map.fitBounds(mapBounds);	
-	L.tileLayer(mapTilesUrl+'/{z}/{x}/{y}.png', {
-	  minZoom: mapMinZoom, maxZoom: mapMaxZoom,
-	  bounds: mapBounds,
-	  attribution: '',
-	  noWrap: true          
-	}).addTo(map);
 	
 	if (grid)
 		drawGrid();
