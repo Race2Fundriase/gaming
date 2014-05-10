@@ -249,7 +249,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			for (i=0;i<data.rows.length;i++){
 				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {
 					j = jQuery(this).attr("data-index");
-					drawPlayerHighlight(data.rows[i]);
+					drawPlayerHighlight(players[j]);
 				});
 			}
 			

@@ -153,7 +153,12 @@ function drawPlayer(p) {
 	var ll = getLatLng(p.gridX, p.gridY);
 
 	p.marker = L.marker(ll, {icon: p.icon}).addTo(map);
-	//p.marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+	
+	p.ll = ll;
+	
+	if (p.playerId == current_user_id) {
+		drawPlayerHighlight(p);
+	}
 
 }
 
@@ -170,4 +175,6 @@ function drawCell(x, y) {
 }
 
 function drawPlayerHighlight(p) {
+	p.marker.bindPopup("<b>"+p.playerName+"</b>").openPopup();
+	map.panTo(p.ll);
 }
