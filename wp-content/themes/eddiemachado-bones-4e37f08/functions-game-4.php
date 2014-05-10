@@ -735,6 +735,15 @@ function user_can_enter_race() {
 	
 }
 
+function get_player_name() {
+	$user = wp_get_current_user();
+
+	if ($user->ID) return get_user_meta($user->ID, 'main_contact_name', true);	
+	
+	return "";
+	
+}
+
 function user_can_enter_race_id($race) {
 	$user = wp_get_current_user();
 	

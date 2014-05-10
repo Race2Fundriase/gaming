@@ -10,6 +10,8 @@ window.onload = function () {
 	var raceId = qs("raceId");
 	var transactionId = qs("transactionId");
 	
+	jQuery("#playerName").val(current_player_name);
+	
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "POST",

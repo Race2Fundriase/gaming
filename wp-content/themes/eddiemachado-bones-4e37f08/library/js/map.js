@@ -34,7 +34,6 @@ function drawMap(id, grid) {
 	
 	
 	
-	
 }
 
 
@@ -80,6 +79,7 @@ function drawStart() {
 
 	if (startMarker) map.removeLayer(startMarker);
 	startMarker = L.marker(ll, {icon: startIcon}).addTo(map);
+	
 	
 }
 
@@ -159,6 +159,7 @@ function drawPlayer(p) {
 	if (p.playerId == current_user_id) {
 		drawPlayerHighlight(p);
 	}
+	
 
 }
 
