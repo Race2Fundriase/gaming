@@ -4186,6 +4186,23 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
+/* line 192, ../scss/_game.scss */
+.leaflet-control-zoom-in {
+  font-size: 25px;
+}
+
+/* line 196, ../scss/_game.scss */
+.leaflet-control-zoom-out {
+  font-size: 25px;
+}
+
+/* line 200, ../scss/_game.scss */
+.leaflet-bar a, .leaflet-bar a:hover {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
 /* jqModal base Styling courtesy of;
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,

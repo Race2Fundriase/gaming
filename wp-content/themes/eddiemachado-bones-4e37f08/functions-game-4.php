@@ -830,7 +830,7 @@ function check_security($pageName) {
         return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
         break;
 	case "pagetemplate-editonlinerace":
-        return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+        return (appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator")) && user_can_edit_race();
         break;
 	case "pagetemplate-map-admin":
         return appthemes_check_user_role("administrator");

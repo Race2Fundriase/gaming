@@ -3,6 +3,25 @@ jQuery(document).ready
 	function(jQuery)
 	{
 
+		if (!is_admin) {
+		
+			jQuery("#maxNoOfPlayers").attr("readonly", "readonly");
+			jQuery("#mapId").attr("disabled", "true");
+			jQuery("#startDate").attr("readonly", "readonly");
+			jQuery("#startTime").attr("readonly", "readonly");
+			jQuery("#finishDate").attr("readonly", "readonly");
+			jQuery("#finishTime").attr("readonly", "readonly");
+			jQuery("#finishGridX").attr("readonly", "readonly");
+			jQuery("#finishGridY").attr("readonly", "readonly");
+			jQuery("#startGridX").attr("readonly", "readonly");
+			jQuery("#startGridY").attr("readonly", "readonly");
+			jQuery("#curDay").attr("readonly", "readonly");
+			jQuery("#curHour").attr("readonly", "readonly");
+			jQuery("#raceStatus").attr("readonly", "readonly");
+			jQuery("#refreshScores").attr("readonly", "readonly");
+		
+		}
+	
 		var raceId = qs("raceId");
 		var rowHtml = jQuery("#templateDiv").html();
 		var lengthInDays;
@@ -81,6 +100,10 @@ jQuery(document).ready
 									for (i=0;i<data.rows.length;i++){
 									   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
 									   jQuery("#weatherForecastDay"+(i+1)).val(data.rows[i].weatherForecast);
+									   if (!is_admin) {
+										jQuery("#weatherDay"+(i+1)).attr("disabled", true);
+										jQuery("#weatherForecastDay"+(i+1)).attr("disabled", true);
+									   }
 									}
 									
 									

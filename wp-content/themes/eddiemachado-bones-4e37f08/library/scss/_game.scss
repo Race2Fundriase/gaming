@@ -188,3 +188,17 @@ body.logged-in .nav li.logged-in-nav {
 	height: auto;
 	margin: auto;
 }
+
+.leaflet-control-zoom-in {
+	font-size: 25px;
+}
+
+.leaflet-control-zoom-out {
+	font-size: 25px;
+}
+
+.leaflet-bar a, .leaflet-bar a:hover {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+}
