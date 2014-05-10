@@ -13,20 +13,14 @@ Template Name: Enter Race Part 1
                             </div>
                             <div id="create-race-header">
                                 <div class="text-center"><h1 class="highlight">Enter Race</h1></div>
-								<div class="stretchy">
-									<div id="frame"></div>
-									<div id="paperParentAR"></div>
-								</div>  
+								
 								<div class="info">
-									<div id="scaleSlider" style="padding-left: 200px">
-										<input type="text" name="mapScale" id="mapScale" value="0.2" data-slider-highlight="true" data-slider-theme="control" data-slider="true"/>
-										<div class="status">
-											<p class="left-status">Zoom Out</p><p class="right-status">Zoom In</p>
-										 </div>
-									</div>
+									
 								</div>
 							</div>
-                                      
+                            <div id="paperParentAR2">
+								<div id="frame"></div>
+							</div>          
                 </div>
         </div>
 		

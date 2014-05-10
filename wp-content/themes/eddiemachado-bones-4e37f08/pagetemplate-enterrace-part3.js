@@ -70,40 +70,43 @@ window.onload = function () {
 						boundaryY = data.result.boundaryY;
 
 						drawMap('paperParent1', true);
-					}
-					jQuery.ajax({
-						url: site_url+"/wp-admin/admin-ajax.php",
-						type: "POST",
-						data: {
-							action: 'r2f_action_get_racecharacter',
-							id: racecharacterId
-						},
-						dataType: "JSON",
-						success: function (data) {
-							console.log(data);
-							jQuery("#result").text(data.message + " " + data.error);
-							jQuery("#playerName").val(data.rows[0].playerName);
-							jQuery("#drivingStyleWeight").val(data.rows[0].drivingStyleWeight);
-							jQuery("#noOfPitstops").val(data.rows[0].noOfPitstops);
-							option = '<option value="'+ data.rows[0].tokenId + '">' + data.rows[0].tokenName + '</option>';
-							jQuery('#tokenId').append(option);
-														
-							jQuery("#tokenId").val(data.rows[0].tokenId);
-							
-							jQuery('#enterRaceForm select').attr('disabled', 'true');
-							
-							// Draw the Route
-							var r = data.rows[0].route.split('|');
-							for(i=0;i<r.length;i++) {
-								if (r[i] != "") {
-									var p = r[i].split(',');
-									var x = p[0];
-									var y = p[1];
-									drawCell(x, y);
+						
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_get_racecharacter',
+								id: racecharacterId
+							},
+							dataType: "JSON",
+							success: function (data) {
+								console.log(data);
+								jQuery("#result").text(data.message + " " + data.error);
+								jQuery("#playerName").val(data.rows[0].playerName);
+								jQuery("#drivingStyleWeight").val(data.rows[0].drivingStyleWeight);
+								jQuery("#noOfPitstops").val(data.rows[0].noOfPitstops);
+								option = '<option value="'+ data.rows[0].tokenId + '">' + data.rows[0].tokenName + '</option>';
+								jQuery('#tokenId').append(option);
+															
+								jQuery("#tokenId").val(data.rows[0].tokenId);
+								
+								jQuery('#enterRaceForm select').attr('disabled', 'true');
+								
+								// Draw the Route
+								var r = data.rows[0].route.split('|');
+								for(i=0;i<r.length;i++) {
+									if (r[i] != "") {
+										var p = r[i].split(',');
+										var x = p[0];
+										var y = p[1];
+										
+										drawCell(parseInt(x), parseInt(y));
+									}
 								}
 							}
-						}
-					});
+						});
+					}
+					
 				}
 			});
 
