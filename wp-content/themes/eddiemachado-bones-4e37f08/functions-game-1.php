@@ -126,6 +126,129 @@ function r2f_action_purchase_check()
 	die();
 }
 
+function r2f_action_sub_check()
+{
+	global $wpdb;
+	
+	$subId = get_param("subId");
+	$userId = get_current_user_id();
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["result"] = "";
+
+	$item_number = "SUB:$userId-%";
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE id = %d AND item_number LIKE %s
+		", 
+			array(
+				$subId, $item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$result["error"] = "";
+		$result["message"] = "Sub '$subId' found.";
+		$result["result"] = $rows[0];
+		$result["id"] = $rows[0]->id;
+		
+		$qty = explode("-", $rows[0]->item_number);
+		
+		$result["qty"] = $qty[1];
+		
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the sub.";
+	}
+	
+	echo json_encode($result);
+	die();
+}
+
+function r2f_action_get_purchases()
+{
+	global $wpdb;
+	
+	$playerId = get_param("playerId");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["result"] = "";
+
+	$item_number = "TOKEN:%-$playerId";
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE item_number LIKE %s
+		", 
+			array(
+				$item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$result["error"] = "";
+		$result["message"] = "Purchases found.";
+		$result["result"] = $rows;
+		$result["id"] = $rows[0]->id;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the purchases.";
+	}
+	
+	echo json_encode($result);
+	die();
+}
+
+function r2f_action_get_subs()
+{
+	global $wpdb;
+	
+	$playerId = get_current_user_id();
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["result"] = "";
+
+	$item_number = "SUB:$playerId-%";
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE item_number LIKE %s
+		", 
+			array(
+				$item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$result["error"] = "";
+		$result["message"] = "Subs found.";
+		$result["result"] = $rows;
+		$result["id"] = $rows[0]->id;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the subs.";
+	}
+	
+	echo json_encode($result);
+	die();
+}
+
 function r2f_action_upsert_token()
 {
 	global $wpdb;

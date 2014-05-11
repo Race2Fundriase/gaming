@@ -631,6 +631,17 @@ add_action('wp_ajax_nopriv_r2f_action_update_racesponserLogo', 'r2f_action_updat
 add_action('wp_ajax_r2f_action_purchase_check', 'r2f_action_purchase_check');
 add_action('wp_ajax_nopriv_r2f_action_purchase_check', 'r2f_action_purchase_check');
 
+add_action('wp_ajax_r2f_action_get_subs', 'r2f_action_get_subs');
+add_action('wp_ajax_nopriv_r2f_action_get_subs', 'r2f_action_get_subs');
+
+add_action('wp_ajax_r2f_action_sub_check', 'r2f_action_sub_check');
+add_action('wp_ajax_nopriv_r2f_action_sub_check', 'r2f_action_sub_check');
+
+
+
+
+
+
 function modify_contact_methods($profile_fields) {
 
 	$profile_fields['twitter'] = 'Twitter Username';

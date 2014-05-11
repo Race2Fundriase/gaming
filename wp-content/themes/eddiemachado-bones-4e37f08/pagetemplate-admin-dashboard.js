@@ -46,6 +46,35 @@ jQuery(document).ready
 			}
 		});
 		
+		var rowHtmlSub = jQuery("#templateDivSubs").html();
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_get_subs',
+				page: 0,
+				rows: 100
+			},
+			dataType: "JSON",
+			success: function (data) {
+				
+				console.log(data);
+				jQuery("#result").text(data.message + " " + data.error);
+				var row = "";
+				
+				for(i=0;i<data.result.length;i++) {
+					r = rowHtmlSub;
+					r = r.replace(/{subDate}/g, data.result[i].created);
+					r = r.replace(/{subDesc}/g, data.result[i].item_name);
+					r = r.replace(/{createRaceUrl}/g,site_url+'/create-online-race-1/?subId='+data.result[i].id);
+					row += r;
+					
+					
+				}
+				jQuery("#subsResultsActive").html(row);
+			}
+		});
+		
 		jQuery("#comingsoon").click(function(e) {
 			e.preventDefault;
 			alert ("This feature is coming soon!");

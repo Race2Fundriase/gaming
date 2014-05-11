@@ -4149,54 +4149,60 @@ body.logged-in .nav li.logged-in-nav {
   border-collapse: collapse;
 }
 
-/* line 161, ../scss/_game.scss */
-#racesDataGrid th {
-  background-color: green;
-  color: white;
-}
-
-/* line 166, ../scss/_game.scss */
+/* line 165, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 171, ../scss/_game.scss */
+/* line 170, ../scss/_game.scss */
+#subsDataGrid table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* line 179, ../scss/_game.scss */
+#subsDataGrid {
+  width: 1000px;
+  margin: auto;
+}
+
+/* line 185, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 177, ../scss/_game.scss */
+/* line 191, ../scss/_game.scss */
 .myhidden {
   display: none;
 }
 
-/* line 181, ../scss/_game.scss */
+/* line 195, ../scss/_game.scss */
 .leaderboard ul li {
   border-bottom: 2px solid #000000;
   padding: 0 1em;
 }
 
-/* line 186, ../scss/_game.scss */
+/* line 200, ../scss/_game.scss */
 .sponser {
   width: 50%;
   height: auto;
   margin: auto;
 }
 
-/* line 192, ../scss/_game.scss */
+/* line 206, ../scss/_game.scss */
 .leaflet-control-zoom-in {
   font-size: 25px;
 }
 
-/* line 196, ../scss/_game.scss */
+/* line 210, ../scss/_game.scss */
 .leaflet-control-zoom-out {
   font-size: 25px;
 }
 
-/* line 200, ../scss/_game.scss */
+/* line 214, ../scss/_game.scss */
 .leaflet-bar a, .leaflet-bar a:hover {
   width: 40px;
   height: 40px;

@@ -159,14 +159,28 @@ body.logged-in .nav li.logged-in-nav {
 }
 
 #racesDataGrid th {
-	background-color:green;
-	color: white;
+	
 }
 
 #racesDataGrid {
 	width: 1000px;
 	margin: auto;
 }
+
+#subsDataGrid table, td, th {
+	border: 1px solid black;
+	border-collapse:collapse;
+}
+
+#subsDataGrid th {
+	
+}
+
+#subsDataGrid {
+	width: 1000px;
+	margin: auto;
+}
+
 
 #signUp {
 	position: relative;

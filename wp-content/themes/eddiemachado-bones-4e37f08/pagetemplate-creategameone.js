@@ -7,6 +7,29 @@ jQuery(document).ready
 		var raceId = qs("raceId");
 		var products_race;
 		var products_sub;
+		var subId = qs("subId");
+		
+		if (subId != "") {
+		
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_sub_check',
+					subId: subId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					if (data.error == "") {
+						jQuery("#tokenamount_race").val(data.qty);
+						jQuery("#tokenprice_race").val("0");
+						
+					}
+				}
+			});
+			
+		}
 	
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
@@ -72,7 +95,7 @@ jQuery(document).ready
 			jQuery("#item_name_sub").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
 			return_url = site_url+"/create-online-race-2/?productType=sub&qty="+jQuery("#tokenamount_sub").val();
 			jQuery("#return_sub").val(return_url);
-			jQuery("#item_number_sub").val("SUB:"+jQuery("#tokenamount_sub").val());
+			jQuery("#item_number_sub").val("SUB:"+current_user_id+"-"+jQuery("#tokenamount_sub").val());
 			jQuery("#cancel_return_sub").val(site_url+"/create-online-race-1");
 			jQuery("#notify_url_sub").val(site_url+"/ipn");
 			
