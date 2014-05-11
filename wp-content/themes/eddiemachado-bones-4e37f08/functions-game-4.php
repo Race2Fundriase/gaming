@@ -637,7 +637,17 @@ add_action('wp_ajax_nopriv_r2f_action_get_subs', 'r2f_action_get_subs');
 add_action('wp_ajax_r2f_action_sub_check', 'r2f_action_sub_check');
 add_action('wp_ajax_nopriv_r2f_action_sub_check', 'r2f_action_sub_check');
 
+add_action('wp_ajax_r2f_action_get_vouchers', 'r2f_action_get_vouchers');
+add_action('wp_ajax_nopriv_r2f_action_get_vouchers', 'r2f_action_get_vouchers');
 
+add_action('wp_ajax_r2f_action_upsert_voucher', 'r2f_action_upsert_voucher');
+add_action('wp_ajax_nopriv_r2f_action_upsert_voucher', 'r2f_action_upsert_voucher');
+
+add_action('wp_ajax_r2f_action_get_voucher', 'r2f_action_get_voucher');
+add_action('wp_ajax_nopriv_r2f_action_get_voucher', 'r2f_action_get_voucher');
+
+add_action('wp_ajax_r2f_action_use_voucher', 'r2f_action_use_voucher');
+add_action('wp_ajax_nopriv_r2f_action_use_voucher', 'r2f_action_use_voucher');
 
 
 

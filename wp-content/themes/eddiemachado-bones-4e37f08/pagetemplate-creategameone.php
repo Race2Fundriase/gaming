@@ -68,6 +68,10 @@
                                                     <div>
                                                     <input name="tokenprice_race" id="tokenprice_race" type="text" value="" tabindex="1"  readonly="readonly"/> 
                                                     </div>
+													<label for="voucherCode"><span>Voucher Code:</span></label>
+													<div>
+                                                    <input name="voucherCode" id="voucherCode" type="text" value="" tabindex="1"  /> 
+                                                    </div>
                                                 </div>
          
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue_race" class="btn large"/></div>

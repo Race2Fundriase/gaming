@@ -86,6 +86,55 @@ function r2f_action_get_tokens()
 	die();
 }
 
+function r2f_action_get_vouchers()
+{
+	global $wpdb;
+	
+	$page = $GET['page']; // get the requested page
+	$limit = $_GET['rows']; // get how many rows we want to have into the grid	
+	$sidx = $_GET['sidx']; // get index row - i.e. user click to sort
+	$sord = $_GET['sord'];
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+
+	
+		
+	$queryResult = $wpdb->get_results("select * from `r2f_vouchers`");
+			
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+
+	$queryResult = $wpdb->get_results("select * from `r2f_vouchers` LIMIT $start, $limit");
+	
+	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
+	//$result["message"] = count($result["results"])." records returned.";
+	//echo json_encode($result);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+	$i=0;
+	foreach($queryResult as $row) {
+	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->voucherCode);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+
 function r2f_action_purchase_check()
 {
 	global $wpdb;
@@ -145,7 +194,7 @@ function r2f_action_sub_check()
 		"
 			SELECT *
 			FROM r2f_transactions
-			WHERE id = %d AND item_number LIKE %s
+			WHERE id = %d AND item_number LIKE %s 
 		", 
 			array(
 				$subId, $item_number
@@ -228,7 +277,7 @@ function r2f_action_get_subs()
 		"
 			SELECT *
 			FROM r2f_transactions
-			WHERE item_number LIKE %s
+			WHERE item_number LIKE %s AND payment_status = 'Completed'
 		", 
 			array(
 				$item_number
@@ -341,6 +390,96 @@ function r2f_action_upsert_token()
 	die();
 }
 
+function r2f_action_upsert_voucher()
+{
+	global $wpdb;
+	
+	// Check security
+	if (!is_admin()) { 
+		$result["message"] = "You must have admin rights to change tokens";
+		$result["error"] = "";
+		$result["id"] = ""; 
+		echo json_encode($result);
+		die();
+	}
+	
+	// Get Params
+	$id = $_POST["id"];
+	$voucherCode = $_POST["voucherCode"];
+	$maxUses = $_POST["maxUses"];
+	$uses = $_POST["uses"];
+	$expires = $_POST["expires"];
+	$discount_amount = $_POST["discount_amount"];
+	$discount_percent = $_POST["discount_percent"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	if ($id == "") {
+
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_vouchers
+				( id, voucherCode, maxUses, uses, expires, discount_amount, discount_percent )
+				VALUES ( %d, %s, %d, %d, %s, %f, %f )
+			", 
+				array(
+				$id, $voucherCode, $maxUses, $uses, $expires, $discount_amount, $discount_percent
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$id = $wpdb->insert_id;
+			$result["id"] = $id;
+			$result["error"] = "";
+			$result["message"] = "A new Voucher called $voucherCode was created.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem creating the voucher.";
+		}
+		
+	} else {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_vouchers
+				SET voucherCode = %s, maxUses = %d, uses = %d,
+				expires = %s, discount_amount = %f, discount_percent = %f
+				WHERE id = %d
+			", 
+				array(
+				$voucherCode, $maxUses, $uses, $expires, $discount_amount, $discount_percent,
+				$id
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$result["error"] = "";
+			$result["message"] = "Voucher '$voucherCode' was updated.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem updating the voucher. $rows";
+		}
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_get_token()
 {
 	global $wpdb;
@@ -392,6 +531,125 @@ function r2f_action_get_token()
 	
 	die();
 }
+
+function r2f_action_get_voucher()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$id = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must supply an id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_vouchers
+			WHERE id = %d
+		", 
+			array(
+				$id
+			) 
+	) );
+	
+	if (count($rows) == 1) {
+		$result["error"] = "";
+		$result["message"] = "Voucher '$id' found.";
+		$result["result"] = $rows[0];
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the voucher.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_use_voucher()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$voucherCode = get_param("voucherCode");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($voucherCode == "") $result["error"] .= "You must supply a voucher code.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_vouchers
+			WHERE voucherCode = %s AND uses < maxUses
+		", 
+			array(
+				$voucherCode
+			) 
+	) );
+	
+	if (count($rows) == 1) {
+	
+		$rows2 = $wpdb->get_results( $wpdb->prepare( 
+			"
+				UPDATE r2f_vouchers
+				SET uses = uses + 1
+				WHERE voucherCode = %s
+			", 
+				array(
+					$voucherCode
+				) 
+		) );
+	
+		$result["error"] = "";
+		$result["message"] = "Voucher '$id' used.";
+		$result["result"] = $rows[0];
+		$result["valid"] = 1;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem using the voucher.";
+		$result["valid"] = 0;
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_get_maps()
 {
