@@ -865,5 +865,7 @@ function go_home(){
   wp_redirect( home_url() );
   exit();
 }
+
+add_rewrite_rule('^tasty/([^/]*)?','index.php?page_id=137&charityId=$matches[1]','top');
   
 ?>
