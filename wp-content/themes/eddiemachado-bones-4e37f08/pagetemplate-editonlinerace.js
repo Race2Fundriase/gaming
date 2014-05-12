@@ -149,7 +149,9 @@ jQuery(document).ready
 			}
 		});
 		
-
+		jQuery("#addmore").click(function() { 
+			location.href = site_url+"/add-to-game/?raceId="+raceId;
+		});
 	
 		jQuery("#continue").click(function() { 
 			jQuery(document).ajaxStop(function() {

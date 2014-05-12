@@ -1,13 +1,36 @@
+var raceId;
+
 jQuery(document).ready
 (
 
 	function(jQuery)
 	{
 
-		var raceId = qs("raceId");
+		raceId = qs("raceId");
 		var products_race;
 		var products_sub;
 		var subId = qs("subId");
+		var qty = qs("qty");
+		
+		if (qty && raceId && qty != "") {
+		
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_add_race_maxNoOfPlayers',
+					id:raceId,
+					qty: qty
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					location.href = site_url + "/edit-online-race/?raceId="+raceId;
+				}
+			});
+			
+		
+		}
 				
 		if (offline == 1)
 			jQuery("#gameType").html("Offline");
@@ -155,15 +178,15 @@ jQuery(document).ready
 
 function continue_race() {
 	jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
-	return_url = site_url+"/create-online-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
+	return_url = site_url+"/add-to-game/?raceId="+raceId+"&qty="+jQuery("#tokenamount_race").val();
 	
 	if (jQuery("#tokenprice_race").val() == 0) {
 		location.href = return_url;
 		return;
 	}
 	
-	jQuery("#item_number").val("RACE:"+jQuery("#tokenamount_race").val());
-	jQuery("#cancel_return").val(site_url+"/create-online-race-1");
+	jQuery("#item_number").val("ADDRACE:"+jQuery("#tokenamount_race").val()+"-"+raceId);
+	jQuery("#cancel_return").val(site_url+"/add-to-game/?raceId="+raceId);
 	jQuery("#notify_url").val(site_url+"/ipn");
 	jQuery("#return").val(return_url);
 	jQuery("#amount").val(jQuery("#tokenprice_race").val());

@@ -649,6 +649,11 @@ add_action('wp_ajax_nopriv_r2f_action_get_voucher', 'r2f_action_get_voucher');
 add_action('wp_ajax_r2f_action_use_voucher', 'r2f_action_use_voucher');
 add_action('wp_ajax_nopriv_r2f_action_use_voucher', 'r2f_action_use_voucher');
 
+add_action('wp_ajax_r2f_action_add_race_maxNoOfPlayers', 'r2f_action_add_race_maxNoOfPlayers');
+add_action('wp_ajax_nopriv_r2f_action_add_race_maxNoOfPlayers', 'r2f_action_add_race_maxNoOfPlayers');
+
+
+
 
 
 

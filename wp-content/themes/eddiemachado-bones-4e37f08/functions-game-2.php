@@ -410,6 +410,57 @@ function r2f_action_update_race_featured()
 	die();
 }
 
+function r2f_action_add_race_maxNoOfPlayers()
+{
+	global $wpdb;
+	
+	// Get Params
+	$id = $_POST["id"];
+	$qty = $_POST["qty"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+		
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			UPDATE r2f_races
+			SET maxNoOfPlayers = maxNoOfPlayers + %d
+			WHERE id = %d
+		", 
+			array(
+			$qty,
+			$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$result["error"] = "";
+		$result["message"] = "Race '$id' was updated.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem updating the race $id. $rows";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_update_race_raceStatus()
 {
 	global $wpdb;

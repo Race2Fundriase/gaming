@@ -46,7 +46,9 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    <label for="maxNoOfPlayers"><span>Custom amount of tokens:</span></label>
 					    <div>
 					    <input id="maxNoOfPlayers" name="maxNoOfPlayers" type="text" value="" size="8" tabindex="1"/> 
+						<input type="button" value="ADD MORE" class="btn small" id="addmore"/>
 					    </div>
+						
 					</div>
 					
 					<div>
