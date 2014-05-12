@@ -163,7 +163,8 @@ jQuery(document).ready
 		jQuery("#tokenamount_race").change(function(e) {
 			var q = parseInt(jQuery(this).val());
 			
-			for(i=0;i<products_race.length;i++) {
+			// Start from 1 assuming that 0 is the ffree tier
+			for(i=1;i<products_race.length;i++) {
 				
 				if (parseInt(products_race[i].qty)>=q) {
 					jQuery("#tokenprice_race").val(products_race[i].price);
