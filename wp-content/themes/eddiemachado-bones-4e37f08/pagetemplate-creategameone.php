@@ -50,6 +50,12 @@
                                                 <input name="token" type="hidden" value="a"/>
                                             
                                                 <div class="clearfix">
+													<div class="fourcol first token text-right">
+                                                        <a href="#" class="optionselect active" data-selection="4" data-price="0" id="race_1">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/boat.jpg"/>
+                                                        </a>
+                                                        <div class="text-center"><p class="highlight">4 TOKENS</p></div>
+                                                    </div>
                                                     <div class="fourcol first token text-right">
                                                         <a href="#" class="optionselect active" data-selection="50" data-price="20" id="race_1">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/bike.jpg"/>
@@ -57,46 +63,48 @@
                                                         <div class="text-center"><p class="highlight">50 TOKENS</p></div>
                                                     </div>
                                                     
-                                                    <div class="fourcol token">
+                                                    <div class="fourcol last token">
                                                         <a href="#" class="optionselect" data-selection="100" data-price="35" id="race_2">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/car.jpg"/>
                                                         </a>
                                                          <div class="text-center"><p class="highlight">100 TOKENS</p></div>
                                                     </div>
                                                     
-                                                    <div class="fourcol last token">
+                                                    
+                                                </div>
+												
+												<div class="clearfix">
+													<div class="fourcol first token">
                                                         <a href="#" class="optionselect" data-selection="350" data-price="75" id="race_3">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/plane.jpg"/>
                                                         </a>
                                                          <div class="text-center"><p class="highlight">350 TOKENS</p></div>
                                                     </div>
-                                                </div>
-												
-												<div class="clearfix">
-                                                    <div class="fourcol first token text-right">
+                                                    <div class="fourcol token text-right">
                                                         <a href="#" class="optionselect active" data-selection="1000" data-price="125" id="race_4">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/horse.jpg"/>
                                                         </a>
                                                         <div class="text-center"><p class="highlight">1000 TOKENS</p></div>
                                                     </div>
                                                     
-                                                    <div class="fourcol token">
+                                                    <div class="fourcol last token">
                                                         <a href="#" class="optionselect" data-selection="5000" data-price="225" id="race_5">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/motorbike.jpg"/>
                                                         </a>
                                                          <div class="text-center"><p class="highlight">5000 TOKENS</p></div>
                                                     </div>
                                                     
-                                                    <div class="fourcol last token">
+                                                    
+                                                </div>
+												
+												<div class="clearfix">
+													<div class="fourcol first token">
                                                         <a href="#" class="optionselect" data-selection="10000" data-price="325" id="race_6">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/old-plane.jpg"/>
                                                         </a>
                                                          <div class="text-center"><p class="highlight">10000 TOKENS</p></div>
                                                     </div>
-                                                </div>
-												
-												<div class="clearfix">
-                                                    <div class="fourcol first token text-right">
+                                                    <div class="fourcol token text-right">
                                                         <a href="#" class="optionselect active" data-selection="15000" data-price="395" id="race_7">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/atv.jpg"/>
                                                         </a>

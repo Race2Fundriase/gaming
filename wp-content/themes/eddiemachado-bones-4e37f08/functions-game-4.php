@@ -892,6 +892,10 @@ function go_home(){
   exit();
 }
 
-add_rewrite_rule('^tasty/([^/]*)?','index.php?page_id=137&charityId=$matches[1]','top');
-  
+function get_url_id() {
+$url = $_SERVER["REQUEST_URI"];
+$urlparts = explode("/", $url);
+$urlId = $urlparts[count($urlparts)-2];
+return $urlId;
+}
 ?>

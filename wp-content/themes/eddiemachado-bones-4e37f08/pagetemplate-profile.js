@@ -5,6 +5,7 @@ jQuery(document).ready
 	function(jQuery)
 	{
 		var charityId = qs("charityId");
+		if (!charityId) charityId = url_id;
 		
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
