@@ -71,6 +71,11 @@ jQuery(document).ready
 							else
 								jQuery("#tokenprice_race").val(jQuery("#tokenprice_race").val() * (data.result.discount_percent / 100));
 								
+							var price = jQuery("#tokenprice_race").val();
+							price = parseInt(price);
+							
+							if (price < 0) jQuery("#tokenprice_race").val(0);
+								
 							alert("Voucher is valid - applying discount.");
 							continue_race();
 						} else 

@@ -99,7 +99,12 @@ jQuery(document).ready
 							}
 							else
 								jQuery("#tokenprice_race").val(jQuery("#tokenprice_race").val() * (data.result.discount_percent / 100));
-								
+							
+							var price = jQuery("#tokenprice_race").val();
+							price = parseInt(price);
+							
+							if (price < 0) jQuery("#tokenprice_race").val(0);
+							
 							alert("Voucher is valid - applying discount.");
 							continue_race();
 						} else 
@@ -154,6 +159,7 @@ jQuery(document).ready
 );
 
 function continue_race() {
+	
 	jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
 	return_url = site_url+"/create-online-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
 	
