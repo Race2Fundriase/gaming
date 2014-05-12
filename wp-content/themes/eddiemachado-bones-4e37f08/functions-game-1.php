@@ -610,11 +610,13 @@ function r2f_action_use_voucher()
 	
 	// Select
 
+	
+	
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT *
 			FROM r2f_vouchers
-			WHERE voucherCode = %s AND uses < maxUses
+			WHERE voucherCode = %s AND uses < maxUses AND expires > CURDATE()
 		", 
 			array(
 				$voucherCode

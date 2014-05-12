@@ -397,7 +397,7 @@ function get_randomRoute($raceId, $tokenId) {
 
 	global $wpdb;
 	
-	return "";
+	//return "";
 
 	$race = get_race($raceId);
 	$race = $race["rows"][0];
@@ -482,14 +482,14 @@ function get_randomRoute($raceId, $tokenId) {
 			goto tryagain;
 		}
 			
-		$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $tokenId);
+		/*$mapgridtokenoffset = get_mapgridtokenoffset($raceId, $x, $y, $tokenId);
 		
 		if ($mapgridtokenoffset && $mapgridtokenoffset->inPlayToken == 0) {
 			//echo("mapgridtokenoffset issue");
 			$x = $oldx;
 			$y = $oldy;
 			goto tryagain;
-		}
+		}*/
 		
 		
 		$tries = 0;

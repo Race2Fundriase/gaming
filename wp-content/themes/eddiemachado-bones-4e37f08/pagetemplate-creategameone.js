@@ -8,6 +8,7 @@ jQuery(document).ready
 		var products_race;
 		var products_sub;
 		var subId = qs("subId");
+		var gameType = qs("gameType");
 		
 		if (subId != "") {
 		
