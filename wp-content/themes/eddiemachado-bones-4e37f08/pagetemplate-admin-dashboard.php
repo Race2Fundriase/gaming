@@ -25,7 +25,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					<p class="highlight">An online race allows you to create a race and have your supporters enter your race and pay via PayPal.</p>
 				</div>
 				<div class="fourcol text-center">
-					<a href="<?=site_url();?>/create-offline-race-1" id="comingsoon">
+					<a href="<?=site_url();?>/create-offline-race-1" id="">
 					<span class="circle-image enter-a-race"><img src="<?php echo get_template_directory_uri(); ?>/library/images/circle-image-overlay.png" alt="Enter a race"/></span>
 					<h2 class="highlight">Create Offline Game</h2><br/>
 					</a>

@@ -16,25 +16,25 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<h1 class="highlight">Create Game</h1>
 	<form id="create-game" action=""><!--start form-->
 					<div class="form-elements">
+							<h3><span>Part 1</span></h3>
 							
-							
-							<div style="display: none">
+							<div>
 								<label for="merchantemail"><span>Payment Method:</span></label>
 								<div>
 								<input name="merchantemail" id="paymentMethod" type="text" value="PayPal" tabindex="1"/> 
 								</div>
 							</div>
 							
-							
+							<h3><span>Part 2</span></h3>
 											 
-							<div style="display: none">
+							<div>
 								<label for="merchantemail"><span>Merchant E-mail:</span></label>
 								<div>
 								<input name="merchantemail" id="paymentMethodEmail" type="email" value="" tabindex="1"/> 
 								</div>
 							</div>
 							
-							<h3><span>Part 2</span></h3>
+							<h3><span>Part 3</span></h3>
                                              
 							<div>
 								<label for="nameofrace"><span>Name Of Race:</span></label>
@@ -95,7 +95,6 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 									<input id="selectedTokens" name="selectedTokens" type="text" value="" tabindex="3"/> 
 								</div>
 							</div>
-							<h3><span>Part 3</span></h3>
 							<div>
 								<div>
 								<div style="width: 50%; float: left; color: white">Weather</div><div style="width: 50%; float: right; color: white">Forecast</div>

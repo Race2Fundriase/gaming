@@ -6,30 +6,42 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 ?>
 
 <?php get_header(); ?>
-<div class="container sand bot-bg clearfix nav-margin">
-                    <div class="inner-container wrap">
-                            <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
-                            </div>
-                            <div id="create-race-header">
-                                <div class="text-center"><h1 class="highlight">Create: Offline Game</h1></div>
-                                
-                        </div>
-                                        
-                </div>
-        </div>
-        
-        <div class="fences wrap"></div>
-		<div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
-                <div class="inner-container wrap">
-                        <div class="form-elements">
-                                                <h3><span>Part 4</span></h3>
-						 
+
+    <section>
+    <div class="container sand bot-bg clearfix nav-margin">
+        <div class="inner-container wrap">
+            
+	    <div id="logo" class="secondary">
+                <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+            </div>
+                            
+	    <div id="create-race-header">
+                <div class="text-center"><h1 class="highlight">Create: Offline Game</h1></div>
+                    
+            </div>                                
+	</div>
+    </div>
+    </section>  
+    
+    <div class="fences wrap"></div>
+	
+    <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
+            <div class="inner-container wrap">		 
+			   <div id="tabs">
+			   <ul id="tab_control" class="tab_control center">
+			<li><a href="#" id="startA" class="btn btn-blue large active">Start</a></li>
+			<li><a href="#" id="finishA" class="btn large">Finish</a></li>
+		    </ul>
+					<div class="tabbed_content active">
+					   
+						<div class="form-elements">
+						    <h3><span>Part 4</span></h3>
+							
 							<div>
 								<label for="startGridX"><span>Start Grid X</span></label>
 								<div>
 								<input id="startGridX" name="startGridX" type="text" value="" tabindex="12"/>
-							</div>
+								</div>
 							</div>
 							<div>
 								<label for="startGridY"><span>Start Grid Y</span></label>
@@ -37,6 +49,12 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								<input id="startGridY" name="startGridY" type="text" value="" tabindex="12"/>
 								</div>
 							</div>
+						</div>
+					</div><!--End of tab-->
+			
+					<div class="tabbed_content">
+						 <div class="form-elements">
+						    <h3><span>Part 4</span></h3>
 							<div>
 								<label for="finishGridX"><span>Finish Grid X</span></label>
 								<div>
@@ -44,25 +62,27 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								</div>
 							</div>
 							<div>
-								<label for=finishGridY"><span>Finish Grid Y</span></label>
+								<label for="finishGridY"><span>Finish Grid Y</span></label>
 								<div>
 								<input id="finishGridY" name="finishGridY" type="text" value="" tabindex="12"/>
 								</div>
 							</div>
-         	<div id="paperParentSF" class="boxShadow">
-	</div>
-    <div class="text-left signup"><div id="result" class=""></div></div>
-	<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
-	<div class="text-center signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
-		
+						</div>
+					</div>
+				</div>
+			</div><!--End Inner Container -->
+			
+         	<div id="paperParentSF" class="boxShadow"></div>
+			
+		<div class="text-left signup"><div id="result" class=""></div></div>
+		<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+		<div class="text-center signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
+				
 
 	
-                                </div><!--End Form Elements-->
-                        </form><!--End Form-->
-                </div><!--End Inner Container-->
-            </div><!--End Container-->
+		</div><!--End Form Elements-->
 
-	
+
 
 	
 	

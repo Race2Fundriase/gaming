@@ -49,17 +49,36 @@ jQuery(document).ready
 		} );
 		
 		jQuery("#continue_race").click(function() { 
-			jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
-			return_url = site_url+"/create-offline-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
-			
-			if (jQuery("#tokenprice_race").val() == 0) {
-				location.href = return_url;
-				return;
-			}
-			
-			jQuery("#return").val(return_url);
-			jQuery("#amount").val(jQuery("#tokenprice_race").val());
-			jQuery("#paypal_form").submit();
+			// Check Voucher
+			if (jQuery("#voucherCode").val() != "") {
+				jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_use_voucher',
+						voucherCode: jQuery("#voucherCode").val()
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						// check voucher code
+						if (data.valid == 1) {
+							
+							if (data.result.discount_amount != 0) {
+								jQuery("#tokenprice_race").val(jQuery("#tokenprice_race").val() - data.result.discount_amount);
+								
+							}
+							else
+								jQuery("#tokenprice_race").val(jQuery("#tokenprice_race").val() * (data.result.discount_percent / 100));
+								
+							alert("Voucher is valid - applying discount.");
+							continue_race();
+						} else 
+							alert("Invalid Voucher Code.");
+					}
+				});
+			} else
+				continue_race();
 			
 			return false;
 		} );
@@ -93,6 +112,23 @@ jQuery(document).ready
 		});
 	}
 );
+function continue_race() {
+	jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
+	return_url = site_url+"/create-offline-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
+	
+	if (jQuery("#tokenprice_race").val() == 0) {
+		location.href = return_url;
+		return;
+	}
+	
+	jQuery("#item_number").val("RACE:"+jQuery("#tokenamount_race").val());
+	jQuery("#cancel_return").val(site_url+"/create-offline-race-1");
+	jQuery("#notify_url").val(site_url+"/ipn");
+	jQuery("#return").val(return_url);
+	jQuery("#amount").val(jQuery("#tokenprice_race").val());
+	jQuery("#paypal_form").submit();
+	
+}
 
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

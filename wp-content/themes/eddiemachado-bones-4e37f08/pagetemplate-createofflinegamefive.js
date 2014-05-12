@@ -1,47 +1,3 @@
-var paper;
-var scale = 1.0;
-var mapWidth = 3506;
-var mapHeight = 4440;
-var cellWidth = 75;
-var cellHeight = 75;
-var gridWidth = 47;
-var gridHeight = 60;
-var xoff = 0;
-var yoff = 0;
-
-var selectedCell;
-
-var mapImageUrl = "";
-var mapImage;
-
-function drawGrid() {
-
-	if (paper) paper.clear();
-
-	paper = Raphael("paperParentSF2", mapWidth*scale, mapHeight*scale);
-	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
-
-	var x, y;
-	var w = cellWidth * scale;
-	var h = cellHeight * scale;
-
-	for (x=0;x<gridWidth;x++) {
-		var curx = x * w;
-		for (y=0;y<gridHeight;y++) {
-			var cury = y * h;
-			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
-			
-		}
-	}
-	
-	//selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
-	//selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
-
-	selectedCell = paper.image(theme_url+"/library/images/flag_green.png", startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-	selectedCell = paper.image(theme_url+"/library/images/flag_red.png", finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-
-	
-}
 
 
 Date.prototype.yyyymmdd = function() {
@@ -60,28 +16,9 @@ function qs(key) {
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
 }
 
-var startGridX = 0;
-var startGridY = 0;
-var finishGridX = 0;
-var finishGridY = 0;
-
 window.onload = function () {
 
-	scale = 0.2;
-	xoff = 400;
-	yoff = 100;
-	
 	jQuery('#create-game input').attr('readonly', 'readonly');
-	
-
-	//drawGrid();
-	jQuery("#startGridX,#startGridY,#finishGridX,#finishGridY").change(function(e) {
-		startGridX = jQuery("#startGridX").val();
-		startGridY = jQuery("#startGridY").val();
-		finishGridX = jQuery("#finishGridX").val();
-		finishGridY = jQuery("#finishGridY").val();
-		drawGrid();
-	});
 	
 	var raceId = qs("raceId");
 	var racecharacterId = qs("racecharacterId");
@@ -155,17 +92,22 @@ window.onload = function () {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					if (data.error == "") {
-						jQuery("#mapId").val(data.result.id);
-						jQuery("#mapName").val(data.result.mapName);
-						jQuery("#mapImageUrl").val(data.result.mapImageUrl);
-						jQuery("#mapWidth").val(data.result.mapWidth);
-						jQuery("#mapHeight").val(data.result.mapHeight);
-						jQuery("#gridWidth").val(data.result.gridWidth);
-						jQuery("#gridHeight").val(data.result.gridHeight);
-						jQuery("#cellWidth").val(data.result.cellWidth);
-						jQuery("#cellHeight").val(data.result.cellHeight);
-						updateMapOptions();
-						drawGrid();
+						mapId = data.result.id;
+						mapName = data.result.mapName;
+						mapImageUrl = data.result.mapImageUrl;
+						mapWidth = data.result.mapWidth;
+						mapHeight = data.result.mapHeight;
+						gridWidth = data.result.gridWidth;
+						gridHeight = data.result.gridHeight;
+						cellWidth = data.result.cellWidth;
+						cellHeight = data.result.cellHeight;
+						mapTilesUrl = data.result.mapTilesUrl;
+						minZoom = data.result.minZoom;
+						maxZoom = data.result.maxZoom;
+						boundaryX = data.result.boundaryX;
+						boundaryY = data.result.boundaryY;
+
+						drawMap('paperParentSF2', true);
 					}
 					
 				}
@@ -207,20 +149,20 @@ window.onload = function () {
 	jQuery("#continue").click(function(e) { 
 		
 		jQuery.ajax({
-				url: site_url+"/wp-admin/admin-ajax.php",
-				type: "POST",
-				data: {
-					action: 'r2f_action_update_race_raceStatus',
-					id: raceId,
-					raceStatus: 0
-				},
-				dataType: "JSON",
-				success: function (data) {
-					console.log(data);
-					location.href = site_url+"/active-race/?raceId="+raceId;			
-					
-				}
-			});
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_update_race_raceStatus',
+				id: raceId,
+				raceStatus: 0
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				location.href = site_url+"/active-race/?raceId="+raceId;			
+				
+			}
+		});
 		
 		
 		
@@ -236,13 +178,3 @@ window.onload = function () {
 
 };
 
-function updateMapOptions() {
-	mapName = jQuery("#mapName").val();
-	mapImageUrl = jQuery("#mapImageUrl").val();
-	mapWidth = jQuery("#mapWidth").val();
-	mapHeight = jQuery("#mapHeight").val();
-	gridWidth = jQuery("#gridWidth").val();
-	gridHeight = jQuery("#gridHeight").val();
-	cellWidth = jQuery("#cellHeight").val();
-	cellHeight = jQuery("#cellHeight").val();
-}

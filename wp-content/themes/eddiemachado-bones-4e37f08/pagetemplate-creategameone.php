@@ -4,6 +4,19 @@
  */
  
  if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
+ 
+ $title = get_the_title();
+ 
+ if (strpos($title, "Offline") === FALSE) {
+ ?>
+ <script>offline = 0;</script>
+ <?php
+ } else {
+ ?>
+ <script>offline = 1;</script>
+ <?php
+ }
+ 
 ?>
 
 <?php get_header(); ?>
@@ -13,7 +26,7 @@
                                     <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                             <div id="create-race-header">
-                                <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
+                                <div class="text-center"><h1 class="highlight">Create: <span id="gameType"></span> Game</h1></div>
                                 
                                 <div class="text-center"><p class="highlight">Select payment method:</p></div>
                                 

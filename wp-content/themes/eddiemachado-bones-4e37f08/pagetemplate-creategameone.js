@@ -8,8 +8,12 @@ jQuery(document).ready
 		var products_race;
 		var products_sub;
 		var subId = qs("subId");
-		var gameType = qs("gameType");
-		
+				
+		if (offline == 1)
+			jQuery("#gameType").html("Offline");
+		else
+			jQuery("#gameType").html("Online");
+			
 		if (subId != "") {
 		
 			jQuery.ajax({
@@ -151,7 +155,10 @@ jQuery(document).ready
 
 function continue_race() {
 	jQuery("#item_name").val(jQuery("#tokenamount_race").val()+" tokens");
-	return_url = site_url+"/create-online-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
+	if (offline == 1)
+		return_url = site_url+"/create-offline-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
+	else
+		return_url = site_url+"/create-online-race-2/?productType=race&qty="+jQuery("#tokenamount_race").val();
 	
 	if (jQuery("#tokenprice_race").val() == 0) {
 		location.href = return_url;
@@ -159,7 +166,10 @@ function continue_race() {
 	}
 	
 	jQuery("#item_number").val("RACE:"+jQuery("#tokenamount_race").val());
-	jQuery("#cancel_return").val(site_url+"/create-online-race-1");
+	if (offline == 1)
+		jQuery("#cancel_return").val(site_url+"/create-offline-race-1");
+	else
+		jQuery("#cancel_return").val(site_url+"/create-online-race-1");
 	jQuery("#notify_url").val(site_url+"/ipn");
 	jQuery("#return").val(return_url);
 	jQuery("#amount").val(jQuery("#tokenprice_race").val());

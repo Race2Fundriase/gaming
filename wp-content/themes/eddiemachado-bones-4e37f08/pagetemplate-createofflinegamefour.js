@@ -1,48 +1,3 @@
-var paper;
-var scale = 1.0;
-var mapWidth = 3506;
-var mapHeight = 4440;
-var cellWidth = 75;
-var cellHeight = 75;
-var gridWidth = 47;
-var gridHeight = 60;
-var xoff = 0;
-var yoff = 0;
-
-var selectedCell;
-
-var mapImageUrl = "";
-var mapImage;
-
-function drawGrid() {
-
-	if (paper) paper.clear();
-
-	paper = Raphael("paperParentSF", mapWidth*scale, mapHeight*scale);
-	paper.image(site_url+mapImageUrl, 0, 0, mapWidth*scale, mapHeight*scale);
-
-	var x, y;
-	var w = cellWidth * scale;
-	var h = cellHeight * scale;
-
-	for (x=0;x<gridWidth;x++) {
-		var curx = x * w;
-		for (y=0;y<gridHeight;y++) {
-			var cury = y * h;
-			var g = paper.path("M"+curx+" "+cury+"L"+(curx+w)+" "+cury+"L"+(curx+w)+" "+(cury+h));
-			
-		}
-	}
-	
-	//selectedCell = paper.rect(startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#0f0");
-	//selectedCell = paper.rect(finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale).attr("fill", "#f00");
-
-	selectedCell = paper.image(theme_url+"/library/images/flag_green.png", startGridX * cellWidth * scale, startGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-	selectedCell = paper.image(theme_url+"/library/images/flag_red.png", finishGridX * cellWidth * scale, finishGridY * cellWidth * scale, cellWidth * scale, cellWidth * scale, 5 * scale);
-
-	
-}
-
 
 Date.prototype.yyyymmdd = function() {
    var yyyy = this.getFullYear().toString();
@@ -60,16 +15,9 @@ function qs(key) {
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
 }
 
-var startGridX = 0;
-var startGridY = 0;
-var finishGridX = 0;
-var finishGridY = 0;
-
 window.onload = function () {
 
-	scale = 0.2;
-	xoff = 400;
-	yoff = 100;
+	
 	
 	//drawGrid();
 	jQuery("#startGridX,#startGridY,#finishGridX,#finishGridY").change(function(e) {
@@ -115,17 +63,41 @@ window.onload = function () {
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					if (data.error == "") {
-						jQuery("#mapId").val(data.result.id);
-						jQuery("#mapName").val(data.result.mapName);
-						jQuery("#mapImageUrl").val(data.result.mapImageUrl);
-						jQuery("#mapWidth").val(data.result.mapWidth);
-						jQuery("#mapHeight").val(data.result.mapHeight);
-						jQuery("#gridWidth").val(data.result.gridWidth);
-						jQuery("#gridHeight").val(data.result.gridHeight);
-						jQuery("#cellWidth").val(data.result.cellWidth);
-						jQuery("#cellHeight").val(data.result.cellHeight);
-						updateMapOptions();
-						drawGrid();
+						mapId = data.result.id;
+						mapName = data.result.mapName;
+						mapImageUrl = data.result.mapImageUrl;
+						mapWidth = data.result.mapWidth;
+						mapHeight = data.result.mapHeight;
+						gridWidth = data.result.gridWidth;
+						gridHeight = data.result.gridHeight;
+						cellWidth = data.result.cellWidth;
+						cellHeight = data.result.cellHeight;
+						mapTilesUrl = data.result.mapTilesUrl;
+						minZoom = data.result.minZoom;
+						maxZoom = data.result.maxZoom;
+						boundaryX = data.result.boundaryX;
+						boundaryY = data.result.boundaryY;
+
+						drawMap('paperParentSF', true);
+
+						map.on('click', function(e) {
+		
+							var p = getPoint(e.latlng);
+							if (jQuery("#startA").hasClass("btn-blue")) {
+								startGridX = p.x;
+								startGridY = p.y;
+							} else {
+								finishGridX = p.x;
+								finishGridY = p.y;
+							}
+							jQuery("#startGridX").val(startGridX);
+							jQuery("#startGridY").val(startGridY);
+							jQuery("#finishGridX").val(finishGridX);
+							jQuery("#finishGridY").val(finishGridY);
+							
+							drawStart();
+							drawFinish();
+						});
 					}
 					
 				}
@@ -164,13 +136,3 @@ window.onload = function () {
 	} );
 };
 
-function updateMapOptions() {
-	mapName = jQuery("#mapName").val();
-	mapImageUrl = jQuery("#mapImageUrl").val();
-	mapWidth = jQuery("#mapWidth").val();
-	mapHeight = jQuery("#mapHeight").val();
-	gridWidth = jQuery("#gridWidth").val();
-	gridHeight = jQuery("#gridHeight").val();
-	cellWidth = jQuery("#cellHeight").val();
-	cellHeight = jQuery("#cellHeight").val();
-}
