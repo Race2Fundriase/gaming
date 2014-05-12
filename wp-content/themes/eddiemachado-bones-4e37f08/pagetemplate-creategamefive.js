@@ -22,6 +22,8 @@ window.onload = function () {
 	
 	var raceId = qs("raceId");
 	var racecharacterId = qs("racecharacterId");
+
+
 	
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
@@ -159,7 +161,7 @@ window.onload = function () {
 			dataType: "JSON",
 			success: function (data) {
 				console.log(data);
-				location.href = site_url+"/active-race/?raceId="+raceId;			
+				location.href = site_url+"/active-race/?share=1&raceId="+raceId;			
 				
 			}
 		});
