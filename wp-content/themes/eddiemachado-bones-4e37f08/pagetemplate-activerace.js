@@ -6,7 +6,9 @@ jQuery(document).ready
 	{
 		var raceId = qs("raceId");
 		var md = false;
-		;
+		var share = qs("share");
+		
+		
 		
 		jQuery("#featured").change( function(e) {
 			var f = jQuery(this).prop('checked') ? 1 : 0;
@@ -70,6 +72,30 @@ jQuery(document).ready
 				jQuery("#sponserUrl").attr("href", data.rows[0].sponserUrl);
 				if (data.rows[0].sponserLogoUrl != "")
 					jQuery("#sponserDiv").removeClass("myhidden");
+				
+				if (share) {
+					var s = 'Welcome to the race. Share it with your friends.';
+					//button += '<a href="#" onclick=";">Tweet</a>';
+					
+					var n = noty({
+						text: s, 
+						buttons: [
+							{addClass: 'btn btn-primary', text: 'Tweet', onClick: function($noty) {
+							window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[0].raceName)+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+raceId), "_blank", "height=300,width=500"); 
+							return false;
+							}},
+							{addClass: 'btn btn-primary', text: 'Facebook', onClick: function($noty) {
+							window.open('https://www.facebook.com/sharer/sharer.php?t='+encodeURIComponent(data.rows[0].raceName)+'&u='+ encodeURIComponent(site_url+'/active-race/?raceId='+raceId), "_blank", "height=300,width=500"); 
+							return false;
+							}},
+							{addClass: 'btn btn-primary', text: 'Close', onClick: function($noty) {
+							$noty.close();
+							return false;
+							}}
+						],
+						closeWith: ['click']
+					});
+				}
 				
 				jQuery.ajax({
 					url: site_url+"/wp-admin/admin-ajax.php",

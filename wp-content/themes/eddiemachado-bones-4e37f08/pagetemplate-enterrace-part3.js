@@ -128,7 +128,7 @@ window.onload = function () {
 				console.log(data);
 				jQuery("#result").text(data.message + " " + data.error);
 				if (data.error == "")
-					location.href = site_url+"/active-race/?raceId="+raceId;
+					location.href = site_url+"/active-race/?share=1&raceId="+raceId;
 			}
 		});
 			
