@@ -146,21 +146,21 @@
                                                         <a href="#" class="optionselect active" data-selection="1000" data-price="350" id="sub_1">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/bike.jpg"/>
                                                         </a>
-                                                        <div class="text-center"><p class="highlight">Unlimited games with upto 1000 players (&pound;350)</p></div>
+                                                        <div class="text-center"><p class="highlight">Unlimited games with up to 1000 players (&pound;350) for 12 months</p></div>
                                                     </div>
                                                     
                                                     <div class="fourcol token">
                                                         <a href="#" class="optionselect" data-selection="5000" data-price="550" id="sub_2">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/car.jpg"/>
                                                         </a>
-                                                         <div class="text-center"><p class="highlight">Unlimited games with upto 15000 players (&pound;550)</p></div>
+                                                         <div class="text-center"><p class="highlight">Unlimited games with up to 15000 players (&pound;550) for 12 months</p></div>
                                                     </div>
                                                     
                                                     <div class="fourcol last token">
                                                         <a href="#" class="optionselect" data-selection="25000" data-price="1100" id="sub_3">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/plane.jpg"/>
                                                         </a>
-                                                         <div class="text-center"><p class="highlight">Unlimited games with upto 25000 players(&pound;1100)</p></div>
+                                                         <div class="text-center"><p class="highlight">Unlimited games with up to 25000 players(&pound;1100) for 12 months</p></div>
                                                     </div>
                                                 </div>
                                             
