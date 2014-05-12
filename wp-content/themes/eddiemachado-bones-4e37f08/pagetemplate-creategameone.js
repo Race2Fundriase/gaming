@@ -64,7 +64,7 @@ jQuery(document).ready
 			}
 		});
 	
-		jQuery("#race_1,#race_2,#race_3").click(function() { 
+		jQuery("[id^=race_]").click(function() { 
 			jQuery("#tokenamount_race").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_race").val(jQuery(this).attr("data-price"));
 			return false;

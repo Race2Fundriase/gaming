@@ -71,6 +71,47 @@
                                                          <div class="text-center"><p class="highlight">350 TOKENS</p></div>
                                                     </div>
                                                 </div>
+												
+												<div class="clearfix">
+                                                    <div class="fourcol first token text-right">
+                                                        <a href="#" class="optionselect active" data-selection="1000" data-price="125" id="race_4">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/horse.jpg"/>
+                                                        </a>
+                                                        <div class="text-center"><p class="highlight">1000 TOKENS</p></div>
+                                                    </div>
+                                                    
+                                                    <div class="fourcol token">
+                                                        <a href="#" class="optionselect" data-selection="5000" data-price="225" id="race_5">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/motorbike.jpg"/>
+                                                        </a>
+                                                         <div class="text-center"><p class="highlight">5000 TOKENS</p></div>
+                                                    </div>
+                                                    
+                                                    <div class="fourcol last token">
+                                                        <a href="#" class="optionselect" data-selection="10000" data-price="325" id="race_6">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/old-plane.jpg"/>
+                                                        </a>
+                                                         <div class="text-center"><p class="highlight">10000 TOKENS</p></div>
+                                                    </div>
+                                                </div>
+												
+												<div class="clearfix">
+                                                    <div class="fourcol first token text-right">
+                                                        <a href="#" class="optionselect active" data-selection="15000" data-price="395" id="race_7">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/atv.jpg"/>
+                                                        </a>
+                                                        <div class="text-center"><p class="highlight">15000 TOKENS</p></div>
+                                                    </div>
+                                                    
+                                                    <div class="fourcol last token">
+                                                        <a href="#" class="optionselect" data-selection="25000" data-price="450" id="race_8">
+                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/balloon.jpg"/>
+                                                        </a>
+                                                         <div class="text-center"><p class="highlight">25000 TOKENS</p></div>
+                                                    </div>
+                                                    
+                                                    
+                                                </div>
                                             
                                                 <div>
                                                     <label for="tokenamount_race"><span>Custom amount of tokens:</span></label>
