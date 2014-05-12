@@ -40,7 +40,12 @@ jQuery(document).ready
 						r = r.replace(/{ftime}/g, data.rows[i].cell[9]);
 						r = r.replace(/{image}/g, data.rows[i].cell[10]);
 						r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
-						
+						if (data.rows[i].canEnter) {
+							r = r.replace(/{enterRaceUrl}/g,site_url+'/enter-race/?raceId='+data.rows[i].cell[0]);
+						} else {
+							r = r.replace(/{enterRaceUrl}/g,"");
+							r = r.replace(/{enterRaceClass}/g,"myhidden");
+						}
 						row += r;
 						
 						jQuery.ajax({

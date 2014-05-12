@@ -706,6 +706,9 @@ function r2f_action_get_races()
 	$responce->raceStatus = $raceStatus;
 	$i=0;
 	foreach($queryResult as $row) {
+		$race = get_race($row->id);
+		$canEnter = user_can_enter_race_id($race);
+		$responce->rows[$i]['canEnter'] = $canEnter;
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
 		$playerCount = get_race_player_count($row->id);
 		$responce->rows[$i]['id']=$row->id;
