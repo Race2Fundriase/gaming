@@ -1,5 +1,97 @@
 <?php
 
+function r2f_action_get_leaderboard_page()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$raceId = get_param("raceId");
+	$day = get_param("day");
+	$hour = get_param("hour");
+	
+	$q = get_param("q");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $raceId;
+	
+	if ($day == "") {
+		$race = get_race($raceId);
+		$day = $race["rows"][0]->curDay;
+		$hour = $race["rows"][0]->curHour;
+	}
+
+	if (intval($day) < 0) $day = "0"; 
+	
+	// Validate params
+	if ($raceId == "" || $day == "" || $hour == "") $result["error"] .= "You must supply a race id and a day and an hour.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacterscores.id, playerId, playerName,
+				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
+			FROM r2f_racecharacterscores
+			JOIN r2f_racecharacters 
+			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
+			JOIN r2f_races
+			ON r2f_racecharacters.raceId = r2f_races.id
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1
+			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
+		", 
+			array(
+				$raceId, $day, $hour
+			) 
+	) );
+	
+	$count = count($rows);
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "race leaderboard found.";
+		
+		for ($i=0;$i<count($rows);$i++) {
+			if ($rows[$i]->playerName == "")
+				$rows[$i]->name = get_user_meta($rows[$i]->playerId, 'main_contact_name', true);
+			else
+				$rows[$i]->name = $rows[$i]->playerName;
+		}
+		
+		for ($i=0;$i<count($rows);$i++) {
+			if (strpos($rows[$i]->name, $q) !== FALSE) {
+				// work out what page
+			}
+			
+		}
+		
+		$result["rows"] = $rows;
+		$result["total_pages"] = $total_pages;
+		
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the leaderboard";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_get_leaderboard()
 {
 	global $wpdb;

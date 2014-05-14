@@ -326,12 +326,14 @@ function r2f_action_bulk_import()
 	
 	$inserts = 0;
 	$updates = 0;
+	$problems = 0;
+	$problem = "";
 	
 	for($i=0;$i<count($rows);$i++) {
 	
 		$data = explode(",",$rows[$i]);
 	
-		
+		$ok =  TRUE;
 
 		$rc = get_racecharacter_byname($raceId, $data[0]);
 		$token = get_token_byname($data[1]);
@@ -343,46 +345,54 @@ function r2f_action_bulk_import()
 		$noOfPitStops = $data[3];
 		$playerName = $data[0];
 		
-		if ($rc) $id = $rc[0]->id; else $id = "";
-		
-		// Insert or Update
-		if ($id == "") {
-
-			$rows2 = $wpdb->query( $wpdb->prepare( 
-				"
-					INSERT INTO r2f_racecharacters
-					( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName, status
-						 )
-					VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s, 1 )
-				", 
-					array(
-					$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
-					) 
-			) );
-			$inserts++;
-			
-		} else {
-		
-			$rows2 = $wpdb->query( $wpdb->prepare( 
-				"
-					UPDATE r2f_racecharacters
-					SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
-					route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
-					WHERE id = %d
-				", 
-					array(
-					$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
-					$id
-					) 
-			) );
-			$updates++;
+		if (!$tokenId || $tokenId == 0) {
+			$problems++;
+			$problem .= "Token not found for $data[0] - $data[1]<br/>";
+			$ok = FALSE;
 		}
 		
+		if ($ok) {
+		
+			if ($rc) $id = $rc[0]->id; else $id = "";
+			
+			// Insert or Update
+			if ($id == "") {
+
+				$rows2 = $wpdb->query( $wpdb->prepare( 
+					"
+						INSERT INTO r2f_racecharacters
+						( id, raceId, tokenId, playerId, joinDate, route, drivingStyleWeight, noOfPitStops, playerName, status
+							 )
+						VALUES ( %d, %d, %d, %d, %s, %s, %f, %d, %s, 1 )
+					", 
+						array(
+						$id, $raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName
+						) 
+				) );
+				$inserts++;
+				
+			} else {
+			
+				$rows2 = $wpdb->query( $wpdb->prepare( 
+					"
+						UPDATE r2f_racecharacters
+						SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
+						route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
+						WHERE id = %d
+					", 
+						array(
+						$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
+						$id
+						) 
+				) );
+				$updates++;
+			}
+		}
 		
 	}
 	
 	// Return result
-	$result["message"] = "Bulk Import Complete - $inserts inserts, $updates updates";
+	$result["message"] = "Bulk Import Complete - $inserts inserts, $updates updates, $problems problems. <br/>$problem";
 	echo json_encode($result);
 	
 	die();
@@ -848,7 +858,9 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		$tol = 10 - $token->weatherTolerance; // 10 max 1 min
 		$tol = $tol / 10.0; // brings to 0-1 range (0 if maximum tolerance)
 		
-		$ticks += (10 - $weather) * $tol;
+		//print_r($weather);
+		
+		$ticks += (10 - $weather->weather) * $tol;
 
 		if ($ticks <= 0) $ticks = 1;
 		

@@ -76,6 +76,7 @@ jQuery(document).ready
 							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
 							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							jQuery("#sponserUrl").val(data.rows[0].sponserUrl);
+							jQuery("#offline").val(data.rows[0].offline);
 							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
@@ -186,7 +187,8 @@ jQuery(document).ready
 					justGivingCharityId: jQuery("#justGivingCharityId").val(),
 					private: jQuery("#private").val(),
 					prizeDesc: jQuery("#prizeDesc").val(),
-					refreshScores: jQuery("#refreshScores").val()
+					refreshScores: jQuery("#refreshScores").val(),
+					offline: jQuery("#offline").val(),
 				},
 				dataType: "JSON",
 				success: function (data) {
