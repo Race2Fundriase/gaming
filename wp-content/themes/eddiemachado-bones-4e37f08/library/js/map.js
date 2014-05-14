@@ -152,7 +152,7 @@ function drawPlayers() {
 
 			iconSize:     [30, 30], // size of the icon
 			iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
-			popupAnchor:  [-3, -33] // point from which the popup should open relative to the iconAnchor
+			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 		});
 		
 		players[i].icon = icons[i];
@@ -192,7 +192,7 @@ function drawPlayer(p) {
 	
 	p.ll = ll;
 	
-	if (p.playerId == current_user_id) {
+	if (current_user_id != 0 && p.playerId == current_user_id) {
 		drawPlayerHighlight(p);
 	}
 	

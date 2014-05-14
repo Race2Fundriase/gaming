@@ -216,3 +216,42 @@ body.logged-in .nav li.logged-in-nav {
 	height: 40px;
 	line-height: 40px;
 }
+
+#leaderboard-search {
+	
+	input[type=text] {
+		font-family:'Headline One';
+		font-size:22px;
+		font-size:1.375rem;
+		text-transform:uppercase;
+		padding:4px 4px 2px 35px;
+		border:2px solid #2f3025;
+		border-radius:1em;
+		background:url('../images/Search-Magnify-Glass.gif') no-repeat left 5px center #fff ;
+		margin-bottom:5px;
+		width:100%;
+		
+		&:focus {
+			outline:none;
+		}
+	}
+}
+
+
+#leaderboard-search {
+	position:relative;
+	
+	input[type=text] {
+		width:150px;
+		//transition: width ease-in-out 0.5s;
+		
+		&:focus {
+			width:250px;
+		//	transition: width 0.5s;
+		}
+	}
+}
+
+.mypointer {
+	cursor: pointer; 
+ }

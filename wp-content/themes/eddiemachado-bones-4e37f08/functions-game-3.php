@@ -331,7 +331,7 @@ function r2f_action_bulk_import()
 	
 	for($i=0;$i<count($rows);$i++) {
 	
-		$data = explode(",",$rows[$i]);
+		$data = explode("\t",$rows[$i]);
 	
 		$ok =  TRUE;
 

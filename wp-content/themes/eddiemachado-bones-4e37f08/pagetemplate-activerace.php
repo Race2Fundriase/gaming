@@ -149,6 +149,13 @@ Template Name: Active Race
 									<option value="22">23</option>
 									<option value="23">24</option>
 								</select></div>
+								
+								<div id="leaderboard-search">
+									<form id="lsearch">
+										<input type="text" value="" id="q" />
+									</form>
+								</div>
+								
                                 <ul class="highlight" id="leaderboard">
 								</ul>
 								<div id="pagerDiv" style="width: 500px; margin: auto">

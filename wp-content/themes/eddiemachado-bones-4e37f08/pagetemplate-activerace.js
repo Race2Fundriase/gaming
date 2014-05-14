@@ -213,7 +213,11 @@ jQuery(document).ready
 			getLeaderBoard(raceId, curDay, curHour, raceStatus);
 		});
 		
-		//getActiveRaces();
+		jQuery("#lsearch").submit(function(e) {
+			e.preventDefault();
+			getLeaderBoard(raceId, curDay, curHour, raceStatus, jQuery("#q").val());
+			return false;
+		});
 
 	}
 );
@@ -222,7 +226,7 @@ var curPage = 1;
 var n, p;
 var limit = 10;
 
-function getLeaderBoard(raceId, day, hour, raceStatus) {
+function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 	console.log("glb "+raceId+":"+day+":"+hour);
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
@@ -233,51 +237,60 @@ function getLeaderBoard(raceId, day, hour, raceStatus) {
 			day: day,
 			hour: hour,
 			page: curPage,
-			rows: limit
+			rows: limit, 
+			q: q
 		},
 		dataType: "JSON",
 		success: function (data) {
 			console.log(data);
 			jQuery("#result").text(data.message + " " + data.error);
+			
 			var li = '';
 			players = new Array();
-			start = limit*curPage - limit;
-			for (i=0;i<data.rows.length;i++){
+			if (data.rows) {
+				start = limit*curPage - limit;
+				for (i=0;i<data.rows.length;i++){
+					
+				   li += '<li id="lbli'+i+'" data-index="'+i+'">'+ data.rows[i].pos + '. '+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
+				   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
+				   players[i] = data.rows[i];
+				   if (curDay < 0) players[i].gridX = startGridX;
+				   if (curDay < 0) players[i].gridY = startGridY;	
+				   
+				}
 				
-			   li += '<li id="lbli'+data.rows[i].playerId+'" data-index="'+i+'">'+ (start+i+1) + '. '+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
-			   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
-			   players[i] = data.rows[i];
-			   if (curDay < 0) players[i].gridX = startGridX;
-			   if (curDay < 0) players[i].gridY = startGridY;	
-			   
-			}
-			
-			if (raceStatus == 1) {
-				players[0].gridX = finishGridX;
-				players[0].gridY = finishGridY;
-			}
-			
-			if (data.total_pages > 1) {
+				if (raceStatus == 1) {
+					players[0].gridX = finishGridX;
+					players[0].gridY = finishGridY;
+				}
 				
-				if (curPage != data.total) 
-						n = true;
-					else
-						n = false;
-					if (curPage > 1)
-						p = true;
-					else
-						p = false;
-			}
-			
-			jQuery('#leaderboard').html(li);
-			
-			jQuery("#pager").html("Page "+curPage+" of " +data.total_pages);
-			
-			for (i=0;i<data.rows.length;i++){
-				jQuery("#lbli"+data.rows[i].playerId).click(function (e) {
-					j = jQuery(this).attr("data-index");
-					drawPlayerHighlight(players[j]);
-				});
+				if (data.total_pages > 1) {
+					
+					if (curPage != data.total) 
+							n = true;
+						else
+							n = false;
+						if (curPage > 1)
+							p = true;
+						else
+							p = false;
+				}
+				
+				jQuery('#leaderboard').html(li);
+				
+				jQuery("#pager").html("Page "+curPage+" of " +data.total_pages);
+				
+				for (i=0;i<data.rows.length;i++){
+					jQuery("#lbli"+i).click(function (e) {
+						j = jQuery(this).attr("data-index");
+						drawPlayerHighlight(players[j]);
+					});
+					jQuery("#lbli"+i).addClass("mypointer");
+				}
+			} else {
+				jQuery('#leaderboard').html("");
+				
+				jQuery("#pager").html("");
 			}
 			
 			if (raceStatus == 1) {

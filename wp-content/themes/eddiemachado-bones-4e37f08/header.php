@@ -53,7 +53,7 @@ ga('send', 'pageview');
 		<script>current_user_id = <?=get_current_user_id();?>;</script>
 		<script>current_player_name = '<?=get_player_name();?>';</script>
 		<script>is_admin = <?php if(appthemes_check_user_role("administrator")) echo("true"); else echo("false");?>;</script>
-		<script>url_id = <?=get_url_id();?>;</script>
+		<script>url_id = '<?=get_url_id();?>';</script>
 	</head>
 
 	<body <?php body_class(); ?>>
