@@ -714,7 +714,8 @@ function r2f_action_get_races()
 		$responce->rows[$i]['id']=$row->id;
 		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/create-online-race/?raceId='.$row->id.'">Edit</a>',
-			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, $row->mapImageUrl, $row->maxNoOfPlayers, $playerCount);
+			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, 
+			$row->mapImageUrl, $row->maxNoOfPlayers, $playerCount, $row->raceDescription);
 		$i++;
 	}        
 	$responce->records = count($responce->rows);

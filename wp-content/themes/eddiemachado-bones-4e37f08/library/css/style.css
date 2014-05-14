@@ -4245,6 +4245,12 @@ body.logged-in .nav li.logged-in-nav {
   cursor: pointer;
 }
 
+/* line 259, ../scss/_game.scss */
+#featureImage {
+  width: auto;
+  height: 150px;
+}
+
 /* jqModal base Styling courtesy of;
 	Brice Burgess <bhb@iceburg.net> */
 /* The Window's CSS z-index value is respected (takes priority). If none is supplied,

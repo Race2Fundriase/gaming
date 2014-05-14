@@ -49,9 +49,9 @@ Template Name: Profile
             <div class="container grit bot-bg-alt pad-bot">
                 <div class="inner-container wrap clearfix">
                     <div class="sevencol first">
-                        <h2 class="highlight"  id="charityProfileName2">Name of charity or funraiser goes here</h3>
+                        <h2 class="highlight"  id="charityProfileName2"></h3>
                         
-                        <p id="charityProfileDesc">A description of the race goes here!</p>
+                        <p id="charityProfileDesc"></p>
                         
                         <h2 class="highlight">Active Races</h2>
                         
@@ -70,15 +70,22 @@ Template Name: Profile
 						</div>
                     </div>
                     
-		    <aside id="profile-excerpt" class="fivecol last charities-info">
+		    <aside id="profile-excerpt" class="fivecol last charities-info" class="myhidden">
                         <div><h3 class="highlight">Enter Our Race</h3></div>
-                        <p class="highlight">Race To The North Pole</p><br/>
-			<p class="highlight">Terrain: Icy</p><br/>
-			<p class="highlight">Data!</p><br/>
-						
+						<div align="center">
+							<img src="" id="featureImage"/>
+						</div>
+						<div>
+                        <p class="highlight" id="featureRaceName"></p><br/>
+						<p class="highlight" id="featureRaceData"></p><br/>
+						<p class="highlight" id="featureRaceDescription"></p><br/>
+						</div>
                         <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-			<div class="dates"><time class="highlight" id="startTime">Start Date</time><time class="highlight" id="finishTime">Finish Date</time></div>
-                        <div><br/><p class="highlight">Website:<a href="#" id="charityProfileWebsite"></a></p></div>
+						<div class="dates"><time id="featurestartDate" datetime="" class="highlight"></time><time id="featurefinishDate" datetime="" class="highlight"></time></div>
+						<div class="dates"><time class="highlight" id="featurestartTime"></time><time class="highlight" id="featurefinishTime"></time></div>
+						<div class="{enterRaceClass}" class="myhidden">
+							<a style="position: relative; top: 10px" class="btn small right" id="featureenterRace">Enter Now</a>
+						</div>
                     </aside>
                     
                 </div>
