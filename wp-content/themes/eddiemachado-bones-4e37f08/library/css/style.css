@@ -3637,9 +3637,9 @@ you can add resource intensive styles.
   /* line 820, ../scss/_768up.scss */
   #active-race-header .btn, #complete-race-header .btn, #active-race-header2 .btn {
     font-size: 36px;
-    font-size: 2.25rem;
-    left: 100px;
-    bottom: -50px;
+    font-size: 3.25rem;
+    left: 400px;
+    bottom: -75px;
   }
   /* line 827, ../scss/_768up.scss */
   #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #active-race-header2 .headings, #active-race-header2 .dates {
@@ -3647,7 +3647,7 @@ you can add resource intensive styles.
     height: 24px;
     font-size: 100%;
     margin-left: 0;
-    left: 280px;
+    left: 0px;
   }
 
   /* line 837, ../scss/_768up.scss */

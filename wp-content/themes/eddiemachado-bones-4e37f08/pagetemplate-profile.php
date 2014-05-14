@@ -71,7 +71,9 @@ Template Name: Profile
                     </div>
                     
 		    <aside id="profile-excerpt" class="fivecol last charities-info" class="myhidden">
-                        <div><h3 class="highlight">Enter Our Race</h3></div>
+                        <div class="{enterRaceClass}" class="myhidden" align="center" style="margin-bottom: 10px">
+							<a style="position: relative;" class="btn small center" id="featureenterRace">Enter Our Race</a>
+						</div>
 						<div align="center">
 							<img src="" id="featureImage"/>
 						</div>
@@ -83,9 +85,7 @@ Template Name: Profile
                         <div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
 						<div class="dates"><time id="featurestartDate" datetime="" class="highlight"></time><time id="featurefinishDate" datetime="" class="highlight"></time></div>
 						<div class="dates"><time class="highlight" id="featurestartTime"></time><time class="highlight" id="featurefinishTime"></time></div>
-						<div class="{enterRaceClass}" class="myhidden">
-							<a style="position: relative; top: 10px" class="btn small right" id="featureenterRace">Enter Now</a>
-						</div>
+						
                     </aside>
                     
                 </div>

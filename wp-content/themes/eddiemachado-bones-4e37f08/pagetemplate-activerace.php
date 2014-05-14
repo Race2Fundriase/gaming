@@ -61,6 +61,7 @@ Template Name: Active Race
 				</div>	
 				<div id="active-race-header2">
 					<div class="info">
+						
 						<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
 						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a>
 						<?php } ?>
@@ -77,7 +78,6 @@ Template Name: Active Race
 						<div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
 						<div class="dates"><time class="highlight" id="startTime"></time><time class="highlight" id="finishTime"></time></div>
 
-					</div>
 					<!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
 					
 				</div>
