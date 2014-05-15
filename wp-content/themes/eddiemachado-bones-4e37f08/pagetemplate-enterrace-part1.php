@@ -50,10 +50,10 @@ Template Name: Enter Race Part 1
                                                     </div>
                                                 </div>
 												
-												<div>
+												<div >
                                                     <label for="playerName"><span>Choose a Character:</span></label>
                                                     <div>
-                                                    <select id="tokenId" name="tokenId" style="width: 350px">
+                                                    <select id="tokenId" name="tokenId" style="width: 350px" class="myhidden">
 													</select>
                                                     </div>
                                                 </div>
@@ -96,7 +96,7 @@ Template Name: Enter Race Part 1
 		
 	<label for="weatherDay{day}" style="padding: 12px 12px 12px 12px"><span>Weather Day {day}</span></label>
 		<div>
-			<div style="width: 50%; float: left;">
+			<div style="width: 50%; float: left;" class="weather">
 			<select id="weatherForecastDay{day}">
 			<option value="1">Icy</option>
 				<option value="2">Snow</option>

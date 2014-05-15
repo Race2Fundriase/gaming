@@ -11,7 +11,7 @@ Template Name: Enter Race Part 3
                                     <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                             <div id="create-race-header">
-                                <div class="text-center"><h1 class="highlight">Enter Race</h1>
+                                <div class="text-center"><h1 class="highlight">Confirmation Screen</h1>
 								</div>
 
                         </div>

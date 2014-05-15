@@ -129,7 +129,7 @@ function r2f_action_upsert_racecharacters()
 	$joinDate = get_param("joinDate");
 	$route = get_param("route");
 	$drivingStyleWeight = get_param("drivingStyleWeight");
-	$noOfPitStops = get_param("noOfPitStops");
+	$noOfPitStops = get_param("noOfPitstops");
 	$playerName = get_param("playerName");
 	$transactionId = get_param("transactionId");
 	if ($transactionId == "") $transactionId = 0;

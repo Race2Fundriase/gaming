@@ -49,7 +49,7 @@ Template Name: Token Join
 					    </div>
 					</div>
 					<div>
-					    <label for="profileName"><span>Profile Name:</span></label>
+					    <label for="profileName"><span>Profile Name (this is your username):</span></label>
 					    <div>
 					    <input name="profileName" id="profileName" type="text" value="" size="8" tabindex="2"/>
 					    </div>
@@ -64,7 +64,7 @@ Template Name: Token Join
 					<h3><span>Part 2</span></h3>
 				     
 					<div>
-					    <label for="building"><span>Building No. or Name*</span></label>
+					    <label for="building"><span>House No. or Name*</span></label>
 					    <div>
 					    <input name="building" id="building" type="text" value="" size="8" tabindex="6" required/> 
 					    </div>

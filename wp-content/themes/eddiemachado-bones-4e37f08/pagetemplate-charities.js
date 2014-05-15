@@ -29,12 +29,41 @@ jQuery(document).ready
 						r = rowHtml;
 						r = r.replace(/{charityName}/g, data.rows[i].data.charityName);
 						r = r.replace(/{index}/g, i);
+						r = r.replace(/{ID}/g, data.rows[i].data.ID);
 						r = r.replace(/{profileUrl}/g, site_url+"/charity-profile/?charityId="+data.rows[i].data.ID);
 						row += r;
+						
 						
 
 					}
 					jQuery("#charityResults").html(row);
+					
+					for(i=0;i<data.rows.length;i++) {
+						jQuery.ajax({
+							url: site_url+"/wp-admin/admin-ajax.php",
+							type: "POST",
+							data: {
+								action: 'r2f_action_get_races',
+								createdBy: data.rows[i].data.ID,
+								raceStatus: 0
+							},
+							dataType: "JSON",
+							success: function (data2) {
+								console.log(data2);
+								var li = "";
+								if (data2.rows) {
+									for(j=0;j<data2.rows.length;j++) {
+										li += '<div class="headings-3-col" style="margin-top: 0" id="activeRace_'+j+'" data-selection="'+j+'"><p class="highlight"><a href="'+site_url+'/active-race/?raceId='+data2.rows[j].cell[0]+'">'+ data2.rows[j].cell[1] +'</a></p><p class="highlight">'+ data2.rows[j].cell[6] +'</p><p class="highlight">'+data2.rows[j].cell[8]+'</p></div>'
+										
+									}
+									
+									jQuery("#activeRaces_"+data2.rows[0].createdBy).html(li);	
+									
+								}				
+								
+							}
+						});
+					}
 					
 					for(i=1;i<data.rows.length;i++) {
 						jQuery("#char_"+i).addClass("top-bg-alt");

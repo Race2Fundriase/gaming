@@ -67,12 +67,12 @@ Template Name: Charities
                         <div class="fourcol first pic-wooden">
                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-test-image-283x214.jpg"/>
                         </div>
-                        <div class="fivecol">
+                        <div class="sevencol">
                             <div><h2 class="highlight">{charityName}</h2></div>
                             <div><h3 class="highlight">Active Races</h3></div>
 
                             <div class="headings-3-col"><p class="highlight">Name</p><p class="highlight">Start</p><p class="highlight">Finish</p></div> 
-                            <div class="activeRaces">
+                            <div class="activeRaces" id="activeRaces_{ID}">
 								
                             
 							</div>

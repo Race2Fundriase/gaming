@@ -12,7 +12,8 @@ Template Name: Enter Race Part 2
                             </div>
                             <div id="create-race-header">
                                 <div class="text-center"><h1 class="highlight">Choose a Route</h1>
-								<p style="width: 400px; margin: auto">Click on the map to highlight the route you will take. You must start at the green starting grid position and finish at the red finish grid position</p>                                            
+								<p style="width: 500px; margin: auto; font-size: 20px">Plot your Route from the <img src="<?php echo get_template_directory_uri(); ?>/library/images/flag_green.png" alt=""/> flag to the <img src="<?php echo get_template_directory_uri(); ?>/library/images/flag_red.png" alt=""/> flag</p>                                            
+								<p style="width: 400px; margin: auto">Click on the map to highlight the route you will take. You must start at the green flag position and finish at the red flag position. Click and drag or swipe the map to move it, zoom in and out with the +/- zoom buttons.</p>                                            
 								</div>
 
                         </div>

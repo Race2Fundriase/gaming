@@ -712,6 +712,7 @@ function r2f_action_get_races()
 		$charityName = get_user_meta( $row->createdBy, "official_charity_name", true );
 		$playerCount = get_race_player_count($row->id);
 		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['createdBy']=$row->createdBy;
 		$responce->rows[$i]['cell']=array($row->id,$row->raceName,$row->mapName,$row->raceStatus,
 			'<a href="'.site_url().'/create-online-race/?raceId='.$row->id.'">Edit</a>',
 			$charityName, $row->startDate, $row->startTime, $row->finishDate, $row->finishTime, 
