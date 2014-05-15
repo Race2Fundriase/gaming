@@ -45,7 +45,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 				<h1 class="highlight">Races</h1>
 				<table>
 				<thead class="highlight">
-				<tr><th>Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Players</th><th>Game Status</th><th>Invite Players</th><th>Create Players</th><th>Stop/Activate Game</th></tr>
+				<tr><th>Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Players</th><th>Game Status</th><th>Invite Players</th><th>Create Players</th></tr>
 				</thead>
 				<tbody id="raceResultsActive"></tbody>
 				</table>
@@ -64,7 +64,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
     <div  style="display:none">
 		<table >
 		<tbody id="templateDiv">
-		<tr><td><a href="{viewMoreUrl}">{raceName}</a></td><td>{mapName}</td><td>{start} {stime}</td><td>{finish} {ftime}</td><td>{maxNoOfPlayers}</td><td>{raceStatus}</td><td><a href="{tweetUrl}"><img src="<?php echo get_template_directory_uri(); ?>/library/images/bird_blue_32.png" border="0"/></a><a href='#' onclick='window.open("{fbUrl}", "_blank", "height=200,width=500"); return false;'><img width="32" height="32" src="<?php echo get_template_directory_uri(); ?>/library/images/asset.f.logo.lg.png" border="0"/></a><a href="{mailtoUrl}"><img width="32" height="32" src="<?php echo get_template_directory_uri(); ?>/library/images/mail-to.png" border="0"/></a></td><td><a href="{createUrl}">Create</a></td><td><a href="{stopActivateUrl}">Edit</a></td></tr>
+		<tr><td><a href="{viewMoreUrl}">{raceName}</a></td><td>{mapName}</td><td>{start} {stime}</td><td>{finish} {ftime}</td><td>{maxNoOfPlayers}</td><td>{raceStatus}</td><td><a href="{tweetUrl}"><img src="<?php echo get_template_directory_uri(); ?>/library/images/bird_blue_32.png" border="0"/></a><a href='#' onclick='window.open("{fbUrl}", "_blank", "height=200,width=500"); return false;'><img width="32" height="32" src="<?php echo get_template_directory_uri(); ?>/library/images/asset.f.logo.lg.png" border="0"/></a><a href="{mailtoUrl}"><img width="32" height="32" src="<?php echo get_template_directory_uri(); ?>/library/images/mail-to.png" border="0"/></a></td><td><a href="{createUrl}">Create</a></td></tr>
 		</tbody>
 		</table>
 	</div>
