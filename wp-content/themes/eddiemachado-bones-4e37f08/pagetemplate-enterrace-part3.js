@@ -84,7 +84,9 @@ window.onload = function () {
 								jQuery("#result").text(data.message + " " + data.error);
 								jQuery("#playerName").val(data.rows[0].playerName);
 								jQuery("#drivingStyleWeight").val(data.rows[0].drivingStyleWeight);
+								jQuery("#drivingStyleWeight").simpleSlider("setValue", data.rows[0].drivingStyleWeight);
 								jQuery("#noOfPitstops").val(data.rows[0].noOfPitstops);
+								jQuery("#noOfPitstops").simpleSlider("setValue", data.rows[0].noOfPitstops);
 								option = '<option value="'+ data.rows[0].tokenId + '">' + data.rows[0].tokenName + '</option>';
 								jQuery('#tokenId').append(option);
 															
