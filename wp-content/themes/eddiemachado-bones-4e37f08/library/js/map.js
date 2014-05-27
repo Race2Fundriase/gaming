@@ -68,8 +68,6 @@ function drawMap(id, grid) {
 	drawStart();
 	drawFinish();
 	
-	
-	
 }
 
 
@@ -139,25 +137,36 @@ function drawFinish() {
 }
 
 var icons;
+var eventSet = false;
 
 function drawPlayers() {
 	
 	// remove existing ?
 	icons = new Array();
 	
+	zoom = map.getZoom();
+	
+	iconWidth = 30 * (zoom-1);
+	iconHeight = 30 * (zoom-1);
+	
 	for (i=0;i<players.length;i++){
 
 		icons[i] = L.icon({
 			iconUrl: players[i].tokenImageUrl,
 
-			iconSize:     [30, 30], // size of the icon
-			iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+			iconSize:     [iconWidth, iconHeight], // size of the icon
+			iconAnchor:   [iconWidth/2, iconHeight/2], // point of the icon which will correspond to marker's location
 			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
 		});
 		
 		players[i].icon = icons[i];
 
 		drawPlayer(players[i]);
+	}
+	
+	if (!eventSet) {
+		map.on('zoomend', function() { drawPlayers(); });
+		eventSet = true;
 	}
 }
 
@@ -185,6 +194,8 @@ function drawGrid() {
 }
 
 function drawPlayer(p) {
+	
+	if (p.marker) map.removeLayer(p.marker);
 	
 	var ll = getLatLng(p.gridX, p.gridY);
 
