@@ -265,3 +265,8 @@ body.logged-in .nav li.logged-in-nav {
 .weather select {
 	background:url("../images/select-box-button-white.gif") no-repeat right $white;
 }
+
+.pagebreak {
+	page-break-after:always;
+}
+

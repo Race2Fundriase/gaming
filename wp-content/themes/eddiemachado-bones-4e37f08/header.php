@@ -59,7 +59,10 @@ ga('send', 'pageview');
 	<body <?php body_class(); ?>>
 
 		<div id="container">
-
+			<?php
+			if (!is_page_template('pagetemplate-offlineprint1.php') && !is_page_template('pagetemplate-offlineprint2.php')
+				&& !is_page_template('pagetemplate-offlineprint3.php')) {
+			?>
 			<header class="header" role="banner">
 <?php $C = get_defined_constants(); if ($C["DB_NAME"] == "cl52-r2f-accp") echo("<p class=\"highlight\">ACCEPTANCE</p>"); ?>
 				<div id="inner-header" class="wrap clearfix">
@@ -85,3 +88,4 @@ ga('send', 'pageview');
 				
 				
 			</header>
+			<?php } ?>

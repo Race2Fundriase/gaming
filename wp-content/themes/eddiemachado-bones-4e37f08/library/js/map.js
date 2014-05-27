@@ -205,7 +205,7 @@ function drawCell(x, y) {
 	latlngs[0] = getLatLng(x, y);
 	latlngs[1] = getLatLng(x+1, y+1);
 	
-	var cell = L.rectangle(latlngs, {color: 'blue', weight: 1}).addTo(map);	
+	var cell = L.rectangle(latlngs, {color: 'blue', weight: 1, fillOpacity: 0.8}).addTo(map);	
 	
 	return cell;
 	

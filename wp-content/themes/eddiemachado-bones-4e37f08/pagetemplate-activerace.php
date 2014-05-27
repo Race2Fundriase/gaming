@@ -63,7 +63,10 @@ Template Name: Active Race
 					<div class="info">
 						
 						<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
-						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a>
+						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a><br/>
+						<a class="btn large blue" href="<?=site_url()?>/offline-print-1/?raceId=<?=$_GET['raceId']?>">Print Race Summary</a><br/>
+						<a class="btn large blue" href="<?=site_url()?>/offline-print-2/?raceId=<?=$_GET['raceId']?>">Print Map</a>
+						<a class="btn large blue" href="<?=site_url()?>/offline-print-3/?raceId=<?=$_GET['raceId']?>">Print Entry Sheet</a>
 						<?php } ?>
 						<?php if(get_current_user_id() <> 0 && user_can_enter_race()) { ?>
 						<a class="btn large blue" href="<?=site_url()?>/purchase-token/?raceId=<?=$_GET['raceId']?>">Enter Now</a>
