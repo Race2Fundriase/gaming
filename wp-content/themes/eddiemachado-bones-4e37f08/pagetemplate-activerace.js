@@ -278,7 +278,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 				
 				jQuery('#leaderboard').html(li);
 				
-				jQuery("#pager").html("Page "+curPage+" of " +data.total_pages);
+				jQuery("#pager").html(curPage+" of " +data.total_pages);
 				
 				for (i=0;i<data.rows.length;i++){
 					jQuery("#lbli"+i).click(function (e) {

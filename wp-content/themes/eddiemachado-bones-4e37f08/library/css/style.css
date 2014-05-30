@@ -4161,14 +4161,15 @@ label {
 /* line 73, ../scss/_game.scss */
 #paperParentAR2 {
   position: relative;
+  left: 50px;
   top: 50px;
-  width: 90%;
+  width: 80%;
   height: 0;
   padding-bottom: 60%;
   margin: auto;
   overflow: hidden;
 }
-/* line 83, ../scss/_game.scss */
+/* line 84, ../scss/_game.scss */
 #paperParentAR2 div#frame {
   position: absolute;
   z-index: 10;
@@ -4181,7 +4182,7 @@ label {
   height: 100%;
 }
 
-/* line 93, ../scss/_game.scss */
+/* line 94, ../scss/_game.scss */
 #mapDataGrid {
   position: relative;
   width: 800px;
@@ -4190,27 +4191,27 @@ label {
   margin-right: auto;
 }
 
-/* line 101, ../scss/_game.scss */
+/* line 102, ../scss/_game.scss */
 #tokenOffsetResults {
   text-align: center;
 }
 
-/* line 104, ../scss/_game.scss */
+/* line 105, ../scss/_game.scss */
 #wpadminbar {
   display: none;
 }
 
-/* line 108, ../scss/_game.scss */
+/* line 109, ../scss/_game.scss */
 .nav li.logged-in-nav {
   display: none;
 }
 
-/* line 112, ../scss/_game.scss */
+/* line 113, ../scss/_game.scss */
 body.logged-in .nav li.logged-in-nav {
   display: list-item;
 }
 
-/* line 116, ../scss/_game.scss */
+/* line 117, ../scss/_game.scss */
 #paperParent1 {
   position: relative;
   width: 800px;
@@ -4220,7 +4221,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 125, ../scss/_game.scss */
+/* line 126, ../scss/_game.scss */
 #paperParentSF {
   position: relative;
   width: 800px;
@@ -4230,7 +4231,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 134, ../scss/_game.scss */
+/* line 135, ../scss/_game.scss */
 #paperParentSF2 {
   position: relative;
   width: 800px;
@@ -4240,87 +4241,87 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 144, ../scss/_game.scss */
+/* line 145, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 150, ../scss/_game.scss */
+/* line 151, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 156, ../scss/_game.scss */
+/* line 157, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 165, ../scss/_game.scss */
+/* line 166, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 170, ../scss/_game.scss */
+/* line 171, ../scss/_game.scss */
 #subsDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 179, ../scss/_game.scss */
+/* line 180, ../scss/_game.scss */
 #subsDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 185, ../scss/_game.scss */
+/* line 186, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 191, ../scss/_game.scss */
+/* line 192, ../scss/_game.scss */
 .myhidden {
   display: none;
 }
 
-/* line 195, ../scss/_game.scss */
+/* line 196, ../scss/_game.scss */
 .leaderboard ul li {
   border-bottom: 2px solid #000000;
   padding: 0 1em;
 }
 
-/* line 200, ../scss/_game.scss */
+/* line 201, ../scss/_game.scss */
 .sponser {
   width: 50%;
   height: auto;
   margin: auto;
 }
 
-/* line 206, ../scss/_game.scss */
+/* line 207, ../scss/_game.scss */
 .leaflet-control-zoom-in {
   font-size: 25px;
 }
 
-/* line 210, ../scss/_game.scss */
+/* line 211, ../scss/_game.scss */
 .leaflet-control-zoom-out {
   font-size: 25px;
 }
 
-/* line 214, ../scss/_game.scss */
+/* line 215, ../scss/_game.scss */
 .leaflet-bar a, .leaflet-bar a:hover {
   width: 40px;
   height: 40px;
   line-height: 40px;
 }
 
-/* line 222, ../scss/_game.scss */
+/* line 223, ../scss/_game.scss */
 #leaderboard-search input[type=text] {
   font-family: 'Headline One';
   font-size: 22px;
@@ -4333,41 +4334,41 @@ body.logged-in .nav li.logged-in-nav {
   margin-bottom: 5px;
   width: 100%;
 }
-/* line 234, ../scss/_game.scss */
+/* line 235, ../scss/_game.scss */
 #leaderboard-search input[type=text]:focus {
   outline: none;
 }
 
-/* line 241, ../scss/_game.scss */
+/* line 242, ../scss/_game.scss */
 #leaderboard-search {
   position: relative;
 }
-/* line 244, ../scss/_game.scss */
+/* line 245, ../scss/_game.scss */
 #leaderboard-search input[type=text] {
   width: 150px;
 }
-/* line 248, ../scss/_game.scss */
+/* line 249, ../scss/_game.scss */
 #leaderboard-search input[type=text]:focus {
   width: 250px;
 }
 
-/* line 255, ../scss/_game.scss */
+/* line 256, ../scss/_game.scss */
 .mypointer {
   cursor: pointer;
 }
 
-/* line 259, ../scss/_game.scss */
+/* line 260, ../scss/_game.scss */
 #featureImage {
   width: auto;
   height: 150px;
 }
 
-/* line 265, ../scss/_game.scss */
+/* line 266, ../scss/_game.scss */
 .weather select {
   background: url("../images/select-box-button-white.gif") no-repeat right white;
 }
 
-/* line 269, ../scss/_game.scss */
+/* line 270, ../scss/_game.scss */
 .pagebreak {
   page-break-after: always;
 }
