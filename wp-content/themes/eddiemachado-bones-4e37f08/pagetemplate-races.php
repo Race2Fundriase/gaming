@@ -109,4 +109,4 @@ Template Name: Races
 		</div>
 		<div id="result" class="boxShadow myhidden"></div>
 <?php get_footer(); ?>
-<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>
+<script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js?cache=1" type="text/javascript"></script>

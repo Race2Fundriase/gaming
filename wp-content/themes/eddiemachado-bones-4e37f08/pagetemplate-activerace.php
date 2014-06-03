@@ -59,7 +59,7 @@ Template Name: Active Race
 				<div id="paperParentAR2" style="margin-left: 200px;">
 				<div id="frame"></div>
 				</div>	
-				<div class="leaderboard clearfix" style="position: absolute; top: 200px; width: 250px">
+				<div class="leaderboard clearfix" style="position: absolute; top: 400px; width: 250px">
                                 <div><h3 class="highlight">Leaderboard</h3></div>
 								<div style="display:none"><span class="highlight">Day:</span><select name="day" id="day"></select></div>
 								<div style="display:none"><span class="highlight">Hour:</span>

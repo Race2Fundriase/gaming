@@ -41,7 +41,7 @@ jQuery(document).ready
 						r = r.replace(/{image}/g, data.rows[i].cell[10]);
 						r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
 						if (data.rows[i].canEnter && current_user_id != 0) {
-							r = r.replace(/{enterRaceUrl}/g,site_url+'/enter-race/?raceId='+data.rows[i].cell[0]);
+							r = r.replace(/{enterRaceUrl}/g,site_url+'/purchase-token/?raceId='+data.rows[i].cell[0]);
 						} else if (data.rows[i].canEnter && current_user_id == 0) {
 							r = r.replace(/{enterRaceUrl}/g,site_url+'/token-join/?raceId='+data.rows[i].cell[0]);
 						} else {
