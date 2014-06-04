@@ -111,6 +111,26 @@ jQuery(document).ready
 									
 								}
 							});
+							
+							jQuery.ajax({
+								url: site_url+"/wp-admin/admin-ajax.php",
+								type: "POST",
+								data: {
+									action: 'r2f_action_get_leaderboard',
+									raceId: raceId,
+									rows: 100000
+								},
+								dataType: "JSON",
+								success: function (data) {
+									console.log(data);
+									
+									var li = '';
+									for (i=0;i<data.rows.length;i++){
+									   li += '<li>'+ data.rows[i].pos + '. '+ data.rows[i].name + ' ('+data.rows[i].user_email+')</li>';
+									}
+									jQuery('#leaderboard').append(li);
+								}
+							});
 						}
 					});
 				}

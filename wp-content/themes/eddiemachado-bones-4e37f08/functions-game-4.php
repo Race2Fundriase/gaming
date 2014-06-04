@@ -113,6 +113,10 @@ function r2f_action_get_leaderboard()
 			else
 				$rows[$i]->name = $rows[$i]->playerName;
 			$rows[$i]->pos = $i + $start + 1;
+			if (user_can_edit_race_id($raceId)) {
+				$user_info = get_userdata($rows[$i]->playerId);
+				$rows[$i]->user_email = $user_info->user_email;
+			}
 		}
 		
 		$result["rows"] = $rows;
@@ -724,6 +728,21 @@ function appthemes_check_user_role( $role, $user_id = null ) {
 function user_can_edit_race() {
 	$user = wp_get_current_user();
 	$raceId = $_GET["raceId"];
+	
+	$race = get_race($raceId);
+	$createdBy = $race["rows"][0]->createdBy;
+	
+	if (appthemes_check_user_role("administrator")) return true;
+	
+	if ($createdBy != $user->ID) return false;
+	
+	// need also to do sec check on createdBy
+	return appthemes_check_user_role("contributor") || appthemes_check_user_role("administrator");
+	
+}
+
+function user_can_edit_race_id($raceId) {
+	$user = wp_get_current_user();
 	
 	$race = get_race($raceId);
 	$createdBy = $race["rows"][0]->createdBy;

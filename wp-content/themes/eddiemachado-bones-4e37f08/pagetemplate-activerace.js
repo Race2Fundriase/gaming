@@ -291,6 +291,7 @@ function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 						drawPlayerHighlight(players[j]);
 					});
 					jQuery("#lbli"+i).addClass("mypointer");
+					
 				}
 			} else {
 				jQuery('#leaderboard').html("");

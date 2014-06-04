@@ -227,6 +227,13 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 					    <input id="sponserUrl" name="sponserUrl" type="text" tabindex="13"/>
 					    </div>
 					</div>
+					<div>
+					    <label for="sponserUrl"><span>Leaderboard</span></label>
+					    <div>
+					    <ol class="highlight" id="leaderboard"></ol>
+					    </div>
+					</div>
+					
 					<div class="text-center signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/><input type="submit" value="DELETE" class="btn large" id="delete"/></div>
 					<P>TESTING ONLY TESTING ONLY</P>
                                                 <div>

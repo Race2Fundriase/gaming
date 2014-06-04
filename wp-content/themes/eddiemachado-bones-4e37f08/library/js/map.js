@@ -224,5 +224,6 @@ function drawCell(x, y) {
 
 function drawPlayerHighlight(p) {
 	p.marker.bindPopup("<b>"+p.playerName+"</b>").openPopup();
+		
 	map.panTo(p.ll);
 }

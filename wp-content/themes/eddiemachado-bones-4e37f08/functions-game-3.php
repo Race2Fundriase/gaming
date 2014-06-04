@@ -1465,7 +1465,10 @@ function updateRaceCurDayHour($raceId) {
 			$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "country", true );
 			
 			$data["insertcontactnumber"] = get_user_meta( $rows2[0]->playerId, "telephone_number", true );
-			$data["insertemailaddress"] = get_user_meta( $rows2[0]->playerId, "user_email", true );
+			
+			$user_info = get_userdata($rows2[0]->playerId);
+			
+			$data["insertemailaddress"] = $user_info->user_email;
 			
 			$data["insertprizeifany"] = $race->prizeDesc;
 			
