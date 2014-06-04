@@ -119,21 +119,7 @@ jQuery(document).ready
 		
 		jQuery("#continue_sub").click(function() { 
 		
-			jQuery("#item_name_sub").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
-			return_url = site_url+"/admin-dashboard";
-			jQuery("#return_sub").val(return_url);
-			jQuery("#item_number_sub").val("SUB:"+current_user_id+"-"+jQuery("#tokenamount_sub").val());
-			jQuery("#cancel_return_sub").val(site_url+"/create-online-race-1");
-			jQuery("#notify_url_sub").val(site_url+"/ipn");
-			
-			if (!is_admin)
-				jQuery("#a3").val(jQuery("#tokenprice_sub").val());
-			else
-				jQuery("#a3").val("0.10");
-				
-			jQuery("#t3").val("Y");
-			jQuery("#p3").val("1");
-			jQuery("#paypal_form_sub").submit();
+			continue_sub();
 			return false;
 		} );
 		
@@ -173,6 +159,27 @@ function continue_race() {
 	jQuery("#notify_url").val(site_url+"/ipn");
 	jQuery("#return").val(return_url);
 	jQuery("#amount").val(jQuery("#tokenprice_race").val());
+	jQuery("#paypal_form").submit();
+	
+}
+
+function continue_sub() {
+	
+	jQuery("#item_name").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
+	return_url = site_url+"/admin-dashboard";
+	
+	if (jQuery("#tokenprice_sub").val() == 0) {
+		location.href = return_url;
+		return;
+	}
+	
+	jQuery("#item_number").val("SUB:"+current_user_id+"-"+jQuery("#tokenamount_sub").val());
+	jQuery("#cancel_return").val(site_url+"/create-online-race-1");
+	jQuery("#notify_url").val(site_url+"/ipn");
+	jQuery("#return").val(return_url);
+	
+	jQuery("#amount").val(jQuery("#tokenprice_sub").val());
+	if (is_admin) jQuery("#amount").val("0.10");
 	jQuery("#paypal_form").submit();
 	
 }
