@@ -152,6 +152,17 @@ jQuery(document).ready
 		
 	
 		jQuery("#continue").click(function() { 
+			
+			var s = moment(jQuery("#startDate").val()+" "+jQuery("#startTime").val());
+			s.zone(0);
+			var startDate = s.format("YYYY-MM-DD");
+			var startTime = s.format("HH:mm");
+			
+			var f = moment(jQuery("#finishDate").val()+" "+jQuery("#finishTime").val());
+			f.zone(0);
+			var finishDate = f.format("YYYY-MM-DD");
+			var finishTime = f.format("HH:mm");
+			
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
 				type: "POST",
@@ -162,10 +173,10 @@ jQuery(document).ready
 					raceName: jQuery("#raceName").val(),
 					raceDescription: jQuery("#raceDescription").val(),
 					mapId: jQuery("#mapId").val(),
-					startDate: jQuery("#startDate").val(),
-					startTime: jQuery("#startTime").val(),
-					finishDate: jQuery("#finishDate").val(),
-					finishTime: jQuery("#finishTime").val(),
+					startDate: startDate,
+					startTime: startTime,
+					finishDate: finishDate,
+					finishTime: finishTime,
 					entryPrice: jQuery("#entryPrice").val(),
 					raceTokens: jQuery("#raceTokens").val(),
 					finishGridX: jQuery("#finishGridX").val(),

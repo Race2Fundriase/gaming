@@ -39,10 +39,11 @@ window.onload = function () {
 			jQuery("#raceName").val(data.rows[0].raceName);
 			jQuery("#raceDescription").val(data.rows[0].raceDescription);
 			jQuery("#mapName").val(data.rows[0].mapName);
-			jQuery("#startDate").val(data.rows[0].startDate);
-			jQuery("#startTime").val(data.rows[0].startTime);
-			jQuery("#finishDate").val(data.rows[0].finishDate);
-			jQuery("#finishTime").val(data.rows[0].finishTime);
+			
+			jQuery("#startDate").val(convertDateTimeToDate(data.rows[0].startDate, data.rows[0].startTime));
+			jQuery("#startTime").val(convertDateTimeToTime(data.rows[0].startDate, data.rows[0].startTime));
+			jQuery("#finishDate").val(convertDateTimeToDate(data.rows[0].finishDate, data.rows[0].finishTime));
+			jQuery("#finishTime").val(convertDateTimeToTime(data.rows[0].finishDate, data.rows[0].finishTime));
 			jQuery("#entryPrice").val(data.rows[0].entryPrice);
 			jQuery("#finishGridX").val(data.rows[0].finishGridX);
 			jQuery("#finishGridY").val(data.rows[0].finishGridY);

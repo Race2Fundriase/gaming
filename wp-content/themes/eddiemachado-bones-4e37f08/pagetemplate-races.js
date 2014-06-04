@@ -34,10 +34,14 @@ jQuery(document).ready
 						r = r.replace(/{raceName}/g, data.rows[i].cell[1]);
 						r = r.replace(/{mapName}/g, data.rows[i].cell[2]);
 						r = r.replace(/{charityName}/g, data.rows[i].cell[5]);
-						r = r.replace(/{start}/g, data.rows[i].cell[6]);
-						r = r.replace(/{stime}/g, data.rows[i].cell[7]);
-						r = r.replace(/{finish}/g, data.rows[i].cell[8]);
-						r = r.replace(/{ftime}/g, data.rows[i].cell[9]);
+						//r = r.replace(/{start}/g, data.rows[i].cell[6]);
+						r = r.replace(/{start}/g, convertDateTimeToDate(data.rows[i].cell[6], data.rows[i].cell[7]));
+						//r = r.replace(/{stime}/g, data.rows[i].cell[7]);
+						r = r.replace(/{stime}/g, convertDateTimeToTime(data.rows[i].cell[6], data.rows[i].cell[7]));
+						//r = r.replace(/{finish}/g, data.rows[i].cell[8]);
+						r = r.replace(/{finish}/g, convertDateTimeToDate(data.rows[i].cell[8], data.rows[i].cell[9]));
+						//r = r.replace(/{ftime}/g, data.rows[i].cell[9]);
+						r = r.replace(/{ftime}/g, convertDateTimeToTime(data.rows[i].cell[8], data.rows[i].cell[9]));
 						r = r.replace(/{image}/g, data.rows[i].cell[10]);
 						r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
 						if (data.rows[i].canEnter && current_user_id != 0) {

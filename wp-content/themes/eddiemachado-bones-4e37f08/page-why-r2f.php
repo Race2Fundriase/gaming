@@ -51,7 +51,7 @@
 				<div class="inner-container wrap clearfix">
 						
 						<h2>Easy to operate</h2>
-						<p>Even thought the Race2fundraising is incredibly flexible because it has a graphical user interface that makes designing a race simple and can a new race can be created in about 5 minutes. But to create a race first of all you need to register.</p>
+						<p>Even thought the Race2fundraising is incredibly flexible because it has a graphical user interface that makes designing a race simple and a new race can be created in about 5 minutes. But to create a race first of all you need to register.</p>
 				
 				</div>
 			</div>
