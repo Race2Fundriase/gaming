@@ -32,8 +32,9 @@ Template Name: Enter Race Part 2
                                                 <input name="token" type="hidden" value="a"/>
                                                           <div class="text-left signup"><div id="feedback" class=""></div></div>                              
 														<div id="paperParent1">
+														
 														</div>                                                
-         
+         <br/><br/><br/><br/><br/>
                                             <div class="text-center continue"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
                                 </div><!--End Form Elements-->
                         </form><!--End Form-->

@@ -258,7 +258,9 @@ window.onload = function () {
 																	
 								for(i=0;i<data.rows.length;i++) {
 									if(data.rows[i].inPlay == "0" || data.rows[i].inPlayToken == "0")
-										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
+										if (data.rows[i].gridX < jQuery("#gridWidth").val() && 
+											data.rows[i].gridY < jQuery("#gridHeight").val())
+											inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
 								}
 								
 							}

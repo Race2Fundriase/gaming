@@ -4214,14 +4214,28 @@ body.logged-in .nav li.logged-in-nav {
 /* line 117, ../scss/_game.scss */
 #paperParent1 {
   position: relative;
-  width: 800px;
-  height: 800px;
-  overflow: scroll;
-  display: block;
+  left: 50px;
+  top: 50px;
+  width: 80%;
+  height: 0;
+  padding-bottom: 60%;
   margin: auto;
+  overflow: hidden;
+}
+/* line 128, ../scss/_game.scss */
+#paperParent1 div#frame {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("../images/squareframe.png") center no-repeat;
+  background-size: 100% 100%;
+  height: 100%;
 }
 
-/* line 126, ../scss/_game.scss */
+/* line 138, ../scss/_game.scss */
 #paperParentSF {
   position: relative;
   width: 800px;
@@ -4231,7 +4245,7 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 135, ../scss/_game.scss */
+/* line 147, ../scss/_game.scss */
 #paperParentSF2 {
   position: relative;
   width: 800px;
@@ -4241,87 +4255,87 @@ body.logged-in .nav li.logged-in-nav {
   margin: auto;
 }
 
-/* line 145, ../scss/_game.scss */
+/* line 157, ../scss/_game.scss */
 #chooseCharacter {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 151, ../scss/_game.scss */
+/* line 163, ../scss/_game.scss */
 #chooseRoute {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 157, ../scss/_game.scss */
+/* line 169, ../scss/_game.scss */
 #racesDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 166, ../scss/_game.scss */
+/* line 178, ../scss/_game.scss */
 #racesDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 171, ../scss/_game.scss */
+/* line 183, ../scss/_game.scss */
 #subsDataGrid table, td, th {
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-/* line 180, ../scss/_game.scss */
+/* line 192, ../scss/_game.scss */
 #subsDataGrid {
   width: 1000px;
   margin: auto;
 }
 
-/* line 186, ../scss/_game.scss */
+/* line 198, ../scss/_game.scss */
 #signUp {
   position: relative;
   width: 350px;
   margin-top: 30px;
 }
 
-/* line 192, ../scss/_game.scss */
+/* line 204, ../scss/_game.scss */
 .myhidden {
   display: none;
 }
 
-/* line 196, ../scss/_game.scss */
+/* line 208, ../scss/_game.scss */
 .leaderboard ul li {
   border-bottom: 2px solid #000000;
   padding: 0 1em;
 }
 
-/* line 201, ../scss/_game.scss */
+/* line 213, ../scss/_game.scss */
 .sponser {
   width: 50%;
   height: auto;
   margin: auto;
 }
 
-/* line 207, ../scss/_game.scss */
+/* line 219, ../scss/_game.scss */
 .leaflet-control-zoom-in {
   font-size: 25px;
 }
 
-/* line 211, ../scss/_game.scss */
+/* line 223, ../scss/_game.scss */
 .leaflet-control-zoom-out {
   font-size: 25px;
 }
 
-/* line 215, ../scss/_game.scss */
+/* line 227, ../scss/_game.scss */
 .leaflet-bar a, .leaflet-bar a:hover {
   width: 40px;
   height: 40px;
   line-height: 40px;
 }
 
-/* line 223, ../scss/_game.scss */
+/* line 235, ../scss/_game.scss */
 #leaderboard-search input[type=text] {
   font-family: 'Headline One';
   font-size: 22px;
@@ -4334,41 +4348,41 @@ body.logged-in .nav li.logged-in-nav {
   margin-bottom: 5px;
   width: 100%;
 }
-/* line 235, ../scss/_game.scss */
+/* line 247, ../scss/_game.scss */
 #leaderboard-search input[type=text]:focus {
   outline: none;
 }
 
-/* line 242, ../scss/_game.scss */
+/* line 254, ../scss/_game.scss */
 #leaderboard-search {
   position: relative;
 }
-/* line 245, ../scss/_game.scss */
+/* line 257, ../scss/_game.scss */
 #leaderboard-search input[type=text] {
   width: 150px;
 }
-/* line 249, ../scss/_game.scss */
+/* line 261, ../scss/_game.scss */
 #leaderboard-search input[type=text]:focus {
   width: 250px;
 }
 
-/* line 256, ../scss/_game.scss */
+/* line 268, ../scss/_game.scss */
 .mypointer {
   cursor: pointer;
 }
 
-/* line 260, ../scss/_game.scss */
+/* line 272, ../scss/_game.scss */
 #featureImage {
   width: auto;
   height: 150px;
 }
 
-/* line 266, ../scss/_game.scss */
+/* line 278, ../scss/_game.scss */
 .weather select {
   background: url("../images/select-box-button-white.gif") no-repeat right white;
 }
 
-/* line 270, ../scss/_game.scss */
+/* line 282, ../scss/_game.scss */
 .pagebreak {
   page-break-after: always;
 }
