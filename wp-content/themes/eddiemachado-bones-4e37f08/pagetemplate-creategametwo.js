@@ -52,6 +52,7 @@ jQuery(document).ready
 							jQuery("#justGivingCharityId").val(data.rows[0].justGivingCharityId);
 							jQuery("#private").val(data.rows[0].private);
 							jQuery("#prizeDesc").val(data.rows[0].prizeDesc);
+							jQuery("#entryCurrency").val(data.rows[0].entryCurrency);
 							
 							
 						}
@@ -189,7 +190,8 @@ jQuery(document).ready
 					justGivingCharityId: jQuery("#justGivingCharityId").val(),
 					createdBy: current_user_id,
 					private: jQuery("#private").val(),
-					prizeDesc: jQuery("#prizeDesc").val()
+					prizeDesc: jQuery("#prizeDesc").val(),
+					entryCurrency: jQuery("#entryCurrency").val()
 				},
 				dataType: "JSON",
 				success: function (data) {

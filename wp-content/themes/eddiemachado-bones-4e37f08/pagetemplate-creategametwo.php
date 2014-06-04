@@ -119,6 +119,38 @@
 												<input id="finishDate" name="finishDate" type="hidden" tabindex="13" readonly/>
 												<input id="finishTime" name="finishTime" type="hidden" tabindex="13"/>
 												<div>
+                                                    <label for="entryCurrency"><span>Entry Currency:</span></label>
+                                                    <div>
+                                                    <select id="entryCurrency" name="entryCurrency">
+														<option value="AUD">AUD</option>
+														<option value="BRL">BRL</option>
+														<option value="CAD">CAD</option>
+														<option value="CZK">CZK</option>
+														<option value="DKK">DKK</option>
+														<option value="EUR">EUR</option>
+														<option value="HKD">HKD</option>
+														<option value="HUF">HUF</option>
+														<option value="ILS">ILS</option>
+														<option value="JPY">JPY</option>
+														<option value="MYR">MYR</option>
+														<option value="MXN">MXN</option>
+														<option value="NOK">NOK</option>
+														<option value="NZD">NZD</option>
+														<option value="PHP">PHP</option>
+														<option value="PLN">PLN</option>
+														<option value="GBP">GBP</option>
+														<option value="RUB">RUB</option>
+														<option value="SGD">SGD</option>
+														<option value="SEK">SEK</option>
+														<option value="CHF">CHF</option>
+														<option value="TWD">TWD</option>
+														<option value="THB">THB</option>
+														<option value="TRY">TRY</option>
+														<option value="USD">USD</option>
+													</select>
+                                                    </div>
+                                                </div>
+												<div>
                                                     <label for="entryprice"><span>Entry Price:</span></label>
                                                     <div>
                                                     <input id="entryPrice" name="entryprice" type="text" value="" tabindex="3"/> 

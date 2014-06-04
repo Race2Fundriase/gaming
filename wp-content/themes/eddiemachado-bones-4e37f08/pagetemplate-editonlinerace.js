@@ -77,6 +77,7 @@ jQuery(document).ready
 							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							jQuery("#sponserUrl").val(data.rows[0].sponserUrl);
 							jQuery("#offline").val(data.rows[0].offline);
+							jQuery("#entryCurrency").val(data.rows[0].entryCurrency);
 							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
@@ -189,6 +190,7 @@ jQuery(document).ready
 					prizeDesc: jQuery("#prizeDesc").val(),
 					refreshScores: jQuery("#refreshScores").val(),
 					offline: jQuery("#offline").val(),
+					entryCurrency: jQuery("#entryCurrency").val()
 				},
 				dataType: "JSON",
 				success: function (data) {

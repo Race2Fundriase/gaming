@@ -23,6 +23,7 @@ jQuery(document).ready
 				jQuery("#result").text(data.message + " " + data.error);
 				jQuery("#business").val(data.rows[0].paymentMethodEmail);
 				jQuery("#amount").val(data.rows[0].entryPrice);
+				jQuery("#currency_code").val(data.rows[0].entryCurrency);
 				if (data.rows[0].entryPrice == 0)
 					location.href = site_url+"/enter-race/?raceId="+raceId;
 				

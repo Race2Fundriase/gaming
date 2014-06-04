@@ -147,6 +147,7 @@ function r2f_action_upsert_race()
 	$prizeDesc = $_POST["prizeDesc"];
 	$offline = $_POST["offline"];
 	$refreshScores = $_POST["refreshScores"];
+	$entryCurrency = $_POST["entryCurrency"];
 	
 	if (!$offline || $offline == "") $offline = 0;
 		
@@ -173,14 +174,14 @@ function r2f_action_upsert_race()
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
-					private, prizeDesc, offline)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s, %d )
+					private, prizeDesc, offline, entryCurrency)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s, %d, %s )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId,
-				$private, $prizeDesc, $offline
+				$private, $prizeDesc, $offline, $entryCurrency
 				) 
 		) );
 		
@@ -204,7 +205,7 @@ function r2f_action_upsert_race()
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
 				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s,
-				offline = %d, refreshScores = %d
+				offline = %d, refreshScores = %d, entryCurrency = %s
 				WHERE id = %d
 			", 
 				array(
@@ -212,7 +213,7 @@ function r2f_action_upsert_race()
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
 				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc, $offline,
-				$refreshScores,
+				$refreshScores, $entryCurrency,
 				$id
 				) 
 		) );
@@ -873,7 +874,7 @@ function r2f_action_get_race()
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
 				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays, private, 
-				prizeDesc, sponserLogoUrl, sponserUrl
+				prizeDesc, sponserLogoUrl, sponserUrl, entryCurrency
 				from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d

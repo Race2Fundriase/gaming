@@ -38,7 +38,7 @@ Template Name: Purchase Token
 					<input type="hidden" name="tax" value="0">
 					<input type="hidden" name="quantity" value="1" id="quantity">
 					<input type="hidden" name="no_note" value="1">
-					<input type="hidden" name="currency_code" value="GBP">
+					<input type="hidden" name="currency_code" id="currency_code" value="GBP">
 
 
 					<input type="hidden" name="return" id="return" value=""/>

@@ -159,9 +159,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 						</div>
 					</div>
 					<div>
+					    <label for="entryCurrency"><span>Entry Currency</span></label>
+					    <div>
+					    <input id="entryCurrency" name=entryCurrency"" type="text" tabindex="13"/>
+					    </div>
+					</div>
+					<div>
 					    <label for="entryPrice"><span>Entry Price</span></label>
 					    <div>
-					    <input id="entryPrice" name=entryPrice"" type="text" tabindex="13"/>
+					    <input id="entryPrice" name="entryPrice" type="text" tabindex="13"/>
 					    </div>
 					</div>
 					<div>
