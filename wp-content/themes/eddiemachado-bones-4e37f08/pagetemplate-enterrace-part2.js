@@ -10,13 +10,13 @@ function selectGrid(x, y) {
 	
 	curx = x;
 	cury = y;
-		
+	
 	if (inPlays && inPlays[curx] && inPlays[curx][cury] && inPlays[curx][cury] == "0") return;
 	
 //	if (selectedCell) selectedCell.remove();
 	
 	if (selectedCells.length == 0 ) {
-		if (Math.abs(startGridX - curx) > 1 || Math.abs(startGridY.y - cury) > 1) return;
+		if (Math.abs(startGridX - curx) > 1 || Math.abs(startGridY - cury) > 1) return;
 	}
 	
 	for(i=0;i<selectedCells.length;i++) {
@@ -50,58 +50,9 @@ function selectGrid(x, y) {
 	jQuery("#gridX").val(curx);
 	jQuery("#gridY").val(cury);
 	
-	mapId = jQuery("#mapId").val();
 	
-	jQuery.ajax({
-		url: site_url+"/wp-admin/admin-ajax.php",
-		type: "POST",
-		data: {
-			action: 'r2f_action_get_mapgrid',
-			mapId: mapId,
-			gridX: curx,
-			gridY: cury
-		},
-		dataType: "JSON",
-		success: function (data) {
-			console.log(data);
-			jQuery("#result").text(data.message + " " + data.error);
-			if (data.error == "") {
-				if (data.result) {
-					jQuery("#mapgridId").val(data.result.id);
-					jQuery("#inPlay").val(data.result.inPlay);
-					getMapGridTokenOffsets();
-				} else {
-					jQuery("#mapgridId").val("");
-					jQuery("#inPlay").val(1);
-					jQuery("#tokenOffsetResults").html("");
-				}
-			}
-			
-		}
-	});
 }
 
-function getMapGridTokenOffsets() {
-	var mapgridId = jQuery("#mapgridId").val();
-	jQuery.ajax({
-		url: site_url+"/wp-admin/admin-ajax.php",
-		type: "POST",
-		data: {
-			action: 'r2f_action_get_mapgridtokenoffsets',
-			mapgridId: mapgridId
-		},
-		dataType: "JSON",
-		success: function (data) {
-			console.log(data);
-			jQuery("#result").text(data.message + " " + data.error);
-			var row = '<input type="hidden" id="cellTokenOffsetCount" value="'+data.rows.length+'"/><tr><th>Token</th><th>Value</th></tr>';
-			for(i=0;i<data.rows.length;i++) {
-				row += '<tr><td>'+data.rows[i].tokenName+'</td><td><input type="hidden" id="mapgridtokenoffsetId_'+i+'" value="'+data.rows[i].id+'"/><input type="hidden" id="tokenId_'+i+'" value="'+data.rows[i].tokenId+'"/><input id="value_'+i+'" type="text" value="'+data.rows[i].value+'"/></td></tr>';
-			}
-			jQuery("#tokenOffsetResults").html(row);
-		}
-	});
-}
 
 function handleEvent(e){
  var elem, evt = e ? e:window.event;
@@ -208,6 +159,7 @@ window.onload = function () {
 						cellWidth = data.result.cellWidth;
 						cellHeight = data.result.cellHeight;
 						mapTilesUrl = data.result.mapTilesUrl;
+						mapOverlayUrl = data.result.mapOverlayUrl;
 						minZoom = data.result.minZoom;
 						maxZoom = data.result.maxZoom;
 						boundaryX = data.result.boundaryX;
@@ -239,6 +191,7 @@ window.onload = function () {
 								jQuery('#tokenId').append(option);
 							}
 						});
+						console.log(tokenId);
 						jQuery.ajax({
 							url: site_url+"/wp-admin/admin-ajax.php",
 							type: "POST",
@@ -251,16 +204,19 @@ window.onload = function () {
 							success: function (data) {
 								console.log(data);
 								jQuery("#result").text(data.message + " " + data.error);
-								inPlays = createArray(jQuery("#gridWidth").val(), jQuery("#gridHeight").val());
-								for(x=0;x<jQuery("#gridWidth").val();x++) 
-									for(y=0;y<jQuery("#gridHeight").val();y++)
+								//inPlays = createArray(jQuery("#gridWidth").val(), jQuery("#gridHeight").val());
+								inPlays = new Array(gridWidth);
+								for(x=0;x<gridWidth;x++) {
+									inPlays[x] = new Array(gridHeight);
+									for(y=0;y<gridHeight;y++)
 										inPlays[x][y] = "1";
-																	
+								}
+										
 								for(i=0;i<data.rows.length;i++) {
-									if(data.rows[i].inPlay == "0" || data.rows[i].inPlayToken == "0")
-										if (data.rows[i].gridX < jQuery("#gridWidth").val() && 
-											data.rows[i].gridY < jQuery("#gridHeight").val())
-											inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
+									
+									if(data.rows[i].inPlay == "0" || data.rows[i].inPlayToken == "0") {
+										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
+									}
 								}
 								
 							}
