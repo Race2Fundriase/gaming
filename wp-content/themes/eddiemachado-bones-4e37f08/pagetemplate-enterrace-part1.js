@@ -49,6 +49,7 @@ window.onload = function () {
 						cellWidth = data.result.cellWidth;
 						cellHeight = data.result.cellHeight;
 						mapTilesUrl = data.result.mapTilesUrl;
+						mapOverlayUrl = data.result.mapOverlayUrl;
 						minZoom = data.result.minZoom;
 						maxZoom = data.result.maxZoom;
 						boundaryX = data.result.boundaryX;

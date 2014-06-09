@@ -53,7 +53,7 @@ function r2f_action_get_leaderboard()
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
@@ -86,7 +86,7 @@ function r2f_action_get_leaderboard()
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId 
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
