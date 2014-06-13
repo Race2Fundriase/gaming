@@ -206,18 +206,20 @@ function bones_scripts_and_styles() {
 			wp_enqueue_style('options-css');
 		}
 		*/
-		
-		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')
-			|| is_page_template('pagetemplate-createofflinegametwo.php')) {
-
-			wp_enqueue_script('create-race');
-			wp_enqueue_script('timepicker');
-			//Enqueue theme for jQuery UI
+		wp_enqueue_script('timepicker');
+		//Enqueue theme for jQuery UI
 			wp_enqueue_style('plugin_name-admin-ui-css',
                 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/ui-darkness/jquery-ui.css',
                 false,
                 PLUGIN_VERSION,
                 false);
+				
+		if (is_page_template('pagetemplate-creategametwo.php') || is_page_template('pagetemplate-creategameone.php')
+			|| is_page_template('pagetemplate-createofflinegametwo.php')) {
+
+			wp_enqueue_script('create-race');
+			
+			
 			
 		}
 		

@@ -13,7 +13,8 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 <div id="content">
 
 	<br/>
-	<div id="voucherDataGrid" class="boxShadow">
+	<br/><br/>
+	<div id="voucherDataGrid" class="boxShadow" align="center">
 		<table id="list2"></table>
 		<div id="pager2"></div>
 	</div>
@@ -23,9 +24,9 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		<div class="form-elements">
 		<div><label for="id" id="idLabel"><span>id:</span></label><input type="text" id="id" value=""  /></div>
 		<div><label for="voucherCode" id="voucherCodeLabel"><span>Voucher Code:</span></label><input type="text" id="voucherCode" value="" required /></div>
-		<div><label for="maxUses" id="maxUsesLabel"><span>Max Uses:</span></label><input type="text" id="maxUses" value="" required /></div>
-		<div><label for="uses" id="usesLabel"><span>Uses:</span></label><input type="text" id="uses" value=""  /></div>
-		<div><label for="expires" id="expiresLabel"><span>Expires:</span></label><input type="text" id="expires" value=""  /></div>
+		<div><label for="maxUses" id="maxUsesLabel"><span>Max Uses:<br/><small>(the maximum number of times the voucher code can be used)</small></span></label><input type="text" id="maxUses" value="" required /></div>
+		<div><label for="uses" id="usesLabel"><span>Uses:<br/><small>(the number of times the voucher code has been used)</small></span></label><input type="text" id="uses" value=""  /></div>
+		<div><label for="expires" id="expiresLabel"><span>Expires<br/><small>(the expiry date of the voucher code)</small>:</span></label><input type="text" id="expires" value=""  /></div>
 		<div><label for="discount_amount" id="discount_amountLabel"><span>Discount Amount:</span></label><input type="text" id="discount_amount" value=""  /></div>
 		<div><label for="discount_percent" id="discount_percentLabel"><span>Discount Percent:</span></label><input type="text" id="discount_percent" value=""  /></div>
 		<input type="button" value="Apply" id="upsertVoucher"/>

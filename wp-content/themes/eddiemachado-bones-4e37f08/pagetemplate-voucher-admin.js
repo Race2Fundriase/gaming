@@ -2,7 +2,7 @@ jQuery(document).ready
 (
 	function(jQuery)
 	{
-		
+		jQuery("#expires").datetimepicker({ dateFormat: "yy-mm-dd" });
 			
 		jQuery("#list2").jqGrid({
 			url:site_url+'/wp-admin/admin-ajax.php?action=r2f_action_get_vouchers',
