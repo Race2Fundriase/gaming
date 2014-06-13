@@ -393,6 +393,76 @@ function r2f_action_upsert_token()
 	die();
 }
 
+function r2f_action_duplicate_token()
+{
+	global $wpdb;
+	
+	
+	// Get Params
+	$id = $_POST["id"];
+	$tokenName = $_POST["tokenName"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must provide a token id.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	// Token
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			INSERT INTO r2f_tokens
+			SELECT 0, %s, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip 
+			FROM r2f_tokens
+			WHERE id = %d
+		", 
+			array(
+				$tokenName, $id
+			) 
+	) );
+	
+	if ($rows == 1) {
+		$newid = $wpdb->insert_id;
+		
+		// mapgridtokenoffsets
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_mapgridtokenoffsets
+				SELECT 0, mapgridId, %d, value, inPlayToken
+				FROM r2f_mapgridtokenoffsets
+				WHERE tokenId = %d
+			", 
+				array(
+					$newid, $id
+				) 
+		) );
+
+		$result["id"] = $newid;
+		$result["tokenName"] = $tokenName;
+		$result["error"] = $wpdb->last_error;;
+		$result["message"] = "A new Token was created.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem creating the token.";
+	}
+		
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+
 function r2f_action_upsert_voucher()
 {
 	global $wpdb;

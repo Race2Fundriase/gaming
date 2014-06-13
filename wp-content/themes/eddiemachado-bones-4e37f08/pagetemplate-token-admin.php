@@ -34,6 +34,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		<div><label for="optimumNoOfPitstops" id="optimumNoOfPitstopsLabel"><span>Optimum No Of Pitstops:</span></label><input type="text" id="optimumNoOfPitstops" value=""/></div>
 		<div><label for="weatherTolerance" id="weatherToleranceLabel"><span>Weather Tolerance:</span></label><input type="text" id="weatherTolerance" value=""/></div>
 		<input type="button" value="Apply" id="upsertToken"/>
+		<input type="button" value="Duplicate" id="duplicateToken"/>
 		</div>
 		</form>
 	</div>

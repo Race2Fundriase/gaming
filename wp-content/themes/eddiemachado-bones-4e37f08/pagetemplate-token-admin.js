@@ -77,5 +77,30 @@ jQuery(document).ready
 			});
 			return false;
 		} );
+		
+		jQuery("#duplicateToken").click(function() { 
+			jQuery("#dataForm").validate();
+			if (!jQuery("#dataForm").valid()) return false;
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_duplicate_token',
+					id: jQuery("#id").val(),
+					tokenName: 'Copy of '+jQuery("#tokenName").val()
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					jQuery("#result").text(data.message + " " + data.error);
+					if (data.error == "") {
+						jQuery("#id").val(data.id);
+						jQuery("#tokenName").val(data.tokenName);
+					}
+				}
+			});
+			return false;
+		} );
+
 	}
 );
