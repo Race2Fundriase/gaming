@@ -1467,12 +1467,12 @@ mobile. Make sure to double check these!
 }
 /* line 872, ../scss/_768up.scss */
 #create-race-header h1 {
-  margin-bottom: 60px;
+  margin-bottom: 10px;
 }
 /* line 876, ../scss/_768up.scss */
 #create-race-header #tab_control {
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /* line 882, ../scss/_768up.scss */

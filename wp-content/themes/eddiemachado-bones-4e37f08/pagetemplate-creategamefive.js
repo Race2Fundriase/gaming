@@ -19,6 +19,8 @@ function qs(key) {
 window.onload = function () {
 
 	jQuery('#create-game input').attr('readonly', 'readonly');
+	jQuery('#create-game textarea').attr('readonly', 'readonly');
+	jQuery('#raceStatus').attr("readonly", "");
 	
 	var raceId = qs("raceId");
 	var racecharacterId = qs("racecharacterId");
@@ -138,14 +140,15 @@ window.onload = function () {
 					console.log(data);
 					var option = '';
 					for (i=0;i<data.rows.length;i++){
-					   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
-					   jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+					   jQuery("#weatherDay"+(i+1)).val(getWeatherDesc(data.rows[i].weather));
+					   jQuery("#weatherForecastDay"+(i+1)).val(getWeatherDesc(data.rows[i].weatherForecast));
 					}
 					
 					
 				}
 			});
 			jQuery('#create-game select').attr('disabled', 'true');
+			jQuery('#create-game input').attr('readonly', 'readonly');
 		}
 	});
 	
@@ -157,7 +160,7 @@ window.onload = function () {
 			data: {
 				action: 'r2f_action_update_race_raceStatus',
 				id: raceId,
-				raceStatus: 0
+				raceStatus: jQuery("#raceStatus").val()
 			},
 			dataType: "JSON",
 			success: function (data) {
@@ -181,3 +184,16 @@ window.onload = function () {
 
 };
 
+function getWeatherDesc(id) {
+	if (id==1) return "Icy";
+	if (id==2) return "Snow";
+	if (id==3) return "Thunderstorm";
+	if (id==4) return "Heavy Rain";
+	if (id==5) return "Rain";
+	if (id==6) return "Overcast";
+	if (id==7) return "Light cloud";
+	if (id==8) return "Clear skies";
+	if (id==9) return "Sunny";
+	if (id==10) return "Heat wave";
+	return "";
+}

@@ -45,7 +45,7 @@ if (isset($_REQUEST['file'])) {
                                                 
                                                 <div>
 													<div>
-													<div style="width: 50%; float: left; color: white">Weather:</div><div style="width: 50%; float: right; color: white">Forecast</div>
+													<div style="width: 50%; float: left; color: white">Actual Weather:</div><div style="width: 50%; float: right; color: white">Weather Forecast To Be Displayed</div>
 													</div>
 
 												</div>	
@@ -69,18 +69,18 @@ if (isset($_REQUEST['file'])) {
 													</a>
 													<input id="sponserLogo" name="sponserLogo" type="hidden" value="" tabindex="12"/>
 													<input id="sponserLogoUrl" name="sponserLogoUrl" type="hidden" value="" tabindex="12"/>
-													<img src="" style="width: 100px; height: auto" id="sponserLogoImg">
+													<img src="" style="width: 100px; height: auto" id="sponserLogoImg" class="myhidden">
 													
 												</div>
 											</div>
 											<div>
-												<label for="sponserUrl"><span>Sponsor Url:</span></label>
+												<label for="sponserUrl"><span>Sponsor Url (optional):</span></label>
 												<div>
 												<input id="sponserUrl" name="sponserUrl" type="text" value="" tabindex="12"/>
 												</div>
 											</div>
 										
-                                           
+											<br/><br/>
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
 												
                                 </div>

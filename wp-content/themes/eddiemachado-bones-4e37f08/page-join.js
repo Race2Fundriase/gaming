@@ -34,8 +34,33 @@ jQuery(document).ready
 					console.log(data);
 					jQuery("#result").text(data.message + " " + data.error);
 					var n = noty({text: data.message + " " + data.error});
-					if (data.error == "")
-						location.href = "/";
+					if (data.error == "") {
+						var s = 'Welcome to race2fundraise! You will soon recieve a confirmaition email containing your username and password.<br/>Why not share race2fundraise.com with your friends by clicking the links below?';
+						var n = noty({
+							text: s, 
+							buttons: [
+								{addClass: 'btn btn-primary', text: 'Tweet', onClick: function($noty) {
+								window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('Join me on race2fundraise.com!')+'&url='+ encodeURIComponent(site_url), "_blank", "height=300,width=500"); 
+								return false;
+								}},
+								{addClass: 'btn btn-primary', text: 'Facebook', onClick: function($noty) {
+								window.open('https://www.facebook.com/sharer/sharer.php?t='+encodeURIComponent('Join me on race2fundraise.com!')+'&u='+ encodeURIComponent(site_url), "_blank", "height=300,width=500"); 
+								return false;
+								}},
+								{addClass: 'btn btn-primary', text: 'Close', onClick: function($noty) {
+								$noty.close();
+								return false;
+								}}
+							],
+							closeWith: ['click'],
+							onClose: function() {
+								location.href = "/";
+							}
+						});
+
+					
+						//location.href = "/";
+					}
 				}
 			});
 			return false;

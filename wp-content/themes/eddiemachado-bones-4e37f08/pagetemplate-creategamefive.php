@@ -13,7 +13,8 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div class="inner-container wrap">
 	<br/>
 	<br/>
-	<h1 class="highlight">Create Game</h1>
+	<br/>
+	<h1 class="highlight">Confirm your settings</h1>
 	<form id="create-game" action=""><!--start form-->
 					<div class="form-elements">
 							<h3><span>Part 1</span></h3>
@@ -101,11 +102,11 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								</div>
 
 							</div>	
-							<div id="weatherResults">
+							<div id="weatherResults" style="padding-left: 0; padding-right: 0;">
 
 							</div>	
 							<h3><span>Part 4</span></h3>
-						 
+							<div class="myhidden">
 							<div>
 								<label for="startGridX"><span>Start Grid X</span></label>
 								<div>
@@ -130,7 +131,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								<input id="finishGridY" name="finishGridY" type="text" value="" tabindex="12"/>
 								</div>
 							</div>
-								
+							</div>	
 	<div id="paperParentSF2" >
 	</div>
 						   
@@ -181,9 +182,21 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		</fieldset>
 		</form>
 	</div>
-	
-	
-	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+	<form id="create-game2" action="">
+		<div class="form-elements">
+					<div>
+					    <label for="raceStatus"><span>Race Status</span></label>
+					    <div>
+					    <select id="raceStatus">
+							<option value="-1">Being Prepared</option>
+							<option value="0" selected>Active</option>
+						</select>
+					    </div>
+					</div>
+		</div>
+				
+	</form>
+	<div class="text-left signup"><input type="submit" value="CONFIRM AND SAVE" class="btn large" id="continue"/></div>
 	<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
 	<div class="text-left signup"><div id="feedback" class=""></div></div>
 	
@@ -194,34 +207,16 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 </div>
 <div id="templateDiv2" style="display: none">
 		
-	<label for="weatherDay{day}" style="padding: 12px 12px 12px 12px"><span>Weather Day {day}</span></label>
+	<label for="weatherDay{day}" style="padding: 12px 12px 12px 12px; width: 30%;"><span>Weather Day {day}</span></label>
 		<div>
 			<div style="width: 50%; float: left">
-			<select id="weatherDay{day}">
-				<option value="1">Icy</option>
-				<option value="2">Snow</option>
-				<option value="3">Thunderstorm</option>
-				<option value="4">Heavy Rain</option>
-				<option value="5">Rain</option>
-				<option value="6">Overcast</option>
-				<option value="7">Light cloud</option>
-				<option value="8">Clear skies</option>
-				<option value="9">Sunny</option>
-				<option value="10">Heat wave</option>
-				</select></div>
+				<input type="text" id="weatherDay{day}" name="weatherDay{day}" ></input>
+				<input type="text" style="height: 0px; padding: 0px"></input>
+			</div>
 			<div style="width: 50%; float: right;">
-			<select id="weatherForecastDay{day}">
-			<option value="1">Icy</option>
-				<option value="2">Snow</option>
-				<option value="3">Thunderstorm</option>
-				<option value="4">Heavy Rain</option>
-				<option value="5">Rain</option>
-				<option value="6">Overcast</option>
-				<option value="7">Light cloud</option>
-				<option value="8">Clear skies</option>
-				<option value="9">Sunny</option>
-				<option value="10">Heat wave</option>
-			</select></div>
+				<input type="text" id="weatherForecastDay{day}" name="weatherForecastDay{day}" ></input>
+				
+			</div>
 		</div>
 	
 </div>

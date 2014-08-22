@@ -1,6 +1,6 @@
 <?php get_header(); ?>
-        <section>
-            <div class="slider secondary clearfix">
+        <section style="">
+            <div class="slider secondary clearfix" >
                     
                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/slide1.jpg" alt=""/>
                     
@@ -14,14 +14,16 @@
 	</section>
 	<div class="fences wrap"></div>
 	
+	<div style="position: relative; ">
+	
 	<section>
 	    <div class="container sand bot-bg-grass">
 		<div class="inner-container wrap">
-		    <h1 class="highlight"><?php the_title(); ?></h1>
+		    <!--<div align="center"><h1 class="highlight">Join as a charity or as a fundraiser</h1></div>-->
 		    
 		    <ul id="tab_control" class="tab_control">
-			<li><a href="#" class="btn btn-blue large active">Charities</a></li>
-			<li><a href="#" class="btn large">Fundraisers</a></li>
+			<li><a href="#" class="btn btn-blue large active">Join as a Charity</a></li>
+			<li><a href="#" class="btn large">Join as a Fundraiser</a></li>
 		    </ul>
 		    
 		    <p class="text-center"><span class="highlight">Want to enter a race? <a href="http://race2fundraise.com/races/">Click here</a> to find a race and enter now.</span></p>
@@ -33,7 +35,7 @@
 	    <div class="container grit bot-bg bot-bg-alt clearfix">
 		<div class="inner-container wrap">
 		    <div id="tabs">
-			<div class="tabbed_content active">
+			<div class="tabbed_content">
 			    <form method="post" action="#" id="registerForm">
 				   <div class="form-elements">
 					<h3><span>Part 1</span></h3>
@@ -368,7 +370,7 @@
 					<div>
 					    <label for="website_address"><span>Website Address</span></label>
 					    <div>
-					    <input name="website_address" id="website_address" type="url" tabindex="13" value="http://"/>
+					    <input name="website_address" id="website_address" type="text" tabindex="13" value="http://"/>
 					    </div>
 					</div>
 <div>
@@ -779,6 +781,6 @@ During the race the players can see their position on the race map and compare i
 				</div>
 			</div>
 			</section>
-	
+	</div>
 <?php get_footer(); ?>
 <script src="<?=get_stylesheet_directory_uri()?>/<?=basename(__FILE__, '.php');?>.js" type="text/javascript"></script>

@@ -28,9 +28,9 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
     <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
             <div class="inner-container wrap">		 
 			   <div id="tabs">
-			   <ul id="tab_control" class="tab_control center">
-			<li><a href="#" id="startA" class="btn btn-blue large active">Start</a></li>
-			<li><a href="#" id="finishA" class="btn large">Finish</a></li>
+			   <ul id="tab_control" class="tab_control center" style="position: fixed; ">
+			<li><a href="#" id="startA" class="btn btn-blue large active">Set Start</a></li><br/>
+			<li><a href="#" id="finishA" class="btn large">Set Finish</a></li>
 		    </ul>
 					<div class="tabbed_content active">
 					   

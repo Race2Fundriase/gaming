@@ -298,7 +298,7 @@ function r2f_action_delete_race()
 function r2f_action_bulk_import()
 {
 	global $wpdb;
-	
+	set_time_limit(500);
 	// Get Params
 	$raceId = get_param("raceId");
 	$playersCSV = get_param("playersCSV");
@@ -317,7 +317,35 @@ function r2f_action_bulk_import()
 	
 	// Validate params
 	if ($raceId == "" || $playersCSV == "") $result["error"] .= "You must enter a race id and players CSV.";
+	
+	for($i=0;$i<count($rows);$i++) {
+	
+		$data = explode("\t",$rows[$i]);
+
+		if ($rows[$i] != "") {
 		
+			$token = get_token_byname($data[1]);
+			if (!$token) $result["error"] .= "Token $data[1] does not exist on line $i<br/>";
+			$drivingStyleWeight = $data[2];
+			if (!is_numeric($drivingStyleWeight)) $result["error"] .= "drivingStyleWeight $data[2] is not a number on line $i<br/>";
+			$noOfPitStops = $data[3];
+			if (!is_numeric($noOfPitStops)) $result["error"] .= "noOfPitStops $data[3] is not a number on line $i<br/>";
+			$playerName = $data[0];
+			if ($playerName == "") $result["error"] .= "playerName is blank on line $i<br/>";
+			
+			for($j=0;$j<count($rows);$j++) {
+		
+				if ($j != $i) {
+					$data = explode("\t",$rows[$j]);
+				
+					$playerNamej = $data[0];
+					
+					if ($playerNamej == $playerName) $result["error"] .= "playerName $playerName is not unique on line $i (duplicate on line $j)<br/>";
+				}
+			}
+		}
+	}
+	
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
 		echo json_encode($result);
@@ -328,13 +356,15 @@ function r2f_action_bulk_import()
 	$updates = 0;
 	$problems = 0;
 	$problem = "";
-	
+		
 	for($i=0;$i<count($rows);$i++) {
 	
 		$data = explode("\t",$rows[$i]);
 	
 		$ok =  TRUE;
 
+		if ($data == "") $ok = FALSE;
+		
 		$rc = get_racecharacter_byname($raceId, $data[0]);
 		$token = get_token_byname($data[1]);
 		$tokenId = $token->id;
@@ -511,7 +541,7 @@ function get_randomRoute($raceId, $tokenId) {
 		$oldy = $y;
 			
 	}
-	//echo($route);
+	//echo($tries2);
 	
 	return $route;
 }
@@ -569,6 +599,7 @@ function r2f_action_upsert_raceweather()
 		$result["id"] = $id;
 		$result["error"] = "";
 		$result["message"] = "A new Race weather $id was created for day $day.";
+		$result["day"] = $day;
 	} else {
 		$result["error"] = $wpdb->last_error;
 		$result["message"] = "There was a problem creating the race weather.";
@@ -770,6 +801,7 @@ function updateScores($raceId) {
 	
 	$start = strtotime($race["rows"][0]->startDate);
 	$finish = strtotime($race["rows"][0]->finishDate);
+	$startTime = $race["rows"][0]->startTime;
 	
 	if ($date < $start) $date = $start;
 	if ($date > $finish) $date = $finish;
@@ -790,9 +822,19 @@ function updateScores($raceId) {
 		echo($raceCharacters[$rci]->id);
 		print_r($raceCharacters[$rci]);
 		ob_flush();
-		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start);
+		updateScoresForRaceCharacter($raceId, $raceCharacters[$rci], $lengthInDays, $start, $startTime);
 		echo("<br/>");
 	}
+	
+	for($rci2=0;$rci2<count($raceCharacters);$rci2++) {
+		echo($raceCharacters[$rci2]->id);
+		print_r($raceCharacters[$rci2]);
+		ob_flush();
+		update_racecharacterscores($raceId, $raceCharacters[$rci2], $lengthInDays, $start, $startTime);
+		echo("<br/>");
+	}
+	
+	
 	
 	updaterefreshScores($raceId, 1);
 	
@@ -819,7 +861,7 @@ function update_LengthInDays($raceId) {
 	return $lengthInDays;
 }
 
-function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $start) {
+function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $start, $startTime) {
 
 	global $wpdb;
 
@@ -867,13 +909,13 @@ function updateScoresForRaceCharacter($raceId, $raceCharacter, $lengthInDays, $s
 		insert_racecharacterstepscore($raceCharacter, $i, $ticks, $x, $y, $explain);
 	}
 	echo("<br/>");
-	update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start);
+	
 	
 	return $r;
 
 }
 
-function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start) {
+function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $start, $startTime) {
 	global $wpdb;
 	echo("<br/>");
 	ob_flush();
@@ -890,7 +932,8 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $sta
 	$ticks = 0;
 	$day = 0;
 	
-	$hour = date("G", $start);
+	//$hour = date("G", $start);
+	$hour = intval(substr($startTime, 0, 2));
 	
 	for($i=0;$i<count($scores);$i++) {
 		echo(".");
@@ -900,6 +943,7 @@ function update_racecharacterscores($raceId, $raceCharacter, $lengthInDays, $sta
 		while($ticks < $score->ticks) {
 			$ticks += $ticksperhour;
 			$explain = "ticks: $ticks; ticksperhour: $ticksperhour";
+			//echo($explain);
 			insert_racecharacterscores($score, $day, $hour, $explain);
 			$hour++;
 			if ($hour >= 24) {
@@ -1380,6 +1424,7 @@ function updateRaceCurDayHour($raceId) {
 	$now = time();
 	
     $startDate = strtotime($race["rows"][0]->startDate);
+	$startHour = intval(substr($race["rows"][0]->startTime, 0, 2)) ;
     $datediff = $now - $startDate;
 	
     $day = floor($datediff/(60*60*24));
@@ -1399,6 +1444,8 @@ function updateRaceCurDayHour($raceId) {
 		$finishDate = strtotime($race["rows"][0]->finishDate." ".$race["rows"][0]->finishTime);
 		$hour = date("G", $finishDate);
 	}
+	
+	if ($day == 0 && $hour < $startHour) $hour = $startHour;
 	
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"

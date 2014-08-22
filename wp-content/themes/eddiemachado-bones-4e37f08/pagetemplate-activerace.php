@@ -99,6 +99,7 @@ Template Name: Active Race
                                 <ul class="highlight" id="leaderboard">
 								</ul>
 								<p class="highlight">Click to highlight on the map.</p>
+								<br/><p class="highlight">Show All? <input type="checkbox" name="showall" id="showall" checked/>
 								<div id="pagerDiv" style="width: 500px; margin: auto">
 								<input type="submit" id="prev" class="btn small" value="PREVIOUS"  >
 								<div id="pager" style="width: 200px; margin:auto; display: inline;" class="highlight"></div>
@@ -106,11 +107,12 @@ Template Name: Active Race
 								</div>
 								
                             </div>
+							<br/><br/>
 				<div id="active-race-header2">
 					<div class="info">
 						
 						<?php if(get_current_user_id() <> 0 && user_can_bulk_import_race()) { ?>
-						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Bulk Import</a><br/>
+						<a class="btn large blue" href="<?=site_url()?>/bulk-import/?raceId=<?=$_GET['raceId']?>">Upload players for the offline race</a><br/>
 						<a class="btn large blue" href="<?=site_url()?>/offline-print-1/?raceId=<?=$_GET['raceId']?>">Print Race Summary</a><br/>
 						<a class="btn large blue" href="<?=site_url()?>/offline-print-2/?raceId=<?=$_GET['raceId']?>">Print Map</a>
 						<a class="btn large blue" href="<?=site_url()?>/offline-print-3/?raceId=<?=$_GET['raceId']?>">Print Entry Sheet</a>

@@ -1,3 +1,5 @@
+var allPlayers;
+
 var map;
 var startGridX, startGridY, finishGridX, finishGridY;
 var mapId, mapName, mapImageUrl, mapWidth, mapHeight, gridWidth, gridHeight, cellWidth, cellHeight;
@@ -38,8 +40,8 @@ function drawMap(id, grid) {
 		
 		var baseMaps = {
 			
-			"Overlay": overlay,
-			"Standard": tiles
+			"show borders": overlay,
+			"hide borders": tiles
 		};
 		
 		L.control.layers(baseMaps, null, { position: 'topleft' }).addTo(map);
@@ -67,6 +69,14 @@ function drawMap(id, grid) {
 		drawGrid();
 	drawStart();
 	drawFinish();
+	
+	map.on('click', function(e) { 
+		if (!allPlayers) return;
+		for (i=0;i<allPlayers.length;i++){
+			//console.log(allPlayers[i].ll.distanceTo(e.latlng));
+			if (allPlayers[i].ll.distanceTo(e.latlng) < 100000) drawAllPlayerHighlight(allPlayers[i]);
+		}
+	});
 	
 }
 
@@ -170,6 +180,49 @@ function drawPlayers() {
 	}
 }
 
+function drawAllPlayers() {
+	
+	// remove existing ?
+	allIcons = new Array();
+	
+	zoom = 2;
+		
+	iconWidth = 30 * (zoom-1);
+	iconHeight = 30 * (zoom-1);
+	
+	for (i=0;i<allPlayers.length;i++){
+
+		allIcons[i] = L.icon({
+			iconUrl: allPlayers[i].tokenImageUrl,
+
+			iconSize:     [iconWidth, iconHeight], // size of the icon
+			iconAnchor:   [iconWidth/2, iconHeight/2], // point of the icon which will correspond to marker's location
+			popupAnchor:  [0, -10] // point from which the popup should open relative to the iconAnchor
+		});
+		
+		allPlayers[i].icon = allIcons[i];
+
+		drawPlayer(allPlayers[i]);
+	}
+	
+}
+
+function removeAllPlayers() {
+	if (!allPlayers) return;
+	for (i=0;i<allPlayers.length;i++){
+
+		if (allPlayers[i].marker) map.removeLayer(allPlayers[i].marker);
+	}
+}
+
+function removePlayers() {
+	if (!players) return;
+	for (i=0;i<players.length;i++){
+
+		if (players[i].marker) map.removeLayer(players[i].marker);
+	}
+}
+
 function drawGrid() {
 	
 	for (y=0;y<gridHeight;y++) {
@@ -199,15 +252,24 @@ function drawPlayer(p) {
 	
 	var ll = getLatLng(p.gridX, p.gridY);
 
-	p.marker = L.marker(ll, {icon: p.icon}).addTo(map);
+	p.marker = L.marker(ll, {icon: p.icon});
 	
 	p.ll = ll;
 	
 	if (current_user_id != 0 && p.playerId == current_user_id) {
 		drawPlayerHighlight(p);
 	}
-	
 
+	p.marker.riseOnHover = true;
+	
+	p.marker.on('click', function () {
+		console.log("hello");
+	});
+	
+	p.marker.addTo(map);
+	
+	//console.log(p.marker);
+	
 }
 
 function drawCell(x, y) {
@@ -223,7 +285,41 @@ function drawCell(x, y) {
 }
 
 function drawPlayerHighlight(p) {
-	p.marker.bindPopup("<b>"+p.playerName+"</b>").openPopup();
+	
+	for (i=0;i<players.length;i++){
+		if (players[i].marker) players[i].marker.setZIndexOffset(0);
+	}
+	
+	p.marker.setZIndexOffset(1000);
+	
+	var pt = "<b>"+p.playerName+"</b>";
+		
+	if (p.user_email) pt += "<br/>"+p.user_email;
+	if (p.address) pt += "<br/>"+p.address;
+	if (p.telephone) pt += "<br/>"+p.telephone;
+	p.marker.bindPopup(pt).openPopup();
 		
 	map.panTo(p.ll);
+	
+	
+}
+
+function drawAllPlayerHighlight(p) {
+	
+	for (i=0;i<allPlayers.length;i++){
+		if (allPlayers[i].marker) allPlayers[i].marker.setZIndexOffset(0);
+	}
+	
+	p.marker.setZIndexOffset(1000);
+	
+	var pt = "<b>"+p.playerName+"</b>";
+		
+	if (p.user_email) pt += "<br/>"+p.user_email;
+	if (p.address) pt += "<br/>"+p.address;
+	if (p.telephone) pt += "<br/>"+p.telephone;
+	p.marker.bindPopup(pt).openPopup();
+		
+	map.panTo(p.ll);
+	
+	
 }

@@ -38,10 +38,14 @@
                                                     </div>
 													
                                                 </div>
-         
+         Row format: Player Name&lt;tab&gtToken Name&lt;tab&gtDriving Style Weight (0.0-1.0)&lt;tab&gtNo Of Pitstops (0-10)
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
                                 </div><!--End Form Elements-->
                         </form><!--End Form-->
+						<div>
+						
+						
+						</div>
                 </div><!--End Inner Container-->
             </div><!--End Container-->
             

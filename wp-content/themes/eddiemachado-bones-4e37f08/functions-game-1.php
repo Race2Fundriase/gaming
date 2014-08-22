@@ -49,6 +49,10 @@ function r2f_action_get_tokens()
 	$limit = $_GET['rows']; // get how many rows we want to have into the grid	
 	$sidx = $_GET['sidx']; // get index row - i.e. user click to sort
 	$sord = $_GET['sord'];
+	
+	$tokenCategoryId = get_param("tokenCategoryId");
+	if ($tokenCategoryId == "") $tokenCategoryId = 0;
+	
 	if(!$sidx) $sidx =1;
 	if(!$page) $page = 1;
 	// Init results
@@ -70,7 +74,10 @@ function r2f_action_get_tokens()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` LIMIT $start, $limit");
+	if ($tokenCategoryId == 0)
+		$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` LIMIT $start, $limit");
+	else
+		$queryResult = $wpdb->get_results("select r2f_tokens.id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` join `r2f_tokentokencategories` on r2f_tokentokencategories.tokenId = r2f_tokens.id where tokencategoryId = $tokenCategoryId LIMIT $start, $limit");
 	
 	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
 	//$result["message"] = count($result["results"])." records returned.";
@@ -83,6 +90,154 @@ function r2f_action_get_tokens()
 	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 		$responce->rows[$i]['id']=$row->id;
 		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription,$row->tokenImageUrl,$row->tokenTip);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+function r2f_action_get_alltokentokencategories()
+{
+	global $wpdb;
+	
+	$page = $GET['page']; // get the requested page
+	$limit = $_GET['rows']; // get how many rows we want to have into the grid	
+	$sidx = $_GET['sidx']; // get index row - i.e. user click to sort
+	$sord = $_GET['sord'];
+	
+
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+
+	
+		
+	$queryResult = $wpdb->get_results("select * from `r2f_tokentokencategories`");
+			
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+
+	$queryResult = $wpdb->get_results("select * from `r2f_tokentokencategories` LIMIT $start, $limit");
+	
+	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
+	//$result["message"] = count($result["results"])." records returned.";
+	//echo json_encode($result);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+	$i=0;
+	foreach($queryResult as $row) {
+	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->tokenId,$row->tokencategoryId);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+
+function r2f_action_get_tokentypes()
+{
+	global $wpdb;
+	
+	$page = $GET['page']; // get the requested page
+	$limit = $_GET['rows']; // get how many rows we want to have into the grid	
+	$sidx = $_GET['sidx']; // get index row - i.e. user click to sort
+	$sord = $_GET['sord'];
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+
+	
+		
+	$queryResult = $wpdb->get_results("select id, typeDesc from `r2f_tokentypes`");
+			
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+
+	$queryResult = $wpdb->get_results("select id, typeDesc from `r2f_tokentypes` LIMIT $start, $limit");
+	
+	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
+	//$result["message"] = count($result["results"])." records returned.";
+	//echo json_encode($result);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+	$i=0;
+	foreach($queryResult as $row) {
+	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->typeDesc);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+function r2f_action_get_tokencategories()
+{
+	global $wpdb;
+	
+	$page = get_param('page'); // get the requested page
+	$limit = get_param('rows'); // get how many rows we want to have into the grid	
+	$sidx = get_param('sidx'); // get index row - i.e. user click to sort
+	$sord = get_param('sord');
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+
+	
+		
+	$queryResult = $wpdb->get_results("select id, categoryName from `r2f_tokencategories`");
+	
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+	if ($start<0) $start = 0;
+	$queryResult = $wpdb->get_results("select id, categoryName from `r2f_tokencategories` LIMIT $start, $limit");
+	$responce->error = $wpdb->last_error;
+	
+	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
+	//$result["message"] = count($result["results"])." records returned.";
+	//echo json_encode($result);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+	$i=0;
+	foreach($queryResult as $row) {
+	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->categoryName);
 		$i++;
 	}        
 	echo json_encode($responce);
@@ -301,6 +456,45 @@ function r2f_action_get_subs()
 	die();
 }
 
+function r2f_action_get_tokentokencategories()
+{
+	global $wpdb;
+	
+	$tokenId = get_param('tokenId');
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["result"] = "";
+
+	if ($tokenId == "") $result["error"] .= "You must provide a token id.";
+	
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_tokentokencategories
+			WHERE tokenId = %d
+		", 
+			array(
+				$tokenId
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$result["error"] = "";
+		$result["message"] = "Token Categories found.";
+		$result["result"] = $rows;
+		$result["id"] = $rows[0]->id;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the token categories.";
+	}
+	
+	echo json_encode($result);
+	die();
+}
+
 function r2f_action_upsert_token()
 {
 	global $wpdb;
@@ -322,6 +516,9 @@ function r2f_action_upsert_token()
 	$speed = $_POST["speed"];
 	$optimumNoOfPitstops = $_POST["optimumNoOfPitstops"];
 	$weatherTolerance = $_POST["weatherTolerance"];
+	$tokentokenCategories = $_POST["tokentokenCategories"];
+	$tokenTip = $_POST["tokenTip"];
+	
 	
 	// Init results
 	$result["message"] = "";
@@ -345,11 +542,11 @@ function r2f_action_upsert_token()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_tokens
-				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance )
-				VALUES ( %d, %s, %s, %s, %d, %d, %d )
+				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip )
+				VALUES ( %d, %s, %s, %s, %d, %d, %d, %s )
 			", 
 				array(
-				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance
+				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip
 				) 
 		) );
 		
@@ -369,11 +566,12 @@ function r2f_action_upsert_token()
 			"
 				UPDATE r2f_tokens
 				SET tokenName = %s, tokenDescription = %s, tokenImageUrl = %s,
-				speed = %d, optimumNoOfPitstops = %d, weatherTolerance = %d
+				speed = %d, optimumNoOfPitstops = %d, weatherTolerance = %d,
+				tokenTip = %s
 				WHERE id = %d
 			", 
 				array(
-				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance,
+				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip,
 				$id
 				) 
 		) );
@@ -384,6 +582,182 @@ function r2f_action_upsert_token()
 		} else {
 			$result["error"] = $wpdb->last_error;
 			$result["message"] = "There was a problem updating the token. $rows";
+		}
+	}
+	
+	if ($id != "") {
+		$wpdb->query( $wpdb->prepare("DELETE FROM r2f_tokentokencategories WHERE tokenId = %d", array( $id ) ) );
+		for($i=0;$i<count($tokentokenCategories);$i++) {
+			$wpdb->query( $wpdb->prepare("INSERT INTO r2f_tokentokencategories (tokenId, tokencategoryId) VALUES (%d, %d)", array( $id, $tokentokenCategories[$i] ) ) );
+		}
+		
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_upsert_tokentype()
+{
+	global $wpdb;
+	
+	// Check security
+	if (!is_admin()) { 
+		$result["message"] = "You must have admin rights to change tokens";
+		$result["error"] = "";
+		$result["id"] = ""; 
+		echo json_encode($result);
+		die();
+	}
+	
+	// Get Params
+	$id = $_POST["id"];
+	$typeDesc = $_POST["typeDesc"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($typeDesc == "") $result["error"] .= "You must enter a token type description.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	if ($id == "") {
+
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_tokentypes
+				( id, typeDesc )
+				VALUES ( %d, %s )
+			", 
+				array(
+				$id, $typeDesc
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$id = $wpdb->insert_id;
+			$result["id"] = $id;
+			$result["error"] = "";
+			$result["message"] = "A new Token Type called $typeDesc was created.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem creating the token type.";
+		}
+		
+	} else {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_tokentypes
+				SET typeDesc = %s
+				WHERE id = %d
+			", 
+				array(
+				$typeDesc,
+				$id
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$result["error"] = "";
+			$result["message"] = "Token Type '$typeDesc' was updated.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem updating the token type. $rows";
+		}
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_upsert_tokencategory()
+{
+	global $wpdb;
+	
+	// Check security
+	if (!is_admin()) { 
+		$result["message"] = "You must have admin rights to change tokens";
+		$result["error"] = "";
+		$result["id"] = ""; 
+		echo json_encode($result);
+		die();
+	}
+	
+	// Get Params
+	$id = $_POST["id"];
+	$categoryName = $_POST["categoryName"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($categoryName == "") $result["error"] .= "You must enter a token category name.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	if ($id == "") {
+
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_tokencategories
+				( id, categoryName )
+				VALUES ( %d, %s )
+			", 
+				array(
+				$id, $categoryName
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$id = $wpdb->insert_id;
+			$result["id"] = $id;
+			$result["error"] = "";
+			$result["message"] = "A new Token Category called $categoryName was created.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem creating the token category.";
+		}
+		
+	} else {
+	
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				UPDATE r2f_tokencategories
+				SET categoryName = %s
+				WHERE id = %d
+			", 
+				array(
+				$categoryName,
+				$id
+				) 
+		) );
+		
+		if ($rows == 1) {
+			$result["error"] = "";
+			$result["message"] = "Token Type '$categoryName' was updated.";
+		} else {
+			$result["error"] = $wpdb->last_error;
+			$result["message"] = "There was a problem updating the token category. $rows";
 		}
 	}
 	
@@ -421,7 +795,7 @@ function r2f_action_duplicate_token()
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			INSERT INTO r2f_tokens
-			SELECT 0, %s, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip 
+			SELECT 0, %s, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip, tokenTypeId
 			FROM r2f_tokens
 			WHERE id = %d
 		", 
@@ -439,6 +813,19 @@ function r2f_action_duplicate_token()
 				INSERT INTO r2f_mapgridtokenoffsets
 				SELECT 0, mapgridId, %d, value, inPlayToken
 				FROM r2f_mapgridtokenoffsets
+				WHERE tokenId = %d
+			", 
+				array(
+					$newid, $id
+				) 
+		) );
+		
+		// tokentokencategories
+		$rows = $wpdb->query( $wpdb->prepare( 
+			"
+				INSERT INTO r2f_tokentokencategories
+				SELECT 0, %d, tokencategoryId
+				FROM r2f_tokentokencategories
 				WHERE tokenId = %d
 			", 
 				array(
@@ -581,7 +968,7 @@ function r2f_action_get_token()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance
+			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip
 			FROM r2f_tokens
 			WHERE id = %d
 		", 
@@ -604,6 +991,111 @@ function r2f_action_get_token()
 	
 	die();
 }
+
+function r2f_action_get_tokentype()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$id = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must supply an id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT id, typeDesc
+			FROM r2f_tokentypes
+			WHERE id = %d
+		", 
+			array(
+				$id
+			) 
+	) );
+	
+	if (count($rows) == 1) {
+		$result["error"] = "";
+		$result["message"] = "Token Type '$id' found.";
+		$result["result"] = $rows[0];
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the token type.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_get_tokencategory()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$id = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must supply an id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT id, categoryName
+			FROM r2f_tokencategories
+			WHERE id = %d
+		", 
+			array(
+				$id
+			) 
+	) );
+	
+	if (count($rows) == 1) {
+		$result["error"] = "";
+		$result["message"] = "Token Category '$id' found.";
+		$result["result"] = $rows[0];
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the token category.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_get_voucher()
 {

@@ -1181,7 +1181,7 @@ select:focus {
   }
   
   .form-elements > div {
-	top:-62px;
+	top:0px;
   }
   .form-elements > div > label,
 	legend {
@@ -1475,7 +1475,7 @@ select:focus {
 		position:relative;
 		font-size: 28px;
 		left:10px;
-		bottom:-40px;
+		bottom:0px;
 	}
 	
 	.headings, .dates {

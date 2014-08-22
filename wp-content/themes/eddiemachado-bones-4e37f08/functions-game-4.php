@@ -49,6 +49,26 @@ function r2f_action_get_leaderboard()
 		$where = " AND playerName LIKE '%%$q%%'";
 	}
 	
+	$rows2 = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT r2f_racecharacterscores.id, playerId, playerName,
+				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId
+			FROM r2f_racecharacterscores
+			JOIN r2f_racecharacters 
+			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
+			JOIN r2f_races
+			ON r2f_racecharacters.raceId = r2f_races.id
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
+			WHERE raceId = %d AND day = %d AND hour = %d AND r2f_racecharacters.`status` = 1 
+			ORDER BY ((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) ASC
+		", 
+			array(
+				$raceId, $day, $hour
+			) 
+	) );
+	
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
@@ -112,10 +132,23 @@ function r2f_action_get_leaderboard()
 				$rows[$i]->name = get_user_meta($rows[$i]->playerId, 'main_contact_name', true);
 			else
 				$rows[$i]->name = $rows[$i]->playerName;
-			$rows[$i]->pos = $i + $start + 1;
+			//$rows[$i]->pos = $i + $start + 1;
+			$rows[$i]->pos = findPosById($rows2, $rows[$i]->racecharacterId);
 			if (user_can_edit_race_id($raceId)) {
 				$user_info = get_userdata($rows[$i]->playerId);
 				$rows[$i]->user_email = $user_info->user_email;
+
+				$data["insertaddress"] = get_user_meta( $rows2[0]->playerId, "building_no_or_name", true );
+				$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "road_name", true );
+				$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "town_city", true );
+				$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "county", true );
+				$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "postcode", true );
+				$data["insertaddress"] .= ",".get_user_meta( $rows2[0]->playerId, "country", true );
+				
+				$data["insertcontactnumber"] = get_user_meta( $rows2[0]->playerId, "telephone_number", true );
+				
+				$rows[$i]->address = $data["insertaddress"];
+				$rows[$i]->telephone = $data["insertcontactnumber"];
 			}
 		}
 		
@@ -131,6 +164,14 @@ function r2f_action_get_leaderboard()
 	echo json_encode($result);
 	
 	die();
+}
+
+function findPosById($rows2, $id) {
+
+	for ($i2=0;$i2<count($rows2);$i2++) {
+		if ($rows2[$i2]->racecharacterId == $id) return $i2+1;
+	}
+	return 0;
 }
 
 function r2f_action_get_products()
@@ -662,8 +703,29 @@ add_action('wp_ajax_nopriv_r2f_action_add_race_maxNoOfPlayers', 'r2f_action_add_
 add_action('wp_ajax_r2f_action_duplicate_token', 'r2f_action_duplicate_token');
 add_action('wp_ajax_nopriv_r2f_action_duplicate_token', 'r2f_action_duplicate_token');
 
+add_action('wp_ajax_r2f_action_get_tokentype', 'r2f_action_get_tokentype');
+add_action('wp_ajax_nopriv_r2f_action_get_tokentype', 'r2f_action_get_tokentype');
 
+add_action('wp_ajax_r2f_action_get_tokentypes', 'r2f_action_get_tokentypes');
+add_action('wp_ajax_nopriv_r2f_action_get_tokentypes', 'r2f_action_get_tokentypes');
 
+add_action('wp_ajax_r2f_action_upsert_tokentype', 'r2f_action_upsert_tokentype');
+add_action('wp_ajax_nopriv_r2f_action_upsert_tokentype', 'r2f_action_upsert_tokentype');
+
+add_action('wp_ajax_r2f_action_get_tokencategory', 'r2f_action_get_tokencategory');
+add_action('wp_ajax_nopriv_r2f_action_get_tokencategory', 'r2f_action_get_tokencategory');
+
+add_action('wp_ajax_r2f_action_get_tokencategories', 'r2f_action_get_tokencategories');
+add_action('wp_ajax_nopriv_r2f_action_get_tokencategories', 'r2f_action_get_tokencategories');
+
+add_action('wp_ajax_r2f_action_upsert_tokencategory', 'r2f_action_upsert_tokencategory');
+add_action('wp_ajax_nopriv_r2f_action_upsert_tokencategory', 'r2f_action_upsert_tokencategory');
+
+add_action('wp_ajax_r2f_action_get_tokentokencategories', 'r2f_action_get_tokentokencategories');
+add_action('wp_ajax_nopriv_r2f_action_get_tokentokencategories', 'r2f_action_get_tokentokencategories');
+
+add_action('wp_ajax_r2f_action_get_alltokentokencategories', 'r2f_action_get_alltokentokencategories');
+add_action('wp_ajax_nopriv_r2f_action_get_alltokentokencategories', 'r2f_action_get_alltokentokencategories');
 
 
 function modify_contact_methods($profile_fields) {

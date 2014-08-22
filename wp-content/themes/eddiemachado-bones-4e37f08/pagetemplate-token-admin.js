@@ -3,6 +3,29 @@ jQuery(document).ready
 	function(jQuery)
 	{
 		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_get_tokencategories',
+				page: 1,
+				rows: 1000
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+				if (data.error == "") {
+					var option = '';
+					for (i=0;i<data.records;i++){
+						option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
+					}
+					console.log(option);
+					jQuery('#tokentokenCategories').append(option);
+				}
+				
+				
+			}
+		});
 			
 		jQuery("#list2").jqGrid({
 			url:site_url+'/wp-admin/admin-ajax.php?action=r2f_action_get_tokens',
@@ -42,7 +65,30 @@ jQuery(document).ready
 							jQuery("#speed").val(data.result.speed);
 							jQuery("#optimumNoOfPitstops").val(data.result.optimumNoOfPitstops);
 							jQuery("#weatherTolerance").val(data.result.weatherTolerance);
+							jQuery("#tokenTip").val(data.result.tokenTip);
+						
+							jQuery("#tokentokenCategories option").prop("selected", false);
+							jQuery.ajax({
+								url: site_url+"/wp-admin/admin-ajax.php",
+								type: "POST",
+								data: {
+									action: 'r2f_action_get_tokentokencategories',
+									tokenId: data.result.id
+								},
+								dataType: "JSON",
+								success: function (data) {
+									console.log(data);
+									if (data.error == "" && data.result) {
+										for(i=0;i<data.result.length;i++) {
+											jQuery("#tokentokenCategories option[value='"+data.result[i].tokencategoryId+"']").prop("selected", true);
+										}
+									}
+									
+								}
+							});
+						
 						}
+						
 						
 					}
 				});
@@ -66,7 +112,9 @@ jQuery(document).ready
 					tokenImageUrl: jQuery("#tokenImageUrl").val(),
 					speed: jQuery("#speed").val(),
 					optimumNoOfPitstops: jQuery("#optimumNoOfPitstops").val(),
-					weatherTolerance: jQuery("#weatherTolerance").val()
+					weatherTolerance: jQuery("#weatherTolerance").val(),
+					tokentokenCategories: jQuery("#tokentokenCategories").val(),
+					tokenTip: jQuery("#tokenTip").val()
 				},
 				dataType: "JSON",
 				success: function (data) {

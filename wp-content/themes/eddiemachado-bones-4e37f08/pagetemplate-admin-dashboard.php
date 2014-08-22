@@ -71,7 +71,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div  style="display:none">
 		<table >
 		<tbody id="templateDivSubs">
-		<tr><td>{subDate}</td><td>{subDesc}</td><td><a href="{createRaceUrl}">Create Race</a></td></tr>
+		<tr><td>{subDate}</td><td>{subDesc}</td><td><a href="{createOnlineRaceUrl}">Create Online Race</a> | <a href="{createOfflineRaceUrl}">Create Offline Race</a></td></tr>
 		</tbody>
 		</table>
 	</div>

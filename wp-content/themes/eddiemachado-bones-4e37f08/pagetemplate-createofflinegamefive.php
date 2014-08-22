@@ -13,7 +13,8 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 	<div class="inner-container wrap">
 	<br/>
 	<br/>
-	<h1 class="highlight">Create Game</h1>
+	<br/>
+	<h1 class="highlight">Confirm your settings</h1>
 	<form id="create-game" action=""><!--start form-->
 					<div class="form-elements">
 							<h3><span>Part 1</span></h3>
@@ -182,8 +183,21 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		</form>
 	</div>
 	
-	
-	<div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+	<form id="create-game2" action="">
+		<div class="form-elements">
+					<div>
+					    <label for="raceStatus"><span>Race Status</span></label>
+					    <div>
+					    <select id="raceStatus">
+							<option value="-1">Being Prepared</option>
+							<option value="0" selected>Active</option>
+						</select>
+					    </div>
+					</div>
+		</div>
+				
+	</form>
+	<div class="text-left signup"><input type="submit" value="CONFIRM AND SAVE" class="btn large" id="continue"/></div>
 	<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
 	<div class="text-left signup"><div id="feedback" class=""></div></div>
 	

@@ -1,3 +1,5 @@
+var players;
+
 
 jQuery(document).ready
 (
@@ -55,7 +57,7 @@ jQuery(document).ready
 				jQuery("#finishTime").html(convertDateTimeToTime(data.rows[0].finishDate, data.rows[0].finishTime));
 
 				jQuery("#raceName").html(data.rows[0].raceName);
-				jQuery("#raceDescription").html(data.rows[0].raceName);
+				jQuery("#raceDescription").html(data.rows[0].raceDescription);
 				jQuery("#mapName").html(data.rows[0].mapName);
 				jQuery("#weather").html(data.rows[0].weather);
 				jQuery("#terrain").html(data.rows[0].terrain);
@@ -131,6 +133,7 @@ jQuery(document).ready
 							mapOverlayUrl = data.result.mapOverlayUrl;
 							
 							getLeaderBoard(raceId, curDay, curHour, raceStatus);
+							getAllLeaderBoard(raceId, curDay, curHour, raceStatus);
 							
 							drawMap('paperParentAR2', false);
 						}
@@ -218,6 +221,14 @@ jQuery(document).ready
 			getLeaderBoard(raceId, curDay, curHour, raceStatus);
 		});
 		
+		jQuery("#showall").change(function (e) {
+			if (!this.checked)
+				removeAllPlayers();
+			else
+				drawAllPlayers();
+			
+		});
+		
 		jQuery("#lsearch").submit(function(e) {
 			e.preventDefault();
 			getLeaderBoard(raceId, curDay, curHour, raceStatus, jQuery("#q").val());
@@ -250,13 +261,15 @@ function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 			console.log(data);
 			jQuery("#result").text(data.message + " " + data.error);
 			
+			removePlayers();
+			
 			var li = '';
 			players = new Array();
 			if (data.rows) {
 				start = limit*curPage - limit;
 				for (i=0;i<data.rows.length;i++){
 					
-				   li += '<li id="lbli'+i+'" data-index="'+i+'">'+ data.rows[i].pos + '. '+ data.rows[i].name + ' (' + data.rows[i].tokenName + ')</li>';
+				   li += '<li id="lbli'+i+'" data-index="'+i+'">'+ data.rows[i].pos + '. '+ data.rows[i].name+'</li>';
 				   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 				   players[i] = data.rows[i];
 				   if (curDay < 0) players[i].gridX = startGridX;
@@ -311,6 +324,50 @@ function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 		}
 	});
 }
+
+function getAllLeaderBoard(raceId, day, hour, raceStatus, q) {
+	console.log("galb "+raceId+":"+day+":"+hour);
+	jQuery.ajax({
+		url: site_url+"/wp-admin/admin-ajax.php",
+		type: "POST",
+		data: {
+			action: 'r2f_action_get_leaderboard',
+			raceId: raceId,
+			day: day,
+			hour: hour,
+			page: curPage,
+			rows: 10000, 
+			q: q
+		},
+		dataType: "JSON",
+		success: function (data) {
+			console.log(data);
+			jQuery("#result").text(data.message + " " + data.error);
+			
+			var li = '';
+			allPlayers = new Array();
+			if (data.rows) {
+				start = limit*curPage - limit;
+				for (i=0;i<data.rows.length;i++){
+					
+				   allPlayers[i] = data.rows[i];
+				   if (curDay < 0) allPlayers[i].gridX = startGridX;
+				   if (curDay < 0) allPlayers[i].gridY = startGridY;	
+				   
+				}
+				
+				if (raceStatus == 1) {
+					allPlayers[0].gridX = finishGridX;
+					allPlayers[0].gridY = finishGridY;
+				}
+				
+			}
+			
+			drawAllPlayers();
+		}
+	});
+}
+
 
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

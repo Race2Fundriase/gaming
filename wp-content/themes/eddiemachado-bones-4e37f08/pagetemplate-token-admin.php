@@ -33,6 +33,11 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		<div><label for="speed" id="scaleLabel"><span>Speed:</span></label><input type="text" id="speed" value=""/></div>
 		<div><label for="optimumNoOfPitstops" id="optimumNoOfPitstopsLabel"><span>Optimum No Of Pitstops:</span></label><input type="text" id="optimumNoOfPitstops" value=""/></div>
 		<div><label for="weatherTolerance" id="weatherToleranceLabel"><span>Weather Tolerance:</span></label><input type="text" id="weatherTolerance" value=""/></div>
+		<div><label for="weatherTolerance" id="weatherToleranceLabel"><span>Token Tip:</span></label><textarea id="tokenTip" rows="6" value=""></textarea></div>
+		<div><label for="tokentokenCategories" id="tokentokenCategoriesLabel"><span>Categories:</span></label>
+		<select multiple id="tokentokenCategories" name="tokentokenCategories">
+		</select>
+		</div>
 		<input type="button" value="Apply" id="upsertToken"/>
 		<input type="button" value="Duplicate" id="duplicateToken"/>
 		</div>

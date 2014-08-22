@@ -136,7 +136,7 @@ window.onload = function () {
 					var option = '';
 					for (i=0;i<data.rows.length;i++){
 					   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
-					   jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+					   jQuery("#weatherForecastDay"+(i+1)).val(data.rows[i].weatherForecast);
 					}
 					
 					
@@ -154,7 +154,7 @@ window.onload = function () {
 			data: {
 				action: 'r2f_action_update_race_raceStatus',
 				id: raceId,
-				raceStatus: 0
+				raceStatus: jQuery("#raceStatus").val()
 			},
 			dataType: "JSON",
 			success: function (data) {

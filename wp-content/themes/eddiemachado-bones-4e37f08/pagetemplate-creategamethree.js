@@ -6,6 +6,8 @@ jQuery(document).ready
 		var raceId = qs("raceId");
 		var rowHtml = jQuery("#templateDiv2").html();
 		
+		jQuery(".media-frame-router").addClass("myhidden");
+		
 		jQuery("#sponserLogo").change(function(e) {
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
@@ -17,9 +19,11 @@ jQuery(document).ready
 				dataType: "JSON",
 				success: function (data) {
 					console.log(data);
-					jQuery("#sponserLogoUrl").val(data.url);
-					jQuery("#sponserLogoImg").attr("src", data.url);
-					
+					if (data.url!="") {
+						jQuery("#sponserLogoUrl").val(data.url);
+						jQuery("#sponserLogoImg").attr("src", data.url);
+						jQuery("#sponserLogoImg").removeClass("myhidden");
+					}
 				}
 			});
 		});
@@ -93,12 +97,13 @@ jQuery(document).ready
 								dataType: "JSON",
 								success: function (data) {
 									console.log(data);
-									var option = '';
-									for (i=0;i<data.rows.length;i++){
-									   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
-									   jQuery("#weatherForecast"+(i+1)).val(data.rows[i].weatherForecast);
+									if (data.rows) {
+										var option = '';
+										for (i=0;i<data.rows.length;i++){
+										   jQuery("#weatherDay"+(i+1)).val(data.rows[i].weather);
+										   jQuery("#weatherForecastDay"+(i+1)).val(data.rows[i].weatherForecast);
+										}
 									}
-									
 									
 								}
 							});
@@ -140,7 +145,8 @@ jQuery(document).ready
 							dataType: "JSON",
 							success: function (data) {
 								console.log(data);
-								location.href = site_url+"/create-online-race-4/?raceId="+raceId;
+								if (data.day == lengthInDays-1)
+									location.href = site_url+"/create-online-race-4/?raceId="+raceId;
 							}
 						});
 						

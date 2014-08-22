@@ -70,7 +70,8 @@ jQuery(document).ready
 					r = rowHtmlSub;
 					r = r.replace(/{subDate}/g, data.result[i].created);
 					r = r.replace(/{subDesc}/g, data.result[i].item_name);
-					r = r.replace(/{createRaceUrl}/g,site_url+'/create-online-race-1/?subId='+data.result[i].id);
+					r = r.replace(/{createOnlineRaceUrl}/g,site_url+'/create-online-race-1/?subId='+data.result[i].id);
+					r = r.replace(/{createOfflineRaceUrl}/g,site_url+'/create-offline-race-1/?subId='+data.result[i].id);
 					row += r;
 					
 					

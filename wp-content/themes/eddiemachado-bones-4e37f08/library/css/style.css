@@ -2169,7 +2169,7 @@ select:focus {
 
   /* line 1183, ../scss/_base.scss */
   .form-elements > div {
-    top: -62px;
+    top: 0px;
   }
 
   /* line 1187, ../scss/_base.scss */
@@ -2460,7 +2460,7 @@ select:focus {
   position: relative;
   font-size: 28px;
   left: 10px;
-  bottom: -40px;
+  bottom: 0px;
 }
 /* line 1481, ../scss/_base.scss */
 #active-race-header .headings, #active-race-header .dates, #complete-race-header .headings, #complete-race-header .dates, #create-race-header .headings, #create-race-header .dates, #raceMap .headings, #raceMap .dates, #active-race-header2 .headings, #active-race-header2 .dates {
@@ -3688,12 +3688,12 @@ you can add resource intensive styles.
   }
   /* line 872, ../scss/_768up.scss */
   #create-race-header h1 {
-    margin-bottom: 60px;
+    margin-bottom: 10px;
   }
   /* line 876, ../scss/_768up.scss */
   #create-race-header #tab_control {
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   /* line 882, ../scss/_768up.scss */
@@ -4385,6 +4385,11 @@ body.logged-in .nav li.logged-in-nav {
 /* line 282, ../scss/_game.scss */
 .pagebreak {
   page-break-after: always;
+}
+
+/* line 286, ../scss/_game.scss */
+.ui-datepicker {
+  z-index: 10001 !important;
 }
 
 /* jqModal base Styling courtesy of;

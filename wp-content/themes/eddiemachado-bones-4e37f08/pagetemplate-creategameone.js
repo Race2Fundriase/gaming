@@ -1,3 +1,11 @@
+
+function deselect(e) {
+  jQuery('.pop').slideFadeToggle(function() {
+	e.removeClass('selected');
+  });    
+}
+
+
 jQuery(document).ready
 (
 
@@ -14,8 +22,8 @@ jQuery(document).ready
 		else
 			jQuery("#gameType").html("Online");
 			
-		if (subId != "") {
-		
+		if (subId && subId != "") {
+			console.log(subId);
 			jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",
 				type: "POST",
@@ -29,7 +37,8 @@ jQuery(document).ready
 					if (data.error == "") {
 						jQuery("#tokenamount_race").val(data.qty);
 						jQuery("#tokenprice_race").val("0");
-						
+						jQuery("#details").removeClass("myhidden");
+						jQuery("#continue_race").click();
 					}
 				}
 			});
@@ -63,16 +72,25 @@ jQuery(document).ready
 				products_sub = data.rows;
 			}
 		});
-	
-		jQuery("[id^=race_]").click(function() { 
+
+
+		
+
+		
+		jQuery("[id^=buy_]").click(function() { 
 			jQuery("#tokenamount_race").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_race").val(jQuery(this).attr("data-price"));
+			jQuery("#details").removeClass("myhidden");
+			//jQuery("#details_sub").addClass("myhidden");
 			return false;
 		} );
 		
 		jQuery("#sub_1,#sub_2,#sub_3").click(function() { 
 			jQuery("#tokenamount_sub").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_sub").val(jQuery(this).attr("data-price"));
+			if (is_admin == 1) jQuery("#tokenprice_sub").val(0);
+			//jQuery("#details").addClass("myhidden");
+			jQuery("#details_sub").removeClass("myhidden");
 			return false;
 		} );
 		

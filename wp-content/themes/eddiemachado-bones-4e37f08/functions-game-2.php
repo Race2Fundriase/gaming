@@ -81,6 +81,12 @@ function r2f_action_join()
 			send_html_email($user_email, "Welcome to Race2Fundraise", "CharityRegEmail", $data);
 		else
 			send_html_email($user_email, "Welcome to Race2Fundraise", "FundraiserRegEmail", $data);
+			
+		$creds = array();
+		$creds['user_login'] = $user_login;
+		$creds['user_password'] = $password;
+		$creds['remember'] = true;
+		$user = wp_signon( $creds, false );
 	}
 		
 	// Return result
@@ -158,6 +164,7 @@ function r2f_action_upsert_race()
 	
 	// Validate params
 	if ($raceName == "") $result["error"] .= "You must enter a race name.";
+	if ($startDate == "Invalid date" || $startTime == "Invalid date" || $finishDate == "Invalid date" || $finishTime == "Invalid date") $result["error"] .= "You must enter a start/finish date and time.";
 		
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";

@@ -37,7 +37,7 @@
                                                 
                                                 <div>
 													<div>
-													<div style="width: 50%; float: left; color: white">Weather</div><div style="width: 50%; float: right; color: white">Forecast</div>
+													<div style="width: 50%; float: left; color: white">Actual Weather:</div><div style="width: 50%; float: right; color: white">Weather Forecast To Be Displayed</div>
 													</div>
 
 												</div>	
@@ -47,7 +47,32 @@
                                                 
 
                                             <input name="token" type="hidden" value="a2"/>
-                                            
+                                            <h3><span>Part 4</span></h3>
+											<div>
+												<label for="sponserLogo"><span>Sponsor Logo (optional):</span></label>
+												<div>
+																											 
+													
+													<a id="choose-from-library-link" href="#" class="btn small"
+														data-update-link="#"
+														data-input="sponserLogo"
+														data-choose="<?php esc_attr_e( 'Choose a Sponser Image' ); ?>"
+														data-update="<?php esc_attr_e( 'Set as sponser image' ); ?>"><?php _e( 'Set sponser image' ); ?>
+													</a>
+													<input id="sponserLogo" name="sponserLogo" type="hidden" value="" tabindex="12"/>
+													<input id="sponserLogoUrl" name="sponserLogoUrl" type="hidden" value="" tabindex="12"/>
+													<img src="" style="width: 100px; height: auto" id="sponserLogoImg" class="myhidden">
+													
+												</div>
+											</div>
+											<div>
+												<label for="sponserUrl"><span>Sponsor Url (optional):</span></label>
+												<div>
+												<input id="sponserUrl" name="sponserUrl" type="text" value="" tabindex="12"/>
+												</div>
+											</div>
+										
+											<br/><br/>	
                                            
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
 												

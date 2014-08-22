@@ -7,6 +7,30 @@ jQuery(document).ready
 		var raceId = qs("raceId");
 		var products_race;
 		var products_sub;
+		var subId = qs("subId");
+		
+		if (subId != "") {
+		
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_sub_check',
+					subId: subId
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					if (data.id) {
+						jQuery("#tokenamount_race").val(data.qty);
+						jQuery("#tokenprice_race").val("0");
+						jQuery("#details").removeClass("myhidden");
+						jQuery("#continue_race").click();
+					}
+				}
+			});
+			
+		}
 	
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
@@ -36,15 +60,21 @@ jQuery(document).ready
 			}
 		});
 	
-		jQuery("#race_1,#race_2,#race_3").click(function() { 
+			
+		jQuery("[id^=buy_]").click(function() { 
 			jQuery("#tokenamount_race").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_race").val(jQuery(this).attr("data-price"));
+			jQuery("#details").removeClass("myhidden");
+			//jQuery("#details_sub").addClass("myhidden");
 			return false;
 		} );
 		
 		jQuery("#sub_1,#sub_2,#sub_3").click(function() { 
 			jQuery("#tokenamount_sub").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_sub").val(jQuery(this).attr("data-price"));
+			if (is_admin == 1) jQuery("#tokenprice_sub").val(0);
+			//jQuery("#details").addClass("myhidden");
+			jQuery("#details_sub").removeClass("myhidden");
 			return false;
 		} );
 		
@@ -89,11 +119,8 @@ jQuery(document).ready
 		} );
 		
 		jQuery("#continue_sub").click(function() { 
-			jQuery("#item_name").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
-			return_url = site_url+"/create-offline-race-2/?productType=sub&qty="+jQuery("#tokenamount_sub").val();
-			jQuery("#return").val(return_url);
-			jQuery("#amount").val(jQuery("#tokenprice_sub").val());
-			jQuery("#paypal_form").submit();
+		
+			continue_sub();
 			return false;
 		} );
 		
@@ -131,6 +158,27 @@ function continue_race() {
 	jQuery("#notify_url").val(site_url+"/ipn");
 	jQuery("#return").val(return_url);
 	jQuery("#amount").val(jQuery("#tokenprice_race").val());
+	jQuery("#paypal_form").submit();
+	
+}
+
+function continue_sub() {
+	
+	jQuery("#item_name").val("Unlimited games with upto "+jQuery("#tokenamount_sub").val()+" players");
+	return_url = site_url+"/admin-dashboard";
+	
+	if (jQuery("#tokenprice_sub").val() == 0) {
+		location.href = return_url;
+		return;
+	}
+	
+	jQuery("#item_number").val("SUB:"+current_user_id+"-"+jQuery("#tokenamount_sub").val());
+	jQuery("#cancel_return").val(site_url+"/create-offline-race-1");
+	jQuery("#notify_url").val(site_url+"/ipn");
+	jQuery("#return").val(return_url);
+	
+	jQuery("#amount").val(jQuery("#tokenprice_sub").val());
+	if (is_admin) jQuery("#amount").val("0.10");
 	jQuery("#paypal_form").submit();
 	
 }

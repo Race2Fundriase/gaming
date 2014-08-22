@@ -66,7 +66,7 @@ Template Name: Enter Race Part 3
                                                 </div>
          <div id="paperParent1" class="boxShadow">
 						</div>
-                                            <div class="text-left signup"><input type="submit" value="CONTINUE" class="btn large" id="continue"/></div>
+                                            <div class="text-left signup"><input type="submit" value="CONFIRM AND SAVE" class="btn large" id="continue"/></div>
 						<div class="text-middle signup"><input type="submit" value="START AGAIN" class="btn large" id="startagain"/></div>
 						<div class="text-left signup"><div id="feedback" class=""></div></div>
 						

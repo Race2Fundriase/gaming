@@ -9,30 +9,22 @@
 
 <?php get_header(); ?>
         
-            <div class="container sand bot-bg clearfix nav-margin">
-                    <div class="inner-container wrap">
-                            <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
-                            </div>
-                            <div id="create-race-header">
+        
+           
+        <br/><br/><br/><br/>
+            <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
+			<div id="create-race-header">
                                 <div class="text-center"><h1 class="highlight">Create: Online Game</h1></div>
                                 
-                                <div class="text-center"><p class="highlight">Select your online game payment method below:</p></div>
+                               <!-- <div class="text-center"><p class="highlight">Select your online game payment method below:</p></div>-->
                                 
-                                <ul id="tab_control" class="tab_control">
-                                     <li><a href="#" class="btn btn-blue large active">Paypal</a></li>
+<!--                                <ul id="tab_control" class="tab_control">
+                                     <li><a href="#" class="btn btn-blue large active">Paypal</a></li>-->
                                      <!--<li><a href="#" class="btn large">Just Giving</a></li>-->
-                                </ul>
+                                <!--</ul>-->
                                 
                                <p class="text-center orange-type">Don't have a paypal account? sign up for one <a href="#">here</a></p>
                             </div>
-                                        
-                    </div>
-            </div>
-            
-             <div class="fences wrap"></div>
-             
-            <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
                 <div class="inner-container wrap"> 
 			<div class="tabbed_content active">
                         <form id="create-game" action=""><!--start form-->
@@ -40,9 +32,9 @@
                                                 <h3><span>Part 2</span></h3>
                                              
                                                 <div>
-                                                    <label for="merchantemail"><span>Merchant E-mail:</span></label>
+                                                    <label for="merchantemail"><span>Email address registered for paypal payments:</span></label>
                                                     <div>
-                                                    <input name="merchantemail" id="paymentMethodEmail" type="email" value="" tabindex="1"/> 
+                                                    <input name="merchantemail" id="paymentMethodEmail" type="email" value="" tabindex="1" placeholder="this is where your money will be sent"/> 
                                                     </div>
                                                 </div>
                                         </div>
@@ -86,7 +78,7 @@
                                                 </div>
 												
 												<div>
-                                                    <label for="prizeDesc"><span>Prize:</span></label>
+                                                    <label for="prizeDesc"><span>Prize (optional):</span></label>
                                                     <div>
                                                     <textarea id="prizeDesc" name="prizeDesc" value="" tabindex="2"></textarea>
                                                     </div>
@@ -103,7 +95,7 @@
                                                 <div>
                                                 <label for="startDateTime"><span>Start Date</span></label>
                                                     <div>
-													<input id="startDateTime" name="startDateTime" type="text" value="" tabindex="12" readonly/>
+													<input id="startDateTime" name="startDateTime" type="text" value="" tabindex="12" readonly required/>
 													</div>
                                                 </div>
                                                 <input id="startDate" name="startDate" type="hidden" value="" tabindex="12"/>
@@ -112,11 +104,11 @@
 												<div>
                                                 <label for="finishDateTime"><span>Finish Date</span></label>
                                                    <div>
-													<input id="finishDateTime" name="finishDateTime" type="text" tabindex="13" readonly/>
+													<input id="finishDateTime" name="finishDateTime" type="text" tabindex="13" readonly required/>
 													</div>
                                                 </div>
                                                 
-												<input id="finishDate" name="finishDate" type="hidden" tabindex="13" readonly/>
+												<input id="finishDate" name="finishDate" type="hidden" tabindex="13" readonly />
 												<input id="finishTime" name="finishTime" type="hidden" tabindex="13"/>
 												<div>
                                                     <label for="entryCurrency"><span>Entry Currency:</span></label>
@@ -138,7 +130,7 @@
 														<option value="NZD">NZD</option>
 														<option value="PHP">PHP</option>
 														<option value="PLN">PLN</option>
-														<option value="GBP">GBP</option>
+														<option value="GBP" selected>GBP</option>
 														<option value="RUB">RUB</option>
 														<option value="SGD">SGD</option>
 														<option value="SEK">SEK</option>
@@ -157,7 +149,7 @@
                                                     </div>
                                                 </div>
 												<div>
-                                                    <label for="nameofrace"><span>Private Race?:</span></label>
+                                                    <label for="nameofrace"><span>Private Race? (If you select private race your race will not be listed publicly on the website):</span></label>
                                                     <div>
                                                     <select id="private" name="private">
 														<option value="0">No</option>
@@ -166,10 +158,18 @@
                                                     </div>
                                                 </div>
 												
-												<div>
+												<div class="myhidden"> 
 													<label for="raceTokens"><span>Select Tokens</span></label>
 													<div>
 														<select multiple id="raceTokens" name="raceTokens">
+														</select>
+													</div>
+												</div>
+												<div align="center" class="highlight">Select tokens your players can use</div>
+												<div>
+													<label for="tokenCategories"><span>Category</span></label>
+													<div>
+														<select id="tokenCategories" name="tokenCategories">
 														</select>
 													</div>
 												</div>
@@ -189,7 +189,7 @@
 
             </div>
 					<div id="templateDiv" style="display: none">
-						<div class="fourcol token" id="wrapper_{index}">
+						<div class="threecol token" id="wrapper_{index}" data-selection="{tokenId}">
 							<a href="#" class="optionselect" data-selection="{tokenId}" id="token_{tokenId}">
 								<img src="{imageUrl}"/>
 							</a>

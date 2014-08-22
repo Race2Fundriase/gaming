@@ -49,7 +49,7 @@ jQuery(document).ready
 			dataType: "JSON",
 			success: function (data) {
 				console.log(data);
-				if (data.id != "")
+				if (data.id != "" || is_admin )
 					location.href = site_url+"/enter-race/?raceId="+raceId+"&transactionId="+data.id;
 				
 				
