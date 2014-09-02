@@ -31,7 +31,13 @@ jQuery(document).ready
 					r = r.replace(/{finish}/g, data.rows[i].cell[8]);
 					r = r.replace(/{ftime}/g, data.rows[i].cell[9]);
 					r = r.replace(/{maxNoOfPlayers}/g, data.rows[i].cell[12]+" of "+data.rows[i].cell[11] + '<input type="button" value="ADD MORE" class="btn small" id="addmore_'+i+'" data-selection="'+data.rows[i].cell[0]+'"/>');
-					r = r.replace(/{raceStatus}/g, data.rows[i].cell[3] ? 'Active' : 'Complete');
+					if (data.rows[i].cell[3] == "0") 
+						r = r.replace(/{raceStatus}/g, 'Active');
+					if (data.rows[i].cell[3] == "1") 
+						r = r.replace(/{raceStatus}/g, 'Complete');
+					if (data.rows[i].cell[3] == "-1") 
+						r = r.replace(/{raceStatus}/g, 'Being Prepared');
+					//r = r.replace(/{raceStatus}/g, data.rows[i].cell[3] ? 'Active' : 'Complete');
 					r = r.replace(/{viewMoreUrl}/g,site_url+'/active-race/?raceId='+data.rows[i].cell[0]);
 					r = r.replace(/{tweetUrl}/g,'https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[i].cell[1])+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+data.rows[i].cell[0]));
 					r = r.replace(/{fbUrl}/g,'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(site_url+'/enter-race/?raceId='+data.rows[i].cell[0])+'&t='+encodeURIComponent(data.rows[i].cell[1]));

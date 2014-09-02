@@ -26,12 +26,13 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
     <div class="fences wrap"></div>
 	
     <div class="container container-create-race grit top-bg-grass bot-bg clearfix">
-            <div class="inner-container wrap">		 
-			   <div id="tabs">
-			   <ul id="tab_control" class="tab_control center" style="position: fixed; ">
+            <div class="inner-container wrap">	
+				<ul id="tab_control" class="tab_control center" style="position: fixed; ">
 			<li><a href="#" id="startA" class="btn btn-blue large active">Set Start</a></li><br/>
 			<li><a href="#" id="finishA" class="btn large">Set Finish</a></li>
-		    </ul>
+		    </ul>			
+			   <div id="tabs" class="myhidden">
+			   
 					<div class="tabbed_content active">
 					   
 						<div class="form-elements">

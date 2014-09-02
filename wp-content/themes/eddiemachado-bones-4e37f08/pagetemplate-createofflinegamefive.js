@@ -106,7 +106,8 @@ window.onload = function () {
 						maxZoom = data.result.maxZoom;
 						boundaryX = data.result.boundaryX;
 						boundaryY = data.result.boundaryY;
-
+						mapOverlayUrl = data.result.mapOverlayUrl;
+						
 						drawMap('paperParentSF2', true);
 					}
 					

@@ -544,6 +544,9 @@ function r2f_action_notify()
 add_action('wp_ajax_r2f_action_get_tokens', 'r2f_action_get_tokens');
 add_action('wp_ajax_nopriv_r2f_action_get_tokens', 'r2f_action_get_tokens');
 
+add_action('wp_ajax_r2f_action_get_tokens_offline', 'r2f_action_get_tokens_offline');
+add_action('wp_ajax_nopriv_r2f_action_get_tokens_offline', 'r2f_action_get_tokens_offline');
+
 add_action('wp_ajax_r2f_action_upsert_token', 'r2f_action_upsert_token');
 add_action('wp_ajax_nopriv_r2f_action_upsert_token', 'r2f_action_upsert_token');
 
@@ -564,6 +567,10 @@ add_action('wp_ajax_nopriv_r2f_action_get_mapgrid', 'r2f_action_get_mapgrid');
 
 add_action('wp_ajax_r2f_action_get_mapgrids', 'r2f_action_get_mapgrids');
 add_action('wp_ajax_nopriv_r2f_action_get_mapgrids', 'r2f_action_get_mapgrids');
+
+add_action('wp_ajax_r2f_action_get_maptokengrids', 'r2f_action_get_maptokengrids');
+add_action('wp_ajax_nopriv_r2f_action_get_maptokengrids', 'r2f_action_get_maptokengrids');
+
 
 add_action('wp_ajax_r2f_action_upsert_mapgrid', 'r2f_action_upsert_mapgrid');
 add_action('wp_ajax_nopriv_r2f_action_upsert_mapgrid', 'r2f_action_upsert_mapgrid');
@@ -702,6 +709,10 @@ add_action('wp_ajax_nopriv_r2f_action_add_race_maxNoOfPlayers', 'r2f_action_add_
 
 add_action('wp_ajax_r2f_action_duplicate_token', 'r2f_action_duplicate_token');
 add_action('wp_ajax_nopriv_r2f_action_duplicate_token', 'r2f_action_duplicate_token');
+
+add_action('wp_ajax_r2f_action_delete_token', 'r2f_action_delete_token');
+add_action('wp_ajax_nopriv_r2f_action_delete_token', 'r2f_action_delete_token');
+
 
 add_action('wp_ajax_r2f_action_get_tokentype', 'r2f_action_get_tokentype');
 add_action('wp_ajax_nopriv_r2f_action_get_tokentype', 'r2f_action_get_tokentype');

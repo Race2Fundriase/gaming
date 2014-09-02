@@ -30,7 +30,23 @@
                                                 
                                                 <input name="token" type="hidden" value="a"/>
                                             
-                                                <div>
+												<div>
+                                                    <label for="playersCSV"><span>Players:</span></label>
+                                                    <div>
+														<table id="inputTable" width="100%">
+															<tr class="highligh">
+																<td width="40%">Player Name</td>
+																<td width="20%">Token</td>
+																<td width="15%">Driving Style</td>
+																<td width="15%">Pitstops</td>
+															</tr>
+														</table>
+                                                    
+                                                    </div>
+													
+                                                </div>
+											
+                                                <div class="myhidden">
                                                     <label for="playersCSV"><span>Players CSV:</span></label>
                                                     <div>
 													<textarea name="playersCSV" id="playersCSV" rows="10" cols="40"></textarea>
@@ -38,7 +54,7 @@
                                                     </div>
 													
                                                 </div>
-         Row format: Player Name&lt;tab&gtToken Name&lt;tab&gtDriving Style Weight (0.0-1.0)&lt;tab&gtNo Of Pitstops (0-10)
+         <!--Row format: Player Name&lt;tab&gtToken Name&lt;tab&gtDriving Style Weight (0.0-1.0)&lt;tab&gtNo Of Pitstops (0-10)-->
                                             <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
                                 </div><!--End Form Elements-->
                         </form><!--End Form-->

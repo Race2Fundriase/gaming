@@ -38,8 +38,15 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 		<select multiple id="tokentokenCategories" name="tokentokenCategories">
 		</select>
 		</div>
+		<div>
+		<label for="tokenTypes" id="tokenTypesLabel"><span>Type:</span></label>
+		<select id="tokenTypes" name="tokenTypes">
+		<option value="">None</option>
+		</select>
+		</div>
 		<input type="button" value="Apply" id="upsertToken"/>
 		<input type="button" value="Duplicate" id="duplicateToken"/>
+		<input type="button" value="Delete" id="deleteToken"/>
 		</div>
 		</form>
 	</div>

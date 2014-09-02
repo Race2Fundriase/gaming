@@ -96,6 +96,62 @@ function r2f_action_get_tokens()
 	die();
 }
 
+function r2f_action_get_tokens_offline()
+{
+	global $wpdb;
+	
+	$page = $GET['page']; // get the requested page
+	$limit = $_GET['rows']; // get how many rows we want to have into the grid	
+	$sidx = $_GET['sidx']; // get index row - i.e. user click to sort
+	$sord = $_GET['sord'];
+	
+	$tokenCategoryId = get_param("tokenCategoryId");
+	if ($tokenCategoryId == "") $tokenCategoryId = 0;
+	
+	if(!$sidx) $sidx =1;
+	if(!$page) $page = 1;
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	$result["results"] = "";
+
+	
+		
+	$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops from `r2f_tokens` where tokenTypeId = 1");
+			
+	$count = count($queryResult);
+	if( $count >0 ) {
+		$total_pages = ceil($count/$limit);
+	} else {
+		$total_pages = 0;
+	}
+	if ($page > $total_pages) $page=$total_pages;
+	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
+
+	if ($tokenCategoryId == 0)
+		$queryResult = $wpdb->get_results("select id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` where tokenTypeId = 1 LIMIT $start, $limit");
+	else
+		$queryResult = $wpdb->get_results("select r2f_tokens.id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, tokenTip from `r2f_tokens` join `r2f_tokentokencategories` on r2f_tokentokencategories.tokenId = r2f_tokens.id where tokencategoryId = $tokenCategoryId and tokenTypeId = 1 LIMIT $start, $limit");
+	
+	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
+	//$result["message"] = count($result["results"])." records returned.";
+	//echo json_encode($result);
+	$responce->page = $page;
+	$responce->total = $total_pages;
+	$responce->records = $count;
+	$i=0;
+	foreach($queryResult as $row) {
+	//while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+		$responce->rows[$i]['id']=$row->id;
+		$responce->rows[$i]['cell']=array($row->id,$row->tokenName,$row->tokenDescription,$row->tokenImageUrl,$row->tokenTip);
+		$i++;
+	}        
+	echo json_encode($responce);
+	die();
+}
+
+
 function r2f_action_get_alltokentokencategories()
 {
 	global $wpdb;
@@ -176,7 +232,7 @@ function r2f_action_get_tokentypes()
 	if ($page > $total_pages) $page=$total_pages;
 	$start = $limit*$page - $limit; // do not put $limit*($page - 1)
 
-	$queryResult = $wpdb->get_results("select id, typeDesc from `r2f_tokentypes` LIMIT $start, $limit");
+	$queryResult = $wpdb->get_results("select id, typeDesc from `r2f_tokentypes`");
 	
 	//if($queryResult) $result["results"] = $queryResult; else { $result["results"]="[]"; $result["error"] = $wpdb->last_error; }
 	//$result["message"] = count($result["results"])." records returned.";
@@ -518,6 +574,7 @@ function r2f_action_upsert_token()
 	$weatherTolerance = $_POST["weatherTolerance"];
 	$tokentokenCategories = $_POST["tokentokenCategories"];
 	$tokenTip = $_POST["tokenTip"];
+	$tokenTypeId = $_POST["tokenTypeId"];
 	
 	
 	// Init results
@@ -542,11 +599,11 @@ function r2f_action_upsert_token()
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_tokens
-				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip )
-				VALUES ( %d, %s, %s, %s, %d, %d, %d, %s )
+				( id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip, tokenTypeId )
+				VALUES ( %d, %s, %s, %s, %d, %d, %d, %s, %d )
 			", 
 				array(
-				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip
+				$id, $tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip, $tokenTypeId
 				) 
 		) );
 		
@@ -567,11 +624,11 @@ function r2f_action_upsert_token()
 				UPDATE r2f_tokens
 				SET tokenName = %s, tokenDescription = %s, tokenImageUrl = %s,
 				speed = %d, optimumNoOfPitstops = %d, weatherTolerance = %d,
-				tokenTip = %s
+				tokenTip = %s, tokenTypeId = %d
 				WHERE id = %d
 			", 
 				array(
-				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip,
+				$tokenName, $tokenDescription, $tokenImageUrl, $speed, $optimumNoOfPitstops, $weatherTolerance, $tokenTip, $tokenTypeId,
 				$id
 				) 
 		) );
@@ -849,6 +906,56 @@ function r2f_action_duplicate_token()
 	die();
 }
 
+function r2f_action_delete_token()
+{
+	global $wpdb;
+	
+	
+	// Get Params
+	$id = $_POST["id"];
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must provide a token id.";
+	
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+	// Token
+	$rows = $wpdb->query( $wpdb->prepare( 
+		"
+			DELETE FROM r2f_tokens
+			WHERE id = %d
+		", 
+			array(
+				$id
+			) 
+	) );
+	
+	if ($rows == 1) {
+
+		$result["id"] = $id;
+		$result["error"] = $wpdb->last_error;;
+		$result["message"] = "The token was deleted.";
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem deleting the token.";
+	}
+		
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
 
 function r2f_action_upsert_voucher()
 {
@@ -968,7 +1075,7 @@ function r2f_action_get_token()
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip
+			SELECT id, tokenName, tokenDescription, tokenImageUrl, speed, optimumNoOfPitstops, weatherTolerance, tokenTip, tokenTypeId
 			FROM r2f_tokens
 			WHERE id = %d
 		", 
@@ -1783,7 +1890,7 @@ function r2f_action_get_mapgridtokenoffsets()
 	die();
 }
 
-function r2f_action_get_mapgridtokenoffsets_bymap()
+function r2f_action_get_mapgridtokenoffsets_bymap_old()
 {
 	global $wpdb;
 	
@@ -1829,6 +1936,63 @@ function r2f_action_get_mapgridtokenoffsets_bymap()
 		$result["message"] = "mapgridtokenoffsets found.";
 		$result["rows"] = $rows;
 	} 	
+		
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
+function r2f_action_get_mapgridtokenoffsets_bymap()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$mapId = get_param("mapId");
+	$tokenId = get_param("tokenId");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($mapId == "") $result["error"] .= "You must supply a map id.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT gridX, gridY, inPlay, inPlayToken
+			FROM r2f_mapgrids g
+			LEFT JOIN r2f_mapgridtokentypeoffsets o 
+			ON g.id = o.mapgridId
+			LEFT JOIN r2f_tokens t
+			ON o.tokenTypeId = t.tokenTypeId
+			WHERE mapId = %d AND (t.id = %d)
+		", 
+			array(
+				$mapId,
+				$tokenId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "mapgridtokenoffsets found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;	
+	}
 		
 	// Return result
 	echo json_encode($result);
@@ -2066,5 +2230,61 @@ function r2f_action_bulk_upsert_mapgridtokenoffset()
 	
 	die();
 }
+
+function r2f_action_get_maptokengrids()
+{
+	global $wpdb;
+	
+	// Check security
+	// Public
+	
+	// Get Params
+	$mapId = get_param("mapId");
+	
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = "";
+	
+	// Validate params
+	if ($mapId == "") $result["error"] .= "You must supply a mapId.";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Select
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT m1.id, mapId, gridX, gridY, inPlay, m2.tokenTypeId
+			FROM r2f_mapgrids m1
+			JOIN r2f_mapgridtokentypeoffsets m2
+			ON m1.id = m2.mapgridId
+			WHERE mapId = %d
+		", 
+			array(
+				$mapId
+			) 
+	) );
+	
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "Mapgrid sfound.";
+		$result["rows"] = $rows;
+		$result["id"] = $mapId;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem finding the mapgrids.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
   
 ?>

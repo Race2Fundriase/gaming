@@ -209,13 +209,13 @@ window.onload = function () {
 								for(x=0;x<gridWidth;x++) {
 									inPlays[x] = new Array(gridHeight);
 									for(y=0;y<gridHeight;y++)
-										inPlays[x][y] = "1";
+										inPlays[x][y] = "0";
 								}
 										
 								for(i=0;i<data.rows.length;i++) {
 									
-									if(data.rows[i].inPlay == "0" || data.rows[i].inPlayToken == "0") {
-										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "0";
+									if(data.rows[i].inPlay == "1" && data.rows[i].inPlayToken == "1") {
+										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "1";
 									}
 								}
 								

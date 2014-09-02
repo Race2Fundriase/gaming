@@ -164,6 +164,7 @@ jQuery(document).ready
 							jQuery("#private").val(data.rows[0].private);
 							jQuery("#prizeDesc").val(data.rows[0].prizeDesc);
 							jQuery("#refreshScores").val(data.rows[0].refreshScores);
+							
 							jQuery("#sponserLogoUrl").val(data.rows[0].sponserLogoUrl);
 							jQuery("#sponserLogoImg").attr("src", data.rows[0].sponserLogoUrl);
 							jQuery("#sponserUrl").val(data.rows[0].sponserUrl);
@@ -400,6 +401,26 @@ jQuery(document).ready
 			
 			return false;
 		} );
+		
+		jQuery("#sponserLogo").change(function(e) {
+			jQuery.ajax({
+				url: site_url+"/wp-admin/admin-ajax.php",
+				type: "POST",
+				data: {
+					action: 'r2f_action_get_image_url',
+					file: jQuery("#sponserLogo").val()
+				},
+				dataType: "JSON",
+				success: function (data) {
+					console.log(data);
+					if (data.url!="") {
+						jQuery("#sponserLogoUrl").val(data.url);
+						jQuery("#sponserLogoImg").attr("src", data.url);
+						jQuery("#sponserLogoImg").removeClass("myhidden");
+					}
+				}
+			});
+		});
 		
 		jQuery("#startDateTime").change(function(e) {
 			// Build weather grid (and populate if it's already got data)

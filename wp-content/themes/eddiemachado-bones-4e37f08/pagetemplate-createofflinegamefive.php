@@ -106,7 +106,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 
 							</div>	
 							<h3><span>Part 4</span></h3>
-						 
+							<div class="myhidden">
 							<div>
 								<label for="startGridX"><span>Start Grid X</span></label>
 								<div>
@@ -130,6 +130,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 								<div>
 								<input id="finishGridY" name="finishGridY" type="text" value="" tabindex="12"/>
 								</div>
+							</div>
 							</div>
 								
 	<div id="paperParentSF2" >

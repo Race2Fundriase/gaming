@@ -26,6 +26,30 @@ jQuery(document).ready
 				
 			}
 		});
+		
+		jQuery.ajax({
+			url: site_url+"/wp-admin/admin-ajax.php",
+			type: "POST",
+			data: {
+				action: 'r2f_action_get_tokentypes',
+				page: 1,
+				rows: 1000
+			},
+			dataType: "JSON",
+			success: function (data) {
+				console.log(data);
+			
+				var option = '';
+				for (i=0;i<data.records;i++){
+					option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
+				}
+				console.log(option);
+				jQuery('#tokenTypes').append(option);
+			
+				
+				
+			}
+		});
 			
 		jQuery("#list2").jqGrid({
 			url:site_url+'/wp-admin/admin-ajax.php?action=r2f_action_get_tokens',
@@ -66,6 +90,7 @@ jQuery(document).ready
 							jQuery("#optimumNoOfPitstops").val(data.result.optimumNoOfPitstops);
 							jQuery("#weatherTolerance").val(data.result.weatherTolerance);
 							jQuery("#tokenTip").val(data.result.tokenTip);
+							jQuery("#tokenTypes").val(data.result.tokenTypeId);
 						
 							jQuery("#tokentokenCategories option").prop("selected", false);
 							jQuery.ajax({
@@ -114,7 +139,8 @@ jQuery(document).ready
 					optimumNoOfPitstops: jQuery("#optimumNoOfPitstops").val(),
 					weatherTolerance: jQuery("#weatherTolerance").val(),
 					tokentokenCategories: jQuery("#tokentokenCategories").val(),
-					tokenTip: jQuery("#tokenTip").val()
+					tokenTip: jQuery("#tokenTip").val(),
+					tokenTypeId: jQuery("#tokenTypes").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
@@ -147,6 +173,39 @@ jQuery(document).ready
 					}
 				}
 			});
+			return false;
+		} );
+		
+		jQuery("#deleteToken").click(function() { 
+			if (confirm("Are you sure you want to delete this token?")) {
+			
+				jQuery.ajax({
+					url: site_url+"/wp-admin/admin-ajax.php",
+					type: "POST",
+					data: {
+						action: 'r2f_action_delete_token',
+						id: jQuery("#id").val()
+					},
+					dataType: "JSON",
+					success: function (data) {
+						console.log(data);
+						jQuery("#result").text(data.message + " " + data.error);
+						if (data.error == "") {
+							jQuery("#id").val("");
+							jQuery("#tokenName").val("");
+							jQuery("#tokenDescription").val("");
+							jQuery("#tokenImageUrl").val("");
+							jQuery("#speed").val("");
+							jQuery("#optimumNoOfPitstops").val("");
+							jQuery("#weatherTolerance").val("");
+							jQuery("#tokenTip").val("");
+							jQuery("#tokenTypes").val("");
+						
+							jQuery("#tokentokenCategories option").prop("selected", false);
+						}
+					}
+				});
+			}
 			return false;
 		} );
 

@@ -190,7 +190,7 @@ jQuery(document).ready
 					if (data.error == "")
 						location.href = site_url+"/create-offline-race-3/?raceId="+data.id;
 					else
-						var n = noty({text: data.message + " " + data.error});
+						var n = noty({text: data.error});
 				}
 			});
 			
@@ -235,7 +235,7 @@ function getTokens(raceId, tokenCategoryId) {
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "GET",
 		data: {
-			action: 'r2f_action_get_tokens',
+			action: 'r2f_action_get_tokens_offline',
 			page: 0,
 			rows: 100,
 			tokenCategoryId: tokenCategoryId

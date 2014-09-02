@@ -45,7 +45,7 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 				<h1 class="highlight">Races</h1>
 				<table>
 				<thead class="highlight">
-				<tr><th>Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Players</th><th>Game Status</th><th>Invite Players</th><th>Create Players</th></tr>
+				<tr><th>Edit or View Race</th><th>Map</th><th>Start Date</th><th>Finish Date</th><th>No. of Players</th><th>Game Status</th><th>Invite Players</th><th>Add Players</th></tr>
 				</thead>
 				<tbody id="raceResultsActive"></tbody>
 				</table>

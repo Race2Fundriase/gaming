@@ -246,10 +246,21 @@ if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteu
 							
 						</div>
 					<div>
-					    <label for="sponserLogoUrl"><span>Sponser Logo Url</span></label>
-					    <div>
-					    <input id="sponserLogoUrl" name="sponserLogoUrl" type="text" tabindex="13"/>
-					    </div>
+						<label for="sponserLogo"><span>Sponsor Logo (optional):</span></label>
+						<div>
+																					 
+							
+							<a id="choose-from-library-link" href="#" class="btn small"
+								data-update-link="#"
+								data-input="sponserLogo"
+								data-choose="<?php esc_attr_e( 'Choose a Sponser Image' ); ?>"
+								data-update="<?php esc_attr_e( 'Set as sponser image' ); ?>"><?php _e( 'Set sponser image' ); ?>
+							</a>
+							<input id="sponserLogo" name="sponserLogo" type="hidden" value="" tabindex="12"/>
+							<input id="sponserLogoUrl" name="sponserLogoUrl" type="hidden" value="" tabindex="12"/>
+							<img src="" style="width: 100px; height: auto" id="sponserLogoImg" class="myhidden">
+							
+						</div>
 					</div>
 					<div>
 					    <label for="sponserUrl"><span>Sponser Url</span></label>
