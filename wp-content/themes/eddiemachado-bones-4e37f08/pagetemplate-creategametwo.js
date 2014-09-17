@@ -56,7 +56,7 @@ jQuery(document).ready
 							jQuery("#private").val(data.rows[0].private);
 							jQuery("#prizeDesc").val(data.rows[0].prizeDesc);
 							jQuery("#entryCurrency").val(data.rows[0].entryCurrency);
-							
+							jQuery("#timeZone").val(data.rows[0].timeZone);
 							
 						}
 					});
@@ -132,12 +132,16 @@ jQuery(document).ready
 			jQuery("#create-game").validate();
 			if (!jQuery("#create-game").valid()) return false;
 			
-			var s = moment(jQuery("#startDate").val()+" "+jQuery("#startTime").val());
+			zz = pad(timeZone, 2)+":00";
+			var s = moment(jQuery("#startDate").val() + " " + jQuery("#startTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+			
+			//var s = moment(jQuery("#startDate").val()+" "+jQuery("#startTime").val());
 			s.zone(0);
 			var startDate = s.format("YYYY-MM-DD");
 			var startTime = s.format("HH:mm");
 			
-			var f = moment(jQuery("#finishDate").val()+" "+jQuery("#finishTime").val());
+			var f = moment(jQuery("#finishDate").val() + " " + jQuery("#finishTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+			//var f = moment(jQuery("#finishDate").val()+" "+jQuery("#finishTime").val());
 			f.zone(0);
 			var finishDate = f.format("YYYY-MM-DD");
 			var finishTime = f.format("HH:mm");
@@ -180,7 +184,8 @@ jQuery(document).ready
 					createdBy: current_user_id,
 					private: jQuery("#private").val(),
 					prizeDesc: jQuery("#prizeDesc").val(),
-					entryCurrency: jQuery("#entryCurrency").val()
+					entryCurrency: jQuery("#entryCurrency").val(),
+					timeZone: jQuery("#timeZone").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
@@ -197,11 +202,18 @@ jQuery(document).ready
 			return false;
 		} );
 		
+		jQuery("#timeZone").change(function(e) {
+			timeZone = jQuery(this).val();
+			console.log(timeZone);
+			updateLocalTimes();
+		});
+		
 		jQuery("#startDateTime").change(function(e) {
 			// Build weather grid (and populate if it's already got data)
 			ds = jQuery(this).val().split(" ");
 			jQuery("#startDate").val(ds[0]);
 			jQuery("#startTime").val(ds[1]);
+			updateLocalTimes();
 
 		});
 		
@@ -210,6 +222,7 @@ jQuery(document).ready
 			ds = jQuery(this).val().split(" ");
 			jQuery("#finishDate").val(ds[0]);
 			jQuery("#finishTime").val(ds[1]);
+			updateLocalTimes();
 
 		});
 		
@@ -217,8 +230,32 @@ jQuery(document).ready
 		
 		jQuery("#startDateTime, #finishDateTime").datetimepicker({ dateFormat: "yy-mm-dd" });
 		
+		// Time Zone
+		var timeZone = -moment().zone() / 60;
+		console.log(timeZone);
+		jQuery("#timeZone").val(timeZone);
+		updateLocalTimes();
+		
 	}
 );
+
+function updateLocalTimes() {
+	timeZone = jQuery("#timeZone").val();
+	if (jQuery("#startDate").val() != "") {
+		zz = pad(timeZone, 2)+":00";
+		m = moment(jQuery("#startDate").val() + " " + jQuery("#startTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+		jQuery("#localStartDateTime").html(m.format("L HH:mm"));
+	}
+
+	if (jQuery("#finishDate").val() != "") {
+		zz = pad(timeZone, 2)+":00";
+		m = moment(jQuery("#finishDate").val() + " " + jQuery("#finishTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+		jQuery("#localFinishDateTime").html(m.format("L HH:mm"));
+	}
+	
+	
+	jQuery("#currentRaceTime").html(convertDateTimeToTimeZoneDateTime(jQuery("#startDate").val(), jQuery("#finishDate").val(), timeZone));
+}
 
 function options(raceId) {
 	location.href = site_url+'/options?raceId='+raceId;
@@ -246,7 +283,7 @@ function getTokens(raceId, tokenCategoryId) {
 			var rowHtml = jQuery("#templateDiv").html();
 			var row = "";
 			var option = '';
-			for (i=0;i<data.records;i++){
+			for (i=0;i<data.rows.length;i++){
 				option += '<option value="'+ data.rows[i].cell[0] + '">' + data.rows[i].cell[1] + '</option>';
 				r = rowHtml;
 				r = r.replace(/{index}/g, i);
@@ -258,7 +295,7 @@ function getTokens(raceId, tokenCategoryId) {
 			jQuery("#raceTokenResults").html(row);
 			jQuery('#raceTokens').append(option);
 			
-			for (i=0;i<data.records;i++){
+			for (i=0;i<data.rows.length;i++){
 				
 				jQuery("#token_"+i).click(function() { 
 

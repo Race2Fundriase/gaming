@@ -30,11 +30,13 @@ Template Name: Profile
 		<div class="inner-container wrap clearfix">
                     <div>
 		    <h1 class="highlight" id="charityProfileName">Charity/Fundraiser Profile Name</h1>
+			<br/><p class="highlight" id="linkTo">Link to this charity:</p>
                     </div>
                     
                     <div class="fivecol first">
                         <h3 class="highlight" id="charityProfileWebsite">Charity/Fundraiser Website</h3>
                     </div>
+					
 		    
 		    <div class="sixcol last picture-wooden">
 			

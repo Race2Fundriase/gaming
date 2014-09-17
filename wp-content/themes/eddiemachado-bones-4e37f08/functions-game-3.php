@@ -313,38 +313,42 @@ function r2f_action_bulk_import()
 	
 	$rows = explode("\n", $playersCSV);
 	
-	if (count($rows) > $race->maxNoOfPlayers) $result["error"] .= "The number of players exceeds the maximum for this race (".$race->maxNoOfPlayers.")";
 	
 	// Validate params
 	if ($raceId == "" || $playersCSV == "") $result["error"] .= "You must enter a race id and players CSV.";
-	
+	$c = 0;
 	for($i=0;$i<count($rows);$i++) {
 	
 		$data = explode("\t",$rows[$i]);
 
 		if ($rows[$i] != "") {
-		
-			$token = get_token_byname($data[1]);
-			if (!$token) $result["error"] .= "Token $data[1] does not exist on line $i<br/>";
-			$drivingStyleWeight = $data[2];
-			if (!is_numeric($drivingStyleWeight)) $result["error"] .= "drivingStyleWeight $data[2] is not a number on line $i<br/>";
-			$noOfPitStops = $data[3];
-			if (!is_numeric($noOfPitStops)) $result["error"] .= "noOfPitStops $data[3] is not a number on line $i<br/>";
-			$playerName = $data[0];
-			if ($playerName == "") $result["error"] .= "playerName is blank on line $i<br/>";
-			
-			for($j=0;$j<count($rows);$j++) {
-		
-				if ($j != $i) {
-					$data = explode("\t",$rows[$j]);
+			if ($data[5] == "false") {
+				$token = get_token_byname($data[1]);
+				if (!$token) $result["error"] .= "Token $data[1] does not exist on line $i<br/>";
+				$drivingStyleWeight = $data[2];
+				if (!is_numeric($drivingStyleWeight)) $result["error"] .= "drivingStyleWeight $data[2] is not a number on line $i<br/>";
+				$noOfPitStops = $data[3];
+				if (!is_numeric($noOfPitStops)) $result["error"] .= "noOfPitStops $data[3] is not a number on line $i<br/>";
+				$playerName = $data[0];
+				if ($playerName == "") $result["error"] .= "playerName is blank on line $i<br/>";
 				
-					$playerNamej = $data[0];
+				for($j=0;$j<count($rows);$j++) {
+			
+					if ($j != $i) {
+						$data = explode("\t",$rows[$j]);
 					
-					if ($playerNamej == $playerName) $result["error"] .= "playerName $playerName is not unique on line $i (duplicate on line $j)<br/>";
+						$playerNamej = $data[0];
+						
+						if ($playerNamej == $playerName) $result["error"] .= "playerName $playerName is not unique on line $i (duplicate on line $j)<br/>";
+					}
 				}
+				$c++;
 			}
 		}
 	}
+	
+	if ($c > $race->maxNoOfPlayers) $result["error"] .= "The number of players exceeds the maximum for this race (".$race->maxNoOfPlayers.")";
+	
 	
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
@@ -354,6 +358,7 @@ function r2f_action_bulk_import()
 	
 	$inserts = 0;
 	$updates = 0;
+	$deletes = 0;
 	$problems = 0;
 	$problem = "";
 		
@@ -365,7 +370,11 @@ function r2f_action_bulk_import()
 
 		if ($data == "") $ok = FALSE;
 		
-		$rc = get_racecharacter_byname($raceId, $data[0]);
+		if ($data[4] == "")
+			$rc = get_racecharacter_byname($raceId, $data[0]);
+		else
+			$rc = get_racecharacter($data[4]);
+			
 		$token = get_token_byname($data[1]);
 		$tokenId = $token->id;
 		$playerId = 0;
@@ -403,26 +412,40 @@ function r2f_action_bulk_import()
 				
 			} else {
 			
-				$rows2 = $wpdb->query( $wpdb->prepare( 
-					"
-						UPDATE r2f_racecharacters
-						SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
-						route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
-						WHERE id = %d
-					", 
-						array(
-						$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
-						$id
-						) 
-				) );
-				$updates++;
+				if ($data[5] == "false") {
+			
+					$rows2 = $wpdb->query( $wpdb->prepare( 
+						"
+							UPDATE r2f_racecharacters
+							SET raceId = %d, tokenId = %d, playerId = %d, joinDate = %s, 
+							route = %s, drivingStyleWeight = %f, noOfPitStops = %d, playerName = %s
+							WHERE id = %d
+						", 
+							array(
+							$raceId, $tokenId, $playerId, $joinDate, $route, $drivingStyleWeight, $noOfPitStops, $playerName,
+							$id
+							) 
+					) );
+					$updates++;
+				} else {
+					$rows2 = $wpdb->query( $wpdb->prepare( 
+						"
+							DELETE FROM r2f_racecharacters
+							WHERE id = %d
+						", 
+							array(
+								$id
+							) 
+					) );
+					$deletes++;
+				}
 			}
 		}
 		
 	}
 	
 	// Return result
-	$result["message"] = "Bulk Import Complete - $inserts inserts, $updates updates, $problems problems. <br/>$problem";
+	$result["message"] = "Bulk Import Complete - $inserts inserts, $updates updates, $deletes deletes, $problems problems. <br/>$problem";
 	echo json_encode($result);
 	
 	die();
@@ -750,6 +773,48 @@ function r2f_action_activate_racecharacter()
 	die();
 }
 
+function r2f_action_get_racecharacters()
+{
+	global $wpdb;
+	
+
+	// Get Params
+	$id = $_POST["raceId"];
+		
+	// Init results
+	$result["message"] = "";
+	$result["error"] = "";
+	$result["id"] = $id;
+	
+	// Validate params
+	if ($id == "") $result["error"] .= "You must enter a race id";
+		
+	if ($result["error"] != "") {
+		$result["message"] = "There were validation errors.";
+		echo json_encode($result);
+		die();
+	}
+	
+	// Insert or Update
+
+		
+	$rows = get_racecharacters($id);
+
+	if ($rows) {
+		$result["error"] = "";
+		$result["message"] = "race characters found.";
+		$result["rows"] = $rows;
+	} else {
+		$result["error"] = $wpdb->last_error;
+		$result["message"] = "There was a problem getting the race characters.";
+	}
+	
+	// Return result
+	echo json_encode($result);
+	
+	die();
+}
+
 
 function r2f_action_upsert_racecharactersScore($raceId)
 {
@@ -1002,7 +1067,7 @@ function get_racesToCRON() {
 		"
 			SELECT *
 			FROM r2f_races
-			
+			WHERE raceStatus != 1
 		"
 	) );
 	
@@ -1116,8 +1181,10 @@ function get_racecharacters($raceId)
 
 	$rows = $wpdb->get_results( $wpdb->prepare( 
 		"
-			SELECT r2f_racecharacters.*
+			SELECT r2f_racecharacters.*, r2f_tokens.tokenName
 			FROM r2f_racecharacters 
+			JOIN r2f_tokens
+			ON r2f_racecharacters.tokenId = r2f_tokens.id
 			WHERE r2f_racecharacters.raceId = %d AND r2f_racecharacters.status = 1
 		", 
 			array(
@@ -1416,7 +1483,7 @@ function updateRaceCurDayHour($raceId) {
 
 	global $wpdb;
 
-	date_default_timezone_set("Europe/London");
+	date_default_timezone_set("GMT");
 	
 	$race = get_race($raceId);
 
@@ -1445,16 +1512,21 @@ function updateRaceCurDayHour($raceId) {
 		$hour = date("G", $finishDate);
 	}
 	
-	if ($day == 0 && $hour < $startHour) $hour = $startHour;
+	$hasStarted = 1;
+	if ($day == 0 && $hour < $startHour) {
+		$hour = $startHour;
+		$hasStarted = 0;
+	}
 	
 	$rows = $wpdb->query( $wpdb->prepare( 
 		"
 			UPDATE r2f_races
-			SET curDay = %d, curHour = %d
+			SET curDay = %d, curHour = %d, hasStarted = %d
 			WHERE id = %d
 		", 
 			array(
-			$day, $hour, $raceId
+			$day, $hour, $hasStarted, 
+			$raceId
 			) 
 	) );
 	

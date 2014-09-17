@@ -211,14 +211,20 @@ window.onload = function () {
 									for(y=0;y<gridHeight;y++)
 										inPlays[x][y] = "0";
 								}
+								if (data.rows) {				
+									for(i=0;i<data.rows.length;i++) {
 										
-								for(i=0;i<data.rows.length;i++) {
-									
-									if(data.rows[i].inPlay == "1" && data.rows[i].inPlayToken == "1") {
-										inPlays[data.rows[i].gridX][data.rows[i].gridY] = "1";
+										if(data.rows[i].inPlay == "1" && data.rows[i].inPlayToken == "1") {
+											inPlays[data.rows[i].gridX][data.rows[i].gridY] = "1";
+										}
+									}
+								} else {
+									for(x=0;x<gridWidth;x++) {
+										inPlays[x] = new Array(gridHeight);
+										for(y=0;y<gridHeight;y++)
+											inPlays[x][y] = "1";
 									}
 								}
-								
 							}
 						});
 					}

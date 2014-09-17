@@ -171,6 +171,8 @@ jQuery(document).ready
 							jQuery("#offline").val(data.rows[0].offline);
 							jQuery("#entryCurrency").val(data.rows[0].entryCurrency);
 							
+							getTokens(raceId);
+							
 							var row = "";
 							lengthInDays = data.rows[0].lengthInDays;
 							for(i=0;i<lengthInDays;i++) {
@@ -233,7 +235,7 @@ jQuery(document).ready
 	
 		
 	
-		getTokens(raceId);
+		
 		
 		jQuery.ajax({
 			url: site_url+"/wp-admin/admin-ajax.php",
@@ -485,11 +487,13 @@ function qs(key) {
 }
 
 function getTokens(raceId, tokenCategoryId) {
+	var ajax_action = 'r2f_action_get_tokens';
+	if (jQuery("#offline").val() == 1) ajax_action = 'r2f_action_get_tokens_offline';
 	jQuery.ajax({
 		url: site_url+"/wp-admin/admin-ajax.php",
 		type: "GET",
 		data: {
-			action: 'r2f_action_get_tokens',
+			action: ajax_action,
 			page: 0,
 			rows: 100,
 			tokenCategoryId: tokenCategoryId

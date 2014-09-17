@@ -92,19 +92,82 @@
 														</select>
 													</div>
                                                 </div>
-                                                <div>
-                                                <label for="startDateTime"><span>Start Date</span></label>
+                                                <div class="">
+												<label for="timeZone"><span>Race Time Zone</span></label>
+													<div>
+														<select name="timeZone" id="timeZone">
+															<option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00)</option>
+															<option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00)</option>
+															<option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00)</option>
+															<option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00)</option>
+															<option timeZoneId="5" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00)</option>
+															<option timeZoneId="6" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00)</option>
+															<option timeZoneId="7" gmtAdjustment="GMT-07:00" useDaylightTime="0" value="-7">(GMT-07:00)</option>
+															<option timeZoneId="10" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00)</option>
+															
+															<option timeZoneId="14" gmtAdjustment="GMT-05:00" useDaylightTime="0" value="-5">(GMT-05:00)</option>
+															
+															<option timeZoneId="17" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00)</option>
+															
+															<option timeZoneId="21" gmtAdjustment="GMT-03:30" useDaylightTime="1" value="-3.5">(GMT-03:30)</option>
+															<option timeZoneId="22" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00)</option>
+															
+															<option timeZoneId="26" gmtAdjustment="GMT-02:00" useDaylightTime="1" value="-2">(GMT-02:00)</option>
+															<option timeZoneId="27" gmtAdjustment="GMT-01:00" useDaylightTime="0" value="-1">(GMT-01:00)</option>
+															
+															
+															<option timeZoneId="30" gmtAdjustment="GMT+00:00" useDaylightTime="1" value="0" selected>(GMT+00:00)</option>
+															<option timeZoneId="31" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00)</option>
+															
+															<option timeZoneId="36" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00)</option>
+															
+															<option timeZoneId="45" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00)</option>
+															
+															<option timeZoneId="49" gmtAdjustment="GMT+03:30" useDaylightTime="1" value="3.5">(GMT+03:30)</option>
+															<option timeZoneId="50" gmtAdjustment="GMT+04:00" useDaylightTime="0" value="4">(GMT+04:00)</option>
+															
+															<option timeZoneId="53" gmtAdjustment="GMT+04:30" useDaylightTime="0" value="4.5">(GMT+04:30)</option>
+															<option timeZoneId="54" gmtAdjustment="GMT+05:00" useDaylightTime="1" value="5">(GMT+05:00)</option>
+															
+															<option timeZoneId="56" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30)</option>
+															
+															<option timeZoneId="58" gmtAdjustment="GMT+05:45" useDaylightTime="0" value="5.75">(GMT+05:45)</option>
+															<option timeZoneId="59" gmtAdjustment="GMT+06:00" useDaylightTime="1" value="6">(GMT+06:00)</option>
+															
+															<option timeZoneId="61" gmtAdjustment="GMT+06:30" useDaylightTime="0" value="6.5">(GMT+06:30)</option>
+															<option timeZoneId="62" gmtAdjustment="GMT+07:00" useDaylightTime="0" value="7">(GMT+07:00)</option>
+															
+															<option timeZoneId="64" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00)</option>
+															
+															<option timeZoneId="69" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00)</option>
+															
+															<option timeZoneId="72" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30)</option>
+															
+															<option timeZoneId="74" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00)</option>
+															
+															<option timeZoneId="79" gmtAdjustment="GMT+11:00" useDaylightTime="1" value="11">(GMT+11:00)</option>
+															<option timeZoneId="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00)</option>
+															<option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00)</option>
+															<option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00)</option>
+														</select>		
+														Current Time: <span id="currentRaceTime"></span>
+													</div>
+                                                </div>
+												<div>
+                                                <label for="startDateTime"><span>Start Date (Race Time Zone)</span></label>
                                                     <div>
 													<input id="startDateTime" name="startDateTime" type="text" value="" tabindex="12" readonly required/>
+													<div class="myhidden">Local Time: <span id="localStartDateTime"></span></div>
 													</div>
                                                 </div>
                                                 <input id="startDate" name="startDate" type="hidden" value="" tabindex="12"/>
 												<input id="startTime" name="startTime" type="hidden" value="" tabindex="12"/>
 												
 												<div>
-                                                <label for="finishDateTime"><span>Finish Date</span></label>
+                                                <label for="finishDateTime"><span>Finish Date (Race Time Zone)</span></label>
                                                    <div>
 													<input id="finishDateTime" name="finishDateTime" type="text" tabindex="13" readonly required/>
+													<div class="myhidden">Local Time: <span id="localFinishDateTime"></span></div>
 													</div>
                                                 </div>
                                                 

@@ -5,7 +5,7 @@
  
  if (!check_security(basename(__FILE__, '.php'))) wp_redirect( get_option( 'siteurl' ) );
 ?>
-
+<style>select {padding: 0!important; width: 100%!important; background-image: none!important; -webkit-appearance: normal!important; -moz-appearance: normal!important;</style>
 <?php get_header(); ?>
         <div class="container sand bot-bg clearfix nav-margin">
                     <div class="inner-container wrap">
@@ -13,8 +13,8 @@
                                     <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
                             </div>
                             <div id="create-race-header">
-                                <div class="text-center"><h1 class="highlight">Bulk Import</h1></div>
-                                
+                                <div class="text-center"><h1 class="highlight">Upload Players for Offline Race</h1></div>
+                                <div class="text-center"><h1 class="highlight" id="raceName"></h1></div>
 
                         </div>
                                         
@@ -55,7 +55,7 @@
 													
                                                 </div>
          <!--Row format: Player Name&lt;tab&gtToken Name&lt;tab&gtDriving Style Weight (0.0-1.0)&lt;tab&gtNo Of Pitstops (0-10)-->
-                                            <div class="text-center continue"><input type="submit" value="continue" id="continue" class="btn large"/></div>
+                                            <div class="text-center continue"><input type="submit" value="save & continue" id="continue" class="btn large"/></div>
                                 </div><!--End Form Elements-->
                         </form><!--End Form-->
 						<div>

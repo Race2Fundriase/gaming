@@ -1,3 +1,13 @@
+# BEGIN iThemes Security
+	# BEGIN Tweaks
+		<IfModule mod_rewrite.c>
+			RewriteEngine On
+		
+			# Rules to prevent php execution in uploads
+			RewriteRule ^(.*)/uploads/(.*).php(.?) - [F]
+		</IfModule>
+	# END Tweaks
+# END iThemes Security
 # Switch rewrite engine off in case this was installed under HostPay.
 RewriteEngine Off
 
@@ -10,7 +20,9 @@ DirectoryIndex index.cgi index.php
 RewriteEngine On
 RewriteBase /
 
-
+RewriteRule ^race/([^/]*)/? active-race/?raceId=$1 [R=301,L]
+RewriteRule ^charity/([^/]*)/? charity-profile/?charityId=$1 [R=301,L]
+RewriteRule ^fundraiser/([^/]*)/? fund-profile/?charityId=$1 [R=301,L]
 
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f

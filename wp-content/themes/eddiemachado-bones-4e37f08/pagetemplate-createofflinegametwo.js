@@ -132,12 +132,16 @@ jQuery(document).ready
 			jQuery("#create-game").validate();
 			if (!jQuery("#create-game").valid()) return false;
 			
-			var s = moment(jQuery("#startDate").val()+" "+jQuery("#startTime").val());
+			zz = pad(timeZone, 2)+":00";
+			var s = moment(jQuery("#startDate").val() + " " + jQuery("#startTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+			
+			//var s = moment(jQuery("#startDate").val()+" "+jQuery("#startTime").val());
 			s.zone(0);
 			var startDate = s.format("YYYY-MM-DD");
 			var startTime = s.format("HH:mm");
 			
-			var f = moment(jQuery("#finishDate").val()+" "+jQuery("#finishTime").val());
+			var f = moment(jQuery("#finishDate").val() + " " + jQuery("#finishTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+			//var f = moment(jQuery("#finishDate").val()+" "+jQuery("#finishTime").val());
 			f.zone(0);
 			var finishDate = f.format("YYYY-MM-DD");
 			var finishTime = f.format("HH:mm");
@@ -163,10 +167,10 @@ jQuery(document).ready
 					raceName: jQuery("#raceName").val(),
 					raceDescription: jQuery("#raceDescription").val(),
 					mapId: jQuery("#mapId").val(),
-					startDate: jQuery("#startDate").val(),
-					startTime: jQuery("#startTime").val(),
-					finishDate: jQuery("#finishDate").val(),
-					finishTime: jQuery("#finishTime").val(),
+					startDate: startDate,
+					startTime: startTime,
+					finishDate: finishDate,
+					finishTime: finishTime,
 					entryPrice: jQuery("#entryPrice").val(),
 					raceTokens: jQuery("#raceTokens").val(),
 					finishGridX: jQuery("#finishGridX").val(),
@@ -181,7 +185,8 @@ jQuery(document).ready
 					private: jQuery("#private").val(),
 					prizeDesc: jQuery("#prizeDesc").val(),
 					offline: 1,
-					entryCurrency: jQuery("#entryCurrency").val()
+					entryCurrency: jQuery("#entryCurrency").val(),
+					timeZone: jQuery("#timeZone").val()
 				},
 				dataType: "JSON",
 				success: function (data) {
@@ -197,12 +202,18 @@ jQuery(document).ready
 			return false;
 		} );
 		
+		jQuery("#timeZone").change(function(e) {
+			timeZone = jQuery(this).val();
+			console.log(timeZone);
+			updateLocalTimes();
+		});
+		
 		jQuery("#startDateTime").change(function(e) {
 			// Build weather grid (and populate if it's already got data)
 			ds = jQuery(this).val().split(" ");
 			jQuery("#startDate").val(ds[0]);
 			jQuery("#startTime").val(ds[1]);
-
+			updateLocalTimes();
 		});
 		
 		jQuery("#finishDateTime").change(function(e) {
@@ -210,15 +221,38 @@ jQuery(document).ready
 			ds = jQuery(this).val().split(" ");
 			jQuery("#finishDate").val(ds[0]);
 			jQuery("#finishTime").val(ds[1]);
-
+			updateLocalTimes();
 		});
 		
 		//Timepicker
 		
 		jQuery("#startDateTime, #finishDateTime").datetimepicker({ dateFormat: "yy-mm-dd" });
 		
+		// Time Zone
+		var timeZone = -moment().zone() / 60;
+		console.log(timeZone);
+		jQuery("#timeZone").val(timeZone);
+		updateLocalTimes();
 	}
 );
+
+function updateLocalTimes() {
+	timeZone = jQuery("#timeZone").val();
+	if (jQuery("#startDate").val() != "") {
+		zz = pad(timeZone, 2)+":00";
+		m = moment(jQuery("#startDate").val() + " " + jQuery("#startTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+		jQuery("#localStartDateTime").html(m.format("L HH:mm"));
+	}
+
+	if (jQuery("#finishDate").val() != "") {
+		zz = pad(timeZone, 2)+":00";
+		m = moment(jQuery("#finishDate").val() + " " + jQuery("#finishTime").val() + " " + zz, "YYYY-MM-DD HH:mm Z");
+		jQuery("#localFinishDateTime").html(m.format("L HH:mm"));
+	}
+	
+	
+	jQuery("#currentRaceTime").html(convertDateTimeToTimeZoneDateTime(jQuery("#startDate").val(), jQuery("#finishDate").val(), timeZone));
+}
 
 function options(raceId) {
 	location.href = site_url+'/options?raceId='+raceId;

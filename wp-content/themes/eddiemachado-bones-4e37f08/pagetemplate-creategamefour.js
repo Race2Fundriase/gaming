@@ -15,6 +15,9 @@ function qs(key) {
     return match && decodeURIComponent(match[1].replace(/\+/g, " "));
 }
 
+var nostart = true;
+var nofinish = true;
+
 window.onload = function () {
 
 	
@@ -87,9 +90,11 @@ window.onload = function () {
 							if (jQuery("#startA").hasClass("btn-blue")) {
 								startGridX = p.x;
 								startGridY = p.y;
+								nostart = false;
 							} else {
 								finishGridX = p.x;
 								finishGridY = p.y;
+								nofinish = false;
 							}
 							jQuery("#startGridX").val(startGridX);
 							jQuery("#startGridY").val(startGridY);
@@ -109,6 +114,14 @@ window.onload = function () {
 	});
 	
 	jQuery("#continue").click(function(e) { 
+		
+		if (nostart || nofinish) {
+			var n = noty({text: "Please select a start and finish position.", buttons: [{addClass: 'btn btn-primary', text: 'Close', onClick: function($noty) {
+							$noty.close();
+							return false;
+							}}]});
+			return;
+		}
 		
 		jQuery.ajax({
 				url: site_url+"/wp-admin/admin-ajax.php",

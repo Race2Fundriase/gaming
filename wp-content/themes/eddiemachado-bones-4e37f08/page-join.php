@@ -710,7 +710,7 @@
 					<div>
 					    <label for="website_address_fund"><span>Website Address</span></label>
 					    <div>
-					    <input name="website_address_fund" id="website_address_fund" type="url" tabindex="13" value="http://"/>
+					    <input name="website_address_fund" id="website_address_fund" type="text" tabindex="13" value=""/>
 					    </div>
 					</div>
 <div>

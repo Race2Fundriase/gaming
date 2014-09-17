@@ -10,7 +10,7 @@ jQuery(document).ready
 		var md = false;
 		var share = qs("share");
 		
-		
+		var timeZone;
 		
 		jQuery("#featured").change( function(e) {
 			var f = jQuery(this).prop('checked') ? 1 : 0;
@@ -53,8 +53,8 @@ jQuery(document).ready
 				//d = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0,2));
 				//jQuery("#finishDate").html(d.ddmmyyyy());
 				//jQuery("#finishTime").html(data.rows[0].finishTime);
-				jQuery("#finishDate").html(convertDateTimeToDate(data.rows[0].finishDate, data.rows[0].finishTime));
-				jQuery("#finishTime").html(convertDateTimeToTime(data.rows[0].finishDate, data.rows[0].finishTime));
+				jQuery("#finishDate").html(convertDateTimeToDate(data.rows[0].finishDate, data.rows[0].finishTime, data.rows[0].timeZone));
+				jQuery("#finishTime").html(convertDateTimeToTime(data.rows[0].finishDate, data.rows[0].finishTime, data.rows[0].timeZone));
 
 				jQuery("#raceName").html(data.rows[0].raceName);
 				jQuery("#raceDescription").html(data.rows[0].raceDescription);
@@ -64,6 +64,7 @@ jQuery(document).ready
 				jQuery("#featured").prop("checked", (data.rows[0].featured == 1));
 				if (data.rows[0].prizeDesc)
 					jQuery("#prize").html("Prize: "+data.rows[0].prizeDesc);
+				jQuery("#linkToRace").html('Link to this race: <a href="'+site_url+'/race/'+raceId+'">'+site_url+'/race/'+raceId+'</a>');
 				
 				startGridX = data.rows[0].startGridX;
 				startGridY = data.rows[0].startGridY;
@@ -74,6 +75,8 @@ jQuery(document).ready
 				curHour = data.rows[0].curHour;
 				raceStatus = data.rows[0].raceStatus;
 				var createdBy = data.rows[0].createdBy;
+				
+				timeZone = data.rows[0].timeZone;
 				
 				jQuery("#sponserLogoUrl").attr("src", data.rows[0].sponserLogoUrl);
 				jQuery("#sponserUrl").attr("href", data.rows[0].sponserUrl);
@@ -88,11 +91,11 @@ jQuery(document).ready
 						text: s, 
 						buttons: [
 							{addClass: 'btn btn-primary', text: 'Tweet', onClick: function($noty) {
-							window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[0].raceName)+'&url='+ encodeURIComponent(site_url+'/active-race/?raceId='+raceId), "_blank", "height=300,width=500"); 
+							window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(data.rows[0].raceName)+'&url='+ encodeURIComponent(site_url+'/race/'+raceId), "_blank", "height=300,width=500"); 
 							return false;
 							}},
 							{addClass: 'btn btn-primary', text: 'Facebook', onClick: function($noty) {
-							window.open('https://www.facebook.com/sharer/sharer.php?t='+encodeURIComponent(data.rows[0].raceName)+'&u='+ encodeURIComponent(site_url+'/active-race/?raceId='+raceId), "_blank", "height=300,width=500"); 
+							window.open('https://www.facebook.com/sharer/sharer.php?t='+encodeURIComponent('I just created '+data.rows[0].raceName + ',  to play along and support us please use this link' )+'&u='+ encodeURIComponent(site_url+'/race/'+raceId), "_blank", "height=300,width=500"); 
 							return false;
 							}},
 							{addClass: 'btn btn-primary', text: 'Close', onClick: function($noty) {
@@ -231,6 +234,7 @@ jQuery(document).ready
 		
 		jQuery("#lsearch").submit(function(e) {
 			e.preventDefault();
+			curPage = 1;
 			getLeaderBoard(raceId, curDay, curHour, raceStatus, jQuery("#q").val());
 			return false;
 		});
@@ -273,7 +277,9 @@ function getLeaderBoard(raceId, day, hour, raceStatus, q) {
 				   rcImageUrl = site_url+data.rows[i].tokenImageUrl;
 				   players[i] = data.rows[i];
 				   if (curDay < 0) players[i].gridX = startGridX;
-				   if (curDay < 0) players[i].gridY = startGridY;	
+				   if (curDay < 0) players[i].gridY = startGridY;
+				   if (data.rows[i].hasStarted == 0) players[i].gridX = startGridX;
+				   if (data.rows[i].hasStarted == 0) players[i].gridY = startGridY;				   
 				   
 				}
 				
@@ -353,7 +359,8 @@ function getAllLeaderBoard(raceId, day, hour, raceStatus, q) {
 				   allPlayers[i] = data.rows[i];
 				   if (curDay < 0) allPlayers[i].gridX = startGridX;
 				   if (curDay < 0) allPlayers[i].gridY = startGridY;	
-				   
+				   if (data.rows[i].hasStarted == 0) allPlayers[i].gridX = startGridX;
+				   if (data.rows[i].hasStarted == 0) allPlayers[i].gridY = startGridY;		
 				}
 				
 				if (raceStatus == 1) {

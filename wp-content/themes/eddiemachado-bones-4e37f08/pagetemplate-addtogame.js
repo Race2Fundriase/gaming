@@ -87,11 +87,14 @@ jQuery(document).ready
 			}
 		});
 	
-		jQuery("#race_1,#race_2,#race_3").click(function() { 
+		jQuery("[id^=buy_]").click(function() { 
 			jQuery("#tokenamount_race").val(jQuery(this).attr("data-selection"));
 			jQuery("#tokenprice_race").val(jQuery(this).attr("data-price"));
+			jQuery("#details").removeClass("myhidden");
+			//jQuery("#details_sub").addClass("myhidden");
 			return false;
 		} );
+	
 		
 		jQuery("#sub_1,#sub_2,#sub_3").click(function() { 
 			jQuery("#tokenamount_sub").val(jQuery(this).attr("data-selection"));
@@ -194,6 +197,7 @@ function continue_race() {
 	jQuery("#paypal_form").submit();
 	
 }
+
 
 function qs(key) {
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, "\\$&"); // escape RegEx meta chars

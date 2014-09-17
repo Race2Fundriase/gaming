@@ -434,6 +434,66 @@ function r2f_action_sub_check()
 	die();
 }
 
+function getMaxNoOfPlayers()
+{
+	global $wpdb;
+	
+	$userId = get_current_user_id();
+
+	// Free
+	$calcMaxNoOfPlayers = 4;
+	
+	// Purchased and Not Used RACEs
+	$item_number = "RACE:$userId-%";
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE item_number LIKE %s 
+			AND used = 0
+			ORDER BY id DESC
+		", 
+			array(
+				$item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$calcMaxNoOfPlayers = 0;
+		for ($i=0;$i<count($rows);$i++) {
+			$calcMaxNoOfPlayers += explode("-", $rows[$i]->item_number);
+		}					
+	} 
+	
+	// Purchased and Not Used SUBSs
+	$item_number = "SUB:$userId-%";
+
+	$rows = $wpdb->get_results( $wpdb->prepare( 
+		"
+			SELECT *
+			FROM r2f_transactions
+			WHERE item_number LIKE %s 
+			AND used = 0
+			ORDER BY id DESC
+		", 
+			array(
+				$item_number
+			) 
+	) );
+		
+	if (count($rows) >= 1) {
+		$calcMaxNoOfPlayers = 0;
+		for ($i=0;$i<count($rows);$i++) {
+			$qty = explode("-", $rows[$i]->item_number);
+			if ($calcMaxNoOfPlayers < $qty)
+				$calcMaxNoOfPlayers = $qty;
+		}					
+	} 
+	
+	return $calcMaxNoOfPlayers;
+}
+
 function r2f_action_get_purchases()
 {
 	global $wpdb;

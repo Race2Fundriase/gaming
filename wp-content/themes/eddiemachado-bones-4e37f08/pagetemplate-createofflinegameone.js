@@ -153,7 +153,7 @@ function continue_race() {
 		return;
 	}
 	
-	jQuery("#item_number").val("RACE:"+jQuery("#tokenamount_race").val());
+	jQuery("#item_number").val("RACE:"+current_user_id+"-"+jQuery("#tokenamount_race").val());
 	jQuery("#cancel_return").val(site_url+"/create-offline-race-1");
 	jQuery("#notify_url").val(site_url+"/ipn");
 	jQuery("#return").val(return_url);

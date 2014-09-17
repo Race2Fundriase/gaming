@@ -53,7 +53,7 @@ function r2f_action_get_leaderboard()
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId, hasStarted
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
@@ -73,7 +73,7 @@ function r2f_action_get_leaderboard()
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId, hasStarted
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
@@ -106,7 +106,7 @@ function r2f_action_get_leaderboard()
 		"
 			SELECT r2f_racecharacterscores.id, playerId, playerName,
 				((finishGridX - gridX)*(finishGridX - gridX))+((finishGridY - gridY)*(finishGridY - gridY)) AS distance2,
-				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId 
+				gridX, gridY, tokenImageUrl, tokenName, day , hour, raceId, r2f_racecharacterscores.racecharacterId, hasStarted
 			FROM r2f_racecharacterscores
 			JOIN r2f_racecharacters 
 			ON r2f_racecharacterscores.racecharacterId = r2f_racecharacters.id
@@ -629,6 +629,9 @@ add_action('wp_ajax_nopriv_r2f_action_get_user_races', 'r2f_action_get_user_race
 add_action('wp_ajax_r2f_action_get_racecharacter', 'r2f_action_get_racecharacter');
 add_action('wp_ajax_nopriv_r2f_action_get_racecharacter', 'r2f_action_get_racecharacter');
 
+add_action('wp_ajax_r2f_action_get_racecharacters', 'r2f_action_get_racecharacters');
+add_action('wp_ajax_nopriv_r2f_action_get_racecharacters', 'r2f_action_get_racecharacters');
+
 add_action('wp_ajax_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
 add_action('wp_ajax_nopriv_r2f_action_activate_racecharacter', 'r2f_action_activate_racecharacter');
 
@@ -691,6 +694,9 @@ add_action('wp_ajax_nopriv_r2f_action_get_subs', 'r2f_action_get_subs');
 
 add_action('wp_ajax_r2f_action_sub_check', 'r2f_action_sub_check');
 add_action('wp_ajax_nopriv_r2f_action_sub_check', 'r2f_action_sub_check');
+
+add_action('wp_ajax_r2f_action_race_check', 'r2f_action_race_check');
+add_action('wp_ajax_nopriv_r2f_action_race_check', 'r2f_action_race_check');
 
 add_action('wp_ajax_r2f_action_get_vouchers', 'r2f_action_get_vouchers');
 add_action('wp_ajax_nopriv_r2f_action_get_vouchers', 'r2f_action_get_vouchers');
@@ -995,4 +1001,8 @@ $urlparts = explode("/", $url);
 $urlId = $urlparts[count($urlparts)-2];
 return $urlId;
 }
+
+
+
+
 ?>

@@ -26,7 +26,7 @@ jQuery(document).ready
 				jQuery("#charityProfileName2").html(data.user.data.charityName);
 				jQuery("#charityProfileWebsite").html(data.user.data.website);
 				jQuery("#charityProfileDesc").html(data.user.data.description);
-				
+				jQuery("#linkTo").html('Link to this fundraiser: <a href="'+site_url+'/fundraiser/'+charityId+'">'+site_url+'/fundraiser/'+charityId+'</a>');
 			}
 		});
 		

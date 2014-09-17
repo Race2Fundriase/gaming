@@ -20,59 +20,42 @@
 ?>
 
 <?php get_header(); ?>
+<br/><br/><br/><br/>
         <div class="container sand bot-bg clearfix nav-margin">
-                    <div class="inner-container wrap">
-                            <div id="logo" class="secondary">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/library/images/r2fhomelogo.png" alt="" />
+                    <div id="create-race-header">
+                                <div class="text-center"><h1 class="highlight">Add To <span id="gameType"></span> Game</h1></div>
+                                
+  
                             </div>
-                            <div id="create-race-header">
-                                <div class="text-center"><h1 class="highlight">Create: <span id="gameType"></span> Game</h1></div>
-                                
-                                <div class="text-center"><p class="highlight">Select payment method:</p></div>
-                                
-                                <ul id="tab_control" class="tab_control">
-                                     <li><a href="#" class="btn btn-blue large active">Buy Race</a></li>
-                                      
-                                </ul>
-                        </div>
-                                        
-                </div>
         </div>
         
-        <div class="fences wrap"></div>
-             <!--FORM OPTION 1-->
-            <div class="container container-create-race grit top-bg-grass bot-bg clearfix tabbed_content active">
-                <div class="inner-container wrap">
+        
+        <div class="inner-container wrap">
+				
                         <div class="form-elements">
-                                                <h3><span>Part 1</span></h3>
+                                                <h3><span>Part 1a</span></h3>
                                                 
                                                 <input name="token" type="hidden" value="a"/>
                                             
-                                                <div class="clearfix">
-                                                    <div class="fourcol first token text-right">
-                                                        <a href="#" class="optionselect active" data-selection="50" data-price="20" id="race_1">
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/bike.jpg"/>
-                                                        </a>
-                                                        <div class="text-center"><p class="highlight">50 TOKENS</p></div>
-                                                    </div>
-                                                    
-                                                    <div class="fourcol token">
-                                                        <a href="#" class="optionselect" data-selection="100" data-price="35" id="race_2">
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/car.jpg"/>
-                                                        </a>
-                                                         <div class="text-center"><p class="highlight">100 TOKENS</p></div>
-                                                    </div>
-                                                    
-                                                    <div class="fourcol last token">
-                                                        <a href="#" class="optionselect" data-selection="350" data-price="75" id="race_3">
-                                                            <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/plane.jpg"/>
-                                                        </a>
-                                                         <div class="text-center"><p class="highlight">350 TOKENS</p></div>
-                                                    </div>
-                                                </div>
-                                            
-                                                <div>
-                                                    <label for="tokenamount_race"><span>Custom amount of tokens:</span></label>
+                                                
+												<div >
+													<h3 class="highlight">Buy a Single Race</h3>
+													<table align="center" width="60%">
+														<tr class="highlight"><th width="60%">Maximum Players</th><th>&pound;</th><th>Click to Buy</th></tr>
+														
+														<tr style="color: white;"><td>for up to 50 players</td><td align="center">20</td><td align="center" width="15%"><input data-selection="50" data-price="20" type="submit" value="Buy" id="buy_2" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 100 players</td><td align="center">35</td><td align="center" width="15%"><input data-selection="100" data-price="35" type="submit" value="Buy" id="buy_3" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 350 players</td><td align="center">75</td><td align="center" width="15%"><input data-selection="350" data-price="75" type="submit" value="Buy" id="buy_4" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 1000 players</td><td align="center">125</td><td align="center" width="15%"><input data-selection="1000" data-price="125" type="submit" value="Buy" id="buy_5" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 5000 players</td><td align="center">225</td><td align="center" width="15%"><input data-selection="5000" data-price="225" type="submit" value="Buy" id="buy_6" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 10000 players</td><td align="center">325</td><td align="center" width="15%"><input data-selection="10000" data-price="325" type="submit" value="Buy" id="buy_7" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 15000 players</td><td align="center">395</td><td align="center" width="15%"><input data-selection="15000" data-price="395" type="submit" value="Buy" id="buy_8" class="btn"/></td></tr>
+														<tr style="color: white;"><td>for up to 25000 players</td><td align="center">450</td><td align="center" width="15%"><input data-selection="25000" data-price="450" type="submit" value="Buy" id="buy_9" class="btn"/></td></tr>
+														
+													</table>
+												</div>
+												<div class="myhidden" id="details" >
+                                                    <label for="tokenamount_race"><span>Number of Players:</span></label>
                                                     <div>
                                                     <input name="tokenamount_race" id="tokenamount_race" type="text" value="" tabindex="1"/> 
                                                     </div>
@@ -84,9 +67,25 @@
 													<div>
                                                     <input name="voucherCode" id="voucherCode" type="text" value="" tabindex="1"  /> 
                                                     </div>
+													<div class="text-center continue"><input type="submit" value="continue" id="continue_race" class="btn large"/></div>
                                                 </div>
-         
-                                            <div class="text-center continue"><input type="submit" value="continue" id="continue_race" class="btn large"/></div>
+												
+                                            
+                                                
+												
+												<div class="myhidden" id="details_sub">
+                                                    <label for="tokenamount"><span>Max Players:</span></label>
+                                                    <div>
+                                                    <input name="tokenamount_sub" id="tokenamount_sub" type="text" value="" tabindex="1"  readonly="readonly"/> 
+													</div>
+													<label for="tokenamount"><span>Price (&pound;):</span></label>
+													<div>
+													<input name="tokenprice_sub" id="tokenprice_sub" type="text" value="" tabindex="1"  readonly="readonly"/> 
+                                                    </div>
+													<div class="text-center continue"><input type="submit" value="continue" id="continue_sub" class="btn large"/></div>
+                                                </div>
+         <br/><br/><br/><br/><br/><br/>
+                                            
                                 </div><!--End Form Elements-->
                         </form><!--End Form-->
                 </div><!--End Inner Container-->
@@ -104,21 +103,21 @@
                                                         <a href="#" class="optionselect active" data-selection="1000" data-price="350" id="sub_1">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/bike.jpg"/>
                                                         </a>
-                                                        <div class="text-center"><p class="highlight">Unlimited games with upto 1000 players (&pound;350)</p></div>
+                                                        <div class="text-center"><p class="highlight">Unlimited games with up to 1000 players (&pound;350) for 12 months</p></div>
                                                     </div>
                                                     
                                                     <div class="fourcol token">
                                                         <a href="#" class="optionselect" data-selection="5000" data-price="550" id="sub_2">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/car.jpg"/>
                                                         </a>
-                                                         <div class="text-center"><p class="highlight">Unlimited games with upto 15000 players (&pound;550)</p></div>
+                                                         <div class="text-center"><p class="highlight">Unlimited games with up to 15000 players (&pound;550) for 12 months</p></div>
                                                     </div>
                                                     
                                                     <div class="fourcol last token">
                                                         <a href="#" class="optionselect" data-selection="25000" data-price="1100" id="sub_3">
                                                             <img src="<?php echo get_template_directory_uri(); ?>/library/images/tokens/plane.jpg"/>
                                                         </a>
-                                                         <div class="text-center"><p class="highlight">Unlimited games with upto 25000 players(&pound;1100)</p></div>
+                                                         <div class="text-center"><p class="highlight">Unlimited games with up to 25000 players(&pound;1100) for 12 months</p></div>
                                                     </div>
                                                 </div>
                                             

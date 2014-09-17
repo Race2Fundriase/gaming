@@ -37,6 +37,8 @@ Template Name: Active Race
 						
 				<div id="active-race-header">
 			
+			
+			
 					<div id="other-search">
 						<?php $search_text = "Search Races"; ?> 
 						<form method="get" id="racesearch"  action=""> 
@@ -59,7 +61,13 @@ Template Name: Active Race
 				<div id="paperParentAR2" style="margin-left: 200px;">
 				<div id="frame"></div>
 				</div>	
-				<div class="leaderboard clearfix" style="position: absolute; top: 400px; width: 250px">
+				<div class="leaderboard clearfix" style="position: absolute; top: 200px; width: 250px">
+					<div id="active-race-header">
+					<div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
+					<div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
+					<div class="dates"><time class="highlight" id="startTime"></time><time class="highlight" id="finishTime"></time></div>
+					</div>
+				
                                 <div><h3 class="highlight">Leaderboard</h3></div>
 								<div style="display:none"><span class="highlight">Day:</span><select name="day" id="day"></select></div>
 								<div style="display:none"><span class="highlight">Hour:</span>
@@ -107,7 +115,7 @@ Template Name: Active Race
 								</div>
 								
                             </div>
-							<br/><br/>
+							<br/><br/><br/>
 				<div id="active-race-header2">
 					<div class="info">
 						
@@ -126,9 +134,7 @@ Template Name: Active Race
 						<?php if(user_can_edit_race()) { ?>
 						<br/><a class="btn large blue" href="<?=site_url()?>/edit-online-race/?raceId=<?=$_GET['raceId']?>">Edit Race</a>
 						<?php } ?>
-						<div class="headings"><p class="highlight">Start</p><p class="highlight">Finish</p></div>
-						<div class="dates"><time id="startDate" datetime="" class="highlight"></time><time id="finishDate" datetime="" class="highlight"></time></div>
-						<div class="dates"><time class="highlight" id="startTime"></time><time class="highlight" id="finishTime"></time></div>
+						
 
 					<!--<img src="<?php echo get_template_directory_uri(); ?>/library/images/active-race-page-test-image.jpg" alt="" />-->
 					
@@ -161,8 +167,8 @@ Template Name: Active Race
                             </dl>
                             <p class="highlight" id="prize">Prize:</p>
                             
-                           
-                            
+                            <br/>
+                            <p class="highlight" id="linkToRace">Link to this race:</p>
                             
 							 <div class="characters clearfix">
                                 

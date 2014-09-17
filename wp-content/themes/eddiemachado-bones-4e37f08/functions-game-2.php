@@ -154,6 +154,7 @@ function r2f_action_upsert_race()
 	$offline = $_POST["offline"];
 	$refreshScores = $_POST["refreshScores"];
 	$entryCurrency = $_POST["entryCurrency"];
+	$timeZone = $_POST["timeZone"];
 	
 	if (!$offline || $offline == "") $offline = 0;
 		
@@ -165,7 +166,12 @@ function r2f_action_upsert_race()
 	// Validate params
 	if ($raceName == "") $result["error"] .= "You must enter a race name.";
 	if ($startDate == "Invalid date" || $startTime == "Invalid date" || $finishDate == "Invalid date" || $finishTime == "Invalid date") $result["error"] .= "You must enter a start/finish date and time.";
-		
+
+	$calcMaxNoOfPlayers = getMaxNoOfPlayers();
+	
+	if ($maxNoOfPlayers > $calcMaxNoOfPlayers) 
+		$result["error"].= "You have exceeded the maximum purchased no of players ($calcMaxNoOfPlayers)";
+	
 	if ($result["error"] != "") {
 		$result["message"] = "There were validation errors.";
 		echo json_encode($result);
@@ -174,21 +180,21 @@ function r2f_action_upsert_race()
 	
 	// Insert or Update
 	if ($id == "") {
-
+	
 		$rows = $wpdb->query( $wpdb->prepare( 
 			"
 				INSERT INTO r2f_races
 				( id, maxNoOfPlayers, raceName, raceDescription, mapId, startDate, startTime,
 					finishDate, finishTime, entryPrice, createdBy, raceStatus, finishGridX, finishGridY, startGridX, startGridY,
 					locationDescription, terrainDescription, weatherDescription, curDay, curHour, paymentMethodEmail, justGivingCharityId,
-					private, prizeDesc, offline, entryCurrency)
-				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s, %d, %s )
+					private, prizeDesc, offline, entryCurrency, timeZone)
+				VALUES ( %d, %d, %s, %s, %d, %s, %s, %s, %s, %f, %d, %d, %d, %d, %d, %d, %s, %s, %s, %d, %d, %s, %s, %d, %s, %d, %s, %d )
 			", 
 				array(
 				$id, $maxNoOfPlayers, $raceName, $raceDescription, $mapId, $startDate, $startTime, $finishDate, $finishTime, $entryPrice, 
 				$createdBy, $raceStatus, $finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour, $paymentMethodEmail, $justGivingCharityId,
-				$private, $prizeDesc, $offline, $entryCurrency
+				$private, $prizeDesc, $offline, $entryCurrency, $timeZone
 				) 
 		) );
 		
@@ -212,7 +218,7 @@ function r2f_action_upsert_race()
 				finishGridX = %d, finishGridY = %d, startGridX = %d, startGridY = %d,
 				locationDescription = %s, terrainDescription = %s, weatherDescription = %s, curDay = %d, curHour = %d,
 				paymentMethodEmail = %s, justGivingCharityId = %s, raceStatus = %d, private = %d, prizeDesc = %s,
-				offline = %d, refreshScores = %d, entryCurrency = %s
+				offline = %d, refreshScores = %d, entryCurrency = %s, timeZone = %d
 				WHERE id = %d
 			", 
 				array(
@@ -220,7 +226,7 @@ function r2f_action_upsert_race()
 				$finishGridX, $finishGridY, $startGridX, $startGridY,
 				$locationDescription, $terrainDescription, $weatherDescription, $curDay, $curHour,
 				$paymentMethodEmail, $justGivingCharityId, $raceStatus, $private, $prizeDesc, $offline,
-				$refreshScores, $entryCurrency,
+				$refreshScores, $entryCurrency, $timeZone,
 				$id
 				) 
 		) );
@@ -881,7 +887,7 @@ function r2f_action_get_race()
 				`paymentMethodURL`, `raceName`, `raceDescription`, `mapId`, `startDate`, startTime, `finishDate`, finishTime, `entryPrice`, 
 				`startGridX`, `startGridY`, `finishGridX`, `finishGridY`, mapName, raceStatus, createdBy, mapImageUrl,
 				locationDescription, terrainDescription, weatherDescription, curDay, curHour, featured, justGivingCharityId, lengthInDays, private, 
-				prizeDesc, sponserLogoUrl, sponserUrl, entryCurrency, offline
+				prizeDesc, sponserLogoUrl, sponserUrl, entryCurrency, offline, hasStarted, timeZone
 				from `r2f_races` 
 				join `r2f_maps` ON mapId = `r2f_maps`.id
 				WHERE `r2f_races`.`id` = %d
